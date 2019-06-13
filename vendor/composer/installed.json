@@ -1,0 +1,51 @@
+[
+    {
+        "name": "terrylinooo/shieldon",
+        "version": "1.3.1",
+        "version_normalized": "1.3.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/terrylinooo/shieldon.git",
+            "reference": "e9395b958cde1f1a822a516e86a966d2a8dccbad"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/terrylinooo/shieldon/zipball/e9395b958cde1f1a822a516e86a966d2a8dccbad",
+            "reference": "e9395b958cde1f1a822a516e86a966d2a8dccbad",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=7.1.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "^8"
+        },
+        "time": "2019-06-08T22:48:33+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Shieldon\\": "src/Shieldon/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Terry Lin",
+                "email": "contact@terryl.in",
+                "homepage": "https://terryl.in",
+                "role": "Developer"
+            }
+        ],
+        "description": "Anti-scraping, XSS filtering and traffic controll on Web application layer.",
+        "homepage": "https://github.com/terrylinooo/shieldon",
+        "keywords": [
+            "anti-scraping",
+            "web-security",
+            "xss-filter"
+        ]
+    }
+]
