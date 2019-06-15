@@ -20,37 +20,22 @@ class WPSO_Shieldon_Guardian {
 	 */
 	public function __construct() {
 
-		
-
-
-		//$this->current_url = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+		/**
+		 * Start a Shieldon instance.
+		 */
+		$this->shieldon = new \Shieldon\Shieldon();
 	}
 
 	/**
 	 * Initialize everything the Githuber plugin needs.
+	 * 
+	 * @document https://shield-on-php.github.io/en/
 	 */
 	public function init() {
 
-		$this->shieldon = new \Shieldon\Shieldon();
-
 		/**
-		 * F
+		 * Set data driver for Shieldon.
 		 */
-		$time_unit_quota_s = wpso_get_option( '$time_unit_quota_s', 'shieldon_guardian' );
-		$time_unit_quota_m = wpso_get_option( '$time_unit_quota_m', 'shieldon_guardian' );
-		$time_unit_quota_h = wpso_get_option( '$time_unit_quota_h', 'shieldon_guardian' );
-		$time_unit_quota_d = wpso_get_option( '$time_unit_quota_d', 'shieldon_guardian' );
-
-		$time_unit_quota['s'] = ( is_numeric( $time_unit_quota_s ) && $time_unit_quota_s > 0 ) ? $time_unit_quota_s : 2;
-		$time_unit_quota['m'] = ( is_numeric( $time_unit_quota_m ) && $time_unit_quota_m > 0 ) ? $time_unit_quota_m : 2;
-		$time_unit_quota['h'] = ( is_numeric( $time_unit_quota_h ) && $time_unit_quota_h > 0 ) ? $time_unit_quota_h : 2;
-		$time_unit_quota['d'] = ( is_numeric( $time_unit_quota_d ) && $time_unit_quota_d > 0 ) ? $time_unit_quota_d : 2;
-
-		$this->setProperty('time_unit_quota', $time_unit_quota);
-		
-
-		
-
 		$driver_type = wpso_get_option( 'data_driver_type', 'shieldon_guardian' );
 
 		switch ( $driver_type ) {
@@ -140,16 +125,140 @@ class WPSO_Shieldon_Guardian {
 				}
 		}
 
-		// Set core components.
-		// This compoent will only allow popular search engline.
-		// Other bots will go into the checking process.
-		$this->shieldon->setComponent(new \Shieldon\Component\TrustedBot());
+		// Set Channel, for WordPress multisite network.
+		$this->shieldon->setChannel( wpso_get_channel_id() );
 
+		/**
+		 * Frequancy check. (settings)
+		 */
+		$time_unit_quota_s = wpso_get_option( '$time_unit_quota_s', 'shieldon_guardian' );
+		$time_unit_quota_m = wpso_get_option( '$time_unit_quota_m', 'shieldon_guardian' );
+		$time_unit_quota_h = wpso_get_option( '$time_unit_quota_h', 'shieldon_guardian' );
+		$time_unit_quota_d = wpso_get_option( '$time_unit_quota_d', 'shieldon_guardian' );
+
+		$time_unit_quota['s'] = ( is_numeric( $time_unit_quota_s ) && $time_unit_quota_s > 0 ) ? $time_unit_quota_s : 2;
+		$time_unit_quota['m'] = ( is_numeric( $time_unit_quota_m ) && $time_unit_quota_m > 0 ) ? $time_unit_quota_m : 10;
+		$time_unit_quota['h'] = ( is_numeric( $time_unit_quota_h ) && $time_unit_quota_h > 0 ) ? $time_unit_quota_h : 30;
+		$time_unit_quota['d'] = ( is_numeric( $time_unit_quota_d ) && $time_unit_quota_d > 0 ) ? $time_unit_quota_d : 60;
+
+		$this->shieldon->setProperty( 'time_unit_quota', $time_unit_quota );
+		$this->shieldon->setProperty( 'lang', wpso_get_lang() );
+
+		$filter_config = array(
+			'session'   => ( 'yes' === wpso_get_option( 'enable_filter_session', 'shieldon_filter' ) ) ? true : false,
+			'cookie'    => ( 'yes' === wpso_get_option( 'enable_filter_cookie',  'shieldon_filter' ) ) ? true : false,
+			'referer'   => ( 'yes' === wpso_get_option( 'enable_filter_referer', 'shieldon_filter' ) ) ? true : false,
+			'frequency' => true,
+		);
+
+		$this->shieldon->setFilters( $filter_config );
+
+		/**
+		 * Load "Ip" component.
+		 */
+		$component_ip = new \Shieldon\Component\Ip();
+
+		$this->shieldon->setComponent( $component_ip );
+
+		/**
+		 * Load "Trusted Bot" component.
+		 */
+		if ( 'yes' === wpso_get_option( 'enable_component_trustedbot', 'shieldon_components' ) ) {
+
+			// This component will only allow popular search engline.
+			// Other bots will go into the checking process.
+			$component_trustedbot = new \Shieldon\Component\TrustedBot();
+
+			$this->shieldon->setComponent( $component_trustedbot );
+		}
+
+		/**
+		 * Load "Header" component.
+		 */
+		if ( 'yes' === wpso_get_option( 'enable_component_header', 'shieldon_components' ) ) {
+
+			$component_header = new \Shieldon\Component\Header();
+
+			// Deny all vistors without common header information.
+			if ( 'yes' === wpso_get_option( 'header_strict_mode', 'shieldon_components' ) ) {
+				$component_header->setStrict( true );
+			}
+
+			$this->shieldon->setComponent( $component_header );
+		}
+
+		/**
+		 * Load "User-agent" component.
+		 */
+		if ( 'yes' === wpso_get_option( 'enable_component_agent', 'shieldon_components' ) ) {
+
+			$component_agent = new \Shieldon\Component\UserAgent();
+
+			// Visitors with empty user-agent information will be blocked.
+			if ( 'yes' === wpso_get_option( 'agent_strict_mode', 'shieldon_components' ) ) {
+				$component_agent->setStrict( true );
+			}
+
+			$this->shieldon->setComponent( $component_agent );
+		}
+
+		/**
+		 * Load "Rdns" component.
+		 */
+		if ( 'yes' === wpso_get_option( 'enable_component_rdns', 'shieldon_components' ) ) {
+
+			$component_rdns = new \Shieldon\Component\Rdns();
+
+			// Visitors with empty Rdns record will be blocked.
+            // IP resolved hostname (Rdns) and IP address must match.
+			if ( 'yes' === wpso_get_option( 'rdns_strict_mode', 'shieldon_components' ) ) {
+				$component_rdns->setStrict( true );
+			}
+
+			$this->shieldon->setComponent( $component_rdns );
+		}
+
+		/**
+		 * CAPTCHA
+		 */
+		if ( 'yes' === wpso_get_option( 'enable_captcha_google', 'shieldon_captcha' ) ) {
+
+			$google_captcha_config['key']    = wpso_get_option( 'google_recaptcha_key', 'shieldon_captcha' );
+			$google_captcha_config['secret'] = wpso_get_option( 'google_recaptcha_secret', 'shieldon_captcha' );
+			$google_captcha_config['verion'] = wpso_get_option( 'google_recaptcha_version', 'shieldon_captcha' );
+			$google_captcha_config['lang']   = wpso_get_option( 'google_recaptcha_version', 'shieldon_captcha' );
+
+			$captcha_google = new \Shieldon\Captcha\Recaptcha( $google_captcha_config );
+
+			$this->shieldon->setCaptcha( $captcha_google );
+		}
+
+		if ( 'yes' === wpso_get_option( 'enable_captcha_image', 'shieldon_captcha' ) ) {
+
+			$image_captcha_config['word_length'] = wpso_get_option( 'image_captcha_length', 'shieldon_captcha' );
+
+			$image_captcha_type = wpso_get_option( 'image_captcha_type', 'shieldon_captcha' );
+
+			switch ($image_captcha_type) {
+				case 'numeric':
+					$image_captcha_config['pool'] = '0123456789';
+					break;
+
+				case 'alpha':
+					$image_captcha_config['pool'] = '0123456789abcdefghijklmnopqrstuvwxyz';
+					break;
+
+				case 'alnum':
+				default:
+					$image_captcha_config['pool'] = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+			}
+			
+			$captcha_image = new \Shieldon\Captcha\ImageCaptcha( $image_captcha_config );
+			$this->shieldon->setCaptcha( $captcha_image );
+		}
 
 		// Start protecting your website!
-
 		$result = $this->shieldon->run();
-
 
 		if ($result !== $this->shieldon::RESPONSE_ALLOW) {
 			if ($this->shieldon->captchaResponse()) {
@@ -161,39 +270,18 @@ class WPSO_Shieldon_Guardian {
 			$this->shieldon->output(200);
 		}
 
-		/**
-		 * Let's start setting user's perferences...
-		 */
-		add_action( 'wp_print_footer_scripts', array( $this, 'front_print_footer_scripts' ) );
-	}
-
-	/**
-	 * Register CSS style files for frontend use.
-	 * 
-	 * @return void
-	 */
-	public function front_enqueue_styles() {
-		
-	}
-
-	public function get_front_enqueue_styles() {
-
+		// Check cookie generated by JavaScript.
+		if ( $filter_config['cookie'] ) {
+			add_action( 'wp_print_footer_scripts', array( $this, 'front_print_footer_scripts' ) );
+		}
 	}
 
 	/**
 	 * Print Javascript plaintext in page footer.
+	 * 
+	 * @return string
 	 */
 	public function front_print_footer_scripts() {
-		$script = '';
-
-		if ( 'yes' === wpso_get_option( 'filter_js_cookie', 'githuber_guardian' ) ) {
-			$script = '
-				
-			';
-
-			return preg_replace( '/\s+/', ' ', $script );
-		}
-
-		return $script;
+		echo $this->shieldon->outputJsSnippet();
 	}
 }

@@ -6,15 +6,15 @@ if ( ! defined('SHIELDON_PLUGIN_NAME') ) die;
  * @author Terry Lin
  * @link https://terryl.in/
  *
- * @package Shieldon
- * @since 1.0.0
- * @version 1.0.0
+ * @package Githuber
+ * @since 1.7.2
+ * @version 1.7.2
  */
 ?>
 
 <div style="border: 1px #dddddd solid; background-color: #ffffff; padding: 10px; display: inline-block;">
     <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=donate%40terryl.in&item_name=WordPress+Plugin+-+WP+Shieldon&currency_code=USD&source=url" target="_blank">
-        <img src="<?php echo GITHUBER_PLUGIN_URL . 'assets/images/donate_qr.png' ?>">
+    <?php _e( 'Donate', 'wp-shieldon' ); ?>
     </a>
 </div>
 <p><?php _e( 'If you think this plugin is useful to you, buy me a coffee.<br />Payment gateway provided by PayPal.', 'wp-shieldon' ); ?></p>

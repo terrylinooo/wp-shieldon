@@ -93,6 +93,10 @@ if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 				umask($originalUmask);
 			}
 		}
+
+		wpso_set_channel_id();
+
+		update_option( 'wpso_lang_code', substr(get_locale(), 0, 2), '', 'yes' );
 	}
 
 	/**
@@ -135,10 +139,17 @@ if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 		require_once SHIELDON_PLUGIN_DIR . 'src/class-wpso-settings-api.php';
 	
 		// WP Shieldon Controller.
-		require_once SHIELDON_PLUGIN_DIR . 'src/class-wpso-admin.php';
+		require_once SHIELDON_PLUGIN_DIR . 'src/class-wpso-admin-menu.php';
+		require_once SHIELDON_PLUGIN_DIR . 'src/class-wpso-admin-settings.php';
 	
-		$setting = new WPSO_Admin();
-		$setting->init();
+		$admin_menu     = new WPSO_Admin_Menu();
+		$admin_settings = new WPSO_Admin_Settings();
+
+		add_action( 'admin_init', array( $admin_settings, 'setting_admin_init' ) );
+		add_action( 'admin_menu', array( $admin_menu, 'setting_admin_menu' ) );
+		add_action( 'admin_enqueue_scripts', array( $admin_menu, 'admin_enqueue_styles' ) );
+		add_filter( 'plugin_action_links_' . SHIELDON_PLUGIN_NAME, array( $admin_menu, 'plugin_action_links' ), 10, 5 );
+		add_filter( 'plugin_row_meta', array( $admin_menu, 'plugin_extend_links' ), 10, 2 );
 
 	} else {
 

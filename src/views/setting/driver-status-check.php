@@ -26,19 +26,31 @@ if ( wpso_test_driver( 'redis' ) )  $redis_status_color  = $color_green;
 
 ?>
 
-<div style="border: 1px #dddddd solid; background-color: #ffffff; padding: 10px; display: inline-block;">
-<table style="border: 0">
+<div style="border: 1px #dddddd solid; background-color: #ffffff; padding: 10px; display: inline-block; width: 150px">
+<table style="border: 0; width: 100%">
     <tr>
-        <td>MySQL</td><td><span class="dashicons dashicons-marker" style="color: <?php echo $mysql_status_color; ?>"></span></td>
+        <td style="width: 80%">MySQL</td><td style="width: 20%"><span class="dashicons dashicons-marker" style="color: <?php echo $mysql_status_color; ?>"></span></td>
     </tr>
+</table>
+</div>
+<div style="border: 1px #dddddd solid; background-color: #ffffff; padding: 10px; display: inline-block; width: 150px">
+<table style="border: 0; width: 100%">
     <tr>
-        <td>Redis</td><td><span class="dashicons dashicons-marker" style="color: <?php echo $redis_status_color; ?>"></span></td>
+        <td style="width: 80%">Redis</td><td style="width: 20%"><span class="dashicons dashicons-marker" style="color: <?php echo $redis_status_color; ?>"></span></td>
     </tr>
+</table>
+</div>
+<div style="border: 1px #dddddd solid; background-color: #ffffff; padding: 10px; display: inline-block; width: 150px">
+<table style="border: 0; width: 100%">
     <tr>
-        <td>File system</td><td><span class="dashicons dashicons-marker" style="color: <?php echo $file_status_color; ?>"></span></td>
+        <td style="width: 80%">File system</td><td style="width: 20%"><span class="dashicons dashicons-marker" style="color: <?php echo $file_status_color; ?>"></span></td>
     </tr>
+</table>
+</div>
+<div style="border: 1px #dddddd solid; background-color: #ffffff; padding: 10px; display: inline-block; width: 150px">
+<table style="border: 0; width: 100%">
     <tr>
-        <td>SQLite</td><td><span class="dashicons dashicons-marker" style="color: <?php echo $sqlite_status_color; ?>"></span></td>
+        <td style="width: 80%">SQLite</td><td style="width: 20%"><span class="dashicons dashicons-marker" style="color: <?php echo $sqlite_status_color; ?>"></span></td>
     </tr>
 </table>
 </div>

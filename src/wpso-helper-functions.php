@@ -28,42 +28,6 @@ function wpso_get_option( $option, $section, $default = '' ) {
 }
 
 /**
- * Get current Post ID.
- *
- * @return int
- */
-function wpso_get_current_post_id() {
-	global $post;
-
-	$post_id = null;
-
-	if ( ! empty( $post ) )  {
-		$post_id = $post->ID;
-	} elseif ( ! empty( $_REQUEST['post'] ) ) {
-		$post_id = $_REQUEST['post'];
-	} else {
-
-	}
-	
-	return $post_id;
-}
-
-/**
- * Check current user's permission.
- *
- * @param string $action User action.
- * @return bool
- */
-function wpso_current_user_can( $action ) {
-	global $post;
-
-	if ( current_user_can( $action, $post->ID ) ) {
-		return true;
-	}
-	return false;
-}
-
-/**
  * Load view files.
  *
  * @param string $template_path The specific template's path.
@@ -125,6 +89,15 @@ function wpso_is_driver_hash() {
 }
 
 /**
+ * Get lang code.
+ *
+ * @return string
+ */
+function wpso_get_lang() {
+	return get_option( 'wpso_lang_code' );
+}
+
+/**
  * Set driver hash.
  *
  * @return string
@@ -143,7 +116,26 @@ function wpso_set_driver_hash() {
  * @return string
  */
 function wpso_get_upload_dir() {
-	return WP_CONTENT_DIR . '/uploads/' . wpso_get_driver_hash();
+	return WP_CONTENT_DIR . '/uploads/wp-shieldon/' . wpso_get_driver_hash();
+}
+
+/**
+ * Set channel Id.
+ *
+ * @return void
+ */
+function wpso_set_channel_id() {
+	$blog_id = get_current_blog_id();
+	update_option( 'wpso_channel_id', $blog_id, '', 'yes' );
+}
+
+/**
+ * Get channel Id.
+ *
+ * @return string
+ */
+function wpso_get_channel_id() {
+	return get_option( 'wpso_channel_id' );
 }
 
 /**
