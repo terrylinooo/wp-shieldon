@@ -110,7 +110,7 @@ form {
 	}
 	
 	.g-section-title-desc {
-		font-size: 13px;
+		font-size: 16px;
 		margin: 0px 5px;
 		padding: 3px 6px;
 		color: #aaaaaa;
@@ -122,4 +122,25 @@ form {
 	}
 }
 
+.shieldon-info-bar {
+	clear: both;
+	margin-top: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 
+	.version-info {
+		margin-right: 20px;
+		padding: 10px;
+		background-color: rgba(255, 255, 255, 0);
+	}
+
+	.shieldon-logo {
+		height: 60px;
+	}
+
+	a {
+		text-decoration: none;
+		margin-right: 10px;
+	}
+}

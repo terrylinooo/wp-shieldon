@@ -49,7 +49,7 @@ class WPSO_Settings_API {
 		wp_enqueue_script( 'wp-color-picker' );
 		wp_enqueue_script( 'jquery' );
 
-		wp_enqueue_script( 'setting-api', SHIELDON_PLUGIN_URL . 'src/assets/js/shieldon-setting-api.js', array( 'jquery' ), SHIELDON_PLUGIN_VERSION, true );
+		wp_enqueue_script( 'setting-api', SHIELDON_PLUGIN_URL . 'src/assets/js/shieldon-setting-api.js', array( 'jquery' ), SHIELDON_PLUGIN_VERSION, true );	
 	}
 
 	/**

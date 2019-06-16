@@ -101,7 +101,7 @@ form .g-section-title .setting-toggle {
   top: -15px;
 }
 form .g-section-title-desc {
-  font-size: 13px;
+  font-size: 16px;
   margin: 0px 5px;
   padding: 3px 6px;
   color: #aaaaaa;
@@ -109,4 +109,24 @@ form .g-section-title-desc {
 }
 form .g-section-desc {
   display: block;
+}
+
+.shieldon-info-bar {
+  clear: both;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.shieldon-info-bar .version-info {
+  margin-right: 20px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0);
+}
+.shieldon-info-bar .shieldon-logo {
+  height: 60px;
+}
+.shieldon-info-bar a {
+  text-decoration: none;
+  margin-right: 10px;
 }

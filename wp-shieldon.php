@@ -65,6 +65,7 @@ define( 'SHIELDON_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'SHIELDON_PLUGIN_PATH', __FILE__ );
 define( 'SHIELDON_PLUGIN_LANGUAGE_PACK', dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 define( 'SHIELDON_PLUGIN_VERSION', '1.0.0' );
+define( 'SHIELDON_CORE_VERSION', '1.3.1' );
 define( 'SHIELDON_PLUGIN_TEXT_DOMAIN', 'wp-shieldon' );
 
 // Load helper functions
@@ -147,7 +148,6 @@ if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 
 		add_action( 'admin_init', array( $admin_settings, 'setting_admin_init' ) );
 		add_action( 'admin_menu', array( $admin_menu, 'setting_admin_menu' ) );
-		add_action( 'admin_enqueue_scripts', array( $admin_menu, 'admin_enqueue_styles' ) );
 		add_filter( 'plugin_action_links_' . SHIELDON_PLUGIN_NAME, array( $admin_menu, 'plugin_action_links' ), 10, 5 );
 		add_filter( 'plugin_row_meta', array( $admin_menu, 'plugin_extend_links' ), 10, 2 );
 

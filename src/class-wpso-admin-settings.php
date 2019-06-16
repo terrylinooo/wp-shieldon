@@ -17,13 +17,6 @@ class WPSO_Admin_Settings {
 	public static $setting_api;
 
 	/**
-	 * Menu slug.
-	 *
-	 * @var string
-	 */
-	public $menu_slug = 'shieldon';
-
-	/**
 	 * Constructer.
 	 */
 	public function __construct() {
@@ -101,7 +94,7 @@ class WPSO_Admin_Settings {
 					'label'         => __( 'Enable Daemon', 'wp-shieldon' ),
 					'section_title' => true,
 					'location_id'   => 'shieldon_main',
-					'desc'          => '<span class="dashicons dashicons-shield"></span>',
+					'desc'          => '<i class="fas fa-shield-alt"></i>',
 				),
 
 				array(
@@ -135,10 +128,28 @@ class WPSO_Admin_Settings {
 					'parent'  => 'enable_daemon',
 				),
 
+				// Reset Cycle
+
+				array(
+					'name'    => 'data_reset_circle',
+					'label'   => __( 'Data Reset Cycle', 'wp-shieldon' ),
+					'desc'    => __( 'Clear all logs everyday 0:00 a.m. automatically. Turning this option on will improve performace.', 'wp-shieldon' ),
+					'type'    => 'toggle',
+					'size'    => 'sm',
+					'default' => 'no',
+					'parent'  => 'enable_daemon',
+				),
+
 				array(
 					'section_title' => true,
 					'label' => __( 'Frequency Check', 'wp-shieldon' ),
-					'desc'  => '<span class="dashicons dashicons-backup"></span>',
+					'desc'  => '<i class="fas fa-eye"></i>',
+				),
+
+				array(
+					'name'        => 'enable_frequency_check',
+					'desc'        => __( "Don't worry about the human visitors, if they reach the limit and get banned, they can easily continue surfing your website by solving CAPTCHA.", 'wp-shieldon' ),
+					'type'        => 'html',
 				),
 
 				array(
@@ -189,7 +200,7 @@ class WPSO_Admin_Settings {
 					'label'         => __( 'Trusted Bots', 'wp-shieldon' ),
 					'section_title' => true,
 					'location_id'   => 'shieldon_component_trustedbot',
-					'desc'          => '<span class="dashicons dashicons-heart"></span>',
+					'desc'          => '<i class="far fa-grin-hearts"></i>',
 				),
 
 				array(
@@ -216,7 +227,7 @@ class WPSO_Admin_Settings {
 					'label'         => __( 'Header', 'wp-shieldon' ),
 					'section_title' => true,
 					'location_id'   => 'shieldon_component_header',
-					'desc'          => '<span class="dashicons dashicons-clipboard"></span>',
+					'desc'          => '<i class="fab fa-connectdevelop"></i>',
 				),
 
 				array(
@@ -243,7 +254,7 @@ class WPSO_Admin_Settings {
 					'label'         => __( 'User Agent', 'wp-shieldon' ),
 					'section_title' => true,
 					'location_id'   => 'shieldon_component_agent',
-					'desc'          => '<span class="dashicons dashicons-universal-access-alt"></span>',
+					'desc'          => '<i class="fab fa-chrome"></i>',
 				),
 
 				array(
@@ -270,7 +281,7 @@ class WPSO_Admin_Settings {
 					'label'         => __( 'Reverse DNS', 'wp-shieldon' ),
 					'section_title' => true,
 					'location_id'   => 'shieldon_component_rdns',
-					'desc'          => '<span class="dashicons dashicons-admin-site-alt3"></span>',
+					'desc'          => '<i class="fas fa-globe"></i>',
 				),
 
 				array(
@@ -300,7 +311,7 @@ class WPSO_Admin_Settings {
 					'label'         => __( 'Session', 'wp-shieldon' ),
 					'section_title' => true,
 					'location_id'   => 'shieldon_filter_session',
-					'desc'          => '<span class="dashicons dashicons-shield"></span>',
+					'desc'          => '<i class="fas fa-users"></i>',
 				),
 
 				array(
@@ -336,7 +347,7 @@ class WPSO_Admin_Settings {
 					'label'         => __( 'HTTP Referrer', 'wp-shieldon' ),
 					'section_title' => true,
 					'location_id'   => 'shieldon_filter_referer',
-					'desc'          => '<span class="dashicons dashicons-shield"></span>',
+					'desc'          => '<i class="far fa-paper-plane"></i>',
 				),
 
 				array(
@@ -372,7 +383,7 @@ class WPSO_Admin_Settings {
 					'label'         => __( 'Cookie', 'wp-shieldon' ),
 					'section_title' => true,
 					'location_id'   => 'shieldon_filter_cookie',
-					'desc'          => '<span class="dashicons dashicons-shield"></span>',
+					'desc'          => '<i class="fas fa-cookie-bite"></i>',
 				),
 
 				array(
@@ -411,7 +422,7 @@ class WPSO_Admin_Settings {
 					'label'         => __( 'Google reCaptcha', 'wp-shieldon' ),
 					'section_title' => true,
 					'location_id'   => 'shieldon_captcha_recaptcha',
-					'desc'          => '<span class="dashicons dashicons-shield"></span>',
+					'desc'          => '<i class="fab fa-google"></i>',
 				),
 
 				array(
@@ -475,7 +486,7 @@ class WPSO_Admin_Settings {
 					'label'         => __( 'Image Captcha', 'wp-shieldon' ),
 					'section_title' => true,
 					'location_id'   => 'shieldon_captcha_image',
-					'desc'          => '<span class="dashicons dashicons-shield"></span>',
+					'desc'          => '<i class="fas fa-spell-check"></i>',
 				),
 
 				array(
@@ -558,7 +569,8 @@ class WPSO_Admin_Settings {
 	*/
 	public function setting_plugin_page() {
 
-		echo '<div class="wrap">';
+		wpso_show_settings_header();
+
 		settings_errors();
 
 		self::$setting_api->show_navigation();

@@ -14,17 +14,11 @@
 class WPSO_Admin_Menu {
 
 	/**
-	 * Menu slug.
-	 *
-	 * @var string
-	 */
-	public $menu_slug = 'shieldon';
-
-	/**
 	 * Constructer.
 	 */
 	public function __construct() {
-
+        add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
+        add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_styles' ) );
 	}
 
 	/**
@@ -42,7 +36,7 @@ class WPSO_Admin_Menu {
 	 * Register JS files.
 	 */
 	public function admin_enqueue_scripts( $hook_suffix ) {
-
+        wp_enqueue_script( 'fontawesome-5-js', SHIELDON_PLUGIN_URL . 'src/assets/js/fontawesome-all.min.js', array( 'jquery' ), SHIELDON_PLUGIN_VERSION, true );
 	}
 
 	/**
@@ -55,32 +49,20 @@ class WPSO_Admin_Menu {
 			__( 'WP Shieldon', 'wp-shieldon' ),
 			__( 'WP Shieldon', 'wp-shieldon' ),
 			'manage_options',
-			$this->menu_slug,
+			'shieldon-settings',
 			'__return_false',
 			'dashicons-shield'
 		);
 
-		
-
 		add_submenu_page(
-			$this->menu_slug,
-			__( 'Settings', 'wp-shieldon' ),
-			__( 'Settings', 'wp-shieldon' ),
-			'manage_options',
-			$this->menu_slug,
-			array( $admin_settings, 'setting_plugin_page' )
-        );
-        
-        
-
-		add_submenu_page(
-			$this->menu_slug,
+			'shieldon-settings',
 			__( 'Settings', 'wp-shieldon' ),
 			__( 'Settings', 'wp-shieldon' ),
 			'manage_options',
 			'shieldon-settings',
-			array( $this, 'setting_plugin_page' )
+			array( $admin_settings, 'setting_plugin_page' )
         );
+        
         
         /*
 

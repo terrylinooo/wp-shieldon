@@ -189,3 +189,22 @@ function wpso_test_driver( $type = '' ) {
 
 	return false;
 }
+
+/**
+ * Show header on setting pages.
+ *
+ * @return void
+ */
+function wpso_show_settings_header() {
+	$git_url_core = 'https://github.com/terrylinooo/shieldon';
+	$git_url_plugin = 'https://github.com/terrylinooo/wp-shieldon';
+
+	echo '<div class="shieldon-info-bar">';
+	echo '	<div class="logo-info"><img src="' . SHIELDON_PLUGIN_URL . 'src/assets/images/logo.png" class="shieldon-logo"></div>';
+	echo '	<div class="version-info">';
+	echo '    Core: <a href="' . $git_url_core . '" target="_blank">' . SHIELDON_CORE_VERSION . '</a>  ';
+	echo '    Plugin: <a href="' . $git_url_plugin . '" target="_blank">' . SHIELDON_PLUGIN_VERSION . '</a>  ';
+	echo '  </div>';
+	echo '</div>';
+	echo '<div class="wrap">';
+}
