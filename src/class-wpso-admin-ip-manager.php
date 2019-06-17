@@ -254,7 +254,7 @@ class WPSO_Admin_IP_Manager {
 		self::$setting_api->show_navigation();
 		self::$setting_api->show_forms();
 
-		echo '</div>';
+		wpso_show_settings_footer();
 	}
 }
 

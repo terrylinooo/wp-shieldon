@@ -72,18 +72,14 @@ class WPSO_Admin_Menu {
 			array( $admin_ip_manager, 'setting_plugin_page' )
 		);
 		
-        /*
-
 		add_submenu_page(
-			$this->menu_slug,
-			__( 'IP Manager', 'wp-shieldon' ),
-			__( 'IP Manager', 'wp-shieldon' ),
+			'shieldon-settings',
+			__( 'About', 'wp-shieldon' ),
+			__( 'About', 'wp-shieldon' ),
 			'manage_options',
-			'shieldon-dashboard',
-			'__return_false'
+			'shieldon-about',
+			array( $this, 'about' )
 		);
-
-		*/
 	}
 
 	/**
@@ -121,6 +117,17 @@ class WPSO_Admin_Menu {
 			$links[] = '<a href="https://github.com/terrylinooo/shieldon/issues" target="_blank">' . __( 'Report issues', 'wp-shieldon' ) . '</a>';
 		}
 		return $links;
+	}
+
+	/**
+	 * About me.
+	 *
+	 * @return void
+	 */
+	public function about() {
+		wpso_show_settings_header();
+		echo wpso_load_view( 'setting/about' );
+		wpso_show_settings_footer();
 	}
 }
 

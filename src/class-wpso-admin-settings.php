@@ -75,11 +75,6 @@ class WPSO_Admin_Settings {
 				'id'    => 'shieldon_exclusion',
 				'title' => __( 'Exclusion', 'wp-shieldon' ),
 			),
-
-			array(
-				'id'    => 'shieldon_about',
-				'title' => __( 'About', 'wp-shieldon' ),
-			),
 		);
 	}
 
@@ -636,37 +631,6 @@ class WPSO_Admin_Settings {
 					'default' => 'yes',
 				),
 			),
-
-			'shieldon_about' => array(
-
-				array(
-					'name'  => 'plugin_about_author',
-					'label' => __( 'Author', 'wp-shieldon' ),
-					'desc'  => 'Terry L. @ Taiwan.',
-					'type'  => 'html'
-				),
-
-				array(
-					'name'  => 'plugin_about_version',
-					'label' => __( 'Version', 'wp-shieldon' ),
-					'desc'  => SHIELDON_PLUGIN_VERSION,
-					'type'  => 'html'
-				),
-
-				array(
-					'name'  => 'plugin_about_github',
-					'label' => __( 'GitHub Repository', 'wp-shieldon' ),
-					'desc'  => wpso_load_view( 'setting/about-github-repo' ),
-					'type'  => 'html'
-				),
-
-				array(
-					'name'  => 'plugin_about_donation',
-					'label' => __( 'Buy me a coffee', 'wp-shieldon' ),
-					'desc'  => wpso_load_view( 'setting/about-donation' ),
-					'type'  => 'html'
-				),
-			),
 		);
 	}
 
@@ -682,7 +646,7 @@ class WPSO_Admin_Settings {
 		self::$setting_api->show_navigation();
 		self::$setting_api->show_forms();
 
-		echo '</div>';
+		wpso_show_settings_footer();
 	}
 }
 

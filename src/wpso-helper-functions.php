@@ -208,3 +208,12 @@ function wpso_show_settings_header() {
 	echo '</div>';
 	echo '<div class="wrap">';
 }
+
+/**
+ * Show footer on setting pages.
+ *
+ * @return void
+ */
+function wpso_show_settings_footer() {
+	echo '</div>';
+}
