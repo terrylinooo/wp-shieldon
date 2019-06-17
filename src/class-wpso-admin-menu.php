@@ -43,7 +43,7 @@ class WPSO_Admin_Menu {
 	 * Register the plugin page.
 	 */
 	public function setting_admin_menu() {
-        global $admin_settings;
+        global $admin_settings, $admin_ip_manager;
 
 		add_menu_page(
 			__( 'WP Shieldon', 'wp-shieldon' ),
@@ -63,7 +63,15 @@ class WPSO_Admin_Menu {
 			array( $admin_settings, 'setting_plugin_page' )
         );
         
-        
+		add_submenu_page(
+			'shieldon-settings',
+			__( 'IP Manager', 'wp-shieldon' ),
+			__( 'IP Manager', 'wp-shieldon' ),
+			'manage_options',
+			'shieldon-ip-manager',
+			array( $admin_ip_manager, 'setting_plugin_page' )
+		);
+		
         /*
 
 		add_submenu_page(

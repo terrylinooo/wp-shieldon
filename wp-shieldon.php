@@ -142,11 +142,14 @@ if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 		// WP Shieldon Controller.
 		require_once SHIELDON_PLUGIN_DIR . 'src/class-wpso-admin-menu.php';
 		require_once SHIELDON_PLUGIN_DIR . 'src/class-wpso-admin-settings.php';
+		require_once SHIELDON_PLUGIN_DIR . 'src/class-wpso-admin-ip-manager.php';
 	
-		$admin_menu     = new WPSO_Admin_Menu();
-		$admin_settings = new WPSO_Admin_Settings();
+		$admin_menu       = new WPSO_Admin_Menu();
+		$admin_settings   = new WPSO_Admin_Settings();
+		$admin_ip_manager = new WPSO_Admin_IP_Manager();
 
 		add_action( 'admin_init', array( $admin_settings, 'setting_admin_init' ) );
+		add_action( 'admin_init', array( $admin_ip_manager, 'setting_admin_init' ) );
 		add_action( 'admin_menu', array( $admin_menu, 'setting_admin_menu' ) );
 		add_filter( 'plugin_action_links_' . SHIELDON_PLUGIN_NAME, array( $admin_menu, 'plugin_action_links' ), 10, 5 );
 		add_filter( 'plugin_row_meta', array( $admin_menu, 'plugin_extend_links' ), 10, 2 );

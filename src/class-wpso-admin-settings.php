@@ -52,8 +52,8 @@ class WPSO_Admin_Settings {
 		return array(
 
 			array(
-				'id'    => 'shieldon_guardian',
-				'title' => __( 'Guardian', 'wp-shieldon' ),
+				'id'    => 'shieldon_daemon',
+				'title' => __( 'Daemon', 'wp-shieldon' ),
 			),
 
 			array(
@@ -69,6 +69,11 @@ class WPSO_Admin_Settings {
 			array(
 				'id'    => 'shieldon_captcha',
 				'title' => __( 'CAPTCHAs', 'wp-shieldon' ),
+			),
+
+			array(
+				'id'    => 'shieldon_exclusion',
+				'title' => __( 'Exclusion', 'wp-shieldon' ),
 			),
 
 			array(
@@ -88,10 +93,10 @@ class WPSO_Admin_Settings {
 	
 		return array(
 
-			'shieldon_guardian' => array(
+			'shieldon_daemon' => array(
 
 				array(
-					'label'         => __( 'Enable Daemon', 'wp-shieldon' ),
+					'label'         => __( 'Enable', 'wp-shieldon' ),
 					'section_title' => true,
 					'location_id'   => 'shieldon_main',
 					'desc'          => '<i class="fas fa-shield-alt"></i>',
@@ -140,16 +145,63 @@ class WPSO_Admin_Settings {
 					'parent'  => 'enable_daemon',
 				),
 
+				// Online session limit
+
 				array(
+					'label'         => __( 'Online Session Limit', 'wp-shieldon' ),
 					'section_title' => true,
-					'label' => __( 'Frequency Check', 'wp-shieldon' ),
-					'desc'  => '<i class="fas fa-eye"></i>',
+					'location_id'   => 'shieldon_online_session',
+					'desc'          => '<i class="fas fa-user-clock"></i>',
 				),
 
 				array(
-					'name'        => 'enable_frequency_check',
+					'name'        => 'enable_online_session_limit',
+					'desc'        => __( 'When the online user amount has reached the limit, other users not in the queue have to line up!', 'wp-shieldon' ),
+					'type'        => 'toggle',
+					'has_child'   => true,
+					'location_id' => 'shieldon_online_session',
+					'default'     => 'no',
+				),
+
+				array(
+                    'name'              => 'session_limit_count',
+					'label'             => __( 'Online Limit', 'wp-shieldon' ),
+					'desc'              => __( 'The maximum online user limit.', 'wp-shieldon' ),
+                    'placeholder'       => '',
+                    'type'              => 'text',
+					'default'           => '100',
+                    'sanitize_callback' => 'sanitize_text_field',
+					'parent'            => 'enable_online_session_limit',
+				),
+
+				array(
+                    'name'              => 'session_limit_period',
+					'label'             => __( 'Keep Alive Period', 'wp-shieldon' ),
+					'desc'              => __( 'Unit: minute', 'wp-shieldon' ),
+                    'placeholder'       => '',
+                    'type'              => 'text',
+					'default'           => '5',
+                    'sanitize_callback' => 'sanitize_text_field',
+					'parent'            => 'enable_online_session_limit',
+				),
+
+
+				// Frequency check
+
+				array(
+					'section_title' => true,
+					'label'         => __( 'Frequency Check', 'wp-shieldon' ),
+					'location_id'   => 'shieldon_frequency_check',
+					'desc'          => '<i class="fas fa-eye"></i>',
+				),
+
+				array(
+					'name'        => 'enable_filter_frequency',
 					'desc'        => __( "Don't worry about the human visitors, if they reach the limit and get banned, they can easily continue surfing your website by solving CAPTCHA.", 'wp-shieldon' ),
-					'type'        => 'html',
+					'type'        => 'toggle',
+					'has_child'   => true,
+					'location_id' => 'shieldon_frequency_check',
+					'default'     => 'no',
 				),
 
 				array(
@@ -159,7 +211,8 @@ class WPSO_Admin_Settings {
                     'placeholder'       => '',
                     'type'              => 'text',
 					'default'           => '2',
-                    'sanitize_callback' => 'sanitize_text_field',
+					'sanitize_callback' => 'sanitize_text_field',
+					'parent'            => 'enable_filter_frequency',
 				),
 
 				array(
@@ -169,7 +222,8 @@ class WPSO_Admin_Settings {
                     'placeholder'       => '',
                     'type'              => 'text',
 					'default'           => '10',
-                    'sanitize_callback' => 'sanitize_text_field',
+					'sanitize_callback' => 'sanitize_text_field',
+					'parent'            => 'enable_filter_frequency',
 				),
 
 				array(
@@ -179,7 +233,8 @@ class WPSO_Admin_Settings {
                     'placeholder'       => '',
                     'type'              => 'text',
 					'default'           => '30',
-                    'sanitize_callback' => 'sanitize_text_field',
+					'sanitize_callback' => 'sanitize_text_field',
+					'parent'            => 'enable_filter_frequency',
 				),
 
 				array(
@@ -189,7 +244,8 @@ class WPSO_Admin_Settings {
                     'placeholder'       => '',
                     'type'              => 'text',
 					'default'           => '60',
-                    'sanitize_callback' => 'sanitize_text_field',
+					'sanitize_callback' => 'sanitize_text_field',
+					'parent'            => 'enable_filter_frequency',
 				),
 			),
 
@@ -329,6 +385,7 @@ class WPSO_Admin_Settings {
 					'desc'    => __( 'A visitor reached this limit will get banned temporarily.', 'wp-shieldon' ),
 					'type'    => 'select',
 					'default' => '5',
+					'parent'  => 'enable_filter_session',
 					'options' => array(
 						'3'  => '3',
 						'4'  => '4',
@@ -339,7 +396,6 @@ class WPSO_Admin_Settings {
 						'9'  => '9',
 						'10' => '10',
 					),
-					'parent'  => 'enable_filter_session',
 				),
 
 				// Referer
@@ -365,6 +421,7 @@ class WPSO_Admin_Settings {
 					'desc'    => __( 'A visitor reached this limit will get banned temporarily.', 'wp-shieldon' ),
 					'type'    => 'select',
 					'default' => '5',
+					'parent'  => 'enable_filter_referer',
 					'options' => array(
 						'3'  => '3',
 						'4'  => '4',
@@ -375,7 +432,7 @@ class WPSO_Admin_Settings {
 						'9'  => '9',
 						'10' => '10',
 					),
-					'parent'  => 'enable_filter_referer',
+					
 				),
 
 				// Cookie
@@ -401,6 +458,7 @@ class WPSO_Admin_Settings {
 					'desc'    => __( 'A visitor reached this limit will get banned temporarily.', 'wp-shieldon' ),
 					'type'    => 'select',
 					'default' => '5',
+					'parent'  => 'enable_filter_cookie',
 					'options' => array(
 						'3'  => '3',
 						'4'  => '4',
@@ -411,7 +469,7 @@ class WPSO_Admin_Settings {
 						'9'  => '9',
 						'10' => '10',
 					),
-					'parent'  => 'enable_filter_cookie',
+					
 				),
 			),
 
@@ -440,12 +498,11 @@ class WPSO_Admin_Settings {
 					'desc'    => __( "Please use corresponding key for that verion you choose, otherwise it won't work.", 'wp-shieldon' ),
 					'type'    => 'radio',
 					'default' => 'v2',
-					'parent'  => 'support_prism',
+					'parent'  => 'enable_captcha_google',
 					'options' => array(
 						'v2' => 'v2',
 						'v3' => 'v3',
 					),
-					'parent'  => 'enable_captcha_google',
 				),
 
 				array(
@@ -528,7 +585,56 @@ class WPSO_Admin_Settings {
 					),
 					'parent'  => 'enable_captcha_image',
 				),
+			),
 
+			'shieldon_exclusion' => array(
+
+				array(
+					'label'         => __( 'URLs', 'wp-shieldon' ),
+					'section_title' => true,
+					'desc'          => '<i class="fas fa-link"></i>',
+				),
+
+				array(
+                    'name'        => 'excluded_urls',
+                    'label'       => __( 'Excluded URLs', 'wp-shieldon' ),
+                    'desc'        => wpso_load_view( 'setting/excluded-urls' ),
+                    'placeholder' => '/example-post-type/',
+                    'type'        => 'textarea'
+				),
+				
+				array(
+					'label'         => __( 'Pages', 'wp-shieldon' ),
+					'section_title' => true,
+					'desc'          => '<i class="far fa-file-powerpoint"></i>',
+				),
+
+				array(
+					'name'    => 'excluded_page_login',
+					'label'   => __( 'Login', 'wp-shieldon' ),
+					'desc'    => __( 'Turning this option on will get <code>wp-login.php</code> excluded from Shieldon protection.', 'wp-shieldon' ) . '<br />' . __( '(default: off)', 'wp-shieldon' ),
+					'type'    => 'toggle',
+					'size'    => 'sm',
+					'default' => 'no',
+				),
+
+				array(
+					'name'    => 'excluded_page_signup',
+					'label'   => __( 'Signup', 'wp-shieldon' ),
+					'desc'    => __( 'Turning this option on will get <code>wp-signup.php</code> excluded from Shieldon protection.', 'wp-shieldon' ) . '<br />' . __( '(default: off)', 'wp-shieldon' ),
+					'type'    => 'toggle',
+					'size'    => 'sm',
+					'default' => 'no',
+				),
+
+				array(
+					'name'    => 'excluded_page_xmlrpc',
+					'label'   => __( 'XML RPC', 'wp-shieldon' ),
+					'desc'    => __( 'Turning this option on will get <code>xmlrpc.php</code> excluded from Shieldon protection.', 'wp-shieldon' ) . '<br />' . __( '(default: on)', 'wp-shieldon' ),
+					'type'    => 'toggle',
+					'size'    => 'sm',
+					'default' => 'yes',
+				),
 			),
 
 			'shieldon_about' => array(

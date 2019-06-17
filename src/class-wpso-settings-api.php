@@ -14,7 +14,7 @@
  * If you're looking for original code, go visit https://github.com/tareq1988/wordpress-settings-api-class
  *
  * @version 1.3 (27-Sep-2016)
- * @author Tareq Hasan <tareq@weDevs.com>
+ * @author Tareq Hasan <tareq@wp-shieldon.com>
  * @link https://tareq.co Tareq Hasan
  * @license MIT
  */
