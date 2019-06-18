@@ -6,6 +6,25 @@ When the users or robots are trying to view many your web pages at a short perio
 
 You can visit the plugin author - [Terry L.](https://terryl.in)'s blog, try reloading the pages several times then you will see how this plugin works.
 
+## Requirement
+
+* PHP version > 7.1.0
+* WordPress version > 4.0
+
+## Download
+
+| source | download | 
+| --- | --- | 
+| WordPress | https://wordpress.org/plugins/wp-shieldon |
+| GitHub repository | https://github.com/terrylinooo/wp-shieldon/releases | 
+| PHP Composer | `composer create-project terrylinooo/wp-shieldon wp-shieldon` |
+
+## Installation
+
+1. Upload the plugin files to the `/wp-content/plugins/wp-shieldon` directory, or install the plugin through the WordPress plugins screen directly.
+2. Activate the plugin through the `Plugins` screen in WordPress.
+3. Go to the `WP Shieldon` menu and complete all settings.
+
 ## Screenshots
 
 User has been asked for CAPTCHA to continue reading.

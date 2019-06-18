@@ -1,4 +1,16 @@
 {
+    "name": "terrylinooo/wp-shieldon",
+    "description": "WP Shieldon is based on Shieldon library, a PHP library that provides anti-scraping and online session control for your WordPress sites.",
+    "keywords": ["antiscriping", "wordpress-security", "wordpress-plugin", "wordpress-security-plugin"],
+    "homepage": "https://github.com/terrylinooo/wp-shieldon",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Terry Lin",
+            "email": "contact@terryl.in",
+            "homepage": "https://terryl.in"
+        }
+    ],
     "require": {
         "terrylinooo/shieldon": "^1.3"
     }
