@@ -148,29 +148,35 @@ function wpso_get_channel_id() {
 function wpso_test_driver( $type = '' ) {
 
 	if ( 'mysql' === $type ) {
-		$db = array(
-			'host'    => DB_HOST,
-			'dbname'  => DB_NAME,
-			'user'    => DB_USER,
-			'pass'    => DB_PASSWORD,
-			'charset' => DB_CHARSET,
-		);
 
-		try {
-			$pdo = new \PDO(
-				'mysql:host=' . $db['host'] . ';dbname=' . $db['dbname'] . ';charset=' . $db['charset'],
-				$db['user'],
-				$db['pass']
+		if ( class_exists( 'PDO' ) ) {
+			$db = array(
+				'host'    => DB_HOST,
+				'dbname'  => DB_NAME,
+				'user'    => DB_USER,
+				'pass'    => DB_PASSWORD,
+				'charset' => DB_CHARSET,
 			);
-			return true;
-		} catch(\PDOException $e) {}
+
+			try {
+				$pdo = new \PDO(
+					'mysql:host=' . $db['host'] . ';dbname=' . $db['dbname'] . ';charset=' . $db['charset'],
+					$db['user'],
+					$db['pass']
+				);
+				return true;
+			} catch(\PDOException $e) {}
+		}
 	}
 
 	if ( 'sqlite' === $type ) {
-		try {
-			$pdo = new \PDO('sqlite:' . wpso_get_upload_dir() . '/shieldon.sqlite3');
-			return true;
-		} catch(\PDOException $e) {}
+
+		if ( class_exists( 'PDO' ) ) {
+			try {
+				$pdo = new \PDO('sqlite:' . wpso_get_upload_dir() . '/shieldon.sqlite3');
+				return true;
+			} catch(\PDOException $e) {}
+		}
 	}
 
 	if ( 'file' === $type ) {
@@ -180,11 +186,13 @@ function wpso_test_driver( $type = '' ) {
 	}
 
 	if ( 'redis' === $type ) {
-		try {
-			$redis = new \Redis();
-			$redis->connect('127.0.0.1', 6379);
-			return true;
-		} catch(\PDOException $e) {}
+		if ( class_exists( 'Redis' ) ) {
+			try {
+				$redis = new \Redis();
+				$redis->connect('127.0.0.1', 6379);
+				return true;
+			} catch(\PDOException $e) {}
+		}
 	}
 
 	return false;
