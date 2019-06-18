@@ -13,7 +13,23 @@ License URI: https://www.gnu.org/licenses/gpl.html
 
 WP Shieldon is based on [Shieldon](https://github.com/terrylinooo/shieldon) library, a PHP library that provides anti-scraping and online session control for your WordPress sites.
 
-When the users or robots are trying to view many your web pages at a short period of time, they will temporarily get banned. To get unbanned by solving Catpcha. You can visit the plugin author - [Terry L.](https://terryl.in)'s blog, try reloading the pages several times then you will see how this plugin works.
+When the users or robots are trying to view many your web pages at a short period of time, they will temporarily get banned. To get unbanned by solving Catpcha.
+
+You can visit the plugin author - [Terry L.](https://terryl.in)'s blog, try reloading the pages several times then you will see how this plugin works.
+
+Check out my other WordPress works here:
+
+- [Markdown Editor](https://wordpress.org/plugins/wp-githuber-md/) - WP Githuber MD - an all in one Markdown editor.
+- [SEO Search Permalink](https://wordpress.org/plugins/seo-search-permalink/) - Static search permalink.
+- [Mynote Theme](https://wordpress.org/plugins/wp-githuber-md/) - Theme for programmers.
+
+
+== Screenshots ==
+
+1. User has reached the limit and asked for CAPTCHA.
+1. Settings.
+2. IP manager.
+
 
 == Copyright ==
 
