@@ -191,7 +191,7 @@ function wpso_test_driver( $type = '' ) {
 				$redis = new \Redis();
 				$redis->connect('127.0.0.1', 6379);
 				return true;
-			} catch(\PDOException $e) {}
+			} catch(\RedisException $e) {}
 		}
 	}
 
