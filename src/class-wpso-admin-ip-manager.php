@@ -147,6 +147,17 @@ class WPSO_Admin_IP_Manager {
 				),
 
 				array(
+					'name'              => 'deny_all_passcode',
+					'label'             => __( 'Passcode', 'wp-shieldon' ),
+					'desc'              => wpso_load_view( 'setting/ip-manager-login-pass' ),
+                    'placeholder'       => '',
+                    'type'              => 'text',
+					'default'           => '',
+					'sanitize_callback' => 'sanitize_text_field',
+					'parent'            => 'enable_captcha_google',
+				),
+
+				array(
 					'label'         => __( 'Blacklist', 'wp-shieldon' ),
 					'section_title' => true,
 					'desc'          => '<i class="fas fa-ban"></i>',

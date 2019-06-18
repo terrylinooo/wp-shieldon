@@ -192,3 +192,13 @@ form .g-section-desc {
   overflow: hidden;
   display: inline-block;
 }
+
+code.tips {
+  border-left: 5px #dddddd solid;
+  border-radius: 3px;
+  margin-top: 10px;
+  display: inline-block;
+  overflow: hidden;
+  background-color: #ffffff;
+  padding: 10px;
+}

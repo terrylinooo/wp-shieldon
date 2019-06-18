@@ -464,7 +464,10 @@ class WPSO_Shieldon_Guardian {
 				$this->shieldon->component['Ip']->setDeniedList( $blacklist );
 			}
 
-			if ( 'yes' === $login_deny_all ) {
+			$passcode    = wpso_get_option( 'deny_all_passcode', 'shieldon_ip_login' );
+			$is_passcode = isset( $_GET[ $passcode ] ) ? true : false;
+
+			if ( ! $is_passcode && 'yes' === $login_deny_all ) {
 				$this->shieldon->component['Ip']->denyAll();
 			}
 
