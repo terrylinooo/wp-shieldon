@@ -25,4 +25,4 @@ IP Manager
 
 - [Markdown Editor](https://wordpress.org/plugins/wp-githuber-md/) - WP Githuber MD - an all in one Markdown editor.
 - [SEO Search Permalink](https://wordpress.org/plugins/seo-search-permalink/) - Static search permalink.
-- [Mynote Theme](https://wordpress.org/plugins/wp-githuber-md/) - Theme for programmers.
+- [Mynote Theme](https://wordpress.org/themes/mynote/) - Theme for programmers.
