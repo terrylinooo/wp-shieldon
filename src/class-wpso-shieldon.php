@@ -40,6 +40,32 @@ class WPSO_Shieldon_Guardian {
 		$this->shieldon->setProperty( 'lang', wpso_get_lang() );
 
 		$this->current_url = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+
+		$cdn = wpso_get_option( 'is_behind_cdn_service', 'shieldon_daemon' );
+
+		switch ( $cdn ) {
+			case 'cloudflare':
+				if ( ! empty( $_SERVER['HTTP_CF_CONNECTING_IP'] ) ) {
+					$this->shieldon->setIp( $_SERVER['HTTP_CF_CONNECTING_IP'] );
+				}
+				break;
+
+			case 'google':
+			case 'aws':
+				if ( ! empty( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
+					$this->shieldon->setIp( $_SERVER['HTTP_X_FORWARDED_FOR'] );
+				}
+				break;
+			case 'keycdn':
+			case 'others':
+				if ( ! empty( $_SERVER['HTTP_X_FORWARDED_HOST'] ) ) {
+					$this->shieldon->setIp( $_SERVER['HTTP_X_FORWARDED_HOST'] );
+				}
+				break;
+
+			case 'no':
+			default:
+		}
 	}
 
 	/**

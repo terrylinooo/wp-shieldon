@@ -140,6 +140,25 @@ class WPSO_Admin_Settings {
 					'parent'  => 'enable_daemon',
 				),
 
+
+				array(
+					'name'    => 'is_behind_cdn_service',
+					'label'   => __( 'CDN', 'wp-shieldon' ),
+					'desc'    => 'Is your website behind CDN service? If you use CDN, you have to set this setting, otherwise all IP addresses come from CDN servers, they will be banned.',
+					'type'    => 'select',
+					'default' => 'no',
+					'parent'  => 'enable_daemon',
+					'options' => array(
+						'no'         => 'No',
+						'cloudflare' => 'CloudFlare (HTTP_CF_CONNECTING_IP)',
+						'google'     => 'Google Cloud CDN or Load Balancer (HTTP_X_FORWARDED_FOR)',
+						'aws'        => 'AWS CouldFront (HTTP_X_FORWARDED_FOR)',
+ 						'keycdn'     => 'KeyCDN (HTTP_X_FORWARDED_HOST)',
+						'others'     => 'Others (HTTP_X_FORWARDED_FOR)',
+					),
+					'parent' => 'enable_captcha_image',
+				),
+
 				// Online session limit
 
 				array(
