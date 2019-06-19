@@ -171,16 +171,37 @@ function wpso_test_driver( $type = '' ) {
 
 	if ( 'sqlite' === $type ) {
 
+		$sqlite_file_path = wpso_get_upload_dir() . '/shieldon.sqlite3';
+		$sqlite_dir = wpso_get_upload_dir();
+
+		if ( ! file_exists( $sqlite_file_path ) ) {
+
+			if ( ! is_dir( $sqlite_dir ) ) {
+				$originalUmask = umask( 0 );
+				@mkdir( $sqlite_dir, 0777, true );
+				umask( $originalUmask );
+			}
+		}
+
 		if ( class_exists( 'PDO' ) ) {
 			try {
-				$pdo = new \PDO('sqlite:' . wpso_get_upload_dir() . '/shieldon.sqlite3');
+				$pdo = new \PDO( 'sqlite:' . $sqlite_file_path );
 				return true;
 			} catch(\PDOException $e) {}
 		}
 	}
 
 	if ( 'file' === $type ) {
-		if ( wp_is_writable( wpso_get_upload_dir() ) ) {
+
+		$file_dir = wpso_get_upload_dir();
+
+		if ( ! is_dir( $file_dir ) ) {
+			$originalUmask = umask( 0 );
+			@mkdir( $file_dir, 0777, true );
+			umask( $originalUmask );
+		}
+
+		if ( wp_is_writable( $file_dir ) ) {
 			return true;
 		}
 	}
@@ -189,9 +210,9 @@ function wpso_test_driver( $type = '' ) {
 		if ( class_exists( 'Redis' ) ) {
 			try {
 				$redis = new \Redis();
-				$redis->connect('127.0.0.1', 6379);
+				$redis->connect( '127.0.0.1', 6379 );
 				return true;
-			} catch(\RedisException $e) {}
+			} catch( \RedisException $e ) {}
 		}
 	}
 

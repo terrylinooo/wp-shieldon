@@ -95,7 +95,7 @@ class WPSO_Admin_Menu {
 		}
 
 		if ( $file == SHIELDON_PLUGIN_NAME ) {
-			$links[] = '<a href="' . admin_url( "plugins.php?page=" . $this->menu_slug ) . '">' . __( 'Settings', 'wp-shieldon' ) . '</a>';
+			$links[] = '<a href="' . admin_url( "admin.php?page=shieldon-settings" ) . '">' . __( 'Settings', 'wp-shieldon' ) . '</a>';
 			return $links;
 		}
 	}

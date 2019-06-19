@@ -7,14 +7,14 @@
  *
  * @package Shieldon
  * @since 1.0.0
- * @version 1.0.0
+ * @version 1.0.3
  */
 
 /**
  * Plugin Name: WP Shieldon
  * Plugin URI:  https://github.com/terrylinooo/wp-shieldon
  * Description: An anti-scraping plugin for WordPress.
- * Version:     1.0.0
+ * Version:     1.0.3
  * Author:      Terry Lin
  * Author URI:  https://terryl.in/
  * License:     GPL 3.0
@@ -64,7 +64,7 @@ define( 'SHIELDON_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'SHIELDON_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'SHIELDON_PLUGIN_PATH', __FILE__ );
 define( 'SHIELDON_PLUGIN_LANGUAGE_PACK', dirname( plugin_basename( __FILE__ ) ) . '/languages' );
-define( 'SHIELDON_PLUGIN_VERSION', '1.0.0' );
+define( 'SHIELDON_PLUGIN_VERSION', '1.0.3' );
 define( 'SHIELDON_CORE_VERSION', '1.3.2' );
 define( 'SHIELDON_PLUGIN_TEXT_DOMAIN', 'wp-shieldon' );
 
@@ -88,7 +88,7 @@ if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 		if ( false === wpso_is_driver_hash() ) {
 			update_option( 'wpso_driver_hash', wpso_get_driver_hash(), '', 'yes' );
 
-			if (! file_exists( wpso_get_upload_dir() ) ) {
+			if ( ! file_exists( wpso_get_upload_dir() ) ) {
 				$originalUmask = umask(0);
 				mkdir(wpso_get_upload_dir(), 0777, true);
 				umask($originalUmask);
@@ -156,21 +156,24 @@ if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 
 	} else {
 
-		/**
-		 * Shieldon daemon.
-		 *
-		 * @return void
-		 */
-		function wpso_init() {
-			
-			require_once SHIELDON_PLUGIN_DIR . 'src/class-wpso-shieldon.php';
-			
-			$guardian = new WPSO_Shieldon_Guardian();
-			$guardian->init();
-		}
+		if ( 'yes' === wpso_get_option( 'enable_daemon', 'shieldon_daemon' ) ) {
 
-		// Load main launcher class of WP Shieldon plugin at a very early hook.
-		add_action( 'plugins_loaded', 'wpso_init', -100 );
+			/**
+			 * Shieldon daemon.
+			 *
+			 * @return void
+			 */
+			function wpso_init() {
+				
+				require_once SHIELDON_PLUGIN_DIR . 'src/class-wpso-shieldon.php';
+				
+				$guardian = new WPSO_Shieldon_Guardian();
+				$guardian->init();
+			}
+
+			// Load main launcher class of WP Shieldon plugin at a very early hook.
+			add_action( 'plugins_loaded', 'wpso_init', -100 );
+		}
 	}
 
 } else {

@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=donat
 Tags: anti-scriping, security
 Requires at least: 4.0
 Tested up to: 5.2.0
-Stable tag: 1.0.0
+Stable tag: 1.0.3
 Requires PHP: 7.1.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -50,6 +50,20 @@ GNU General Public License for more details.
 = 1.0.0
 
 * First release.
+
+= 1.0.1
+
+* Fix Redis check.
+
+= 1.0.2
+
+* Add CDN setting.
+
+= 1.0.3
+
+* Fix setting URL in plugin page.
+* Fix SQLite check.
+* Fix daemon Enable button not working.
 
 == Upgrade Notice ==
 
