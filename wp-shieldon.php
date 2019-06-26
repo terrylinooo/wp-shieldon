@@ -68,6 +68,14 @@ define( 'SHIELDON_PLUGIN_VERSION', '1.0.3' );
 define( 'SHIELDON_CORE_VERSION', '1.3.2' );
 define( 'SHIELDON_PLUGIN_TEXT_DOMAIN', 'wp-shieldon' );
 
+// Use for Action Logger.
+define( 'WPSO_LOG_IN_CAPTCHA', 999);
+define( 'WPSO_LOG_IN_BLACKLIST', 998);
+define( 'WPSO_LOG_PAGEVIEW', 11);
+define( 'WPSO_LOG_BAN', 0);
+define( 'WPSO_LOG_BAN_TEMPORARILY', 2);
+define( 'WPSO_LOG_UNBAN', 9);
+
 // Load helper functions
 require_once SHIELDON_PLUGIN_DIR . 'src/wpso-helper-functions.php';
 

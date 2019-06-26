@@ -31,7 +31,7 @@ function wpso_get_option( $option, $section, $default = '' ) {
  * Load view files.
  *
  * @param string $template_path The specific template's path.
- * @param array  $data              Data is being passed to.
+ * @param array  $data          Data is being passed to.
  * @return string
  */
 function wpso_load_view( $template_path, $data = array() ) {

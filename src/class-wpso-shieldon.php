@@ -77,7 +77,7 @@ class WPSO_Shieldon_Guardian {
 
 		$this->set_driver();           // Set Shieldon data driver to store logs.
 		$this->reset_logs();           // Clear all logs if new data cycle should be started.
-
+		$this->set_logger();           // Set Action Logger.
 		$this->set_frequency_check();  // Set Frequancy check. (settings)
 		$this->set_filters();          // Set filters.
 		$this->set_component();        // Set Shieldon components.
@@ -97,9 +97,39 @@ class WPSO_Shieldon_Guardian {
 
 				// Unban current session.
 				$this->shieldon->unban();
+			} else {
+
+				$session_id = $this->shieldon->getSessionId();
+
+				$action_code = WPSO_LOG_IN_CAPTCHA;
+				$reason_code = 999;
+
+				if ($result === $this->shieldon::RESPONSE_DENY) {
+					$action_code = WPSO_LOG_IN_BLACKLIST;
+				}
+
+				if ( ! empty( $session_id ) ) {
+					$log_data['ip']          = $this->shieldon->getIp();
+					$log_data['session_id']  = $this->shieldon->getSessionId();
+					$log_data['action_code'] = $action_code;
+					$log_data['reason_code'] = $reason_code;
+					$log_data['timesamp']    = time();
+	
+					$this->shieldon->logger->add( $log_data );
+				}
 			}
 			// Output the result page with HTTP status code 200.
 			$this->shieldon->output(200);
+		} else {
+
+			// Just count the page view.
+			$log_data['ip']          = $this->shieldon->getIp();
+			$log_data['session_id']  = $this->shieldon->getSessionId();
+			$log_data['action_code'] = WPSO_LOG_PAGEVIEW;
+			$log_data['reason_code'] = 0;
+			$log_data['timesamp']    = time();
+
+			$this->shieldon->logger->add( $log_data );
 		}
 	}
 
@@ -560,5 +590,17 @@ class WPSO_Shieldon_Guardian {
 				$this->shieldon->component['Ip']->denyAll();
 			}
 		}
+	}
+
+	/**
+	 * Set Action Logger.
+	 *
+	 * @return void
+	 */
+	private function set_logger() {
+
+		$logger = new \Shieldon\ActionLogger(wpso_get_upload_dir());
+
+		$this->shieldon->setLogger($logger);
 	}
 }

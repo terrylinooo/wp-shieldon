@@ -54,6 +54,8 @@ class WPSO_Admin_Menu {
 			'dashicons-shield'
 		);
 
+
+
 		add_submenu_page(
 			'shieldon-settings',
 			__( 'Settings', 'wp-shieldon' ),
@@ -70,6 +72,15 @@ class WPSO_Admin_Menu {
 			'manage_options',
 			'shieldon-ip-manager',
 			array( $admin_ip_manager, 'setting_plugin_page' )
+		);
+
+		add_submenu_page(
+			'shieldon-settings',
+			__( 'Dashboard', 'wp-shieldon' ),
+			__( 'Dashboard', 'wp-shieldon' ),
+			'manage_options',
+			'shieldon-dashboard',
+			array( $this, 'dashboard' )
 		);
 		
 		add_submenu_page(
@@ -127,6 +138,84 @@ class WPSO_Admin_Menu {
 	public function about() {
 		wpso_show_settings_header();
 		echo wpso_load_view( 'setting/about' );
+		wpso_show_settings_footer();
+	}
+
+	/**
+	 * Dashboard
+	 *
+	 * @return void
+	 */
+	public function dashboard() {
+
+		$logger = new \Shieldon\ActionLogger(wpso_get_upload_dir());
+
+		$logs = $logger->get();
+
+		$captcha_count   = 0;
+		$captcha_failure = 0;
+		$captcha_success = 0;
+
+		$pageview_count = 0;
+
+		$blocked_by_blacklist_count    = 0;
+		$blocked_by_temporarily_banned = 0;
+
+		$blacklist_count = 0;
+
+		foreach( $logs as $log ) {
+
+			// 2   => temporaily ban.
+			// 999 => failed to slove captcha.
+			// 9   => succeeded to solve captcha.
+			$action_code  = (int) $log['action_code'];
+			$reason_code  = (int) $log['reason_code'];
+
+			if ( WPSO_LOG_BAN_TEMPORARILY === $action_code ) {
+				$blocked_by_temporarily_banned++;
+			}
+
+			if ( WPSO_LOG_BAN === $action_code ) {
+				$blocked_by_blacklist_count++;
+			}
+
+			if ( WPSO_LOG_UNBAN === $action_code ) {
+				$captcha_success++;
+			}
+
+			if ( WPSO_LOG_IN_CAPTCHA === $action_code ) {
+				$captcha_count++;
+				$captcha_failure++;
+			}
+
+			if ( WPSO_LOG_IN_BLACKLIST === $action_code ) {
+				$blacklist_count++;
+			}
+
+			if ( WPSO_LOG_PAGEVIEW === $action_code ) {
+				$pageview_count++;
+			}
+		}
+
+		$data['captcha_failure_percent'] = 0;
+		$data['captcha_success_percent'] = 0;
+
+		if ($captcha_count > 0) {
+			$captcha_failure = $captcha_count - $blocked_by_temporarily_banned;
+
+			$data['captcha_failure_percent'] = round($captcha_failure / $captcha_count, 2) * 100;
+			$data['captcha_success_percent'] = round($captcha_success / $captcha_count, 2) * 100;
+		}
+
+		$data['captcha_count']         = $captcha_count;
+		$data['captcha_failure_count'] = $captcha_failure;
+		$data['captcha_success_count'] = $captcha_success;
+		
+		$data['pageview_count']  = $pageview_count;
+		$data['captcha_percent'] = round($captcha_count / ( $captcha_count + $pageview_count), 2) * 100;
+
+		wpso_show_settings_header();
+		echo wpso_load_view( 'dashboard/dashboard', $data );
 		wpso_show_settings_footer();
 	}
 }
