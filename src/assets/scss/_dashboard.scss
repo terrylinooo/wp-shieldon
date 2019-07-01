@@ -1,0 +1,135 @@
+
+.wpso-dashboard {
+
+	font-family: Helvetica, Arial, sans-serif !important;
+
+	background-color: #f1f1f1;
+	border: 0px #dddddd solid;
+	padding: 10px;
+	overflow: hidden;
+
+	.section-heading {
+		margin-bottom: 10px;
+		margin-top: 10px;
+	}
+
+	.section-title {
+		padding: 10px;
+		padding-left: 20px;
+		font-size: 24px;
+		display: inline-block;
+		background-color: #ffffff;
+		color: #333333;
+		border-left: 8px #00b38a solid;
+	}
+
+	.circle-section {
+		display: flex;
+	}
+
+	.circle-panel {
+		width: calc(50% - 95px);
+		background-color: #f1f1f1;
+		border-left: 1px #ffffff solid;
+		border-right: 1px #e1e1e1 solid;
+		border-top: 1px #ffffff solid;
+		border-bottom: 1px #e1e1e1 solid;
+		display: flex;
+		padding: 10px;
+
+		.circle-field {
+			position: relative;
+			margin-left: 10px;
+			border-top: 1px #e5e5e5 solid;
+			border-left: 1px #e5e5e5 solid;
+			border-bottom: 1px #ffffff solid;
+			border-right: 1px #ffffff solid;
+			background-color: #fafafa;
+			flex: 1;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		&:nth-child(2) {
+			width: 190px;
+		}
+
+		&:nth-child(3) {
+			flex-direction:row-reverse;
+
+			.circle-field {
+				margin-left: 0;
+				margin-right: 10px;
+			}
+		}
+
+		.circle-count {
+			font-size: 45px;
+			font-weight: bold;
+		}
+	}
+}
+
+.wpso-flex {
+    display: flex;
+    margin-bottom: 20px;
+
+    .wpso-board {
+		display: flex;
+        background-color: #ffffff;
+		padding: 20px;
+		padding-left: 0;
+        width: 33.3%;
+		margin: 0 20px 0 0;
+		
+		&.area-chart-container {
+			padding: 0;
+		}
+
+		#chart-3 {
+			width: 100%;
+		}
+
+        &:last-child {
+            margin: 0;
+		}
+		
+		.board-field {
+			display: flex;
+			width: 50%;
+			
+
+			&.left {
+				padding-top: 20px;
+				justify-content: center;
+				align-items: center;
+			}
+
+			&.right {
+				flex-direction: column;
+				justify-content: space-between;
+				align-items: center;
+				align-content: center;
+			}
+
+			.heading {
+				color: rgb(55, 61, 63);
+				font-size: 16px;
+			}
+
+			.nums {
+				font-size: 48px;
+				font-weight: bold;
+				color: #222222;
+			}
+
+			.note {
+				color: #888888;
+				padding: 3px 5px;
+				font-style: italic;
+				align-self: flex-end;
+			}
+		}
+    }
+}

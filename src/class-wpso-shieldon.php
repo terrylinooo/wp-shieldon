@@ -100,6 +100,7 @@ class WPSO_Shieldon_Guardian {
 			} else {
 
 				$session_id = $this->shieldon->getSessionId();
+				$session_ip = $this->shieldon->getIp();
 
 				$action_code = WPSO_LOG_IN_CAPTCHA;
 				$reason_code = 999;
@@ -109,8 +110,8 @@ class WPSO_Shieldon_Guardian {
 				}
 
 				if ( ! empty( $session_id ) ) {
-					$log_data['ip']          = $this->shieldon->getIp();
-					$log_data['session_id']  = $this->shieldon->getSessionId();
+					$log_data['ip']          = $session_ip;
+					$log_data['session_id']  = $session_id;
 					$log_data['action_code'] = $action_code;
 					$log_data['reason_code'] = $reason_code;
 					$log_data['timesamp']    = time();

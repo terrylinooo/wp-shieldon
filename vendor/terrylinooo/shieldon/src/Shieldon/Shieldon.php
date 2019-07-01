@@ -622,11 +622,6 @@ class Shieldon
 
     // @codeCoverageIgnoreStart
 
-    public function getSessionId()
-    {
-        return $this->sessionId;
-    }
-
     /**
      * For testing propose.
      *
@@ -1166,6 +1161,16 @@ class Shieldon
     public function getSessionCount(): int
     {
         return $this->sessionCount;
+    }
+
+    /**
+     * Get Session Id.
+     *
+     * @return string
+     */
+    public function getSessionId(): string
+    {
+        return $this->sessionId;
     }
 
     /**

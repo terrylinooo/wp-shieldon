@@ -85,6 +85,9 @@ add_action( 'init', 'wpso_load_textdomain' );
 // Composer autoloader. Mainly load Shieldon library.
 require_once SHIELDON_PLUGIN_DIR . 'vendor/autoload.php';
 
+// WP Shieldon Class autoloader.
+require_once SHIELDON_PLUGIN_DIR . 'src/autoload.php';
+
 if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 
 	/**
@@ -143,14 +146,6 @@ if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 	 * Start to run WP Shieldon plugin cores.
 	 */
 	if ( is_admin() ) {
-
-		// WP Shieldon setting API.
-		require_once SHIELDON_PLUGIN_DIR . 'src/class-wpso-settings-api.php';
-	
-		// WP Shieldon Controller.
-		require_once SHIELDON_PLUGIN_DIR . 'src/class-wpso-admin-menu.php';
-		require_once SHIELDON_PLUGIN_DIR . 'src/class-wpso-admin-settings.php';
-		require_once SHIELDON_PLUGIN_DIR . 'src/class-wpso-admin-ip-manager.php';
 	
 		$admin_menu       = new WPSO_Admin_Menu();
 		$admin_settings   = new WPSO_Admin_Settings();
@@ -172,8 +167,6 @@ if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 			 * @return void
 			 */
 			function wpso_init() {
-				
-				require_once SHIELDON_PLUGIN_DIR . 'src/class-wpso-shieldon.php';
 				
 				$guardian = new WPSO_Shieldon_Guardian();
 				$guardian->init();

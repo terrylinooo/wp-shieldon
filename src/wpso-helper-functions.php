@@ -246,3 +246,7 @@ function wpso_show_settings_header() {
 function wpso_show_settings_footer() {
 	echo '</div>';
 }
+
+function wpso_timesamp() {
+	
+}

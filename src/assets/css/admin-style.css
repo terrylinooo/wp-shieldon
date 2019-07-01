@@ -204,6 +204,7 @@ code.tips {
 }
 
 .wpso-dashboard {
+  font-family: Helvetica, Arial, sans-serif !important;
   background-color: #f1f1f1;
   border: 0px #dddddd solid;
   padding: 10px;
@@ -261,6 +262,58 @@ code.tips {
 .wpso-dashboard .circle-panel .circle-count {
   font-size: 45px;
   font-weight: bold;
+}
+
+.wpso-flex {
+  display: flex;
+  margin-bottom: 20px;
+}
+.wpso-flex .wpso-board {
+  display: flex;
+  background-color: #ffffff;
+  padding: 20px;
+  padding-left: 0;
+  width: 33.3%;
+  margin: 0 20px 0 0;
+}
+.wpso-flex .wpso-board.area-chart-container {
+  padding: 0;
+}
+.wpso-flex .wpso-board #chart-3 {
+  width: 100%;
+}
+.wpso-flex .wpso-board:last-child {
+  margin: 0;
+}
+.wpso-flex .wpso-board .board-field {
+  display: flex;
+  width: 50%;
+}
+.wpso-flex .wpso-board .board-field.left {
+  padding-top: 20px;
+  justify-content: center;
+  align-items: center;
+}
+.wpso-flex .wpso-board .board-field.right {
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+}
+.wpso-flex .wpso-board .board-field .heading {
+  color: #373d3f;
+  font-size: 16px;
+}
+.wpso-flex .wpso-board .board-field .nums {
+  font-size: 48px;
+  font-weight: bold;
+  color: #222222;
+}
+.wpso-flex .wpso-board .board-field .note {
+  color: #888888;
+  padding: 3px 5px;
+  font-style: italic;
+  align-self: flex-end;
 }
 
 /****************************************************************
