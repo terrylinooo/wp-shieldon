@@ -4,7 +4,7 @@
  * @name        Shieldon
  * @author      Terry Lin
  * @link        https://github.com/terrylinooo/shieldon
- * @version     1.2.0
+ * @version     2.0.0
  * @license     MIT
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -31,7 +31,7 @@ namespace Shieldon;
 use Shieldon\Driver\DriverProvider;
 use Shieldon\Component\ComponentInterface;
 use Shieldon\Captcha\CaptchaInterface;
-use Shieldon\ActionLogger;
+use Shieldon\Log\ActionLogger;
 
 use LogicException;
 
@@ -77,6 +77,11 @@ class Shieldon
     public const RESPONSE_TEMPORARILY_DENY = 2;
     public const RESPONSE_LIMIT = 3;
 
+    public const LOG_LIMIT = 3;
+    public const LOG_PAGEVIEW = 11;
+	public const LOG_BLACKLIST = 98;
+    public const LOG_CAPTCHA = 99;
+
     /**
      * Driver for storing data.
      *
@@ -90,7 +95,6 @@ class Shieldon
      * @var array
      */
     public $component = [];
-
 
     /**
      * Logger instance.
@@ -221,7 +225,6 @@ class Shieldon
      */
     private $currentWaitNumber = 0;
 
-
     /**
      * Strict mode.
      *
@@ -287,10 +290,10 @@ class Shieldon
         $logData['first_time_flag'] = $ipDetail['first_time_flag'];
 
         if (! empty($ipDetail['ip'])) {
-            $logData['ip']             = $this->ip;
-            $logData['session']        = $this->sessionId;
-            $logData['hostname']       = $this->ipResolvedHostname;
-            $logData['last_time']      = $now;
+            $logData['ip']        = $this->ip;
+            $logData['session']   = $this->sessionId;
+            $logData['hostname']  = $this->ipResolvedHostname;
+            $logData['last_time'] = $now;
 
             /*** HTTP_REFERER ***/
 
@@ -394,11 +397,13 @@ class Shieldon
 
             if ($this->enableFrequencyCheck) {
 
-                foreach ($this->properties['time_unit_quota'] as $timeUnit => $valueNotUsed) {
-                    if ($timeUnit === 's') $timeSecond = 1;
-                    if ($timeUnit === 'm') $timeSecond = 60;
-                    if ($timeUnit === 'h') $timeSecond = 3600;
-                    if ($timeUnit === 'd') $timeSecond = 86400;
+                foreach (array_keys($this->properties['time_unit_quota']) as $timeUnit) {
+                    switch ($timeUnit) {
+                        case 's': $timeSecond = 1;     break;
+                        case 'm': $timeSecond = 60;    break;
+                        case 'h': $timeSecond = 3600;  break;
+                        case 'd': $timeSecond = 86400; break;
+                    }
                     if (($now - $ipDetail["first_time_{$timeUnit}"]) >= ($timeSecond + 1)) {
 
                         // For example:
@@ -411,10 +416,12 @@ class Shieldon
                         // If an user's pageview count is more than the time period limit
                         // He or she will get banned.
                         if ($logData["pageviews_{$timeUnit}"] > $this->properties['time_unit_quota'][$timeUnit]) {
+
                             if ($timeUnit === 's') $this->action(self::ACTION_TEMPORARILY_DENY, self::REASON_REACHED_LIMIT_SECOND);
                             if ($timeUnit === 'm') $this->action(self::ACTION_TEMPORARILY_DENY, self::REASON_REACHED_LIMIT_MINUTE);
                             if ($timeUnit === 'h') $this->action(self::ACTION_TEMPORARILY_DENY, self::REASON_REACHED_LIMIT_HOUR);
                             if ($timeUnit === 'd') $this->action(self::ACTION_TEMPORARILY_DENY, self::REASON_REACHED_LIMIT_DAY);
+                            
                             return self::RESPONSE_TEMPORARILY_DENY;
                         }
                     }
@@ -490,8 +497,8 @@ class Shieldon
         }
 
         switch ($actionCode) {
-            case self::ACTION_ALLOW:
-            case self::ACTION_DENY:
+            case self::ACTION_ALLOW: // acutally not used.
+            case self::ACTION_DENY:  // actually not used.
             case self::ACTION_TEMPORARILY_DENY:
                 $logData['log_ip']     = $ip;
                 $logData['ip_resolve'] = $ipResolvedHostname;
@@ -512,11 +519,10 @@ class Shieldon
         $this->driver->delete($ip, 'log');
 
         if (null !== $this->logger) {
-            $log['ip'] = $ip;
-            $log['session_id'] = $this->sessionId;
+            $log['ip']          = $ip;
+            $log['session_id']  = $this->sessionId;
             $log['action_code'] = $actionCode;
-            $log['reason_code'] = $reasonCode;
-            $log['timesamp'] = $now;
+            $log['timesamp']    = $now;
 
             $this->logger->add($log);
         }
@@ -824,6 +830,8 @@ class Shieldon
         }
 
         $this->action(self::ACTION_UNBAN, self::REASON_MANUAL_BAN, $ip);
+        $this->_log(self::ACTION_UNBAN);
+
         $this->result = self::RESPONSE_ALLOW;
 
         return $this;
@@ -954,6 +962,7 @@ class Shieldon
 
         // Use default template if there is no custom HTML template.
         if (empty($this->html[$type])) {
+
             $viewPath = self::SHIELDON_DIR . '/../views/' . $type . '.phtml';
 
             if (empty($this->properties['display_credit_link'])) {
@@ -972,6 +981,9 @@ class Shieldon
                 if (! defined('SHIELDON_VIEW')) {
                     define('SHIELDON_VIEW', true);
                 }
+
+                $css = require self::SHIELDON_DIR . '/../views/css-default.php';
+                $lang = require self::SHIELDON_DIR . '/../views/lang.php';
 
                 ob_start();
                 require $viewPath;
@@ -1006,6 +1018,7 @@ class Shieldon
 
         // Remove unused variable notices generated from PHP intelephense.
         unset($langCode, $showCreditLink, $showOnlineInformation, $showLineupInformation);
+        unset($css, $lang);
 
         if ($echo) {
 
@@ -1030,9 +1043,66 @@ class Shieldon
      * Check the rule tables first, if an IP address has been listed.
      * Call function detect() if an IP address is not listed in rule tables.
      *
-     * @return int RESPONSE_CODE
      */
     public function run(): int
+    {
+        $result = $this->_run();
+
+        if ($result !== self::RESPONSE_ALLOW) {
+
+            // Current session did not pass the CAPTCHA, it is still stuck in CAPTCHA page.
+            $actionCode = self::LOG_CAPTCHA;
+
+            // If current session's respone code is RESPONSE_DENY, record it as `blacklist_count` in our logs.
+            // It is stuck in warning page, not CAPTCHA.
+            if ($result === self::RESPONSE_DENY) {
+                $actionCode = self::LOG_BLACKLIST;
+            }
+
+            if ($result === self::RESPONSE_LIMIT) {
+                $actionCode = self::LOG_LIMIT;
+            }
+
+            $this->_log($actionCode);
+
+        } else {
+
+            $this->_log(self::LOG_PAGEVIEW);
+        }
+
+        return $result;
+    }
+
+    /**
+     * Logger.
+     *
+     * @param integer $actionCode
+     *
+     * @return void
+     */
+    private function _log(int $actionCode): void
+    {
+        if (null !== $this->logger) {
+
+            // Just count the page view.
+            $logData['ip']          = $this->getIp();
+            $logData['session_id']  = $this->getSessionId();
+            $logData['action_code'] = $actionCode;
+            $logData['timesamp']    = time();
+
+            $this->logger->add($logData);
+        }
+    }
+
+    /**
+     * Run, run, run!
+     *
+     * Check the rule tables first, if an IP address has been listed.
+     * Call function detect() if an IP address is not listed in rule tables.
+     *
+     * @return int RESPONSE_CODE
+     */
+    private function _run(): int
     {
         $this->driver->init($this->autoCreateDatabase);
 
@@ -1047,7 +1117,9 @@ class Shieldon
             $result = $this->getComponent('Ip')->check();
 
             if (! empty($result)) {
+
                 switch ($result['status']) {
+
                     case 'allow':
                         $resultCode = self::RESPONSE_ALLOW;
                         break;
@@ -1083,25 +1155,35 @@ class Shieldon
         }
 
         if (! $this->isRuleList) {
+
             if ($this->getComponent('TrustedBot')) {
  
                 // We want to put all the allowed robot into the rule list, so that the checking of IP's resolved hostname 
                 // is no more needed for that IP.
                 if ($this->getComponent('TrustedBot')->isAllowed()) {
+
                     if ($this->getComponent('TrustedBot')->isGoogle()) {
+
                         // Add current IP into allowed list, because it is from real Google domain.
                         $this->action(self::ACTION_ALLOW, self::REASON_IS_GOOGLE);
+
                     } elseif ($this->getComponent('TrustedBot')->isBing()) {
+
                         // Add current IP into allowed list, because it is from real Bing domain.
                         $this->action(self::ACTION_ALLOW, self::REASON_IS_BING);
+
                     } elseif ($this->getComponent('TrustedBot')->isYahoo()) {
+
                         // Add current IP into allowed list, because it is from real Yahoo domain.
                         $this->action(self::ACTION_ALLOW, self::REASON_IS_YAHOO);
+
                     } else {
+
                         // Add current IP into allowed list, because you trust it.
                         // You have already defined it in the settings.
                         $this->action(self::ACTION_ALLOW, self::REASON_IS_SEARCH_ENGINE);
                     }
+
                     // Allowed robots not join to our traffic handler.
                     return $this->result = self::RESPONSE_ALLOW;
                 }
@@ -1170,7 +1252,17 @@ class Shieldon
      */
     public function getSessionId(): string
     {
+        if (! empty($this->sessionId)) {
+            return $this->sessionId;
+        }
+
+        if ((php_sapi_name() === 'cli')) {
+            return '_php_cli_';
+        }
+
+        // @codeCoverageIgnoreStart
         return $this->sessionId;
+        // @codeCoverageIgnoreEnd
     }
 
     /**
@@ -1196,8 +1288,4 @@ class Shieldon
 EOF;
         return $jsString;
     }
-
-
 }
-
-

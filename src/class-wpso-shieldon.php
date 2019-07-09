@@ -600,7 +600,7 @@ class WPSO_Shieldon_Guardian {
 	 */
 	private function set_logger() {
 
-		$logger = new \Shieldon\ActionLogger(wpso_get_upload_dir());
+		$logger = new \Shieldon\Log\ActionLogger(wpso_get_upload_dir());
 
 		$this->shieldon->setLogger($logger);
 	}

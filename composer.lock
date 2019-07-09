@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3208ea78435d83e350c2f1f82522b8de",
+    "content-hash": "c2d503c78c397fcd178bbee35be677d9",
     "packages": [
         {
             "name": "terrylinooo/shieldon",
-            "version": "1.5.3",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/terrylinooo/shieldon.git",
-                "reference": "1ba4752e1697118ac1d03d09481182f72c6d51b1"
+                "reference": "3d1730b96b40a5554b74eb98636349117ddc37ec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/terrylinooo/shieldon/zipball/1ba4752e1697118ac1d03d09481182f72c6d51b1",
-                "reference": "1ba4752e1697118ac1d03d09481182f72c6d51b1",
+                "url": "https://api.github.com/repos/terrylinooo/shieldon/zipball/3d1730b96b40a5554b74eb98636349117ddc37ec",
+                "reference": "3d1730b96b40a5554b74eb98636349117ddc37ec",
                 "shasum": ""
             },
             "require": {
@@ -51,7 +51,7 @@
                 "web-security",
                 "xss-filter"
             ],
-            "time": "2019-06-27T10:09:39+00:00"
+            "time": "2019-07-08T15:43:35+00:00"
         }
     ],
     "packages-dev": [],

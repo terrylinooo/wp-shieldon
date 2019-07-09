@@ -144,15 +144,24 @@ class WPSO_Admin_Menu {
 	/**
 	 * Dashboard
 	 *
+	 * @param string $page Page tab.
 	 * @return void
 	 */
 	public function dashboard() {
 
-		$dashboard = new WPSO_Admin_Dashboard();
-		$data = $dashboard->get_data();
+		$parser = new \Shieldon\Log\LogParser(wpso_get_upload_dir());
+
+		$parser->prepare('today');
+
+		$data['ip_details'] = $parser->getIpData();
+		$data['today']      = $parser->getParsedPeriodData();
+
+		$parser->prepare('past_seven_hours');
+
+		$data['past_seven_hour'] = $parser->getParsedPeriodData();
 
 		wpso_show_settings_header();
-		echo wpso_load_view( 'dashboard/dashboard', $data );
+		echo wpso_load_view( 'dashboard/dashboard_today', $data );
 		wpso_show_settings_footer();
 	}
 }

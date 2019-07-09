@@ -12,6 +12,6 @@
         }
     ],
     "require": {
-        "terrylinooo/shieldon": "^1.3"
+        "terrylinooo/shieldon": "^2.0"
     }
 }

@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Shieldon;
+namespace Shieldon\Log;
 
 use RuntimeException;
 use RecursiveDirectoryIterator;
@@ -17,6 +17,17 @@ use DateTime;
 use DateInterval;
 use DatePeriod;
 use function mkdir;
+use function umask;
+use function rmdir;
+use function unlink;
+use function file_exists;
+use function file_put_contents;
+use function file_get_contents;
+use function explode;
+use function strtotime;
+use function date;
+use function is_writable;
+use function is_dir;
 
 /**
  * Action Logger only support storing log into files, I don't want to make it complex, that's it.
@@ -49,7 +60,7 @@ class ActionLogger
      *
      * @var string
      */
-    protected $file_path = '';
+    protected $filePath = '';
 
     /**
      * Constructor.
@@ -66,11 +77,11 @@ class ActionLogger
         $this->checkDirectory();
 
         if ('' === $Ymd) {
-            $Ymd = date('Ymd');
+            $Ymd = date('Ymd', time());
         }
 
         $this->file = $Ymd . '.' . $this->extension;
-        $this->file_path = $this->directory . '/' . $this->file;
+        $this->filePath = $this->directory . '/' . $this->file;
     }
 
     /**
@@ -82,20 +93,16 @@ class ActionLogger
      */
     public function add(array $record): void
     {
-        /**
-         * ip
-         * session_id
-         * action_code
-         * reason_code
-         * timesamp
-         */
+        if (! empty($record['session_id'])) {
+            $record['session_id'] = substr($record['session_id'], 0, 4);
+        }
+
         $data[0] = $record['ip']          ?? 'null';
         $data[1] = $record['session_id']  ?? 'null';
         $data[2] = $record['action_code'] ?? 'null';
-        $data[3] = $record['reason_code'] ?? 'null';
-        $data[4] = $record['timesamp']    ?? 'null';
+        $data[3] = $record['timesamp']    ?? 'null';
 
-        file_put_contents($this->file_path, implode(',', $data) . "\n", FILE_APPEND | LOCK_EX);
+        file_put_contents($this->filePath, implode(',', $data) . "\n", FILE_APPEND | LOCK_EX);
     }
 
     /**
@@ -114,14 +121,14 @@ class ActionLogger
             $fromYmd = date('Ymd', strtotime($fromYmd));
 
             $this->file = $fromYmd . '.' . $this->extension;
-            $this->file_path = $this->directory . '/' . $this->file;
+            $this->filePath = $this->directory . '/' . $this->file;
         }
 
         if ('' === $toYmd) {
 
-            if (file_exists($this->file_path)) {
+            if (file_exists($this->filePath)) {
 
-                $logFile = file_get_contents($this->file_path);
+                $logFile = file_get_contents($this->filePath);
                 $logs = explode("\n", $logFile);
         
                 foreach ($logs as $l) {
@@ -132,8 +139,7 @@ class ActionLogger
                             'ip'          => $data[0],
                             'session_id'  => $data[1],
                             'action_code' => $data[2],
-                            'reason_code' => $data[3],
-                            'timesamp'    => $data[4],
+                            'timesamp'    => $data[3],
                         ];
                     }
                 }
@@ -154,6 +160,7 @@ class ActionLogger
             $logFile = '';
     
             foreach ($daterange as $date) {
+                
                 $thisDayLogFile = $this->directory . '/' . $date->format('Ymd') . '.' . $this->extension;
 
                 if (file_exists($thisDayLogFile)) {
@@ -171,8 +178,7 @@ class ActionLogger
                         'ip'          => $data[0],
                         'session_id'  => $data[1],
                         'action_code' => $data[2],
-                        'reason_code' => $data[3],
-                        'timesamp'    => $data[4],
+                        'timesamp'    => $data[3],
                     ];
                 }
             }

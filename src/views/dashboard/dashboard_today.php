@@ -13,6 +13,9 @@ if ( ! defined('SHIELDON_PLUGIN_NAME') ) die;
 
 ?>
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script src="https://cdn.datatables.net/v/dt/dt-1.10.18/b-1.5.6/fh-3.1.4/kt-2.5.0/r-2.2.2/datatables.min.js"></script>
+
+
 
 <div class="wpso-dashboard">
 
@@ -23,7 +26,7 @@ if ( ! defined('SHIELDON_PLUGIN_NAME') ) die;
 			</div>
 			<div class="board-field right">
 				<div class="heading">CAPTCHAs</div>
-				<div class="nums"><?php echo number_format($captcha_count); ?></div>
+				<div class="nums"><?php echo number_format($today['captcha_count']); ?></div>
 				<div class="note">CAPTCHA statistic today.</div>
 			</div>
 		</div>
@@ -33,14 +36,37 @@ if ( ! defined('SHIELDON_PLUGIN_NAME') ) die;
 			</div>
 			<div class="board-field right">
 				<div class="heading">Pageviews</div>
-				<div class="nums"><?php echo number_format($pageview_count); ?></div>
+				<div class="nums"><?php echo number_format($today['pageview_count']); ?></div>
 				<div class="note">Total pageviews today.</div>
 			</div>
 		</div>
 		<div class="wpso-board area-chart-container">
 			<div id="chart-3"></div>
 		</div>
-	</div>
+    </div>
+    
+	<div class="wpso-datatables">
+		<table id="wpso-datalog" class="cell-border compact stripe" cellspacing="0" width="100%">
+			<thead>
+				<tr>
+					<th>IP</th>
+					<th>Session</th>
+					<th>Pageviews</th>
+					<th>CAPTCHAs</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php foreach( $ip_details as $ip => $ip_info ) : ?>
+				<tr>
+					<td><?php echo $ip; ?></td>
+					<td><?php echo count($ip_info['session_id']); ?></td>
+					<td><?php echo $ip_info['pageview_count']; ?></td>
+					<td><?php echo $ip_info['captcha_count']; ?></td>
+				</tr>
+				<?php endforeach; ?>
+			</tbody>   
+		</table>
+    </div>
 </div>
 
 <script>
@@ -53,7 +79,7 @@ if ( ! defined('SHIELDON_PLUGIN_NAME') ) die;
 		chart: {
 			type: 'donut',
 		},
-		series: [<?php echo $captcha_success_count; ?>, <?php echo $captcha_failure_count; ?>],
+		series: [<?php echo $today['captcha_success_count']; ?>, <?php echo $today['captcha_failure_count']; ?>],
 		labels: ['success', 'failure'],
 		responsive: [{
 			breakpoint: 480,
@@ -84,7 +110,7 @@ if ( ! defined('SHIELDON_PLUGIN_NAME') ) die;
 		chart: {
 			type: 'donut',
 		},
-		series: [<?php echo $pageview_count; ?>, <?php echo $captcha_count; ?>],
+		series: [<?php echo $today['pageview_count']; ?>, <?php echo $today['captcha_count']; ?>],
 		labels: ['Pageviews', 'CAPTCHAs'],
 		responsive: [{
 			breakpoint: 480,
@@ -125,10 +151,10 @@ if ( ! defined('SHIELDON_PLUGIN_NAME') ) die;
 		},
 		series: [{
 			name: 'pageview',
-			data: [<?php echo $past_seven_hour['pageview_count_series']; ?>]
+			data: [<?php echo $past_seven_hour['pageview_chart_string']; ?>]
 		}, {
 			name: 'captcha',
-			data: [<?php echo $past_seven_hour['captcha_count_series']; ?>]
+			data: [<?php echo $past_seven_hour['captcha_chart_string']; ?>]
 		}],
 		labels: ['1', '2', '3', '4', '5', '6', '7'],
 		markers: {
@@ -184,5 +210,9 @@ if ( ! defined('SHIELDON_PLUGIN_NAME') ) die;
         );
 
         chart.render();
+
+        $(function() {
+            $('#wpso-datalog').DataTable();
+        });
 	
 </script>

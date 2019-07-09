@@ -7,6 +7,7 @@
 Shieldon, a PHP library that provides anti-scraping and online session control for your web application. As if you are using a shield on your web applicaion to fight against bad-behavior bots, crawlers or vulnerability scanning and so on.
 
 - Document: https://shield-on-php.github.io
+- Version: 2.0.0
 
 ## Install
 
