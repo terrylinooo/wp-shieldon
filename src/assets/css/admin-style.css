@@ -203,6 +203,28 @@ code.tips {
   padding: 10px;
 }
 
+.wpso-databable-heading {
+  margin: 20px 0 40px;
+  font-weight: bold;
+  border-left: 9px #00b38a solid;
+  padding-left: 15px;
+  font-size: 22px;
+}
+
+.merged-field {
+  border-left: 1px #ffffff solid;
+  border-bottom: 0 !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+}
+
+.wpso-timezone {
+  padding: 10px;
+  text-align: right;
+  font-size: 12px;
+  color: #999999;
+}
+
 .wpso-dashboard {
   font-family: Helvetica, Arial, sans-serif !important;
   background-color: #f1f1f1;
@@ -303,6 +325,20 @@ code.tips {
 .wpso-flex .wpso-board .board-field .heading {
   color: #373d3f;
   font-size: 16px;
+}
+.wpso-flex .wpso-board .board-field.icon {
+  font-size: 70px;
+  height: 150px;
+  padding: 0;
+}
+.wpso-flex .wpso-board .board-field.icon-1 {
+  color: #008ffb;
+}
+.wpso-flex .wpso-board .board-field.icon-2 {
+  color: #008ffb;
+}
+.wpso-flex .wpso-board .board-field.icon-3 {
+  color: #00e396;
 }
 .wpso-flex .wpso-board .board-field .nums {
   font-size: 48px;

@@ -105,9 +105,10 @@ function wpso_get_lang() {
 function wpso_set_driver_hash() {
 	$wpso_driver_hash = wp_hash( date( 'ymdhis' ) . wp_rand( 1, 86400 ) );
 	$wpso_driver_hash = substr( $wpso_driver_hash, 0, 8);
+
 	update_option( 'wpso_driver_hash', $wpso_driver_hash, '', 'yes' );
 
-	return 'shieldon_' . $wpso_driver_hash;
+	return $wpso_driver_hash;
 }
 
 /**
@@ -120,13 +121,21 @@ function wpso_get_upload_dir() {
 }
 
 /**
+ * Get logs dir.
+ *
+ * @return string
+ */
+function wpso_get_logs_dir() {
+	return wpso_get_upload_dir() . '/' . wpso_get_channel_id() . '_logs';
+}
+
+/**
  * Set channel Id.
  *
  * @return void
  */
 function wpso_set_channel_id() {
-	$blog_id = get_current_blog_id();
-	update_option( 'wpso_channel_id', $blog_id, '', 'yes' );
+	update_option( 'wpso_channel_id', get_current_blog_id(), '', 'yes' );
 }
 
 /**
@@ -245,4 +254,50 @@ function wpso_show_settings_header() {
  */
 function wpso_show_settings_footer() {
 	echo '</div>';
+}
+
+/**
+ * Get WP Shieldon instance.
+ *
+ * @return WPSO_Shieldon_Guardian
+ */
+function wpso_instance() {
+	static $instance;
+
+	if (empty($instance)) {
+		$instance = new WPSO_Shieldon_Guardian();
+	}
+
+	return $instance;
+}
+
+/**
+ * Make the date to be displayed with the blog's timezone setting.
+ *
+ * @return string
+ */
+function wpso_apply_blog_timezone() {
+
+	$timezone_string =  get_option( 'timezone_string' );
+ 
+	if ( $timezone_string ) {
+		date_default_timezone_set( $timezone_string );
+
+	} else {
+		$offset = get_option( 'gmt_offset' );
+
+		if ( $offset ) {
+			$seconds = round( $offset ) * 3600;
+
+			$timezone_string = timezone_name_from_abbr( '', $seconds, 1 );
+
+			if ( false === $timezone_string ) {
+				$timezone_string = timezone_name_from_abbr( '', $seconds, 0 );
+			}
+
+			date_default_timezone_set( $timezone_string );
+		}
+	}
+
+	return $timezone_string;
 }

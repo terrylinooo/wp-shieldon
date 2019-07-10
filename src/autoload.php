@@ -23,7 +23,6 @@ spl_autoload_register( function( $class_name ) {
 		'WPSO_Admin_IP_Manager'  => 'class-wpso-admin-ip-manager',
 		'WPSO_Admin_Menu'        => 'class-wpso-admin-menu',
 		'WPSO_Admin_Settings'    => 'class-wpso-admin-settings',
-		'WPSO_Admin_Dashboard'   => 'class-wpso-admin-dashboard',
 		'WPSO_Settings_API'      => 'class-wpso-settings-api',
 		'WPSO_Shieldon_Guardian' => 'class-wpso-shieldon',
 	);

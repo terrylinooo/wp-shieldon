@@ -18,7 +18,7 @@ class WPSO_Shieldon_Guardian {
 	 *
 	 * @var object
 	 */
-	private $shieldon;
+	public $shieldon;
 	
 	/**
 	 * Visitor's current position.
@@ -97,40 +97,10 @@ class WPSO_Shieldon_Guardian {
 
 				// Unban current session.
 				$this->shieldon->unban();
-			} else {
-
-				$session_id = $this->shieldon->getSessionId();
-				$session_ip = $this->shieldon->getIp();
-
-				$action_code = WPSO_LOG_IN_CAPTCHA;
-				$reason_code = 999;
-
-				if ($result === $this->shieldon::RESPONSE_DENY) {
-					$action_code = WPSO_LOG_IN_BLACKLIST;
-				}
-
-				if ( ! empty( $session_id ) ) {
-					$log_data['ip']          = $session_ip;
-					$log_data['session_id']  = $session_id;
-					$log_data['action_code'] = $action_code;
-					$log_data['reason_code'] = $reason_code;
-					$log_data['timesamp']    = time();
-	
-					$this->shieldon->logger->add( $log_data );
-				}
 			}
+
 			// Output the result page with HTTP status code 200.
 			$this->shieldon->output(200);
-		} else {
-
-			// Just count the page view.
-			$log_data['ip']          = $this->shieldon->getIp();
-			$log_data['session_id']  = $this->shieldon->getSessionId();
-			$log_data['action_code'] = WPSO_LOG_PAGEVIEW;
-			$log_data['reason_code'] = 0;
-			$log_data['timesamp']    = time();
-
-			$this->shieldon->logger->add( $log_data );
 		}
 	}
 
@@ -193,7 +163,7 @@ class WPSO_Shieldon_Guardian {
 	 * 
 	 * @return void
 	 */
-	private function set_driver() {
+	public function set_driver() {
 
 		$driver_type = wpso_get_option( 'data_driver_type', 'shieldon_daemon' );
 
@@ -604,8 +574,8 @@ class WPSO_Shieldon_Guardian {
 	 */
 	private function set_logger() {
 
-		$logger = new \Shieldon\Log\ActionLogger(wpso_get_upload_dir());
+		$logger = new \Shieldon\Log\ActionLogger( wpso_get_logs_dir() );
 
-		$this->shieldon->setLogger($logger);
+		$this->shieldon->setLogger( $logger );
 	}
 }

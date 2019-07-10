@@ -54,8 +54,6 @@ class WPSO_Admin_Menu {
 			'dashicons-shield'
 		);
 
-
-
 		add_submenu_page(
 			'shieldon-settings',
 			__( 'Settings', 'wp-shieldon' ),
@@ -82,6 +80,33 @@ class WPSO_Admin_Menu {
 			'shieldon-dashboard',
 			array( $this, 'dashboard' )
 		);
+
+		add_submenu_page(
+			'shieldon-settings',
+			__( 'Rule Table', 'wp-shieldon' ),
+			__( 'Rule Table', 'wp-shieldon' ),
+			'manage_options',
+			'shieldon-rule-table',
+			array( $this, 'rule_table' )
+		);
+
+		add_submenu_page(
+			'shieldon-settings',
+			__( 'IP Log Table', 'wp-shieldon' ),
+			__( 'IP Log Table', 'wp-shieldon' ),
+			'manage_options',
+			'shieldon-ip-log-table',
+			array( $this, 'ip_log_table' )
+		);
+
+		add_submenu_page(
+			'shieldon-settings',
+			__( 'Session Table', 'wp-shieldon' ),
+			__( 'Session Table', 'wp-shieldon' ),
+			'manage_options',
+			'shieldon-session-table',
+			array( $this, 'session_table' )
+		);
 		
 		add_submenu_page(
 			'shieldon-settings',
@@ -98,6 +123,7 @@ class WPSO_Admin_Menu {
 	 *
 	 * @param  array  $links Original links.
 	 * @param  string $file  File position.
+	 *
 	 * @return array Combined links.
 	 */
 	public function plugin_action_links( $links, $file ) {
@@ -116,6 +142,7 @@ class WPSO_Admin_Menu {
 	 *
 	 * @param  array  $links Original links.
 	 * @param  string $file  File position.
+	 *
 	 * @return array Combined links.
 	 */
 	public function plugin_extend_links( $links, $file ) {
@@ -145,11 +172,12 @@ class WPSO_Admin_Menu {
 	 * Dashboard
 	 *
 	 * @param string $page Page tab.
+	 *
 	 * @return void
 	 */
 	public function dashboard() {
 
-		$parser = new \Shieldon\Log\LogParser(wpso_get_upload_dir());
+		$parser = new \Shieldon\Log\LogParser(wpso_get_logs_dir());
 
 		$parser->prepare('today');
 
@@ -162,6 +190,96 @@ class WPSO_Admin_Menu {
 
 		wpso_show_settings_header();
 		echo wpso_load_view( 'dashboard/dashboard_today', $data );
+		wpso_show_settings_footer();
+	}
+
+	/**
+	 * Rule table for current cycle.
+	 *
+	 * @param string
+	 *
+	 * @return void
+	 */
+	public function rule_table() {
+
+		$reason_translation_mapping[100] = __( 'Search engine bot.', 'wp-shieldon' );
+		$reason_translation_mapping[101] = __( 'Google bot.', 'wp-shieldon' );
+		$reason_translation_mapping[102] = __( 'Bing bot.', 'wp-shieldon' );
+		$reason_translation_mapping[103] = __( 'Yahoo bot.', 'wp-shieldon' );
+		$reason_translation_mapping[1]   = __( 'Too many sessions.', 'wp-shieldon' );
+		$reason_translation_mapping[2]   = __( 'Too many accesses.', 'wp-shieldon' );
+		$reason_translation_mapping[3]   = __( 'Cannot create JS cookies.', 'wp-shieldon' );
+		$reason_translation_mapping[4]   = __( 'Empty referrer.', 'wp-shieldon' );
+		$reason_translation_mapping[11]  = __( 'Daily limit reached.', 'wp-shieldon' );
+		$reason_translation_mapping[12]  = __( 'Hourly limit reached', 'wp-shieldon' );
+		$reason_translation_mapping[13]  = __( 'Minutely limit reached', 'wp-shieldon' );
+		$reason_translation_mapping[14]  = __( 'Secondly limit reached', 'wp-shieldon' );
+
+		$type_translation_mapping[0] = __( 'DENY', 'wp-shieldon' );
+		$type_translation_mapping[1] = __( 'ALLOW', 'wp-shieldon' );
+		$type_translation_mapping[2] = __( 'CAPTCHA', 'wp-shieldon' );
+
+		$wpso = wpso_instance();
+		$wpso->set_driver();
+
+		$data['rule_list'] = $wpso->shieldon->driver->getAll('rule');
+		$data['reason_mapping'] = $reason_translation_mapping;
+		$data['type_mapping'] = $type_translation_mapping;
+
+		wpso_show_settings_header();
+		echo wpso_load_view( 'dashboard/rule_table', $data );
+		wpso_show_settings_footer();
+	}
+
+	/**
+	 * IP log table for current cycle.
+	 *
+	 * @param string
+	 *
+	 * @return void
+	 */
+	public function ip_log_table() {
+
+		$wpso = wpso_instance();
+		$wpso->set_driver();
+
+		$data['ip_log_list'] =  $wpso->shieldon->driver->getAll('log');
+
+		wpso_show_settings_header();
+		echo wpso_load_view( 'dashboard/ip_log_table', $data );
+		wpso_show_settings_footer();
+	}
+
+	/**
+	 * Session table for current cycle.
+	 *
+	 * @param string
+	 *
+	 * @return void
+	 */
+	public function session_table() {
+
+		$wpso = wpso_instance();
+		$wpso->set_driver();
+
+		$data['session_list'] =  $wpso->shieldon->driver->getAll('session');
+
+		$data['is_session_limit']     = false;
+		$data['session_limit_count']  = 0;
+		$data['session_limit_period'] = 0;
+		$data['online_count']         = 0;
+		$data['expires']              = 0;
+
+		if ( 'yes' === wpso_get_option( 'enable_online_session_limit', 'shieldon_daemon' ) ) {
+			$data['is_session_limit']     = true;
+			$data['session_limit_count']  = wpso_get_option( 'session_limit_count', 'shieldon_daemon' );
+			$data['session_limit_period'] = wpso_get_option( 'session_limit_period', 'shieldon_daemon' );
+			$data['online_count']         = count($data['session_list']);
+			$data['expires']              = (int) $data['session_limit_period'] * 60;
+		}
+
+		wpso_show_settings_header();
+		echo wpso_load_view( 'dashboard/session_table', $data );
 		wpso_show_settings_footer();
 	}
 }

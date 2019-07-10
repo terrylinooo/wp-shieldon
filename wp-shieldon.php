@@ -95,20 +95,42 @@ if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 	 */
 	function wpso_activate_plugin() {
 
+		wpso_set_channel_id();
+		update_option( 'wpso_lang_code', substr( get_locale(), 0, 2 ), '', 'yes' );
+
 		// Add default setting. Only execute this action at the first time activation.
 		if ( false === wpso_is_driver_hash() ) {
-			update_option( 'wpso_driver_hash', wpso_get_driver_hash(), '', 'yes' );
 
 			if ( ! file_exists( wpso_get_upload_dir() ) ) {
-				$originalUmask = umask(0);
-				mkdir(wpso_get_upload_dir(), 0777, true);
-				umask($originalUmask);
+
+				wp_mkdir_p( wpso_get_upload_dir() );
+				update_option( 'wpso_driver_hash', wpso_get_driver_hash(), '', 'yes' );
+
+				$files = array(
+					array(
+						'base'    => WP_CONTENT_DIR . '/uploads/wp-shieldon',
+						'file'    => 'index.html',
+						'content' => '',
+					),
+					array(
+						'base'    => WP_CONTENT_DIR . '/uploads/wp-shieldon',
+						'file'    => '.htaccess',
+						'content' => 'deny from all',
+					),
+					array(
+						'base'    => wpso_get_logs_dir(),
+						'file'    => 'index.html',
+						'content' => '',
+					),
+				);
+		
+				foreach ( $files as $file ) {
+					if ( wp_mkdir_p( $file['base'] ) && ! file_exists( trailingslashit( $file['base'] ) . $file['file'] ) ) {
+						@file_put_contents( trailingslashit( $file['base'] ) . $file['file'], $file['content']);
+					}
+				}
 			}
 		}
-
-		wpso_set_channel_id();
-
-		update_option( 'wpso_lang_code', substr(get_locale(), 0, 2), '', 'yes' );
 	}
 
 	/**
@@ -157,6 +179,8 @@ if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 		add_filter( 'plugin_action_links_' . SHIELDON_PLUGIN_NAME, array( $admin_menu, 'plugin_action_links' ), 10, 5 );
 		add_filter( 'plugin_row_meta', array( $admin_menu, 'plugin_extend_links' ), 10, 2 );
 
+		wpso_instance();
+
 	} else {
 
 		if ( 'yes' === wpso_get_option( 'enable_daemon', 'shieldon_daemon' ) ) {
@@ -168,7 +192,7 @@ if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 			 */
 			function wpso_init() {
 				
-				$guardian = new WPSO_Shieldon_Guardian();
+				$guardian = wpso_instance();
 				$guardian->init();
 			}
 

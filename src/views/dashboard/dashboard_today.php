@@ -25,9 +25,9 @@ if ( ! defined('SHIELDON_PLUGIN_NAME') ) die;
 				<div id="chart-1"></div>
 			</div>
 			<div class="board-field right">
-				<div class="heading">CAPTCHAs</div>
+				<div class="heading"><?php _e( 'CAPTCHAs', 'wp-shieldon' ); ?></div>
 				<div class="nums"><?php echo number_format($today['captcha_count']); ?></div>
-				<div class="note">CAPTCHA statistic today.</div>
+				<div class="note"><?php _e( 'CAPTCHA statistic today.', 'wp-shieldon' ); ?></div>
 			</div>
 		</div>
 		<div class="wpso-board">
@@ -35,9 +35,9 @@ if ( ! defined('SHIELDON_PLUGIN_NAME') ) die;
 				<div id="chart-2"></div>
 			</div>
 			<div class="board-field right">
-				<div class="heading">Pageviews</div>
+				<div class="heading"><?php _e( 'Pageviews', 'wp-shieldon' ); ?></div>
 				<div class="nums"><?php echo number_format($today['pageview_count']); ?></div>
-				<div class="note">Total pageviews today.</div>
+				<div class="note"><?php _e( 'Total pageviews today.', 'wp-shieldon' ); ?></div>
 			</div>
 		</div>
 		<div class="wpso-board area-chart-container">
@@ -49,10 +49,10 @@ if ( ! defined('SHIELDON_PLUGIN_NAME') ) die;
 		<table id="wpso-datalog" class="cell-border compact stripe" cellspacing="0" width="100%">
 			<thead>
 				<tr>
-					<th>IP</th>
-					<th>Session</th>
-					<th>Pageviews</th>
-					<th>CAPTCHAs</th>
+					<th><?php _e( 'IP', 'wp-shieldon' ); ?></th>
+					<th><?php _e( 'Session', 'wp-shieldon' ); ?></th>
+					<th><?php _e( 'Pageviews', 'wp-shieldon' ); ?></th>
+					<th><?php _e( 'CAPTCHAs', 'wp-shieldon' ); ?></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -80,7 +80,7 @@ if ( ! defined('SHIELDON_PLUGIN_NAME') ) die;
 			type: 'donut',
 		},
 		series: [<?php echo $today['captcha_success_count']; ?>, <?php echo $today['captcha_failure_count']; ?>],
-		labels: ['success', 'failure'],
+		labels: ['<?php _e( 'success', 'wp-shieldon' ); ?>', '<?php _e( 'failure', 'wp-shieldon' ); ?>'],
 		responsive: [{
 			breakpoint: 480,
 			options: {
@@ -111,7 +111,7 @@ if ( ! defined('SHIELDON_PLUGIN_NAME') ) die;
 			type: 'donut',
 		},
 		series: [<?php echo $today['pageview_count']; ?>, <?php echo $today['captcha_count']; ?>],
-		labels: ['Pageviews', 'CAPTCHAs'],
+		labels: ['<?php _e( 'Pageviews', 'wp-shieldon' ); ?>', '<?php _e( 'CAPTCHAs', 'wp-shieldon' ); ?>'],
 		responsive: [{
 			breakpoint: 480,
 			options: {
@@ -211,8 +211,10 @@ if ( ! defined('SHIELDON_PLUGIN_NAME') ) die;
 
         chart.render();
 
-        $(function() {
-            $('#wpso-datalog').DataTable();
-        });
+		$(function() {
+			$('#wpso-datalog').DataTable({
+				'pageLength': 100
+			});
+		});
 	
 </script>
