@@ -79,6 +79,11 @@ GNU General Public License for more details.
 
 * Fix variable type error.
 
+= 1.2.2
+
+* Add new tabs for more period data on dashboard.
+* Fix component loading issue.
+
 == Upgrade Notice ==
 
 = Currently no logs now.
