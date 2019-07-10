@@ -288,7 +288,7 @@ code.tips {
 
 .wpso-flex {
   display: flex;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 .wpso-flex .wpso-board {
   display: flex;
@@ -350,6 +350,40 @@ code.tips {
   padding: 3px 5px;
   font-style: italic;
   align-self: flex-end;
+}
+
+.wpso-tabs {
+  background-color: #e1e1e1;
+  border-top: 1px #d1d1d1 solid;
+  border-left: 1px #d1d1d1 solid;
+  border-right: 1px #ffffff solid;
+  border-bottom: 1px #ffffff solid;
+  margin: 0 0 15px 0;
+  padding: 10px;
+}
+.wpso-tabs ul, .wpso-tabs li {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+.wpso-tabs li {
+  display: inline-block;
+}
+.wpso-tabs li.is-active a {
+  background-color: #008ffb;
+  color: #ffffff;
+}
+.wpso-tabs li a {
+  text-decoration: none;
+  background-color: #f1f1f1;
+  padding: 5px 15px;
+  margin: 5px 5px;
+  border: 1px #dddddd solid;
+  color: #666666;
+}
+.wpso-tabs li a:hover {
+  background-color: #008ffb;
+  color: #ffffff;
 }
 
 .wpso-datatables {

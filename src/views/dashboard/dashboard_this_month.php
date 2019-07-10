@@ -27,7 +27,7 @@ if ( ! defined('SHIELDON_PLUGIN_NAME') ) die;
 			<div class="board-field right">
 				<div class="heading"><?php _e( 'CAPTCHAs', 'wp-shieldon' ); ?></div>
 				<div class="nums"><?php echo number_format( $period_data['captcha_count'] ); ?></div>
-				<div class="note"><?php _e( 'CAPTCHA statistic today.', 'wp-shieldon' ); ?></div>
+				<div class="note"><?php _e( 'CAPTCHA statistic this month.', 'wp-shieldon' ); ?></div>
 			</div>
 		</div>
 		<div class="wpso-board">
@@ -37,7 +37,7 @@ if ( ! defined('SHIELDON_PLUGIN_NAME') ) die;
 			<div class="board-field right">
 				<div class="heading"><?php _e( 'Pageviews', 'wp-shieldon' ); ?></div>
 				<div class="nums"><?php echo number_format( $period_data['pageview_count'] ); ?></div>
-				<div class="note"><?php _e( 'Total pageviews today.', 'wp-shieldon' ); ?></div>
+				<div class="note"><?php _e( 'Total pageviews this month.', 'wp-shieldon' ); ?></div>
 			</div>
 		</div>
 		<div class="wpso-board area-chart-container">
@@ -46,10 +46,10 @@ if ( ! defined('SHIELDON_PLUGIN_NAME') ) die;
     </div>
 	<div class="wpso-tabs">
 		<ul>
-			<li class="is-active"><a href="<?php menu_page_url( 'shieldon-dashboard' ); ?>&tab=today"><?php _e( 'Today', 'wp-shieldon' ); ?></a></li>
+			<li><a href="<?php menu_page_url( 'shieldon-dashboard' ); ?>&tab=today"><?php _e( 'Today', 'wp-shieldon' ); ?></a></li>
 			<li><a href="<?php menu_page_url( 'shieldon-dashboard' ); ?>&tab=yesterday"><?php _e( 'Yesterday', 'wp-shieldon' ); ?></a></li>
 			<li><a href="<?php menu_page_url( 'shieldon-dashboard' ); ?>&tab=past_seven_days"><?php _e( 'Last 7 days', 'wp-shieldon' ); ?></a></li>
-			<li><a href="<?php menu_page_url( 'shieldon-dashboard' ); ?>&tab=this_month"><?php _e( 'This month', 'wp-shieldon' ); ?></a></li>
+			<li class="is-active"><a href="<?php menu_page_url( 'shieldon-dashboard' ); ?>&tab=this_month"><?php _e( 'This month', 'wp-shieldon' ); ?></a></li>
 			<li><a href="<?php menu_page_url( 'shieldon-dashboard' ); ?>&tab=last_month"><?php _e( 'Last month', 'wp-shieldon' ); ?></a></li>
 		</ul>
 	</div>
@@ -159,12 +159,12 @@ if ( ! defined('SHIELDON_PLUGIN_NAME') ) die;
 		},
 		series: [{
 			name: 'pageview',
-			data: [<?php echo $past_seven_hour['pageview_chart_string']; ?>]
+			data: [<?php echo $period_data['pageview_chart_string']; ?>]
 		}, {
 			name: 'captcha',
-			data: [<?php echo $past_seven_hour['captcha_chart_string']; ?>]
+			data: [<?php echo $period_data['captcha_chart_string']; ?>]
 		}],
-		labels: [<?php echo $past_seven_hour['label_chart_string']; ?>],
+		labels: [<?php echo $period_data['label_chart_string']; ?>],
 		markers: {
 			size: 5
 		},
@@ -193,7 +193,7 @@ if ( ! defined('SHIELDON_PLUGIN_NAME') ) die;
 			}
 		},
 		title: {
-			text: 'Past 7 hours',
+			text: '',
 			offsetX: 55,
 			offsetY: 16,
 			style: {

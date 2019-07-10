@@ -179,17 +179,37 @@ class WPSO_Admin_Menu {
 
 		$parser = new \Shieldon\Log\LogParser(wpso_get_logs_dir());
 
-		$parser->prepare('today');
+		$tab = 'today';
 
-		$data['ip_details'] = $parser->getIpData();
-		$data['today']      = $parser->getParsedPeriodData();
+		if ( ! empty( $_GET['tab'] ) ) {
+			$tab = esc_html( $_GET['tab'] );
+		}
 
-		$parser->prepare('past_seven_hours');
+		switch ( $tab ) {
+			case 'yesterday':
+			case 'this_month':
+			case 'last_month':
+			case 'past_seven_days':
+			case 'today':
+				$type = $tab;
+				break;
 
-		$data['past_seven_hour'] = $parser->getParsedPeriodData();
+			default:
+				$type = 'today';
+		}
+
+		$parser->prepare( $type );
+
+		$data['ip_details']  = $parser->getIpData();
+		$data['period_data'] = $parser->getParsedPeriodData();
+
+		if ( 'today' === $type ) {
+			$parser->prepare( 'past_seven_hours' );
+			$data['past_seven_hour'] = $parser->getParsedPeriodData();
+		}
 
 		wpso_show_settings_header();
-		echo wpso_load_view( 'dashboard/dashboard_today', $data );
+		echo wpso_load_view( 'dashboard/dashboard_' . $type, $data );
 		wpso_show_settings_footer();
 	}
 
