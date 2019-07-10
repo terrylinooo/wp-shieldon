@@ -69,7 +69,7 @@ $timezone = wpso_apply_blog_timezone();
 			</thead>
 			<tbody>
                 <?php foreach( $ip_log_list as $ip_info ) : ?>
-                    <?php $log_data = $ip_info['log_data']; ?>
+                    <?php $log_data = is_array( $ip_info['log_data'] ) ? $ip_info['log_data'] : json_decode( $ip_info['log_data'], true ); ?>
                     <tr>
                         <td><?php echo $ip_info['log_ip']; ?></td>
                         <td><?php echo $log_data['hostname']; ?></td>

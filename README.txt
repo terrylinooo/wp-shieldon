@@ -4,8 +4,8 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=donat
 Tags: anti-scriping, security
 Requires at least: 4.0
 Tested up to: 5.2.0
-Stable tag: 1.2.0
-Requires PHP: 7.1.0
+Stable tag: 1.2.1
+Requires PHP: 7.0.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -74,6 +74,10 @@ GNU General Public License for more details.
 * Add report - IP log table.
 * Add report - Session table.
 * Add report - Rule table.
+
+= 1.2.1
+
+* Fix variable type error.
 
 == Upgrade Notice ==
 
