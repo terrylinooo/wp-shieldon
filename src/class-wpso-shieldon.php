@@ -276,7 +276,7 @@ class WPSO_Shieldon_Guardian {
 		/**
 		 * Load "Trusted Bot" component.
 		 */
-		if ( 'yes' === wpso_get_option( 'enable_component_trustedbot', 'shieldon_components' ) ) {
+		if ( 'yes' === wpso_get_option( 'enable_component_trustedbot', 'shieldon_component' ) ) {
 
 			// This component will only allow popular search engline.
 			// Other bots will go into the checking process.
@@ -288,12 +288,12 @@ class WPSO_Shieldon_Guardian {
 		/**
 		 * Load "Header" component.
 		 */
-		if ( 'yes' === wpso_get_option( 'enable_component_header', 'shieldon_components' ) ) {
+		if ( 'yes' === wpso_get_option( 'enable_component_header', 'shieldon_component' ) ) {
 
 			$component_header = new \Shieldon\Component\Header();
 
 			// Deny all vistors without common header information.
-			if ( 'yes' === wpso_get_option( 'header_strict_mode', 'shieldon_components' ) ) {
+			if ( 'yes' === wpso_get_option( 'header_strict_mode', 'shieldon_component' ) ) {
 				$component_header->setStrict( true );
 			}
 
@@ -303,12 +303,12 @@ class WPSO_Shieldon_Guardian {
 		/**
 		 * Load "User-agent" component.
 		 */
-		if ( 'yes' === wpso_get_option( 'enable_component_agent', 'shieldon_components' ) ) {
+		if ( 'yes' === wpso_get_option( 'enable_component_agent', 'shieldon_component' ) ) {
 
 			$component_agent = new \Shieldon\Component\UserAgent();
 
 			// Visitors with empty user-agent information will be blocked.
-			if ( 'yes' === wpso_get_option( 'agent_strict_mode', 'shieldon_components' ) ) {
+			if ( 'yes' === wpso_get_option( 'agent_strict_mode', 'shieldon_component' ) ) {
 				$component_agent->setStrict( true );
 			}
 
@@ -318,13 +318,13 @@ class WPSO_Shieldon_Guardian {
 		/**
 		 * Load "Rdns" component.
 		 */
-		if ( 'yes' === wpso_get_option( 'enable_component_rdns', 'shieldon_components' ) ) {
+		if ( 'yes' === wpso_get_option( 'enable_component_rdns', 'shieldon_component' ) ) {
 
 			$component_rdns = new \Shieldon\Component\Rdns();
 
 			// Visitors with empty Rdns record will be blocked.
             // IP resolved hostname (Rdns) and IP address must match.
-			if ( 'yes' === wpso_get_option( 'rdns_strict_mode', 'shieldon_components' ) ) {
+			if ( 'yes' === wpso_get_option( 'rdns_strict_mode', 'shieldon_component' ) ) {
 				$component_rdns->setStrict( true );
 			}
 
@@ -333,7 +333,7 @@ class WPSO_Shieldon_Guardian {
 	}
 
 	/**
-	 * Undocumented function
+	 * Set CAPTCHA.
 	 *
 	 * @return void
 	 */
