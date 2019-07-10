@@ -87,7 +87,8 @@ $timezone = wpso_apply_blog_timezone();
 		</table>
     </div>
     <div class="wpso-timezone">
-    <?php _e( 'Timezone', 'wp-shieldon' ); ?>: <?php echo $timezone; ?>
+        <?php printf( __( 'Current data circle started from %s.', 'wp-shieldon' ), date('Y-m-d H:i:s', $last_reset_time) ); ?><br />
+        <?php _e( 'Timezone', 'wp-shieldon' ); ?>: <?php echo $timezone; ?>
     </div>
 </div>
 

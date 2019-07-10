@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=donat
 Tags: anti-scriping, security
 Requires at least: 4.0
 Tested up to: 5.2.0
-Stable tag: 1.1.0
+Stable tag: 1.2.0
 Requires PHP: 7.1.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -28,7 +28,6 @@ Check out my other WordPress works here:
 1. User has reached the limit and asked for CAPTCHA.
 1. Settings.
 2. IP manager.
-
 
 == Copyright ==
 
@@ -69,6 +68,12 @@ GNU General Public License for more details.
 
 * Add dashboard
 * Fix passcode not working.
+
+= 1.2.0
+
+* Add report - IP log table.
+* Add report - Session table.
+* Add report - Rule table.
 
 == Upgrade Notice ==
 

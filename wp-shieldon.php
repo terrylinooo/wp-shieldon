@@ -64,17 +64,9 @@ define( 'SHIELDON_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'SHIELDON_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'SHIELDON_PLUGIN_PATH', __FILE__ );
 define( 'SHIELDON_PLUGIN_LANGUAGE_PACK', dirname( plugin_basename( __FILE__ ) ) . '/languages' );
-define( 'SHIELDON_PLUGIN_VERSION', '1.0.3' );
-define( 'SHIELDON_CORE_VERSION', '1.3.2' );
+define( 'SHIELDON_PLUGIN_VERSION', '1.2.0' );
+define( 'SHIELDON_CORE_VERSION', '2.0.1' );
 define( 'SHIELDON_PLUGIN_TEXT_DOMAIN', 'wp-shieldon' );
-
-// Use for Action Logger.
-define( 'WPSO_LOG_IN_CAPTCHA', 999);
-define( 'WPSO_LOG_IN_BLACKLIST', 998);
-define( 'WPSO_LOG_PAGEVIEW', 11);
-define( 'WPSO_LOG_BAN', 0);
-define( 'WPSO_LOG_BAN_TEMPORARILY', 2);
-define( 'WPSO_LOG_UNBAN', 9);
 
 // Load helper functions
 require_once SHIELDON_PLUGIN_DIR . 'src/wpso-helper-functions.php';
@@ -96,7 +88,9 @@ if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 	function wpso_activate_plugin() {
 
 		wpso_set_channel_id();
-		update_option( 'wpso_lang_code', substr( get_locale(), 0, 2 ), '', 'yes' );
+
+		update_option( 'wpso_lang_code', substr( get_locale(), 0, 2 ) );
+		update_option( 'wpso_last_reset_time', time() );
 
 		// Add default setting. Only execute this action at the first time activation.
 		if ( false === wpso_is_driver_hash() ) {

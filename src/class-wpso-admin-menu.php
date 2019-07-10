@@ -222,9 +222,10 @@ class WPSO_Admin_Menu {
 		$wpso = wpso_instance();
 		$wpso->set_driver();
 
-		$data['rule_list'] = $wpso->shieldon->driver->getAll('rule');
-		$data['reason_mapping'] = $reason_translation_mapping;
-		$data['type_mapping'] = $type_translation_mapping;
+		$data['rule_list']       = $wpso->shieldon->driver->getAll( 'rule' );
+		$data['reason_mapping']  = $reason_translation_mapping;
+		$data['type_mapping']    = $type_translation_mapping;
+		$data['last_reset_time'] = get_option( 'wpso_last_reset_time' );
 
 		wpso_show_settings_header();
 		echo wpso_load_view( 'dashboard/rule_table', $data );
@@ -243,7 +244,8 @@ class WPSO_Admin_Menu {
 		$wpso = wpso_instance();
 		$wpso->set_driver();
 
-		$data['ip_log_list'] =  $wpso->shieldon->driver->getAll('log');
+		$data['ip_log_list']     =  $wpso->shieldon->driver->getAll( 'log' );
+		$data['last_reset_time'] = get_option( 'wpso_last_reset_time' );
 
 		wpso_show_settings_header();
 		echo wpso_load_view( 'dashboard/ip_log_table', $data );
@@ -262,7 +264,7 @@ class WPSO_Admin_Menu {
 		$wpso = wpso_instance();
 		$wpso->set_driver();
 
-		$data['session_list'] =  $wpso->shieldon->driver->getAll('session');
+		$data['session_list'] =  $wpso->shieldon->driver->getAll( 'session' );
 
 		$data['is_session_limit']     = false;
 		$data['session_limit_count']  = 0;
@@ -277,6 +279,8 @@ class WPSO_Admin_Menu {
 			$data['online_count']         = count($data['session_list']);
 			$data['expires']              = (int) $data['session_limit_period'] * 60;
 		}
+
+		$data['last_reset_time'] = get_option( 'wpso_last_reset_time' );
 
 		wpso_show_settings_header();
 		echo wpso_load_view( 'dashboard/session_table', $data );

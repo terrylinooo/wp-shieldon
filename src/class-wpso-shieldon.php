@@ -418,7 +418,7 @@ class WPSO_Shieldon_Guardian {
 				$last_reset_time = strtotime( date('Y-m-d 00:00:00') );
 
 				// Recond new reset time.
-				set_option( 'wpso_last_reset_time', $last_reset_time );
+				update_option( 'wpso_last_reset_time', $last_reset_time );
 
 				// Remove all logs.
 				$this->shieldon->driver->rebuild();
