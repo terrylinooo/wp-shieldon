@@ -53,7 +53,15 @@ if ( ! defined('SHIELDON_PLUGIN_NAME') ) die;
 			<li class="is-active"><a href="<?php menu_page_url( 'shieldon-dashboard' ); ?>&tab=last_month"><?php _e( 'Last month', 'wp-shieldon' ); ?></a></li>
 		</ul>
 	</div>
-	<div class="wpso-datatables">
+	<div id="wpso-table-loading" class="wpso-datatables">
+		<div class="lds-css ng-scope">
+			<div class="lds-ripple">
+				<div></div>
+				<div></div>
+			</div>
+		</div>
+	</div>
+	<div id="wpso-table-container" class="wpso-datatables" style="display: none;">
 		<table id="wpso-datalog" class="cell-border compact stripe" cellspacing="0" width="100%">
 			<thead>
 				<tr>
@@ -221,7 +229,12 @@ if ( ! defined('SHIELDON_PLUGIN_NAME') ) die;
 
 		$(function() {
 			$('#wpso-datalog').DataTable({
-				'pageLength': 100
+				'pageLength': 25,
+				'drawCallback': function( settings, json ) {
+					$('#wpso-table-loading').hide();
+					$('#wpso-table-container').fadeOut(800);
+					$('#wpso-table-container').fadeIn(800);
+				}
 			});
 		});
 	

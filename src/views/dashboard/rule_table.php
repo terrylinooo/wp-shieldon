@@ -19,7 +19,15 @@ $timezone = wpso_apply_blog_timezone();
 
 <div class="wpso-dashboard">
 	
-	<div class="wpso-datatables">
+	<div id="wpso-table-loading" class="wpso-datatables">
+		<div class="lds-css ng-scope">
+			<div class="lds-ripple">
+				<div></div>
+				<div></div>
+			</div>
+		</div>
+	</div>
+	<div id="wpso-table-container" class="wpso-datatables" style="display: none;">
 		<div class="wpso-databable-heading">
 			<?php _e( 'Rule Table', 'wp-shieldon' ); ?>
 		</div>
@@ -67,9 +75,14 @@ $timezone = wpso_apply_blog_timezone();
 <script>
 
 	$(function() {
-        $('#wpso-datalog').DataTable({
-            'pageLength': 100
-        });
-    });
-	
+		$('#wpso-datalog').DataTable({
+			'pageLength': 25,
+			'drawCallback': function( settings, json ) {
+				$('#wpso-table-loading').hide();
+				$('#wpso-table-container').fadeOut(800);
+				$('#wpso-table-container').fadeIn(800);
+			}
+		});
+	});
+
 </script>

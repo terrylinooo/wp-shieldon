@@ -1,21 +1,42 @@
-=== WP Shieldon ===
+=== WP Shieldon - WordPress Security Plugin ===
 Contributors: terrylin
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=donate%40terryl.in&item_name=WordPress+Plugin+-+WP+Shieldon&currency_code=USD&source=url
 Tags: anti-scriping, security
 Requires at least: 4.0
 Tested up to: 5.2.0
-Stable tag: 1.2.2
+Stable tag: 1.2.3
 Requires PHP: 7.0.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
 
 == Description ==
 
-WP Shieldon is based on [Shieldon](https://github.com/terrylinooo/shieldon) library, a PHP library that provides anti-scraping and online session control for your WordPress sites.
+WP Shieldon is a WordPress security plugin based on [Shieldon](https://github.com/terrylinooo/shieldon) library, a PHP library that provides anti-scraping and online session control for your WordPress sites.
 
 When the users or robots are trying to view many your web pages at a short period of time, they will temporarily get banned. To get unbanned by solving Catpcha.
 
-You can visit the plugin author - [Terry L.](https://terryl.in)'s blog, try reloading the pages several times then you will see how this plugin works.
+You can visit the plugin author - [Terry L.](https://terryl.in)'s blog and try reloading the pages several times then you will see how this plugin works. You can also try Terry's login page then you will find it protected.
+
+== Open Source Code
+
+Plugin:
+https://github.com/terrylinooo/wp-shieldon
+
+Core library:
+https://github.com/terrylinooo/shieldon
+
+== Features ==
+
+- Realtime statistics - See who are browsing your website and their status.
+- Beautiful and detailed statistics and dashboard.
+- Block bad bots by default - Backlink crawlers, copyright crawlers and WayBack machine bot.
+- IP manager - Block signle IP or IP range as you want. (IPv6 supported)
+- Online session control - You can limit just how many visitors browsing your website. Good for webmasters whose blog is hosted on a share hosting.
+- SEO friendly - You can allow popular search engines such as Google, Bing, Yahoo and others, put them in the whitelist.
+- XML RPC, Login, Signup page protection.
+- Multiple data drivers - Redis, SQLite, File system, MySQL.
+- Multiple CAPTCHA modules - Google reCAPTCHA v2, v3 and Image CAPTCHA.
+- Many others you can find by yourself :)
 
 Check out my other WordPress works here:
 
@@ -83,6 +104,12 @@ GNU General Public License for more details.
 
 * Add new tabs for more period data on dashboard.
 * Fix component loading issue.
+
+= 1.2.3
+
+* Update readme.
+* Fix i10n issues.
+* Imporve statistics pages.
 
 == Upgrade Notice ==
 
