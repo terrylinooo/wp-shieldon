@@ -62,15 +62,6 @@ class WPSO_Admin_Menu {
 			'shieldon-settings',
 			array( $admin_settings, 'setting_plugin_page' )
         );
-        
-		add_submenu_page(
-			'shieldon-settings',
-			__( 'IP Manager', 'wp-shieldon' ),
-			__( 'IP Manager', 'wp-shieldon' ),
-			'manage_options',
-			'shieldon-ip-manager',
-			array( $admin_ip_manager, 'setting_plugin_page' )
-		);
 
 		add_submenu_page(
 			'shieldon-settings',
@@ -106,6 +97,15 @@ class WPSO_Admin_Menu {
 			'manage_options',
 			'shieldon-session-table',
 			array( $this, 'session_table' )
+		);
+
+		add_submenu_page(
+			'shieldon-settings',
+			__( 'IP Manager', 'wp-shieldon' ),
+			__( 'IP Manager', 'wp-shieldon' ),
+			'manage_options',
+			'shieldon-ip-manager',
+			array( $admin_ip_manager, 'setting_plugin_page' )
 		);
 		
 		add_submenu_page(
@@ -222,15 +222,15 @@ class WPSO_Admin_Menu {
 	 */
 	public function rule_table() {
 
-		$reason_translation_mapping[100] = __( 'Search engine bot.', 'wp-shieldon' );
-		$reason_translation_mapping[101] = __( 'Google bot.', 'wp-shieldon' );
-		$reason_translation_mapping[102] = __( 'Bing bot.', 'wp-shieldon' );
-		$reason_translation_mapping[103] = __( 'Yahoo bot.', 'wp-shieldon' );
-		$reason_translation_mapping[1]   = __( 'Too many sessions.', 'wp-shieldon' );
-		$reason_translation_mapping[2]   = __( 'Too many accesses.', 'wp-shieldon' );
-		$reason_translation_mapping[3]   = __( 'Cannot create JS cookies.', 'wp-shieldon' );
-		$reason_translation_mapping[4]   = __( 'Empty referrer.', 'wp-shieldon' );
-		$reason_translation_mapping[11]  = __( 'Daily limit reached.', 'wp-shieldon' );
+		$reason_translation_mapping[100] = __( 'Search engine bot', 'wp-shieldon' );
+		$reason_translation_mapping[101] = __( 'Google bot', 'wp-shieldon' );
+		$reason_translation_mapping[102] = __( 'Bing bot', 'wp-shieldon' );
+		$reason_translation_mapping[103] = __( 'Yahoo bot', 'wp-shieldon' );
+		$reason_translation_mapping[1]   = __( 'Too many sessions', 'wp-shieldon' );
+		$reason_translation_mapping[2]   = __( 'Too many accesses', 'wp-shieldon' );
+		$reason_translation_mapping[3]   = __( 'Cannot create JS cookies', 'wp-shieldon' );
+		$reason_translation_mapping[4]   = __( 'Empty referrer', 'wp-shieldon' );
+		$reason_translation_mapping[11]  = __( 'Daily limit reached', 'wp-shieldon' );
 		$reason_translation_mapping[12]  = __( 'Hourly limit reached', 'wp-shieldon' );
 		$reason_translation_mapping[13]  = __( 'Minutely limit reached', 'wp-shieldon' );
 		$reason_translation_mapping[14]  = __( 'Secondly limit reached', 'wp-shieldon' );

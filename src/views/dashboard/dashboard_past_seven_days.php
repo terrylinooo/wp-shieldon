@@ -82,6 +82,9 @@ if ( ! defined('SHIELDON_PLUGIN_NAME') ) die;
 				<?php endforeach; ?>
 			</tbody>   
 		</table>
+	</div>
+	<div class="wpso-timezone">
+        <?php _e( 'Timezone', 'wp-shieldon' ); ?>: UTC 
     </div>
 </div>
 
@@ -218,24 +221,24 @@ if ( ! defined('SHIELDON_PLUGIN_NAME') ) die;
 				cssClass: 'apexcharts-yaxis-title'
 			}
 		}
-		}
+	}
 
-        var chart = new ApexCharts(
-            document.querySelector("#chart-3"),
-            spark3
-        );
+	var chart = new ApexCharts(
+		document.querySelector("#chart-3"),
+		spark3
+	);
 
-        chart.render();
+	chart.render();
 
-		$(function() {
-			$('#wpso-datalog').DataTable({
-				'pageLength': 25,
-				'drawCallback': function( settings, json ) {
-					$('#wpso-table-loading').hide();
-					$('#wpso-table-container').fadeOut(800);
-					$('#wpso-table-container').fadeIn(800);
-				}
-			});
+	$(function() {
+		$('#wpso-datalog').DataTable({
+			'pageLength': 25,
+			'initComplete': function( settings, json ) {
+				$('#wpso-table-loading').hide();
+				$('#wpso-table-container').fadeOut(800);
+				$('#wpso-table-container').fadeIn(800);
+			}
 		});
+	});
 	
 </script>

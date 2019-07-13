@@ -29,7 +29,12 @@ $timezone = wpso_apply_blog_timezone();
 	</div>
 	<div id="wpso-table-container" class="wpso-datatables" style="display: none;">
 		<div class="wpso-databable-heading">
-			<?php _e( 'Rule Table', 'wp-shieldon' ); ?>
+			<?php _e( 'Rule Table', 'wp-shieldon' ); ?><br />
+		</div>
+		<div class="wpso-datatable-description">
+			<?php _e( 'This is where the Shieldon temporarily allows or denys users in current cycle.', 'wp-shieldon' ); ?> 
+			<?php _e( 'All processes are automatic and instant, you can ignore that.', 'wp-shieldon' ); ?><br />
+			<?php _e( 'Rule table will be reset after new cycle begins.', 'wp-shieldon' ); ?>
 		</div>
 		<table id="wpso-datalog" class="cell-border compact stripe" cellspacing="0" width="100%">
 			<thead>
@@ -77,7 +82,7 @@ $timezone = wpso_apply_blog_timezone();
 	$(function() {
 		$('#wpso-datalog').DataTable({
 			'pageLength': 25,
-			'drawCallback': function( settings, json ) {
+			'initComplete': function( settings, json ) {
 				$('#wpso-table-loading').hide();
 				$('#wpso-table-container').fadeOut(800);
 				$('#wpso-table-container').fadeIn(800);

@@ -235,11 +235,18 @@ code.tips {
 }
 
 .wpso-databable-heading {
-	margin: 20px 0 40px;
+	margin: 20px 0 20px;
 	font-weight: bold;
 	border-left: 9px #00b38a solid;
 	padding-left: 15px;
 	font-size: 22px;
+}
+
+.wpso-datatable-description {
+	font-size: 13px;
+	font-weight: normal;
+	color: #91b4a8;
+	margin-bottom: 20px;
 }
 
 .merged-field {

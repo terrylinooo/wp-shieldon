@@ -16,7 +16,7 @@ if ( ! defined('SHIELDON_PLUGIN_NAME') ) die;
     <div class="shieldon-cover"><img src="<?php echo SHIELDON_PLUGIN_URL; ?>src/assets/images/shieldon_cover.png"></div>
     <div class="shieldon-author">
         <p class="created-by">
-            <?php printf( __( 'WP Shieldon is brought to you by <a href="%1s">Terry L.</a> from <a href="%2s">Taiwan</a>.', 'wp-shieldon' ), 'https://terryl.in', 'https://www.google.com/maps/@23.4722181,120.9910232,8z'); ?>
+            <?php printf( __( 'WP Shieldon is brought to you by <a href="%1$s">Terry L.</a> from <a href="%2$s">Taiwan</a>.', 'wp-shieldon' ), 'https://terryl.in', 'https://www.google.com/maps/@23.4722181,120.9910232,8z'); ?>
         </p>
         <div class="info-links">
             <ul>

@@ -55,6 +55,11 @@ $timezone = wpso_apply_blog_timezone();
 	<div id="wpso-table-container" class="wpso-datatables" style="display: none;">
         <div class="wpso-databable-heading">
             <?php _e( 'IP Log Table', 'wp-shieldon' ); ?>
+        </div>
+		<div class="wpso-datatable-description">
+            <?php _e( "This is where the Shieldon records the users' strange behavior.", 'wp-shieldon' ); ?> 
+            <?php _e( 'All processes are automatic and instant, you can ignore that.', 'wp-shieldon' ); ?><br />
+			<?php _e( 'IP log table will be all cleared after new cycle begins.', 'wp-shieldon' ); ?>
 		</div>
 		<table id="wpso-datalog" class="cell-border compact stripe" cellspacing="0" width="100%">
 			<thead>
@@ -78,8 +83,24 @@ $timezone = wpso_apply_blog_timezone();
 			<tbody>
                 <?php foreach( $ip_log_list as $ip_info ) : ?>
                     <?php $log_data = is_array( $ip_info['log_data'] ) ? $ip_info['log_data'] : json_decode( $ip_info['log_data'], true ); ?>
+                    <?php
+
+                        $text_warning = '';
+
+                        if ( $log_data['pageviews_m'] > 6 || $log_data['pageviews_h'] > 50 || $log_data['pageviews_d'] > 100 ) {
+                            $text_warning = '<span class="wpso-text-warning"><i class="fas fa-exclamation-triangle"></i></span>';
+                        }
+
+                        if ( $log_data['flag_js_cookie'] > 2 || $log_data['flag_multi_session'] > 2 || $log_data['flag_empty_referer'] > 2 ) {
+                            $text_warning = '<span class="wpso-text-warning"><i class="fas fa-exclamation-triangle"></i></span>';
+                        }
+
+                        if ( $log_data['flag_js_cookie'] > 3 || $log_data['flag_multi_session'] > 3 || $log_data['flag_empty_referer'] > 3 ) {
+                            $text_warning = '<span class="wpso-text-danger"><i class="fas fa-exclamation-triangle"></i></span>';
+                        }
+                    ?>
                     <tr>
-                        <td><?php echo $ip_info['log_ip']; ?></td>
+                        <td><?php echo $ip_info['log_ip']; ?><?php echo $text_warning; ?></td>
                         <td><?php echo $log_data['hostname']; ?></td>
                         <td><?php echo $log_data['pageviews_s']; ?></td>
                         <td><?php echo $log_data['pageviews_m']; ?></td>
@@ -105,7 +126,7 @@ $timezone = wpso_apply_blog_timezone();
 	$(function() {
 		$('#wpso-datalog').DataTable({
 			'pageLength': 25,
-			'drawCallback': function( settings, json ) {
+			'initComplete': function( settings, json ) {
 				$('#wpso-table-loading').hide();
 				$('#wpso-table-container').fadeOut(800);
 				$('#wpso-table-container').fadeIn(800);
