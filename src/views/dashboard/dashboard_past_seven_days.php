@@ -65,10 +65,17 @@ if ( ! defined('SHIELDON_PLUGIN_NAME') ) die;
 		<table id="wpso-datalog" class="cell-border compact stripe" cellspacing="0" width="100%">
 			<thead>
 				<tr>
-					<th><?php _e( 'IP', 'wp-shieldon' ); ?></th>
-					<th><?php _e( 'Session', 'wp-shieldon' ); ?></th>
-					<th><?php _e( 'Pageviews', 'wp-shieldon' ); ?></th>
-					<th><?php _e( 'CAPTCHAs', 'wp-shieldon' ); ?></th>
+					<th rowspan="2"><?php _e( 'IP', 'wp-shieldon' ); ?></th>
+					<th rowspan="2"><?php _e( 'Sessions', 'wp-shieldon' ); ?></th>
+					<th rowspan="2"><?php _e( 'Pageviews', 'wp-shieldon' ); ?></th>
+					<th colspan="3" class="merged-field"><?php _e( 'CAPTCHA', 'wp-shieldon' ); ?></th>
+					<th rowspan="2"><?php _e( 'In blacklist', 'wp-shieldon' ); ?></th>
+					<th rowspan="2"><?php _e( 'In queue', 'wp-shieldon' ); ?></th>
+				</tr>
+				<tr>
+					<th><?php _e( 'solved', 'wp-shieldon' ); ?></th>
+					<th><?php _e( 'failed', 'wp-shieldon' ); ?></th>
+					<th><?php _e( 'displays', 'wp-shieldon' ); ?></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -77,7 +84,11 @@ if ( ! defined('SHIELDON_PLUGIN_NAME') ) die;
 					<td><?php echo $ip; ?></td>
 					<td><?php echo count($ip_info['session_id']); ?></td>
 					<td><?php echo $ip_info['pageview_count']; ?></td>
+					<td><?php echo $ip_info['captcha_success_count']; ?></td>
+					<td><?php echo $ip_info['captcha_failure_count']; ?></td>
 					<td><?php echo $ip_info['captcha_count']; ?></td>
+					<td><?php echo $ip_info['blacklist_count']; ?></td>
+					<td><?php echo $ip_info['session_limit_count']; ?></td>
 				</tr>
 				<?php endforeach; ?>
 			</tbody>   

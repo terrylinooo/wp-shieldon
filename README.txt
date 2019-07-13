@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=donat
 Tags: anti-scriping, security
 Requires at least: 4.0
 Tested up to: 5.2.0
-Stable tag: 1.2.3
+Stable tag: 1.2.4
 Requires PHP: 7.0.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -20,10 +20,10 @@ You can visit the plugin author - [Terry L.](https://terryl.in)'s blog and try r
 == Open Source Code
 
 Plugin:
-https://github.com/terrylinooo/wp-shieldon
+[https://github.com/terrylinooo/wp-shieldon](https://github.com/terrylinooo/wp-shieldon)
 
 Core library:
-https://github.com/terrylinooo/shieldon
+[https://github.com/terrylinooo/shieldon](https://github.com/terrylinooo/shieldon)
 
 == Features ==
 
@@ -46,9 +46,13 @@ Check out my other WordPress works here:
 
 == Screenshots ==
 
-1. User has reached the limit and asked for CAPTCHA.
 1. Settings.
 2. IP manager.
+3. Statistics and dashboard.
+4. Rule table.
+5. IP log table.
+6. Session table.
+7. User has reached the limit and asked for CAPTCHA.
 
 == Copyright ==
 
