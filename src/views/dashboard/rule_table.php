@@ -18,7 +18,31 @@ $timezone = wpso_apply_blog_timezone();
 <script src="https://cdn.datatables.net/v/dt/dt-1.10.18/b-1.5.6/fh-3.1.4/kt-2.5.0/r-2.2.2/datatables.min.js"></script>
 
 <div class="wpso-dashboard">
-	
+	<div id="wpso-rule-table-form" class="wpso-datatables">
+		<div class="wpso-databable-heading">
+			<?php _e( 'Rule Table', 'wp-shieldon' ); ?><br />
+		</div>
+		<div class="wpso-datatable-description">
+			<?php _e( 'This is where the Shieldon temporarily allows or denys users in current cycle.', 'wp-shieldon' ); ?> 
+			<?php _e( 'All processes are automatic and instant, you can ignore that.', 'wp-shieldon' ); ?><br />
+			<?php _e( 'Rule table will be reset after new cycle begins.', 'wp-shieldon' ); ?>
+		</div>
+		<div class="wpso-rule-form">
+			<form method="post">
+				<?php wp_nonce_field( 'check_form_for_ip_rule', 'wpso-rule-form' ); ?>
+				<input name="ip" type="text" value="" class="regular-text" placeholder="Please fill in an IP address..">
+				<select name="action" class="regular">
+					<option value="none"><?php esc_html_e( '--- please select ---', 'wp-shieldon' ); ?></option>
+					<option value="temporarily_ban"><?php esc_html_e( 'Deny this IP temporarily', 'wp-shieldon' ); ?></option>
+					<option value="permanently_ban"><?php esc_html_e( 'Deny this IP permanently', 'wp-shieldon' ); ?></option>
+					<option value="allow"><?php esc_html_e( 'Allow this IP', 'wp-shieldon' ); ?></option>
+					<option value="remove"><?php esc_html_e( 'Remove this IP', 'wp-shieldon' ); ?></option>
+				</select>
+				<input type="submit" name="submit" id="btn-add-rule" class="button button-primary" value="<?php esc_attr_e( 'Submit', 'wp-shieldon' ); ?>">
+			</form>
+		</div>
+	</div>
+	<br />
 	<div id="wpso-table-loading" class="wpso-datatables">
 		<div class="lds-css ng-scope">
 			<div class="lds-ripple">
@@ -28,14 +52,6 @@ $timezone = wpso_apply_blog_timezone();
 		</div>
 	</div>
 	<div id="wpso-table-container" class="wpso-datatables" style="display: none;">
-		<div class="wpso-databable-heading">
-			<?php _e( 'Rule Table', 'wp-shieldon' ); ?><br />
-		</div>
-		<div class="wpso-datatable-description">
-			<?php _e( 'This is where the Shieldon temporarily allows or denys users in current cycle.', 'wp-shieldon' ); ?> 
-			<?php _e( 'All processes are automatic and instant, you can ignore that.', 'wp-shieldon' ); ?><br />
-			<?php _e( 'Rule table will be reset after new cycle begins.', 'wp-shieldon' ); ?>
-		</div>
 		<table id="wpso-datalog" class="cell-border compact stripe" cellspacing="0" width="100%">
 			<thead>
 				<tr>
@@ -44,6 +60,7 @@ $timezone = wpso_apply_blog_timezone();
 					<th><?php _e( 'Type', 'wp-shieldon' ); ?></th>
 					<th><?php _e( 'Reason', 'wp-shieldon' ); ?></th>
 					<th><?php _e( 'Time', 'wp-shieldon' ); ?></th>
+					<th><?php _e( 'Remove', 'wp-shieldon' ); ?></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -65,7 +82,8 @@ $timezone = wpso_apply_blog_timezone();
 							}
 						?>
 					</td>
-                    <td><?php echo date('Y-m-d H:i:s', $ip_info['time']); ?></td>
+					<td><?php echo date('Y-m-d H:i:s', $ip_info['time']); ?></td>
+					<td><button type="button" class="button btn-remove-ip" data-ip="<?php esc_attr_e( $ip_info['log_ip'] ); ?>"><i class="far fa-trash-alt"></i></button></td>
 				</tr>
 				<?php endforeach; ?>
 			</tbody>   
@@ -87,6 +105,14 @@ $timezone = wpso_apply_blog_timezone();
 				$('#wpso-table-container').fadeOut(800);
 				$('#wpso-table-container').fadeIn(800);
 			}
+		});
+
+		$('.wpso-dashboard').on('click', '.btn-remove-ip', function() {
+			var ip = $(this).attr('data-ip');
+
+			$('[name=ip]').val(ip);
+			$('[name=action]').val('remove');
+			$('#btn-add-rule').trigger('click');
 		});
 	});
 

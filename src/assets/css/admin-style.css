@@ -466,6 +466,16 @@ code.tips {
   animation-delay: -0.5s;
 }
 
+.wpso-rule-form input, .wpso-rule-form select {
+  height: 28px;
+  line-height: 28px;
+  vertical-align: middle;
+  font-size: 13px;
+}
+.wpso-rule-form .regular-text {
+  width: 250px;
+}
+
 .wpso-datatables {
   background-color: #ffffff;
   padding: 20px;

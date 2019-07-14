@@ -268,3 +268,16 @@
 		}
 	}
 }
+
+.wpso-rule-form {
+	input, select {
+		height: 28px;
+		line-height: 28px;
+		vertical-align: middle;
+		font-size: 13px;
+	}
+
+	.regular-text {
+		width: 250px;
+	}
+}

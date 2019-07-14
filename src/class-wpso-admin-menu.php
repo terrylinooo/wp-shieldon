@@ -222,10 +222,43 @@ class WPSO_Admin_Menu {
 	 */
 	public function rule_table() {
 
+		$wpso = wpso_instance();
+		$wpso->set_driver();
+
+		if ( isset( $_POST['ip'] ) && check_admin_referer( 'check_form_for_ip_rule', 'wpso-rule-form' ) ) {
+
+			$ip     = sanitize_text_field( $_POST['ip'] );
+			$action = sanitize_text_field( $_POST['action'] );
+
+			$action_code['temporarily_ban'] = $wpso->shieldon::ACTION_TEMPORARILY_DENY;
+			$action_code['permanently_ban'] = $wpso->shieldon::ACTION_DENY;
+			$action_code['allow']           = $wpso->shieldon::ACTION_ALLOW;
+
+			switch ( $action ) {
+				case 'temporarily_ban':
+				case 'permanently_ban':
+				case 'allow':
+					$logData['log_ip']     = $ip;
+					$logData['ip_resolve'] = gethostbyaddr( $ip );
+					$logData['time']       = time();
+					$logData['type']       = $action_code[ $action ];
+					$logData['reason']     = $wpso->shieldon::REASON_MANUAL_BAN;
+
+					$wpso->shieldon->driver->save($ip, $logData, 'rule');
+					break;
+
+				case 'remove':
+					$wpso->shieldon->driver->delete($ip, 'rule');
+					break;
+			}
+		}
+
+		$reason_translation_mapping[99]  = __( 'Added manually by administrator', 'wp-shieldon' );
 		$reason_translation_mapping[100] = __( 'Search engine bot', 'wp-shieldon' );
 		$reason_translation_mapping[101] = __( 'Google bot', 'wp-shieldon' );
 		$reason_translation_mapping[102] = __( 'Bing bot', 'wp-shieldon' );
 		$reason_translation_mapping[103] = __( 'Yahoo bot', 'wp-shieldon' );
+
 		$reason_translation_mapping[1]   = __( 'Too many sessions', 'wp-shieldon' );
 		$reason_translation_mapping[2]   = __( 'Too many accesses', 'wp-shieldon' );
 		$reason_translation_mapping[3]   = __( 'Cannot create JS cookies', 'wp-shieldon' );
@@ -238,9 +271,6 @@ class WPSO_Admin_Menu {
 		$type_translation_mapping[0] = __( 'DENY', 'wp-shieldon' );
 		$type_translation_mapping[1] = __( 'ALLOW', 'wp-shieldon' );
 		$type_translation_mapping[2] = __( 'CAPTCHA', 'wp-shieldon' );
-
-		$wpso = wpso_instance();
-		$wpso->set_driver();
 
 		$data['rule_list']       = $wpso->shieldon->driver->getAll( 'rule' );
 		$data['reason_mapping']  = $reason_translation_mapping;
