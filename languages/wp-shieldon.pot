@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP Shieldon\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-13 13:00+0000\n"
+"POT-Creation-Date: 2019-07-14 14:23+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -78,26 +78,26 @@ msgid "Settings"
 msgstr ""
 
 #: src/class-wpso-admin-menu.php:68 src/class-wpso-admin-menu.php:69
-msgid "IP Manager"
-msgstr ""
-
-#: src/class-wpso-admin-menu.php:77 src/class-wpso-admin-menu.php:78
 msgid "Dashboard"
 msgstr ""
 
-#: src/class-wpso-admin-menu.php:86 src/class-wpso-admin-menu.php:87
-#: src/views/dashboard/rule_table.php:32
+#: src/class-wpso-admin-menu.php:77 src/class-wpso-admin-menu.php:78
+#: src/views/dashboard/rule_table.php:23
 msgid "Rule Table"
 msgstr ""
 
-#: src/class-wpso-admin-menu.php:95 src/class-wpso-admin-menu.php:96
+#: src/class-wpso-admin-menu.php:86 src/class-wpso-admin-menu.php:87
 #: src/views/dashboard/ip_log_table.php:57
 msgid "IP Log Table"
 msgstr ""
 
-#: src/class-wpso-admin-menu.php:104 src/class-wpso-admin-menu.php:105
+#: src/class-wpso-admin-menu.php:95 src/class-wpso-admin-menu.php:96
 #: src/views/dashboard/session_table.php:64
 msgid "Session Table"
+msgstr ""
+
+#: src/class-wpso-admin-menu.php:104 src/class-wpso-admin-menu.php:105
+msgid "IP Manager"
 msgstr ""
 
 #: src/class-wpso-admin-menu.php:113 src/class-wpso-admin-menu.php:114
@@ -112,63 +112,72 @@ msgstr ""
 msgid "Report issues"
 msgstr ""
 
-#: src/class-wpso-admin-menu.php:225
-msgid "Search engine bot."
+#: src/class-wpso-admin-menu.php:256
+msgid "Added manually by administrator"
 msgstr ""
 
-#: src/class-wpso-admin-menu.php:226
-msgid "Google bot."
+#: src/class-wpso-admin-menu.php:257
+msgid "Search engine bot"
 msgstr ""
 
-#: src/class-wpso-admin-menu.php:227
-msgid "Bing bot."
+#: src/class-wpso-admin-menu.php:258
+msgid "Google bot"
 msgstr ""
 
-#: src/class-wpso-admin-menu.php:228
-msgid "Yahoo bot."
+#: src/class-wpso-admin-menu.php:259
+msgid "Bing bot"
 msgstr ""
 
-#: src/class-wpso-admin-menu.php:229
-msgid "Too many sessions."
+#: src/class-wpso-admin-menu.php:260
+msgid "Yahoo bot"
 msgstr ""
 
-#: src/class-wpso-admin-menu.php:230
-msgid "Too many accesses."
+#: src/class-wpso-admin-menu.php:262
+msgid "Too many sessions"
 msgstr ""
 
-#: src/class-wpso-admin-menu.php:231
-msgid "Cannot create JS cookies."
+#: src/class-wpso-admin-menu.php:263
+msgid "Too many accesses"
 msgstr ""
 
-#: src/class-wpso-admin-menu.php:232
-msgid "Empty referrer."
+#: src/class-wpso-admin-menu.php:264
+msgid "Cannot create JS cookies"
 msgstr ""
 
-#: src/class-wpso-admin-menu.php:233
-msgid "Daily limit reached."
+#: src/class-wpso-admin-menu.php:265
+msgid "Empty referrer"
 msgstr ""
 
-#: src/class-wpso-admin-menu.php:234
+#: src/class-wpso-admin-menu.php:266
+msgid "Daily limit reached"
+msgstr ""
+
+#: src/class-wpso-admin-menu.php:267
 msgid "Hourly limit reached"
 msgstr ""
 
-#: src/class-wpso-admin-menu.php:235
+#: src/class-wpso-admin-menu.php:268
 msgid "Minutely limit reached"
 msgstr ""
 
-#: src/class-wpso-admin-menu.php:236
+#: src/class-wpso-admin-menu.php:269
 msgid "Secondly limit reached"
 msgstr ""
 
-#: src/class-wpso-admin-menu.php:238
+#: src/class-wpso-admin-menu.php:271
 msgid "DENY"
 msgstr ""
 
-#: src/class-wpso-admin-menu.php:239
+#: src/class-wpso-admin-menu.php:272
 msgid "ALLOW"
 msgstr ""
 
-#: src/class-wpso-admin-menu.php:240 src/views/dashboard/dashboard_today.php:71
+#: src/class-wpso-admin-menu.php:273
+#: src/views/dashboard/dashboard_last_month.php:71
+#: src/views/dashboard/dashboard_past_seven_days.php:71
+#: src/views/dashboard/dashboard_this_month.php:71
+#: src/views/dashboard/dashboard_today.php:71
+#: src/views/dashboard/dashboard_yesterday.php:71
 msgid "CAPTCHA"
 msgstr ""
 
@@ -186,19 +195,15 @@ msgstr ""
 
 #: src/class-wpso-admin-settings.php:71
 #: src/views/dashboard/dashboard_last_month.php:28
-#: src/views/dashboard/dashboard_last_month.php:71
-#: src/views/dashboard/dashboard_last_month.php:133
+#: src/views/dashboard/dashboard_last_month.php:144
 #: src/views/dashboard/dashboard_past_seven_days.php:28
-#: src/views/dashboard/dashboard_past_seven_days.php:71
-#: src/views/dashboard/dashboard_past_seven_days.php:133
+#: src/views/dashboard/dashboard_past_seven_days.php:144
 #: src/views/dashboard/dashboard_this_month.php:28
-#: src/views/dashboard/dashboard_this_month.php:71
-#: src/views/dashboard/dashboard_this_month.php:133
+#: src/views/dashboard/dashboard_this_month.php:144
 #: src/views/dashboard/dashboard_today.php:28
 #: src/views/dashboard/dashboard_today.php:144
 #: src/views/dashboard/dashboard_yesterday.php:28
-#: src/views/dashboard/dashboard_yesterday.php:71
-#: src/views/dashboard/dashboard_yesterday.php:133
+#: src/views/dashboard/dashboard_yesterday.php:144
 msgid "CAPTCHAs"
 msgstr ""
 
@@ -395,10 +400,6 @@ msgid ""
 msgstr ""
 
 #: src/class-wpso-admin-settings.php:381
-#: src/views/dashboard/dashboard_last_month.php:69
-#: src/views/dashboard/dashboard_past_seven_days.php:69
-#: src/views/dashboard/dashboard_this_month.php:69
-#: src/views/dashboard/dashboard_yesterday.php:69
 #: src/views/dashboard/ip_log_table.php:79
 msgid "Session"
 msgstr ""
@@ -482,7 +483,7 @@ msgstr ""
 msgid "A simple image CAPTCHA."
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:574 src/views/dashboard/rule_table.php:44
+#: src/class-wpso-admin-settings.php:574 src/views/dashboard/rule_table.php:60
 msgid "Type"
 msgstr ""
 
@@ -554,19 +555,19 @@ msgstr ""
 
 #: src/views/dashboard/dashboard_last_month.php:38
 #: src/views/dashboard/dashboard_last_month.php:70
-#: src/views/dashboard/dashboard_last_month.php:133
+#: src/views/dashboard/dashboard_last_month.php:144
 #: src/views/dashboard/dashboard_past_seven_days.php:38
 #: src/views/dashboard/dashboard_past_seven_days.php:70
-#: src/views/dashboard/dashboard_past_seven_days.php:133
+#: src/views/dashboard/dashboard_past_seven_days.php:144
 #: src/views/dashboard/dashboard_this_month.php:38
 #: src/views/dashboard/dashboard_this_month.php:70
-#: src/views/dashboard/dashboard_this_month.php:133
+#: src/views/dashboard/dashboard_this_month.php:144
 #: src/views/dashboard/dashboard_today.php:38
 #: src/views/dashboard/dashboard_today.php:70
 #: src/views/dashboard/dashboard_today.php:144
 #: src/views/dashboard/dashboard_yesterday.php:38
 #: src/views/dashboard/dashboard_yesterday.php:70
-#: src/views/dashboard/dashboard_yesterday.php:133
+#: src/views/dashboard/dashboard_yesterday.php:144
 #: src/views/dashboard/ip_log_table.php:69
 msgid "Pageviews"
 msgstr ""
@@ -621,35 +622,83 @@ msgstr ""
 #: src/views/dashboard/dashboard_today.php:68
 #: src/views/dashboard/dashboard_yesterday.php:68
 #: src/views/dashboard/ip_log_table.php:67
-#: src/views/dashboard/rule_table.php:42
+#: src/views/dashboard/rule_table.php:58
 #: src/views/dashboard/session_table.php:76
 msgid "IP"
 msgstr ""
 
-#: src/views/dashboard/dashboard_last_month.php:87
-#: src/views/dashboard/dashboard_past_seven_days.php:87
-#: src/views/dashboard/dashboard_this_month.php:87
+#: src/views/dashboard/dashboard_last_month.php:69
+#: src/views/dashboard/dashboard_past_seven_days.php:69
+#: src/views/dashboard/dashboard_this_month.php:69
+#: src/views/dashboard/dashboard_today.php:69
+#: src/views/dashboard/dashboard_yesterday.php:69
+msgid "Sessions"
+msgstr ""
+
+#: src/views/dashboard/dashboard_last_month.php:72
+#: src/views/dashboard/dashboard_past_seven_days.php:72
+#: src/views/dashboard/dashboard_this_month.php:72
+#: src/views/dashboard/dashboard_today.php:72
+#: src/views/dashboard/dashboard_yesterday.php:72
+msgid "In blacklist"
+msgstr ""
+
+#: src/views/dashboard/dashboard_last_month.php:73
+#: src/views/dashboard/dashboard_past_seven_days.php:73
+#: src/views/dashboard/dashboard_this_month.php:73
+#: src/views/dashboard/dashboard_today.php:73
+#: src/views/dashboard/dashboard_yesterday.php:73
+msgid "In queue"
+msgstr ""
+
+#: src/views/dashboard/dashboard_last_month.php:76
+#: src/views/dashboard/dashboard_past_seven_days.php:76
+#: src/views/dashboard/dashboard_this_month.php:76
+#: src/views/dashboard/dashboard_today.php:76
+#: src/views/dashboard/dashboard_yesterday.php:76
+msgid "solved"
+msgstr ""
+
+#: src/views/dashboard/dashboard_last_month.php:77
+#: src/views/dashboard/dashboard_past_seven_days.php:77
+#: src/views/dashboard/dashboard_this_month.php:77
+#: src/views/dashboard/dashboard_today.php:77
+#: src/views/dashboard/dashboard_yesterday.php:77
+msgid "failed"
+msgstr ""
+
+#: src/views/dashboard/dashboard_last_month.php:78
+#: src/views/dashboard/dashboard_past_seven_days.php:78
+#: src/views/dashboard/dashboard_this_month.php:78
+#: src/views/dashboard/dashboard_today.php:78
+#: src/views/dashboard/dashboard_yesterday.php:78
+msgid "displays"
+msgstr ""
+
+#: src/views/dashboard/dashboard_last_month.php:98
+#: src/views/dashboard/dashboard_past_seven_days.php:98
+#: src/views/dashboard/dashboard_this_month.php:98
 #: src/views/dashboard/dashboard_today.php:98
-#: src/views/dashboard/dashboard_yesterday.php:87
+#: src/views/dashboard/dashboard_yesterday.php:98
 #: src/views/dashboard/ip_log_table.php:120
-#: src/views/dashboard/rule_table.php:76
+#: src/views/dashboard/rule_table.php:94
 #: src/views/dashboard/session_table.php:119
 msgid "Timezone"
 msgstr ""
 
-#: src/views/dashboard/dashboard_last_month.php:102
-#: src/views/dashboard/dashboard_past_seven_days.php:102
-#: src/views/dashboard/dashboard_this_month.php:102
+#: src/views/dashboard/dashboard_last_month.php:113
+#: src/views/dashboard/dashboard_past_seven_days.php:113
+#: src/views/dashboard/dashboard_this_month.php:113
 #: src/views/dashboard/dashboard_today.php:113
-#: src/views/dashboard/dashboard_yesterday.php:102
+#: src/views/dashboard/dashboard_yesterday.php:113
 msgid "success"
 msgstr ""
 
-#: src/views/dashboard/dashboard_last_month.php:102
-#: src/views/dashboard/dashboard_past_seven_days.php:102
-#: src/views/dashboard/dashboard_this_month.php:102
+#: src/views/dashboard/dashboard_last_month.php:113
+#: src/views/dashboard/dashboard_past_seven_days.php:113
+#: src/views/dashboard/dashboard_this_month.php:113
 #: src/views/dashboard/dashboard_today.php:113
-#: src/views/dashboard/dashboard_yesterday.php:102
+#: src/views/dashboard/dashboard_yesterday.php:113
 msgid "failure"
 msgstr ""
 
@@ -677,30 +726,6 @@ msgstr ""
 msgid "Total pageviews today."
 msgstr ""
 
-#: src/views/dashboard/dashboard_today.php:69
-msgid "Sessions"
-msgstr ""
-
-#: src/views/dashboard/dashboard_today.php:72
-msgid "In blacklist"
-msgstr ""
-
-#: src/views/dashboard/dashboard_today.php:73
-msgid "In queue"
-msgstr ""
-
-#: src/views/dashboard/dashboard_today.php:76
-msgid "solved"
-msgstr ""
-
-#: src/views/dashboard/dashboard_today.php:77
-msgid "failed"
-msgstr ""
-
-#: src/views/dashboard/dashboard_today.php:78
-msgid "displays"
-msgstr ""
-
 #: src/views/dashboard/dashboard_today.php:218
 msgid "Past 7 hours"
 msgstr ""
@@ -718,7 +743,7 @@ msgid "This is where the Shieldon records the users' strange behavior."
 msgstr ""
 
 #: src/views/dashboard/ip_log_table.php:61
-#: src/views/dashboard/rule_table.php:36
+#: src/views/dashboard/rule_table.php:27
 #: src/views/dashboard/session_table.php:67
 msgid "All processes are automatic and instant, you can ignore that."
 msgstr ""
@@ -728,7 +753,7 @@ msgid "IP log table will be all cleared after new cycle begins."
 msgstr ""
 
 #: src/views/dashboard/ip_log_table.php:68
-#: src/views/dashboard/rule_table.php:43
+#: src/views/dashboard/rule_table.php:59
 msgid "Resolved hostname"
 msgstr ""
 
@@ -761,29 +786,57 @@ msgid "Referrer"
 msgstr ""
 
 #: src/views/dashboard/ip_log_table.php:119
-#: src/views/dashboard/rule_table.php:75
+#: src/views/dashboard/rule_table.php:93
 #: src/views/dashboard/session_table.php:118
 #, php-format
 msgid "Current data circle started from %s."
 msgstr ""
 
-#: src/views/dashboard/rule_table.php:35
+#: src/views/dashboard/rule_table.php:26
 msgid ""
 "This is where the Shieldon temporarily allows or denys users in current "
 "cycle."
 msgstr ""
 
-#: src/views/dashboard/rule_table.php:37
+#: src/views/dashboard/rule_table.php:28
 msgid "Rule table will be reset after new cycle begins."
 msgstr ""
 
-#: src/views/dashboard/rule_table.php:45
+#: src/views/dashboard/rule_table.php:35
+msgid "--- please select ---"
+msgstr ""
+
+#: src/views/dashboard/rule_table.php:36
+msgid "Deny this IP temporarily"
+msgstr ""
+
+#: src/views/dashboard/rule_table.php:37
+msgid "Deny this IP permanently"
+msgstr ""
+
+#: src/views/dashboard/rule_table.php:38
+msgid "Allow this IP"
+msgstr ""
+
+#: src/views/dashboard/rule_table.php:39
+msgid "Remove this IP"
+msgstr ""
+
+#: src/views/dashboard/rule_table.php:41
+msgid "Submit"
+msgstr ""
+
+#: src/views/dashboard/rule_table.php:61
 msgid "Reason"
 msgstr ""
 
-#: src/views/dashboard/rule_table.php:46
+#: src/views/dashboard/rule_table.php:62
 #: src/views/dashboard/session_table.php:77
 msgid "Time"
+msgstr ""
+
+#: src/views/dashboard/rule_table.php:63
+msgid "Remove"
 msgstr ""
 
 #: src/views/dashboard/session_table.php:27
