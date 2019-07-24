@@ -19,7 +19,11 @@ Of course, this plugin protects your webiste from [Brute Force Attacks](https://
 
 You can visit the plugin author - [Terry L.](https://terryl.in)'s blog and try reloading the pages several times then you will see how this plugin works. You can also try Terry's login page then you will find it protected.
 
-== Open Source Code
+== Documents ==
+
+- [Traditional Chinese](https://terryl.in/zh/repository/wp-shieldon/)
+
+== Open Source Code ==
 
 Plugin:
 [https://github.com/terrylinooo/wp-shieldon](https://github.com/terrylinooo/wp-shieldon)
