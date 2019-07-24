@@ -76,8 +76,19 @@
 	border: 0px solid #ccc;
 	border-top: 0;
     margin: 0;
-    padding: 10px 20px 20px 20px;
 	line-height: inherit;
+}
+
+.wp-shieldon_page_shieldon-about, 
+.wp-shieldon_page_shieldon-settings,
+.wp-shieldon_page_shieldon-dashboard,
+.wp-shieldon_page_shieldon-rule-table,
+.wp-shieldon_page_shieldon-ip-log-table,
+.wp-shieldon_page_shieldon-session-table,
+.wp-shieldon_page_shieldon-ip-manager {
+	.metabox-holder {
+		padding: 10px 20px 20px 20px;
+	}
 }
 
 .wrap div.updated {

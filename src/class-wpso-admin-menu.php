@@ -36,7 +36,11 @@ class WPSO_Admin_Menu {
 	 * Register JS files.
 	 */
 	public function admin_enqueue_scripts( $hook_suffix ) {
-        wp_enqueue_script( 'fontawesome-5-js', SHIELDON_PLUGIN_URL . 'src/assets/js/fontawesome-all.min.js', array( 'jquery' ), SHIELDON_PLUGIN_VERSION, true );
+
+		if ( false === strpos( $hook_suffix, 'shieldon' ) ) {
+			return;
+		}
+		wp_enqueue_script( 'fontawesome-5-js', SHIELDON_PLUGIN_URL . 'src/assets/js/fontawesome-all.min.js', array( 'jquery' ), SHIELDON_PLUGIN_VERSION, true );
 	}
 
 	/**
