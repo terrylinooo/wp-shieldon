@@ -7,14 +7,14 @@
  *
  * @package Shieldon
  * @since 1.0.0
- * @version 1.3.0
+ * @version 1.3.1
  */
 
 /**
  * Plugin Name: WP Shieldon
  * Plugin URI:  https://github.com/terrylinooo/wp-shieldon
  * Description: An anti-scraping plugin for WordPress.
- * Version:     1.3.0
+ * Version:     1.3.1
  * Author:      Terry Lin
  * Author URI:  https://terryl.in/
  * License:     GPL 3.0
@@ -64,7 +64,7 @@ define( 'SHIELDON_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'SHIELDON_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'SHIELDON_PLUGIN_PATH', __FILE__ );
 define( 'SHIELDON_PLUGIN_LANGUAGE_PACK', dirname( plugin_basename( __FILE__ ) ) . '/languages' );
-define( 'SHIELDON_PLUGIN_VERSION', '1.3.0' );
+define( 'SHIELDON_PLUGIN_VERSION', '1.3.1' );
 define( 'SHIELDON_CORE_VERSION', '2.0.3' );
 define( 'SHIELDON_PLUGIN_TEXT_DOMAIN', 'wp-shieldon' );
 

@@ -492,10 +492,14 @@ class WPSO_Shieldon_Guardian {
 			}
 
 			$passcode    = wpso_get_option( 'deny_all_passcode', 'shieldon_ip_login' );
-			$is_passcode = isset( $_GET[ $passcode ] ) ? true : ( isset( $_SESSION[ $passcode ] ) ? true : false );
+			$is_passcode = isset( $_GET[ $passcode ] ) ? true : false;
 
 			if ($is_passcode) {
 				$_SESSION[ $passcode ] = true;
+			} else {
+				if ( isset( $_SESSION[ $passcode ] ) ) {
+					$is_passcode = true;
+				}
 			}
 
 			if ( ! $is_passcode && 'yes' === $login_deny_all ) {
