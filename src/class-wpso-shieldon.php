@@ -245,7 +245,7 @@ class WPSO_Shieldon_Guardian {
 
 					// Use MySQL data driver.
 					$this->shieldon->setDriver(
-						new \Shieldon\Driver\SqliteDriver( $pdo_instance )
+						new \Shieldon\Driver\MysqlDriver( $pdo_instance )
 					);
 
 				} catch( \PDOException $e ) {
