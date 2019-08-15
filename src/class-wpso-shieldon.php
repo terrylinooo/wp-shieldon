@@ -182,7 +182,7 @@ class WPSO_Shieldon_Guardian {
 						new \Shieldon\Driver\RedisDriver( $redis_instance )
 					);
 
-				} catch( \PDOException $e ) {
+				} catch( \RedisException $e ) {
 					echo $e->getMessage();
 					return false;
 				}
