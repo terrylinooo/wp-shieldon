@@ -122,10 +122,10 @@ class WPSO_Shieldon_Guardian {
 
 		if ( 'yes' === wpso_get_option( 'enable_filter_frequency', 'shieldon_daemon' ) ) {
 
-			$time_unit_quota_s = wpso_get_option( '$time_unit_quota_s', 'shieldon_daemon' );
-			$time_unit_quota_m = wpso_get_option( '$time_unit_quota_m', 'shieldon_daemon' );
-			$time_unit_quota_h = wpso_get_option( '$time_unit_quota_h', 'shieldon_daemon' );
-			$time_unit_quota_d = wpso_get_option( '$time_unit_quota_d', 'shieldon_daemon' );
+			$time_unit_quota_s = wpso_get_option( 'time_unit_quota_s', 'shieldon_daemon' );
+			$time_unit_quota_m = wpso_get_option( 'time_unit_quota_m', 'shieldon_daemon' );
+			$time_unit_quota_h = wpso_get_option( 'time_unit_quota_h', 'shieldon_daemon' );
+			$time_unit_quota_d = wpso_get_option( 'time_unit_quota_d', 'shieldon_daemon' );
 	
 			$time_unit_quota['s'] = ( is_numeric( $time_unit_quota_s ) && ! empty( $time_unit_quota_s ) ) ? (int) $time_unit_quota_s : 2;
 			$time_unit_quota['m'] = ( is_numeric( $time_unit_quota_m ) && ! empty( $time_unit_quota_m ) ) ? (int) $time_unit_quota_m : 10;
