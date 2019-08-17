@@ -509,7 +509,7 @@ class WPSO_Admin_Settings {
 				array(
 					'name'    => 'google_recaptcha_version',
 					'label'   => __( 'Version', 'wp-shieldon' ),
-					'desc'    => __( "Please use corresponding key for that verion you choose, otherwise it won't work.", 'wp-shieldon' ),
+					'desc'    => __( "Please use corresponding key for that version you choose, otherwise it won't work.", 'wp-shieldon' ),
 					'type'    => 'radio',
 					'default' => 'v2',
 					'parent'  => 'enable_captcha_google',

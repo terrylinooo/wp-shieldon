@@ -323,7 +323,7 @@ class WPSO_Shieldon_Guardian {
 			$component_rdns = new \Shieldon\Component\Rdns();
 
 			// Visitors with empty Rdns record will be blocked.
-            // IP resolved hostname (Rdns) and IP address must match.
+            // IP resolved hostname (Rdns) and IP address must conform with each other.
 			if ( 'yes' === wpso_get_option( 'rdns_strict_mode', 'shieldon_component' ) ) {
 				$component_rdns->setStrict( true );
 			}
@@ -343,7 +343,7 @@ class WPSO_Shieldon_Guardian {
 
 			$google_captcha_config['key']    = wpso_get_option( 'google_recaptcha_key', 'shieldon_captcha' );
 			$google_captcha_config['secret'] = wpso_get_option( 'google_recaptcha_secret', 'shieldon_captcha' );
-			$google_captcha_config['verion'] = wpso_get_option( 'google_recaptcha_version', 'shieldon_captcha' );
+			$google_captcha_config['version'] = wpso_get_option( 'google_recaptcha_version', 'shieldon_captcha' );
 			$google_captcha_config['lang']   = wpso_get_option( 'google_recaptcha_version', 'shieldon_captcha' );
 
 			$captcha_google = new \Shieldon\Captcha\Recaptcha( $google_captcha_config );

@@ -445,7 +445,7 @@ msgstr ""
 
 #: src/class-wpso-admin-settings.php:512
 msgid ""
-"Please use corresponding key for that verion you choose, otherwise it won't "
+"Please use corresponding key for that version you choose, otherwise it won't "
 "work."
 msgstr ""
 
