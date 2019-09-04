@@ -446,19 +446,23 @@ class WPSO_Shieldon_Guardian {
 	private function is_excluded_list() {
 
 		$list = wpso_get_option( 'excluded_urls', 'shieldon_exclusion' );
+		$urls = array();
 
 		if ( ! empty( $list ) ) {
 			$urls = explode(PHP_EOL, $list);
+		}
 
-			foreach ($urls as $url) {
-				if ( false !== strpos( $this->current_url, $url ) ) {
-					return true;
-				}
+		array_push( $urls, 'wp-login.php?action=postpass' );
+
+		foreach ($urls as $url) {
+			if ( false !== strpos( $this->current_url, $url ) ) {
+				return true;
 			}
 		}
 
 		// Login page.
 		if ( 'yes' === wpso_get_option( 'excluded_page_login', 'shieldon_exclusion' ) ) {
+
 			if ( false !== strpos( $this->current_url, 'wp-login.php' ) ) {
 				return true;
 			}
