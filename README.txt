@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=donat
 Tags: anti-scriping, security, firewall, brute-force
 Requires at least: 4.0
 Tested up to: 5.2.0
-Stable tag: 1.3.3
+Stable tag: 1.3.4
 Requires PHP: 7.0.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -137,6 +137,11 @@ GNU General Public License for more details.
 
 * Fix passcode login issue.
 * Improve performance.
+
+= 1.3.4
+
+* Exclude password-protected posts' form.
+* Update uninstall.php
 
 == Upgrade Notice ==
 

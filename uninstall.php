@@ -26,6 +26,7 @@ $options_names = array(
 	'wpso_channel_id',
 	'wpso_driver_hash',
 	'wpso_lang_code',
+	'wpso_driver_reset',
 );
 
 foreach ( $options_names as $option_name ) {
