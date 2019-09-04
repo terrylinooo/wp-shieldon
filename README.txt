@@ -136,6 +136,7 @@ GNU General Public License for more details.
 = 1.3.3
 
 * Fix passcode login issue.
+* Improve performance.
 
 == Upgrade Notice ==
 
