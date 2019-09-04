@@ -17,8 +17,8 @@ class WPSO_Admin_Menu {
 	 * Constructer.
 	 */
 	public function __construct() {
-        add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
-        add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_styles' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_styles' ) );
 	}
 
 	/**
@@ -47,7 +47,7 @@ class WPSO_Admin_Menu {
 	 * Register the plugin page.
 	 */
 	public function setting_admin_menu() {
-        global $admin_settings, $admin_ip_manager;
+		global $admin_settings, $admin_ip_manager;
 
 		add_menu_page(
 			__( 'WP Shieldon', 'wp-shieldon' ),
@@ -65,7 +65,7 @@ class WPSO_Admin_Menu {
 			'manage_options',
 			'shieldon-settings',
 			array( $admin_settings, 'setting_plugin_page' )
-        );
+		);
 
 		add_submenu_page(
 			'shieldon-settings',

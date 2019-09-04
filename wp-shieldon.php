@@ -7,14 +7,14 @@
  *
  * @package Shieldon
  * @since 1.0.0
- * @version 1.3.2
+ * @version 1.3.3
  */
 
 /**
  * Plugin Name: WP Shieldon
  * Plugin URI:  https://github.com/terrylinooo/wp-shieldon
  * Description: An anti-scraping plugin for WordPress.
- * Version:     1.3.2
+ * Version:     1.3.3
  * Author:      Terry Lin
  * Author URI:  https://terryl.in/
  * License:     GPL 3.0
@@ -64,8 +64,8 @@ define( 'SHIELDON_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'SHIELDON_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'SHIELDON_PLUGIN_PATH', __FILE__ );
 define( 'SHIELDON_PLUGIN_LANGUAGE_PACK', dirname( plugin_basename( __FILE__ ) ) . '/languages' );
-define( 'SHIELDON_PLUGIN_VERSION', '1.3.2' );
-define( 'SHIELDON_CORE_VERSION', '2.0.3' );
+define( 'SHIELDON_PLUGIN_VERSION', '1.3.3' );
+define( 'SHIELDON_CORE_VERSION', '2.1.0' );
 define( 'SHIELDON_PLUGIN_TEXT_DOMAIN', 'wp-shieldon' );
 
 // Load helper functions
@@ -98,7 +98,7 @@ if ( version_compare( phpversion(), '7.0.0', '>=' ) ) {
 			if ( ! file_exists( wpso_get_upload_dir() ) ) {
 
 				wp_mkdir_p( wpso_get_upload_dir() );
-				update_option( 'wpso_driver_hash', wpso_get_driver_hash(), '', 'yes' );
+				update_option( 'wpso_driver_hash', wpso_get_driver_hash() );
 
 				$files = array(
 					array(
@@ -152,7 +152,7 @@ if ( version_compare( phpversion(), '7.0.0', '>=' ) ) {
 				rmdir( $dir );
 			}
 		}
-		update_option( 'wpso_driver_hash', '', '', 'yes' );
+		update_option( 'wpso_driver_hash', '');
 	}
 
 	register_activation_hook( __FILE__, 'wpso_activate_plugin' );
@@ -172,6 +172,11 @@ if ( version_compare( phpversion(), '7.0.0', '>=' ) ) {
 		add_action( 'admin_menu', array( $admin_menu, 'setting_admin_menu' ) );
 		add_filter( 'plugin_action_links_' . SHIELDON_PLUGIN_NAME, array( $admin_menu, 'plugin_action_links' ), 10, 5 );
 		add_filter( 'plugin_row_meta', array( $admin_menu, 'plugin_extend_links' ), 10, 2 );
+
+		// If we detect the setting changes.
+		if ( ! empty( $_POST['shieldon_daemon[data_driver_type]'] ) ) {
+			update_option( 'wpso_driver_reset', 'yes' );
+		}
 
 		wpso_instance();
 

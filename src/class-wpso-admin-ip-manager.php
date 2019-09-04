@@ -91,11 +91,11 @@ class WPSO_Admin_IP_Manager {
 				),
 
 				array(
-                    'name'        => 'ip_global_whitelist',
-                    'label'       => __( 'IP List', 'wp-shieldon' ),
-                    'desc'        => wpso_load_view( 'setting/ip-manager' ),
-                    'placeholder' => '',
-                    'type'        => 'textarea'
+					'name'        => 'ip_global_whitelist',
+					'label'       => __( 'IP List', 'wp-shieldon' ),
+					'desc'        => wpso_load_view( 'setting/ip-manager' ),
+					'placeholder' => '',
+					'type'        => 'textarea'
 				),
 
 				array(
@@ -114,11 +114,11 @@ class WPSO_Admin_IP_Manager {
 				),
 
 				array(
-                    'name'        => 'ip_global_blacklist',
-                    'label'       => __( 'IP List', 'wp-shieldon' ),
-                    'desc'        => wpso_load_view( 'setting/ip-manager' ),
-                    'placeholder' => '',
-                    'type'        => 'textarea'
+					'name'        => 'ip_global_blacklist',
+					'label'       => __( 'IP List', 'wp-shieldon' ),
+					'desc'        => wpso_load_view( 'setting/ip-manager' ),
+					'placeholder' => '',
+					'type'        => 'textarea'
 				),
 			),
 
@@ -130,11 +130,11 @@ class WPSO_Admin_IP_Manager {
 				),
 
 				array(
-                    'name'        => 'ip_login_whitelist',
-                    'label'       => __( 'IP List', 'wp-shieldon' ),
-                    'desc'        => wpso_load_view( 'setting/ip-manager' ),
-                    'placeholder' => '',
-                    'type'        => 'textarea'
+					'name'        => 'ip_login_whitelist',
+					'label'       => __( 'IP List', 'wp-shieldon' ),
+					'desc'        => wpso_load_view( 'setting/ip-manager' ),
+					'placeholder' => '',
+					'type'        => 'textarea'
 				),
 
 				array(
@@ -150,8 +150,8 @@ class WPSO_Admin_IP_Manager {
 					'name'              => 'deny_all_passcode',
 					'label'             => __( 'Passcode', 'wp-shieldon' ),
 					'desc'              => wpso_load_view( 'setting/ip-manager-login-pass' ),
-                    'placeholder'       => '',
-                    'type'              => 'text',
+					'placeholder'       => '',
+					'type'              => 'text',
 					'default'           => '',
 					'sanitize_callback' => 'sanitize_text_field',
 					'parent'            => 'enable_captcha_google',
@@ -164,11 +164,11 @@ class WPSO_Admin_IP_Manager {
 				),
 
 				array(
-                    'name'        => 'ip_login_blacklist',
-                    'label'       => __( 'IP List', 'wp-shieldon' ),
-                    'desc'        => wpso_load_view( 'setting/ip-manager' ),
-                    'placeholder' => '',
-                    'type'        => 'textarea'
+					'name'        => 'ip_login_blacklist',
+					'label'       => __( 'IP List', 'wp-shieldon' ),
+					'desc'        => wpso_load_view( 'setting/ip-manager' ),
+					'placeholder' => '',
+					'type'        => 'textarea'
 				),
 			),
 
@@ -181,11 +181,11 @@ class WPSO_Admin_IP_Manager {
 				),
 
 				array(
-                    'name'        => 'ip_signup_whitelist',
-                    'label'       => __( 'IP List', 'wp-shieldon' ),
-                    'desc'        => wpso_load_view( 'setting/ip-manager' ),
-                    'placeholder' => '',
-                    'type'        => 'textarea'
+					'name'        => 'ip_signup_whitelist',
+					'label'       => __( 'IP List', 'wp-shieldon' ),
+					'desc'        => wpso_load_view( 'setting/ip-manager' ),
+					'placeholder' => '',
+					'type'        => 'textarea'
 				),
 
 				array(
@@ -204,11 +204,11 @@ class WPSO_Admin_IP_Manager {
 				),
 
 				array(
-                    'name'        => 'ip_signup_blacklist',
-                    'label'       => __( 'IP List', 'wp-shieldon' ),
-                    'desc'        => wpso_load_view( 'setting/ip-manager' ),
-                    'placeholder' => '',
-                    'type'        => 'textarea'
+					'name'        => 'ip_signup_blacklist',
+					'label'       => __( 'IP List', 'wp-shieldon' ),
+					'desc'        => wpso_load_view( 'setting/ip-manager' ),
+					'placeholder' => '',
+					'type'        => 'textarea'
 				),
 			),
 
@@ -220,11 +220,11 @@ class WPSO_Admin_IP_Manager {
 				),
 
 				array(
-                    'name'        => 'ip_xmlrpc_whitelist',
-                    'label'       => __( 'IP List', 'wp-shieldon' ),
-                    'desc'        => wpso_load_view( 'setting/ip-manager' ),
-                    'placeholder' => '',
-                    'type'        => 'textarea'
+					'name'        => 'ip_xmlrpc_whitelist',
+					'label'       => __( 'IP List', 'wp-shieldon' ),
+					'desc'        => wpso_load_view( 'setting/ip-manager' ),
+					'placeholder' => '',
+					'type'        => 'textarea'
 				),
 
 				array(
@@ -243,11 +243,11 @@ class WPSO_Admin_IP_Manager {
 				),
 
 				array(
-                    'name'        => 'ip_xmlrpc_blacklist',
-                    'label'       => __( 'IP List', 'wp-shieldon' ),
-                    'desc'        => wpso_load_view( 'setting/ip-manager' ),
-                    'placeholder' => '',
-                    'type'        => 'textarea'
+					'name'        => 'ip_xmlrpc_blacklist',
+					'label'       => __( 'IP List', 'wp-shieldon' ),
+					'desc'        => wpso_load_view( 'setting/ip-manager' ),
+					'placeholder' => '',
+					'type'        => 'textarea'
 				),
 			),
 		);

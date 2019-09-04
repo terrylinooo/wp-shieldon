@@ -89,10 +89,22 @@ class WPSO_Shieldon_Guardian {
 			return null;
 		}
 
+		$is_driver_reset = get_option( 'wpso_driver_reset' );
+
+		if ( 'no' === $is_driver_reset ) {
+			$this->shieldon->createDatabase( false );
+		}
+
 		// Start protecting your website!
 		$result = $this->shieldon->run();
 
 		if ($result !== $this->shieldon::RESPONSE_ALLOW) {
+
+			// The first time initializing has created the database automatically, so we don't need to check it every time.
+			if ( 'yes' === $is_driver_reset ) {
+				update_option( 'wpso_driver_reset', 'no' );
+			}
+
 			if ($this->shieldon->captchaResponse()) {
 
 				// Unban current session.
@@ -323,7 +335,7 @@ class WPSO_Shieldon_Guardian {
 			$component_rdns = new \Shieldon\Component\Rdns();
 
 			// Visitors with empty Rdns record will be blocked.
-            // IP resolved hostname (Rdns) and IP address must conform with each other.
+			// IP resolved hostname (Rdns) and IP address must conform with each other.
 			if ( 'yes' === wpso_get_option( 'rdns_strict_mode', 'shieldon_component' ) ) {
 				$component_rdns->setStrict( true );
 			}

@@ -85,7 +85,6 @@ class WPSO_Admin_Settings {
 	 */
 	public function get_fields() {
 
-	
 		return array(
 
 			'shieldon_daemon' => array(
@@ -178,24 +177,24 @@ class WPSO_Admin_Settings {
 				),
 
 				array(
-                    'name'              => 'session_limit_count',
+					'name'              => 'session_limit_count',
 					'label'             => __( 'Online Limit', 'wp-shieldon' ),
 					'desc'              => __( 'The maximum online user limit.', 'wp-shieldon' ),
-                    'placeholder'       => '',
-                    'type'              => 'text',
+					'placeholder'       => '',
+					'type'              => 'text',
 					'default'           => '100',
-                    'sanitize_callback' => 'sanitize_text_field',
+					'sanitize_callback' => 'sanitize_text_field',
 					'parent'            => 'enable_online_session_limit',
 				),
 
 				array(
-                    'name'              => 'session_limit_period',
+					'name'              => 'session_limit_period',
 					'label'             => __( 'Keep Alive Period', 'wp-shieldon' ),
 					'desc'              => __( 'Unit: minute', 'wp-shieldon' ),
-                    'placeholder'       => '',
-                    'type'              => 'text',
+					'placeholder'       => '',
+					'type'              => 'text',
 					'default'           => '5',
-                    'sanitize_callback' => 'sanitize_text_field',
+					'sanitize_callback' => 'sanitize_text_field',
 					'parent'            => 'enable_online_session_limit',
 				),
 
@@ -219,44 +218,44 @@ class WPSO_Admin_Settings {
 				),
 
 				array(
-                    'name'              => 'time_unit_quota_s',
+					'name'              => 'time_unit_quota_s',
 					'label'             => __( 'Secondly Limit', 'wp-shieldon' ),
 					'desc'              => __( 'Page views per vistor per second.', 'wp-shieldon' ),
-                    'placeholder'       => '',
-                    'type'              => 'text',
+					'placeholder'       => '',
+					'type'              => 'text',
 					'default'           => '2',
 					'sanitize_callback' => 'sanitize_text_field',
 					'parent'            => 'enable_filter_frequency',
 				),
 
 				array(
-                    'name'              => 'time_unit_quota_m',
+					'name'              => 'time_unit_quota_m',
 					'label'             => __( 'Minutely Limit', 'wp-shieldon' ),
 					'desc'              => __( 'Page views per vistor per minute.', 'wp-shieldon' ),
-                    'placeholder'       => '',
-                    'type'              => 'text',
+					'placeholder'       => '',
+					'type'              => 'text',
 					'default'           => '10',
 					'sanitize_callback' => 'sanitize_text_field',
 					'parent'            => 'enable_filter_frequency',
 				),
 
 				array(
-                    'name'              => 'time_unit_quota_h',
+					'name'              => 'time_unit_quota_h',
 					'label'             => __( 'Hourly Limit', 'wp-shieldon' ),
 					'desc'              => __( 'Page views per vistor per hour.', 'wp-shieldon' ),
-                    'placeholder'       => '',
-                    'type'              => 'text',
+					'placeholder'       => '',
+					'type'              => 'text',
 					'default'           => '30',
 					'sanitize_callback' => 'sanitize_text_field',
 					'parent'            => 'enable_filter_frequency',
 				),
 
 				array(
-                    'name'              => 'time_unit_quota_d',
+					'name'              => 'time_unit_quota_d',
 					'label'             => __( 'Daily Limit', 'wp-shieldon' ),
 					'desc'              => __( 'Page views per vistor per day.', 'wp-shieldon' ),
-                    'placeholder'       => '',
-                    'type'              => 'text',
+					'placeholder'       => '',
+					'type'              => 'text',
 					'default'           => '60',
 					'sanitize_callback' => 'sanitize_text_field',
 					'parent'            => 'enable_filter_frequency',
@@ -520,33 +519,33 @@ class WPSO_Admin_Settings {
 				),
 
 				array(
-                    'name'              => 'google_recaptcha_key',
+					'name'              => 'google_recaptcha_key',
 					'label'             => __( 'Site Key', 'wp-shieldon' ),
 					'desc'              => __( 'Enter Google reCaptcha site key for your webiste.', 'wp-shieldon' ),
-                    'placeholder'       => '',
-                    'type'              => 'text',
+					'placeholder'       => '',
+					'type'              => 'text',
 					'default'           => '',
 					'sanitize_callback' => 'sanitize_text_field',
 					'parent'            => 'enable_captcha_google',
 				),
 
 				array(
-                    'name'              => 'google_recaptcha_secret',
+					'name'              => 'google_recaptcha_secret',
 					'label'             => __( 'Secret Key', 'wp-shieldon' ),
 					'desc'              => __( 'Enter Google reCahptcha secret key for your webiste.', 'wp-shieldon' ),
-                    'placeholder'       => '',
-                    'type'              => 'text',
+					'placeholder'       => '',
+					'type'              => 'text',
 					'default'           => '',
 					'sanitize_callback' => 'sanitize_text_field',
 					'parent'            => 'enable_captcha_google',
 				),
 
 				array(
-                    'name'              => 'google_recaptcha_lang',
+					'name'              => 'google_recaptcha_lang',
 					'label'             => __( 'Language Code', 'wp-shieldon' ),
 					'desc'              => __( 'ISO 639 - ISO 3166 code. For example, <strong>zh-TW</strong> stands for Tranditional Chinese of <strong>Taiwan</strong>', 'wp-shieldon' ),
-                    'placeholder'       => '',
-                    'type'              => 'text',
+					'placeholder'       => '',
+					'type'              => 'text',
 					'default'           => str_replace('_', '-', get_locale()),
 					'sanitize_callback' => 'sanitize_text_field',
 					'parent'            => 'enable_captcha_google',
@@ -610,11 +609,11 @@ class WPSO_Admin_Settings {
 				),
 
 				array(
-                    'name'        => 'excluded_urls',
-                    'label'       => __( 'Excluded URLs', 'wp-shieldon' ),
-                    'desc'        => wpso_load_view( 'setting/excluded-urls' ),
-                    'placeholder' => '/example-post-type/',
-                    'type'        => 'textarea'
+					'name'        => 'excluded_urls',
+					'label'       => __( 'Excluded URLs', 'wp-shieldon' ),
+					'desc'        => wpso_load_view( 'setting/excluded-urls' ),
+					'placeholder' => '/example-post-type/',
+					'type'        => 'textarea'
 				),
 				
 				array(

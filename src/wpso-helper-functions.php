@@ -106,7 +106,7 @@ function wpso_set_driver_hash() {
 	$wpso_driver_hash = wp_hash( date( 'ymdhis' ) . wp_rand( 1, 86400 ) );
 	$wpso_driver_hash = substr( $wpso_driver_hash, 0, 8);
 
-	update_option( 'wpso_driver_hash', $wpso_driver_hash, '', 'yes' );
+	update_option( 'wpso_driver_hash', $wpso_driver_hash );
 
 	return $wpso_driver_hash;
 }
@@ -135,7 +135,7 @@ function wpso_get_logs_dir() {
  * @return void
  */
 function wpso_set_channel_id() {
-	update_option( 'wpso_channel_id', get_current_blog_id(), '', 'yes' );
+	update_option( 'wpso_channel_id', get_current_blog_id() );
 }
 
 /**
