@@ -1,0 +1,17 @@
+vendor
+composer.phar
+composer.lock
+phpunit.phar
+phpunit.log
+tests/report
+.DS_Store
+.php_cs.cache
+.hg
+.vscode
+tmp
+clover.xml
+.phpunit.result.cache
+bin
+!bin/firewall.sh
+!bin/test.txt
+

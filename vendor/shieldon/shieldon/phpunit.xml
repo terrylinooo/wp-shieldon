@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit bootstrap="tests/bootstrap.php" stderr="true" processIsolation="true" colors="true" beStrictAboutTestsThatDoNotTestAnything="false">
+    <testsuites>
+        <testsuite name="Shieldon Test Suite">
+            <directory>tests/Shieldon/</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist>
+            <directory suffix=".php">src/Shieldon/</directory>
+			<exclude>
+				<file>src/Shieldon/Autoloader.php</file>
+                <file>src/Shieldon/helpers.php</file>
+				<directory suffix=".php">src/Shieldon/Integration/</directory>
+			</exclude>
+        </whitelist>
+    </filter>
+    <php>
+        <ini name="date.timezone" value="UTC"/>
+        <const name="PHPUNIT_TEST" value="TRUE"/>
+    </php>
+    <logging>
+        <log type="coverage-clover" target="clover.xml"/>
+        <log type="coverage-html" target="tests/report"/>
+    </logging>
+</phpunit>

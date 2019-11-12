@@ -11,12 +11,20 @@ class ComposerStaticInit1f62a68ade874e24d975a6fd1b6bcabc
         array (
             'Shieldon\\' => 9,
         ),
+        'M' => 
+        array (
+            'Messenger\\' => 10,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
         'Shieldon\\' => 
         array (
-            0 => __DIR__ . '/..' . '/terrylinooo/shieldon/src/Shieldon',
+            0 => __DIR__ . '/..' . '/shieldon/shieldon/src/Shieldon',
+        ),
+        'Messenger\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/shieldon/messenger/src/Messenger',
         ),
     );
 
