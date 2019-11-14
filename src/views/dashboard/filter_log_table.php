@@ -54,7 +54,7 @@ $timezone = wpso_apply_blog_timezone();
 	</div>
 	<div id="wpso-table-container" class="wpso-datatables" style="display: none;">
         <div class="wpso-databable-heading">
-            <?php _e( 'IP Log Table', 'wp-shieldon' ); ?>
+            <?php _e( 'Filter Log Table', 'wp-shieldon' ); ?>
         </div>
 		<div class="wpso-datatable-description">
             <?php _e( "This is where the Shieldon records the users' strange behavior.", 'wp-shieldon' ); ?> 

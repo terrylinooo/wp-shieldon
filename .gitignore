@@ -5,3 +5,12 @@ tests
 bin
 build_release.sh
 .vscode
+vendor/shieldon/shieldon/bin
+vendor/shieldon/shieldon/tests
+vendor/shieldon/shieldon/.travis.yml
+vendor/shieldon/shieldon/composer.json
+vendor/shieldon/shieldon/phpunit.xml
+vendor/shieldon/messenger/.travis.yml
+vendor/shieldon/messenger/composer.json
+vendor/shieldon/messenger/phpunit.xml
+vendor/shieldon/messenger/tests

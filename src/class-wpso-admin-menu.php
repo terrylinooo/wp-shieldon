@@ -87,11 +87,11 @@ class WPSO_Admin_Menu {
 
 		add_submenu_page(
 			'shieldon-settings',
-			__( 'IP Log Table', 'wp-shieldon' ),
-			__( 'IP Log Table', 'wp-shieldon' ),
+			__( 'Filter Log Table', 'wp-shieldon' ),
+			__( 'Filter Log Table', 'wp-shieldon' ),
 			'manage_options',
-			'shieldon-ip-log-table',
-			array( $this, 'ip_log_table' )
+			'shieldon-filter-log-table',
+			array( $this, 'filter_log_table' )
 		);
 
 		add_submenu_page(
@@ -181,7 +181,7 @@ class WPSO_Admin_Menu {
 	 */
 	public function dashboard() {
 
-		$parser = new \Shieldon\Log\LogParser(wpso_get_logs_dir());
+		$parser = new \Shieldon\Log\ActionLogParser(wpso_get_logs_dir());
 
 		$tab = 'today';
 
@@ -293,7 +293,7 @@ class WPSO_Admin_Menu {
 	 *
 	 * @return void
 	 */
-	public function ip_log_table() {
+	public function filter_log_table() {
 
 		$wpso = wpso_instance();
 		$wpso->set_driver();
@@ -302,7 +302,7 @@ class WPSO_Admin_Menu {
 		$data['last_reset_time'] = get_option( 'wpso_last_reset_time' );
 
 		wpso_show_settings_header();
-		echo wpso_load_view( 'dashboard/ip_log_table', $data );
+		echo wpso_load_view( 'dashboard/filter_log_table', $data );
 		wpso_show_settings_footer();
 	}
 

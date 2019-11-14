@@ -666,5 +666,16 @@ class WPSO_Admin_Settings {
 
 		wpso_show_settings_footer();
 	}
+
+	/**
+	 * Add CSS class to body class.
+	 * 
+	 * @param string $classes
+	 *
+	 * @return void
+	 */
+	public function setting_admin_body_class( $classes ) {
+		return $classes . ' wp-shieldon-admin';
+	}
 }
 
