@@ -123,15 +123,18 @@ $timezone = wpso_apply_blog_timezone();
 
 <script>
 
-	$(function() {
-		$('#wpso-datalog').DataTable({
-			'pageLength': 25,
-			'initComplete': function( settings, json ) {
-				$('#wpso-table-loading').hide();
-				$('#wpso-table-container').fadeOut(800);
-				$('#wpso-table-container').fadeIn(800);
-			}
+    (function($) {
+		$(function() {
+			$('#wpso-datalog').DataTable({
+				'pageLength': 25,
+				'initComplete': function( settings, json ) {
+					$('#wpso-table-loading').hide();
+					$('#wpso-table-container').fadeOut(800);
+					$('#wpso-table-container').fadeIn(800);
+				}
+			});
 		});
-	});
+
+	})(jQuery);
 
 </script>

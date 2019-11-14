@@ -97,23 +97,28 @@ $timezone = wpso_apply_blog_timezone();
 
 <script>
 
-	$(function() {
-		$('#wpso-datalog').DataTable({
-			'pageLength': 25,
-			'initComplete': function( settings, json ) {
-				$('#wpso-table-loading').hide();
-				$('#wpso-table-container').fadeOut(800);
-				$('#wpso-table-container').fadeIn(800);
-			}
+
+
+	(function($) {
+		$(function() {
+			$('#wpso-datalog').DataTable({
+				'pageLength': 25,
+				'initComplete': function( settings, json ) {
+					$('#wpso-table-loading').hide();
+					$('#wpso-table-container').fadeOut(800);
+					$('#wpso-table-container').fadeIn(800);
+				}
+			});
+
+			$('.wpso-dashboard').on('click', '.btn-remove-ip', function() {
+				var ip = $(this).attr('data-ip');
+
+				$('[name=ip]').val(ip);
+				$('[name=action]').val('remove');
+				$('#btn-add-rule').trigger('click');
+			});
 		});
 
-		$('.wpso-dashboard').on('click', '.btn-remove-ip', function() {
-			var ip = $(this).attr('data-ip');
-
-			$('[name=ip]').val(ip);
-			$('[name=action]').val('remove');
-			$('#btn-add-rule').trigger('click');
-		});
-	});
+	})(jQuery);
 
 </script>
