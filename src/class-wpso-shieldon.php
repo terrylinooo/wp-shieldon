@@ -6,7 +6,7 @@
  * @author Terry Lin
  * @package Shieldon
  * @since 1.0.0
- * @version 1.0.0
+ * @version 1.4.0
  * @license GPLv3
  *
  */
@@ -83,6 +83,8 @@ class WPSO_Shieldon_Guardian {
 		$this->set_component();        // Set Shieldon components.
 		$this->set_captcha();          // Set Shieldon CAPTCHA instances.
 		$this->set_session_limit();    // Set online session limit settings.
+		$this->set_authentication();   // Set the URL paths that are protected by WWW-Authenticate protocol.
+		$this->set_xss_protection();   // Filter XSS strings.
 
 		// Check ecxluded list before checking process.
 		if ( $this->is_excluded_list() ) {
@@ -534,12 +536,12 @@ class WPSO_Shieldon_Guardian {
 			$signup_deny_all  = wpso_get_option( 'ip_signup_deny_all', 'shieldon_ip_signup' );
 
 			if ( ! empty( $signup_whitelist ) ) {
-				$whitelist = explode(PHP_EOL, $signup_whitelist );
+				$whitelist = explode( PHP_EOL, $signup_whitelist );
 				$this->shieldon->component['Ip']->setAllowedList( $whitelist );
 			}
 
 			if ( ! empty( $signup_blacklist ) ) {
-				$blacklist = explode(PHP_EOL, $signup_blacklist );
+				$blacklist = explode( PHP_EOL, $signup_blacklist );
 				$this->shieldon->component['Ip']->setDeniedList( $blacklist );
 			}
 
@@ -555,12 +557,12 @@ class WPSO_Shieldon_Guardian {
 			$xmlrpc_deny_all  = wpso_get_option( 'ip_xmlrpc_deny_all', 'shieldon_ip_xmlrpc' );
 
 			if ( ! empty( $xmlrpc_whitelist ) ) {
-				$whitelist = explode(PHP_EOL, $xmlrpc_whitelist );
+				$whitelist = explode( PHP_EOL, $xmlrpc_whitelist );
 				$this->shieldon->component['Ip']->setAllowedList( $whitelist );
 			}
 
 			if ( ! empty( $xmlrpc_blacklist ) ) {
-				$blacklist = explode(PHP_EOL, $xmlrpc_blacklist );
+				$blacklist = explode( PHP_EOL, $xmlrpc_blacklist );
 				$this->shieldon->component['Ip']->setDeniedList( $blacklist );
 			}
 
@@ -576,12 +578,12 @@ class WPSO_Shieldon_Guardian {
 			$global_deny_all  = wpso_get_option( 'ip_global_deny_all', 'shieldon_ip_global' );
 
 			if ( ! empty( $global_whitelist ) ) {
-				$whitelist = explode(PHP_EOL, $global_whitelist );
+				$whitelist = explode( PHP_EOL, $global_whitelist );
 				$this->shieldon->component['Ip']->setAllowedList( $whitelist );
 			}
 
 			if ( ! empty( $global_blacklist ) ) {
-				$blacklist = explode(PHP_EOL, $global_blacklist );
+				$blacklist = explode( PHP_EOL, $global_blacklist );
 				$this->shieldon->component['Ip']->setDeniedList( $blacklist );
 			}
 
@@ -601,5 +603,108 @@ class WPSO_Shieldon_Guardian {
 		$logger = new \Shieldon\Log\ActionLogger( wpso_get_logs_dir() );
 
 		$this->shieldon->setLogger( $logger );
+	}
+
+	/**
+	 * Set the URLs that are protected by WWW-Authenticate protocol.
+	 *
+	 * @return void
+	 */
+	private function set_authentication() {
+
+		$authenticated_list = get_option( 'shieldon_authetication' );
+
+        if ( ! empty( $authenticated_list) ) {
+
+            $auth_handler = new \Shieldon\Security\httpAuthentication();
+
+            $this->shieldon->setClosure( 'www_authenticate', function() use ( $auth_handler, $authenticated_list ) {
+                $auth_handler->set( $authenticated_list );
+                $auth_handler->check();
+            });
+        }
+	}
+
+	/**
+	 * Undocumented function
+	 *
+	 * @return void
+	 */
+	private function set_xss_protection() {
+
+		$xss_protection_options = get_option( 'shieldon_xss_protection' );
+
+        $xss_filter = new \Shieldon\Security\Xss();
+
+        if ( $xss_protection_options['post'] ) {
+
+            $this->shieldon->setClosure( 'xss_post', function() use ( $xss_filter ) {
+                if ( ! empty( $_POST ) ) {
+                    foreach ( array_keys( $_POST ) as $k ) {
+                        $_POST[ $k ] = $xss_filter->clean( $_POST[ $k ] );
+                    }
+                }
+            });
+        }
+
+        if ( $xss_protection_options['get'] ) {
+
+            $this->shieldon->setClosure( 'xss_get', function() use ( $xss_filter ) {
+                if ( ! empty( $_GET ) ) {
+                    foreach ( array_keys( $_GET ) as $k ) {
+                        $_GET[ $k ] = $xss_filter->clean( $_GET[ $k ] );
+                    }
+                }
+            });
+        }
+
+        if ( $xss_protection_options['cookie'] ) {
+            $this->shieldon->setClosure( 'xss_cookie', function() use ( $xss_filter ) {
+                if ( ! empty( $_COOKIE ) ) {
+                    foreach ( array_keys( $_COOKIE ) as $k ) {
+                        $_COOKIE[ $k ] = $xss_filter->clean( $_COOKIE[ $k ] );
+                    }
+                }
+            });
+		}
+		
+		$xss_protected_list = get_option( 'shieldon_xss_protected_list' );
+
+        if (! empty($xssProtectedList)) {
+        
+            $this->shieldon->setClosure( 'xss_protection', function() use ( $xss_filter, $xss_protected_list ) {
+
+                foreach ( $xss_protected_list as $v ) {
+
+                    $k = $v['variable'] ?? 'undefined';
+    
+                    switch ( $v['type'] ) {
+
+                        case 'get':
+
+                            if ( ! empty( $_GET[ $k ] ) ) {
+                                $_GET[ $k ] = $xss_filter->clean( $_GET[ $k ] );
+                            }
+                            break;
+    
+                        case 'post':
+    
+                            if ( ! empty( $_POST[ $k ]) ) {
+                                $_POST[ $k ] = $xss_filter->clean( $_POST[ $k ] );
+                            }
+                            break;
+    
+                        case 'cookie':
+
+                            if ( ! empty( $_COOKIE[ $k ] ) ) {
+                                $_COOKIE[ $k ] = $xss_filter->clean( $_COOKIE[$k] );
+                            }
+                            break;
+    
+                        default:
+                    }
+                }
+            });
+        }
 	}
 }

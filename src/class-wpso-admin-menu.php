@@ -49,6 +49,8 @@ class WPSO_Admin_Menu {
 	public function setting_admin_menu() {
 		global $admin_settings, $admin_ip_manager;
 
+		$separate = '<div style="margin: 0px -10px 10px -10px; background-color: #555566; height: 1px; overflow: hidden;"></div>';
+
 		add_menu_page(
 			__( 'WP Shieldon', 'wp-shieldon' ),
 			__( 'WP Shieldon', 'wp-shieldon' ),
@@ -79,7 +81,7 @@ class WPSO_Admin_Menu {
 		add_submenu_page(
 			'shieldon-settings',
 			__( 'Rule Table', 'wp-shieldon' ),
-			__( 'Rule Table', 'wp-shieldon' ),
+			$separate . __( 'Rule Table', 'wp-shieldon' ),
 			'manage_options',
 			'shieldon-rule-table',
 			array( $this, 'rule_table' )
@@ -106,16 +108,34 @@ class WPSO_Admin_Menu {
 		add_submenu_page(
 			'shieldon-settings',
 			__( 'IP Manager', 'wp-shieldon' ),
-			__( 'IP Manager', 'wp-shieldon' ),
+			$separate . __( 'IP Manager', 'wp-shieldon' ),
 			'manage_options',
 			'shieldon-ip-manager',
 			array( $admin_ip_manager, 'setting_plugin_page' )
 		);
-		
+
+		add_submenu_page(
+			'shieldon-settings',
+			__( 'XSS Protection', 'wp-shieldon' ),
+			__( 'XSS Protection', 'wp-shieldon' ),
+			'manage_options',
+			'shieldon-xss-protection',
+			array( $this, 'xss_protection' )
+		);
+
+		add_submenu_page(
+			'shieldon-settings',
+			__( 'Authentication', 'wp-shieldon' ),
+			__( 'Authentication', 'wp-shieldon' ),
+			'manage_options',
+			'shieldon-authentication',
+			array( $this, 'authentication' )
+		);
+
 		add_submenu_page(
 			'shieldon-settings',
 			__( 'About', 'wp-shieldon' ),
-			__( 'About', 'wp-shieldon' ),
+			$separate . __( 'About', 'wp-shieldon' ),
 			'manage_options',
 			'shieldon-about',
 			array( $this, 'about' )
@@ -338,6 +358,122 @@ class WPSO_Admin_Menu {
 
 		wpso_show_settings_header();
 		echo wpso_load_view( 'dashboard/session_table', $data );
+		wpso_show_settings_footer();
+	}
+
+	/**
+	 * WWW-Authenticate.
+	 *
+	 * @return void
+	 */
+	public function authentication() {
+
+		if ( isset( $_POST['action'] ) && check_admin_referer( 'check_form_authentication', 'wpso_authentication_form' ) ) {
+
+			$authenticated_list = get_option( 'shieldon_authetication' );
+
+			$action = sanitize_text_field( $_POST['action'] );
+			$order  = sanitize_text_field( $_POST['order'] );
+			$url    = sanitize_text_field( $_POST['url'] );
+			$user   = sanitize_text_field( $_POST['user'] );
+			$pass   = sanitize_text_field( $_POST['pass'] );
+
+			if ( empty( $authenticated_list ) ) {
+				$authenticated_list = array();
+				update_option( 'shieldon_authetication', $authenticated_list );
+			}
+
+			if ( 'add' === $action ) {
+                array_push( $authenticated_list, array(
+                    'url'  => $url,
+                    'user' => $user,
+                    'pass' => password_hash( $pass, PASSWORD_BCRYPT ),
+                ) );
+
+            } elseif ( 'remove' === $action ) {
+                unset( $authenticated_list[ $order ] );
+                $authenticated_list = array_values( $authenticated_list );
+            }
+ 
+			update_option( 'shieldon_authetication', $authenticated_list );
+		}
+
+		// Load the latest authenticated list.
+		$authenticated_list = get_option( 'shieldon_authetication' );
+
+		$data = array();
+
+		$data['authenticated_list'] = $authenticated_list;
+
+		wpso_show_settings_header();
+		echo wpso_load_view( 'security/authentication', $data );
+		wpso_show_settings_footer();
+	}
+
+	/**
+	 * XSS Protection.
+	 *
+	 * @return void
+	 */
+	public function xss_protection() {
+
+		$xss_type = array(
+			'get'    => 'no',
+			'post'   => 'no',
+			'cookie' => 'no',
+		);
+
+		$xss_protected_list = array();
+
+		if ( isset( $_POST['xss_post'] ) && check_admin_referer( 'check_form_xss_type', 'wpso_xss_form' ) ) {
+
+			$xss_type = get_option( 'shieldon_xss_protected_type' );
+
+			$xss_type['get']    = sanitize_text_field( $_POST['xss_get'] );
+			$xss_type['post']   = sanitize_text_field( $_POST['xss_post'] );
+			$xss_type['cookie'] = sanitize_text_field( $_POST['xss_cookie'] );
+
+			update_option( 'shieldon_xss_protected_type', $xss_type );
+		}
+
+		if ( isset( $_POST['variable'] ) && check_admin_referer( 'check_form_xss_single', 'wpso_xss_form' ) ) {
+
+			$xss_protected_list = get_option( 'shieldon_xss_protected_list' );
+
+			$action   = sanitize_text_field( $_POST['action'] );
+			$order    = sanitize_text_field( $_POST['order'] );
+			$type     = sanitize_text_field( $_POST['type'] );
+			$variable = sanitize_text_field( $_POST['variable'] );
+
+			if ( empty( $xss_protected_list ) ) {
+				$xss_protected_list = array();
+				update_option( 'shieldon_xss_protected_list', $xss_protected_list );
+			}
+
+			if ( 'add' === $action ) {
+                array_push( $xss_protected_list, array(
+                    'type'     => $type,
+                    'variable' => $variable,
+                ) );
+
+            } elseif ( 'remove' === $action ) {
+                unset( $xss_protected_list[ $order ] );
+                $xss_protected_list = array_values( $xss_protected_list );
+            }
+ 
+			update_option( 'shieldon_xss_protected_list', $xss_protected_list );
+		}
+
+		$xss_protected_list = get_option( 'shieldon_xss_protected_list' );
+		$xss_type           = get_option( 'shieldon_xss_protected_type' );
+
+		$data = [];
+
+		$data['xss_protected_list'] = $xss_protected_list;
+		$data['xss_type'] = $xss_type;
+
+		wpso_show_settings_header();
+		echo wpso_load_view( 'security/xss_protection', $data );
 		wpso_show_settings_footer();
 	}
 }

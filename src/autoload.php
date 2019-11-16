@@ -19,7 +19,7 @@ spl_autoload_register( function( $class_name ) {
 
 	$class_name = ltrim( $class_name, '\\' );
 
-	$wp_utils_mapping = array(         
+	$wp_utils_mapping = array(
 		'WPSO_Admin_IP_Manager'  => 'class-wpso-admin-ip-manager',
 		'WPSO_Admin_Menu'        => 'class-wpso-admin-menu',
 		'WPSO_Admin_Settings'    => 'class-wpso-admin-settings',

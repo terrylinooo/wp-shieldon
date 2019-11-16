@@ -152,7 +152,7 @@ if ( version_compare( phpversion(), '7.0.0', '>=' ) ) {
 				rmdir( $dir );
 			}
 		}
-		update_option( 'wpso_driver_hash', '');
+		update_option( 'wpso_driver_hash', '' );
 	}
 
 	register_activation_hook( __FILE__, 'wpso_activate_plugin' );
@@ -173,7 +173,6 @@ if ( version_compare( phpversion(), '7.0.0', '>=' ) ) {
 		add_filter( 'admin_body_class', array( $admin_settings, 'setting_admin_body_class' ) );
 		add_filter( 'plugin_action_links_' . SHIELDON_PLUGIN_NAME, array( $admin_menu, 'plugin_action_links' ), 10, 5 );
 		add_filter( 'plugin_row_meta', array( $admin_menu, 'plugin_extend_links' ), 10, 2 );
-		
 
 		// If we detect the setting changes.
 		if ( ! empty( $_POST['shieldon_daemon[data_driver_type]'] ) ) {

@@ -272,6 +272,77 @@ code.tips {
 	color: #999999;
 }
 
+.wpso-form {
+	input,
+	select {
+		vertical-align: middle;
+		font-size: 14px;
+		height: 40px;
+		border: 1px #dddddd solid;
+		padding: 0.25rem 0.5rem;
+		margin: 0 2px;
+		border-radius: 0;
+	}
+
+	input[type=button],
+	input[type=submit],
+	button {
+		background-color: #fff;
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fff), color-stop(100%, #eee));
+		background: -webkit-linear-gradient(top, #fff 0%, #eee 100%);
+		background: -moz-linear-gradient(top, #fff 0%, #eee 100%);
+		background: -ms-linear-gradient(top, #fff 0%, #eee 100%);
+		background: -o-linear-gradient(top, #fff 0%, #eee 100%);
+		background: linear-gradient(to bottom, #fff 0%, #eee 100%);
+		font-weight: 600;
+		border-radius: 0;
+	}
+}
+
+.wpso-form-table {
+	.r1 {
+		width: 200px;
+		font-weight: bold;
+		color: #444;
+		padding: 5px;
+	}
+
+	.r2 {
+		width: calc(100% - 200px);
+	}
+
+	p {
+		font-style: italic;
+	}
+
+}
+
+.border-top {
+	border-top: 1px solid #dee2e6 !important;
+}
+
+.wpso-inline-block {
+	display: inline-block;
+
+	label {
+		display: inline-block;
+		padding: 3px;
+	}
+}
+
+.input-form {
+    border-top: 2px #dddddd solid;
+    border-left: 1px #dddddd solid;
+    border-right: 1px #eeeeee solid;
+    border-bottom: 1px #eeeeee solid;
+    background: #fff;
+    background-image: radial-gradient(#dddddd 1%,rgba(0,0,0,0) 15%);
+    background-size: 8px 8px;
+	padding: 10px;
+	
+	
+}
+
 
 @import "dashboard";
 @import "datatable";
