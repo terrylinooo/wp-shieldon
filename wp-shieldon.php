@@ -80,7 +80,7 @@ require_once SHIELDON_PLUGIN_DIR . 'vendor/autoload.php';
 // WP Shieldon Class autoloader.
 require_once SHIELDON_PLUGIN_DIR . 'src/autoload.php';
 
-if ( version_compare( phpversion(), '7.0.0', '>=' ) ) {
+if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 
 	/**
 	 * Activate Shieldon plugin.

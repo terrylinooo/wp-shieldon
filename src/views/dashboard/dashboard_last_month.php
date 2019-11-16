@@ -46,11 +46,11 @@ if ( ! defined('SHIELDON_PLUGIN_NAME') ) die;
     </div>
 	<div class="wpso-tabs">
 		<ul>
-			<li><a href="<?php menu_page_url( 'shieldon-dashboard' ); ?>&tab=today"><?php _e( 'Today', 'wp-shieldon' ); ?></a></li>
-			<li><a href="<?php menu_page_url( 'shieldon-dashboard' ); ?>&tab=yesterday"><?php _e( 'Yesterday', 'wp-shieldon' ); ?></a></li>
-			<li><a href="<?php menu_page_url( 'shieldon-dashboard' ); ?>&tab=past_seven_days"><?php _e( 'Last 7 days', 'wp-shieldon' ); ?></a></li>
-			<li><a href="<?php menu_page_url( 'shieldon-dashboard' ); ?>&tab=this_month"><?php _e( 'This month', 'wp-shieldon' ); ?></a></li>
-			<li class="is-active"><a href="<?php menu_page_url( 'shieldon-dashboard' ); ?>&tab=last_month"><?php _e( 'Last month', 'wp-shieldon' ); ?></a></li>
+			<li><a href="<?php menu_page_url( 'shieldon-action-logs', true ); ?>&tab=today"><?php _e( 'Today', 'wp-shieldon' ); ?></a></li>
+			<li><a href="<?php menu_page_url( 'shieldon-action-logs', true ); ?>&tab=yesterday"><?php _e( 'Yesterday', 'wp-shieldon' ); ?></a></li>
+			<li><a href="<?php menu_page_url( 'shieldon-action-logs', true ); ?>&tab=past_seven_days"><?php _e( 'Last 7 days', 'wp-shieldon' ); ?></a></li>
+			<li><a href="<?php menu_page_url( 'shieldon-action-logs', true ); ?>&tab=this_month"><?php _e( 'This month', 'wp-shieldon' ); ?></a></li>
+			<li class="is-active"><a href="<?php menu_page_url( 'shieldon-action-logs', true ); ?>&tab=last_month"><?php _e( 'Last month', 'wp-shieldon' ); ?></a></li>
 		</ul>
 	</div>
 	<div id="wpso-table-loading" class="wpso-datatables">

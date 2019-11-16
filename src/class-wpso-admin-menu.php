@@ -71,11 +71,11 @@ class WPSO_Admin_Menu {
 
 		add_submenu_page(
 			'shieldon-settings',
-			__( 'Dashboard', 'wp-shieldon' ),
-			__( 'Dashboard', 'wp-shieldon' ),
+			__( 'Action Logs', 'wp-shieldon' ),
+			__( 'Action Logs', 'wp-shieldon' ),
 			'manage_options',
-			'shieldon-dashboard',
-			array( $this, 'dashboard' )
+			'shieldon-action-logs',
+			array( $this, 'action_logs' )
 		);
 
 		add_submenu_page(
@@ -199,7 +199,7 @@ class WPSO_Admin_Menu {
 	 *
 	 * @return void
 	 */
-	public function dashboard() {
+	public function action_logs() {
 
 		$parser = new \Shieldon\Log\ActionLogParser(wpso_get_logs_dir());
 
