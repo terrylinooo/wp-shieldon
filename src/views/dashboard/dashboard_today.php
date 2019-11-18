@@ -43,7 +43,7 @@ if ( ! defined('SHIELDON_PLUGIN_NAME') ) die;
 		<div class="wpso-board area-chart-container">
 			<div id="chart-3"></div>
 		</div>
-    </div>
+	</div>
 	<div class="wpso-tabs">
 		<ul>
 			<li class="is-active"><a href="<?php menu_page_url( 'shieldon-action-logs' ); ?>&tab=today"><?php _e( 'Today', 'wp-shieldon' ); ?></a></li>
@@ -95,8 +95,8 @@ if ( ! defined('SHIELDON_PLUGIN_NAME') ) die;
 		</table>
 	</div>
 	<div class="wpso-timezone">
-        <?php _e( 'Timezone', 'wp-shieldon' ); ?>: UTC 
-    </div>
+		<?php _e( 'Timezone', 'wp-shieldon' ); ?>: UTC 
+	</div>
 </div>
 
 <script>
@@ -171,11 +171,11 @@ if ( ! defined('SHIELDON_PLUGIN_NAME') ) die;
 			},
 		},
 		dataLabels: {
-            enabled: false
+			enabled: false
 		},
 		stroke: {
-            curve: 'smooth'
-        },
+			curve: 'smooth'
+		},
 		fill: {
 			opacity: 1,
 		},

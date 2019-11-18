@@ -333,6 +333,40 @@ code.tips {
 	color: #999999;
 }
 
+.table {
+
+	width: 100%;
+	display: table;
+	border-spacing: 1px;
+	border-collapse: separate;
+	border: 1px solid #ddd;
+
+	td {
+		padding: 5px;
+		vertical-align: top;
+		border-top: 1px solid #ddd;
+	}
+
+	thead {
+		display: table-header-group;
+		vertical-align: middle;
+	}
+
+	th {
+		background-color: #444;
+		color: #fff;
+		padding: 5px;
+	}
+
+	tr:first-child {
+		td {
+			border-top: 0;
+		}
+	}
+}
+
+
+
 .btn-shieldon {
 	background-color: #fff;
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fff), color-stop(100%, #eee));

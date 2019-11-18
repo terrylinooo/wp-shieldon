@@ -286,51 +286,125 @@ function wpso_status_icon( $var, $icon_type = 1 ) {
 </div>
 
 <div id="modal-wpso-data-circle" title="<?php esc_attr_e( 'Reset Data Circle', 'wp-shieldon' ); ?>" style="display: none;">
-  <p>Not ready.</p>
+    <p><?php _e( 'Would you like to reset current data circle?', 'wp-shieldon' ); ?></p>
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+            <th><?php _e( 'Table', 'wp-shieldon' ); ?></th>
+            <th><?php _e( 'Rows', 'wp-shieldon' ); ?></th>
+        </thead>
+        <tr>
+            <td>shieldon_rule_list</td>
+            <td><?php echo count($rule_list); ?></td>
+        <tr>
+        <tr>
+            <td>shieldon_filter_logs</td>
+            <td><?php echo count($ip_log_list); ?></td>
+        <tr>
+        <tr>
+            <td>shieldon_sessions</td>
+            <td><?php echo count($session_list); ?></td>
+        <tr>
+    </table>
+    <p><?php _e( 'Performing this action will remove all data from current data circle and rebuild data tables.', 'wp-shieldon' ); ?></p>
+    <form id="wpso_reset_data_circle_form" method="post">
+        <?php wp_nonce_field( 'check_form_reset_data_circle', 'wpso_reset_data_circle_form' ); ?>
+		<input type="hidden" name="action_type" value="reset_data_circle">
+		<input type="submit" value="submit" style="display: none">
+    </form>
 </div>
 
 <div id="modal-wpso-logger" title="<?php esc_attr_e( 'Reset Action Logger', 'wp-shieldon' ); ?>" style="display: none;">
-  <p>Not ready.</p>
+<p><?php _e( 'Would you like to remove all action logs?', 'wp-shieldon' ); ?></p>
+    <table class="table table-bordered">
+        <tr>
+            <td><?php _e( 'since', 'wp-shieldon' ); ?></td>
+            <td><?php echo $logger_started_working_date; ?></td>
+        <tr>
+        <tr>
+            <td><?php _e( 'days', 'wp-shieldon' ); ?></td>
+            <td><?php echo $logger_work_days; ?></td>
+        <tr>
+        <tr>
+            <td><?php _e( 'size', 'wp-shieldon' ); ?></td>
+            <td><?php echo $logger_total_size; ?></td>
+        <tr>
+    </table>
+    <form id="wpso_rest_action_logger_form" method="post">
+        <?php wp_nonce_field( 'check_form_reset_action_logger', 'wpso_rest_action_logger_form' ); ?>
+		<input type="hidden" name="action_type" value="reset_action_logs">
+		<input type="submit" value="submit" style="display: none">
+    </form>
 </div>
 
 <script>
 
-    function wpso_reset_data_circle() {
-        (function($) {
-            var modal = $('#modal-wpso-data-circle');
+    var wpso_js_btn_close  = '<?php esc_attr_e( 'Close', 'wp_shieldon' ); ?>';
+    var wpso_js_btn_submit = '<?php esc_attr_e( 'Submit', 'wp_shieldon' ); ?>';
 
-            modal.dialog({                   
-                'dialogClass'   : 'wp-dialog',           
-                'modal'         : true,
-                'autoOpen'      : false, 
-                'closeOnEscape' : true,      
-                'buttons'       : {
-                    "Close": function() {
-                        $(this).dialog('close');
-                    }
+    function wpso_reset_data_circle() {
+
+        ( function( $ ) {
+            var modal = $( '#modal-wpso-data-circle' );
+
+            modal.dialog(
+                {                   
+                    'dialogClass'   : 'wp-dialog',           
+                    'modal'         : true,
+                    'autoOpen'      : false, 
+                    'closeOnEscape' : true,      
+                    'buttons'       : [
+                        {
+                            text: wpso_js_btn_close,
+                            click: function() {
+                                $( this ).dialog( 'close' );
+                            }
+                        },
+                        {
+                            text: wpso_js_btn_submit,
+                            class: 'button-primary',
+                            click: function() {
+                                $('#wpso_reset_data_circle_form').submit();
+                            }
+                        }
+                    ]
                 }
-            });
-            modal.dialog('open');
-        })(jQuery);
+            );
+
+            modal.dialog( 'open' );
+        } )( jQuery );
     }
 
     function wpso_reset_logger() {
-        (function($) {
-            var modal = $('#modal-wpso-logger');
 
-            modal.dialog({                   
-                'dialogClass'   : 'wp-dialog',           
-                'modal'         : true,
-                'autoOpen'      : false, 
-                'closeOnEscape' : true,      
-                'buttons'       : {
-                    "Close": function() {
-                        $(this).dialog('close');
-                    }
+        ( function( $ ) {
+            var modal = $( '#modal-wpso-logger' );
+
+            modal.dialog(
+                {                   
+                    'dialogClass'   : 'wp-dialog',           
+                    'modal'         : true,
+                    'autoOpen'      : false, 
+                    'closeOnEscape' : true,      
+                    'buttons'       : [
+                        {
+                            text: wpso_js_btn_close,
+                            click: function() {
+                                $( this ).dialog( 'close' );
+                            }
+                        },
+                        {
+                            text: wpso_js_btn_submit,
+                            class: 'button-primary',
+                            click: function() {
+                                $('#wpso_rest_action_logger_form').submit();
+                            }
+                        }
+                    ]
                 }
-            });
-            modal.dialog('open');
-        })(jQuery);
+            );
+
+            modal.dialog( 'open' );
+        } )( jQuery );
     }
 
 </script>

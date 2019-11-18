@@ -27,26 +27,26 @@ $timezone = wpso_apply_blog_timezone();
 		</div>
 		<div class="input-form wpso-form">
 			<form method="post">
-                <?php wp_nonce_field( 'check_form_authentication', 'wpso_authentication_form' ); ?>
-                <div class="wpso-inline-block">
-                    <label><?php _e( 'URL Path', 'wp-shieldon' ); ?></label><br />
-                    <input name="url" type="text" value="">
-                </div>
-                <div class="wpso-inline-block">
-                    <label><?php _e( 'User', 'wp-shieldon' ); ?></label><br />
-                    <input name="user" type="text" value="">
-                </div>
-                <div class="wpso-inline-block">
-                    <label><?php _e( 'Pass', 'wp-shieldon' ); ?></label><br />
-                    <input name="pass" type="text" value="">
-                </div>
-                <div class="wpso-inline-block">
+				<?php wp_nonce_field( 'check_form_authentication', 'wpso_authentication_form' ); ?>
+				<div class="wpso-inline-block">
+					<label><?php _e( 'URL Path', 'wp-shieldon' ); ?></label><br />
+					<input name="url" type="text" value="">
+				</div>
+				<div class="wpso-inline-block">
+					<label><?php _e( 'User', 'wp-shieldon' ); ?></label><br />
+					<input name="user" type="text" value="">
+				</div>
+				<div class="wpso-inline-block">
+					<label><?php _e( 'Pass', 'wp-shieldon' ); ?></label><br />
+					<input name="pass" type="text" value="">
+				</div>
+				<div class="wpso-inline-block">
 					<label></label><br />
 					<input type="hidden" name="action" value="add">
 					<input type="hidden" name="order" value="0">
 					<input type="submit" name="submit" id="btn-add-rule" value="<?php esc_attr_e( 'Submit', 'wp-shieldon' ); ?>">
-                </div>	
-            </form>
+				</div>	
+			</form>
 		</div>
 	</div>
 	<br />
@@ -71,24 +71,24 @@ $timezone = wpso_apply_blog_timezone();
 					<th><?php _e( 'Password', 'wp-shieldon' ); ?> (<?php _e( 'encrypted', 'wp-shieldon' ); ?>)</th>
 					<th><?php _e( 'Remove', 'wp-shieldon' ); ?></th>
 				</tr>
-            </thead>
-            <tbody>
-            <?php if (! empty($authenticated_list)) : ?>
-                <?php foreach($authenticated_list as $i => $authInfo) : ?>
-                <tr>
-                    <td><?php echo $authInfo['url']; ?></td>
-                    <td><?php echo $authInfo['user']; ?></td>
-                    <td><?php echo $authInfo['pass']; ?></td>
-                    <td><button type="button" class="button btn-remove-ip" data-order="<?php echo $i; ?>"><i class="far fa-trash-alt"></i></button></td>
-                </tr>
-                <?php endforeach; ?>
-            <?php endif; ?>
-            </tbody>  
+			</thead>
+			<tbody>
+			<?php if (! empty($authenticated_list)) : ?>
+				<?php foreach($authenticated_list as $i => $authInfo) : ?>
+				<tr>
+					<td><?php echo $authInfo['url']; ?></td>
+					<td><?php echo $authInfo['user']; ?></td>
+					<td><?php echo $authInfo['pass']; ?></td>
+					<td><button type="button" class="button btn-remove-ip" data-order="<?php echo $i; ?>"><i class="far fa-trash-alt"></i></button></td>
+				</tr>
+				<?php endforeach; ?>
+			<?php endif; ?>
+			</tbody>  
 		</table>
 	</div>
-    <div class="wpso-timezone">
-        <?php _e( 'Timezone', 'wp-shieldon' ); ?>: <?php echo $timezone; ?>
-    </div>
+	<div class="wpso-timezone">
+		<?php _e( 'Timezone', 'wp-shieldon' ); ?>: <?php echo $timezone; ?>
+	</div>
 </div>
 
 <script>

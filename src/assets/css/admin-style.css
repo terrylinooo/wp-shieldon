@@ -289,6 +289,31 @@ code.tips {
   color: #999999;
 }
 
+.table {
+  width: 100%;
+  display: table;
+  border-spacing: 1px;
+  border-collapse: separate;
+  border: 1px solid #ddd;
+}
+.table td {
+  padding: 5px;
+  vertical-align: top;
+  border-top: 1px solid #ddd;
+}
+.table thead {
+  display: table-header-group;
+  vertical-align: middle;
+}
+.table th {
+  background-color: #444;
+  color: #fff;
+  padding: 5px;
+}
+.table tr:first-child td {
+  border-top: 0;
+}
+
 .btn-shieldon {
   background-color: #fff;
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fff), color-stop(100%, #eee));
@@ -526,7 +551,8 @@ code.tips {
   background: white;
   background-image: radial-gradient(#dddddd 1%, rgba(0, 0, 0, 0) 15%);
   background-size: 8px 8px;
-  padding: 10px 10px 0 10px;
+  padding: 20px 10px 0 10px;
+  padding-bottom: 0px;
   height: 100%;
 }
 .filter-status.info-box table {
@@ -540,6 +566,7 @@ code.tips {
   color: #373d3f;
   font-size: 18px;
   font-weight: bold;
+  padding: 5px;
 }
 .filter-status .nums {
   font-size: 28px;

@@ -162,7 +162,8 @@
 	background: rgba(255, 255, 255, 1);
 	background-image: radial-gradient(#ddd 1%, transparent 15%);
 	background-size: 8px 8px;
-	padding: 10px 10px 0 10px;
+	padding: 20px 10px 0 10px;
+	padding-bottom: 0px;
 	height: 100%;
 
 	&.info-box {
@@ -181,6 +182,7 @@
 		color: rgb(55, 61, 63);
 		font-size: 18px;
 		font-weight: bold;
+		padding: 5px;
 	}
 
 	.nums {

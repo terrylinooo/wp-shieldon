@@ -116,7 +116,7 @@ $timezone = wpso_apply_blog_timezone();
 						</p>
 					</td>
 				</tr>
-            </table>
+			</table>
 		</div>
 	</div>
 	<br />
@@ -142,21 +142,21 @@ $timezone = wpso_apply_blog_timezone();
 				</tr>
 			</thead>
 			<tbody>
-                <?php if (! empty($xss_protected_list)) : ?>
-                <?php foreach($xss_protected_list as $i => $info) : ?>
-                <tr>
-                    <td><?php echo $info['type']; ?></td>
-                    <td><?php echo $info['variable']; ?></td>
-                    <td><button type="button" class="button btn-remove-ip" data-order="<?php echo $i; ?>"><i class="far fa-trash-alt"></i></button></td>
-                </tr>
-                <?php endforeach; ?>
-                <?php endif; ?>
-            </tbody>   
+				<?php if (! empty($xss_protected_list)) : ?>
+				<?php foreach($xss_protected_list as $i => $info) : ?>
+				<tr>
+					<td><?php echo $info['type']; ?></td>
+					<td><?php echo $info['variable']; ?></td>
+					<td><button type="button" class="button btn-remove-ip" data-order="<?php echo $i; ?>"><i class="far fa-trash-alt"></i></button></td>
+				</tr>
+				<?php endforeach; ?>
+				<?php endif; ?>
+			</tbody>   
 		</table>
 	</div>
-    <div class="wpso-timezone">
-        <?php _e( 'Timezone', 'wp-shieldon' ); ?>: <?php echo $timezone; ?>
-    </div>
+	<div class="wpso-timezone">
+		<?php _e( 'Timezone', 'wp-shieldon' ); ?>: <?php echo $timezone; ?>
+	</div>
 </div>
 
 <script>

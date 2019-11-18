@@ -621,15 +621,15 @@ class WPSO_Shieldon_Guardian {
 
 		$authenticated_list = get_option( 'shieldon_authetication' );
 
-        if ( ! empty( $authenticated_list) ) {
+		if ( ! empty( $authenticated_list) ) {
 
-            $auth_handler = new \Shieldon\Security\httpAuthentication();
+			$auth_handler = new \Shieldon\Security\httpAuthentication();
 
-            $this->shieldon->setClosure( 'www_authenticate', function() use ( $auth_handler, $authenticated_list ) {
-                $auth_handler->set( $authenticated_list );
-                $auth_handler->check();
-            });
-        }
+			$this->shieldon->setClosure( 'www_authenticate', function() use ( $auth_handler, $authenticated_list ) {
+				$auth_handler->set( $authenticated_list );
+				$auth_handler->check();
+			});
+		}
 	}
 
 	/**
@@ -641,77 +641,77 @@ class WPSO_Shieldon_Guardian {
 
 		$xss_protection_options = get_option( 'shieldon_xss_protection' );
 
-        $xss_filter = new \Shieldon\Security\Xss();
+		$xss_filter = new \Shieldon\Security\Xss();
 
-        if ( $xss_protection_options['post'] ) {
+		if ( $xss_protection_options['post'] ) {
 
-            $this->shieldon->setClosure( 'xss_post', function() use ( $xss_filter ) {
-                if ( ! empty( $_POST ) ) {
-                    foreach ( array_keys( $_POST ) as $k ) {
-                        $_POST[ $k ] = $xss_filter->clean( $_POST[ $k ] );
-                    }
-                }
-            });
-        }
+			$this->shieldon->setClosure( 'xss_post', function() use ( $xss_filter ) {
+				if ( ! empty( $_POST ) ) {
+					foreach ( array_keys( $_POST ) as $k ) {
+						$_POST[ $k ] = $xss_filter->clean( $_POST[ $k ] );
+					}
+				}
+			});
+		}
 
-        if ( $xss_protection_options['get'] ) {
+		if ( $xss_protection_options['get'] ) {
 
-            $this->shieldon->setClosure( 'xss_get', function() use ( $xss_filter ) {
-                if ( ! empty( $_GET ) ) {
-                    foreach ( array_keys( $_GET ) as $k ) {
-                        $_GET[ $k ] = $xss_filter->clean( $_GET[ $k ] );
-                    }
-                }
-            });
-        }
+			$this->shieldon->setClosure( 'xss_get', function() use ( $xss_filter ) {
+				if ( ! empty( $_GET ) ) {
+					foreach ( array_keys( $_GET ) as $k ) {
+						$_GET[ $k ] = $xss_filter->clean( $_GET[ $k ] );
+					}
+				}
+			});
+		}
 
-        if ( $xss_protection_options['cookie'] ) {
-            $this->shieldon->setClosure( 'xss_cookie', function() use ( $xss_filter ) {
-                if ( ! empty( $_COOKIE ) ) {
-                    foreach ( array_keys( $_COOKIE ) as $k ) {
-                        $_COOKIE[ $k ] = $xss_filter->clean( $_COOKIE[ $k ] );
-                    }
-                }
-            });
+		if ( $xss_protection_options['cookie'] ) {
+			$this->shieldon->setClosure( 'xss_cookie', function() use ( $xss_filter ) {
+				if ( ! empty( $_COOKIE ) ) {
+					foreach ( array_keys( $_COOKIE ) as $k ) {
+						$_COOKIE[ $k ] = $xss_filter->clean( $_COOKIE[ $k ] );
+					}
+				}
+			});
 		}
 		
 		$xss_protected_list = get_option( 'shieldon_xss_protected_list' );
 
-        if (! empty($xssProtectedList)) {
-        
-            $this->shieldon->setClosure( 'xss_protection', function() use ( $xss_filter, $xss_protected_list ) {
+		if (! empty($xssProtectedList)) {
+		
+			$this->shieldon->setClosure( 'xss_protection', function() use ( $xss_filter, $xss_protected_list ) {
 
-                foreach ( $xss_protected_list as $v ) {
+				foreach ( $xss_protected_list as $v ) {
 
-                    $k = $v['variable'] ?? 'undefined';
-    
-                    switch ( $v['type'] ) {
+					$k = $v['variable'] ?? 'undefined';
+	
+					switch ( $v['type'] ) {
 
-                        case 'get':
+						case 'get':
 
-                            if ( ! empty( $_GET[ $k ] ) ) {
-                                $_GET[ $k ] = $xss_filter->clean( $_GET[ $k ] );
-                            }
-                            break;
-    
-                        case 'post':
-    
-                            if ( ! empty( $_POST[ $k ]) ) {
-                                $_POST[ $k ] = $xss_filter->clean( $_POST[ $k ] );
-                            }
-                            break;
-    
-                        case 'cookie':
+							if ( ! empty( $_GET[ $k ] ) ) {
+								$_GET[ $k ] = $xss_filter->clean( $_GET[ $k ] );
+							}
+							break;
+	
+						case 'post':
+	
+							if ( ! empty( $_POST[ $k ]) ) {
+								$_POST[ $k ] = $xss_filter->clean( $_POST[ $k ] );
+							}
+							break;
+	
+						case 'cookie':
 
-                            if ( ! empty( $_COOKIE[ $k ] ) ) {
-                                $_COOKIE[ $k ] = $xss_filter->clean( $_COOKIE[$k] );
-                            }
-                            break;
-    
-                        default:
-                    }
-                }
-            });
-        }
+							if ( ! empty( $_COOKIE[ $k ] ) ) {
+								$_COOKIE[ $k ] = $xss_filter->clean( $_COOKIE[$k] );
+							}
+							break;
+	
+						default:
+					}
+				}
+			});
+		}
 	}
 }
