@@ -41,29 +41,27 @@ class WPSO_Shieldon_Guardian {
 
 		$this->current_url = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 
-		$cdn = wpso_get_option( 'is_behind_cdn_service', 'shieldon_daemon' );
+		$ip_source = wpso_get_option( 'ip_source', 'shieldon_daemon' );
 
-		switch ( $cdn ) {
-			case 'cloudflare':
+		switch ( $ip_source ) {
+			case 'HTTP_CF_CONNECTING_IP':
 				if ( ! empty( $_SERVER['HTTP_CF_CONNECTING_IP'] ) ) {
 					$this->shieldon->setIp( $_SERVER['HTTP_CF_CONNECTING_IP'] );
 				}
 				break;
 
-			case 'google':
-			case 'aws':
+			case 'HTTP_X_FORWARDED_FOR':
 				if ( ! empty( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
 					$this->shieldon->setIp( $_SERVER['HTTP_X_FORWARDED_FOR'] );
 				}
 				break;
-			case 'keycdn':
-			case 'others':
+			case 'HTTP_X_FORWARDED_HOST':
 				if ( ! empty( $_SERVER['HTTP_X_FORWARDED_HOST'] ) ) {
 					$this->shieldon->setIp( $_SERVER['HTTP_X_FORWARDED_HOST'] );
 				}
 				break;
 
-			case 'no':
+			case 'REMOTE_ADDR':
 			default:
 		}
 	}

@@ -62,7 +62,7 @@ function wpso_status_icon( $var, $icon_type = 1 ) {
                     <div class="nums">
                         <?php echo wpso_status_icon( $driver['redis'], 2 ); ?>
                     </div>
-                    <div class="note"><?php _e( 'In-memory dadabase.', 'wp-shieldon' ); ?></div>
+                    <div class="note"><?php _e( 'In-memory database.', 'wp-shieldon' ); ?></div>
                 </div>
             </div>
             <div class="col-sm-3">

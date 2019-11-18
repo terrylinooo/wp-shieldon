@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP Shieldon\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-18 17:04+0000\n"
+"POT-Creation-Date: 2019-11-18 14:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -19,15 +19,15 @@ msgstr ""
 msgid "Global"
 msgstr ""
 
-#: src/class-wpso-admin-ip-manager.php:61 src/class-wpso-admin-settings.php:623
+#: src/class-wpso-admin-ip-manager.php:61 src/class-wpso-admin-settings.php:627
 msgid "Login"
 msgstr ""
 
-#: src/class-wpso-admin-ip-manager.php:66 src/class-wpso-admin-settings.php:632
+#: src/class-wpso-admin-ip-manager.php:66 src/class-wpso-admin-settings.php:636
 msgid "Signup"
 msgstr ""
 
-#: src/class-wpso-admin-ip-manager.php:71 src/class-wpso-admin-settings.php:641
+#: src/class-wpso-admin-ip-manager.php:71 src/class-wpso-admin-settings.php:645
 msgid "XML RPC"
 msgstr ""
 
@@ -258,264 +258,292 @@ msgid ""
 msgstr ""
 
 #: src/class-wpso-admin-settings.php:145
+msgid "CDN"
+msgstr ""
+
+#: src/class-wpso-admin-settings.php:146
 msgid ""
 "Is your website behind CDN service? If you use CDN, you have to set this "
 "setting, otherwise all IP addresses come from CDN servers, they will be "
 "banned."
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:160
+#: src/class-wpso-admin-settings.php:151
+msgid "No"
+msgstr ""
+
+#: src/class-wpso-admin-settings.php:152
+msgid "CloudFlare (HTTP_CF_CONNECTING_IP)"
+msgstr ""
+
+#: src/class-wpso-admin-settings.php:153
+msgid "Google Cloud CDN or Load Balancer (HTTP_X_FORWARDED_FOR)"
+msgstr ""
+
+#: src/class-wpso-admin-settings.php:154
+msgid "AWS CouldFront (HTTP_X_FORWARDED_FOR)"
+msgstr ""
+
+#: src/class-wpso-admin-settings.php:155
+msgid "KeyCDN (HTTP_X_FORWARDED_HOST)"
+msgstr ""
+
+#: src/class-wpso-admin-settings.php:156
+msgid "Others (HTTP_X_FORWARDED_FOR)"
+msgstr ""
+
+#: src/class-wpso-admin-settings.php:164
 msgid "Online Session Limit"
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:168
+#: src/class-wpso-admin-settings.php:172
 msgid ""
 "When the online user amount has reached the limit, other users not in the "
 "queue have to line up!"
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:177
+#: src/class-wpso-admin-settings.php:181
 msgid "Online Limit"
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:178
+#: src/class-wpso-admin-settings.php:182
 msgid "The maximum online user limit."
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:188
+#: src/class-wpso-admin-settings.php:192
 msgid "Keep Alive Period"
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:189
+#: src/class-wpso-admin-settings.php:193
 msgid "Unit: minute"
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:202
+#: src/class-wpso-admin-settings.php:206
 msgid "Frequency Check"
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:209
+#: src/class-wpso-admin-settings.php:213
 msgid ""
 "Don't worry about the human visitors, if they reach the limit and get banned,"
 " they can easily continue surfing your website by solving CAPTCHA."
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:218
+#: src/class-wpso-admin-settings.php:222
 msgid "Secondly Limit"
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:219
+#: src/class-wpso-admin-settings.php:223
 msgid "Page views per vistor per second."
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:229
+#: src/class-wpso-admin-settings.php:233
 msgid "Minutely Limit"
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:230
+#: src/class-wpso-admin-settings.php:234
 msgid "Page views per vistor per minute."
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:240
+#: src/class-wpso-admin-settings.php:244
 msgid "Hourly Limit"
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:241
+#: src/class-wpso-admin-settings.php:245
 msgid "Page views per vistor per hour."
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:251
+#: src/class-wpso-admin-settings.php:255
 msgid "Daily Limit"
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:252
+#: src/class-wpso-admin-settings.php:256
 msgid "Page views per vistor per day."
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:265
+#: src/class-wpso-admin-settings.php:269
 msgid "Trusted Bots"
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:282 src/class-wpso-admin-settings.php:309
-#: src/class-wpso-admin-settings.php:336 src/class-wpso-admin-settings.php:363
+#: src/class-wpso-admin-settings.php:286 src/class-wpso-admin-settings.php:313
+#: src/class-wpso-admin-settings.php:340 src/class-wpso-admin-settings.php:367
 msgid "Strict Mode"
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:283
+#: src/class-wpso-admin-settings.php:287
 msgid "IP resolved hostname and IP address must match."
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:292 src/views/dashboard/overview.php:163
+#: src/class-wpso-admin-settings.php:296 src/views/dashboard/overview.php:163
 msgid "Header"
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:300
+#: src/class-wpso-admin-settings.php:304
 msgid "Analysis header information from visitors."
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:310
+#: src/class-wpso-admin-settings.php:314
 msgid "Deny all vistors without common header information."
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:319 src/views/dashboard/overview.php:183
+#: src/class-wpso-admin-settings.php:323 src/views/dashboard/overview.php:183
 msgid "User Agent"
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:327 src/views/dashboard/overview.php:187
+#: src/class-wpso-admin-settings.php:331 src/views/dashboard/overview.php:187
 msgid "Analysis user-agent information from visitors."
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:337
+#: src/class-wpso-admin-settings.php:341
 msgid "Visitors with empty user-agent information will be blocked."
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:346
+#: src/class-wpso-admin-settings.php:350
 msgid "Reverse DNS"
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:354
+#: src/class-wpso-admin-settings.php:358
 msgid ""
 "In general, an IP from Internet Service Provider (ISP) will have RDNS set. "
 "This option only works when strict mode is on."
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:364
+#: src/class-wpso-admin-settings.php:368
 msgid ""
 "Visitors with empty RDNS record will be blocked.<br />IP resolved hostname "
 "(RDNS) and IP address must match."
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:376
+#: src/class-wpso-admin-settings.php:380
 #: src/views/dashboard/filter_log_table.php:79
 #: src/views/dashboard/overview.php:107
 msgid "Session"
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:384
+#: src/class-wpso-admin-settings.php:388
 msgid "Detect multiple sessions created by the same visitor."
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:393 src/class-wpso-admin-settings.php:429
-#: src/class-wpso-admin-settings.php:466
+#: src/class-wpso-admin-settings.php:397 src/class-wpso-admin-settings.php:433
+#: src/class-wpso-admin-settings.php:470
 msgid "Quota"
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:394 src/class-wpso-admin-settings.php:430
-#: src/class-wpso-admin-settings.php:467
+#: src/class-wpso-admin-settings.php:398 src/class-wpso-admin-settings.php:434
+#: src/class-wpso-admin-settings.php:471
 msgid "A visitor reached this limit will get banned temporarily."
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:412
+#: src/class-wpso-admin-settings.php:416
 msgid "HTTP Referrer"
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:420 src/views/dashboard/overview.php:129
+#: src/class-wpso-admin-settings.php:424 src/views/dashboard/overview.php:129
 msgid "Check HTTP referrer information."
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:449
+#: src/class-wpso-admin-settings.php:453
 #: src/views/dashboard/filter_log_table.php:78
 #: src/views/dashboard/overview.php:98
 msgid "Cookie"
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:457
+#: src/class-wpso-admin-settings.php:461
 msgid "Check cookie generated by JavaScript."
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:489
+#: src/class-wpso-admin-settings.php:493
 msgid "Google reCaptcha"
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:506
+#: src/class-wpso-admin-settings.php:510
 msgid "Version"
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:507
+#: src/class-wpso-admin-settings.php:511
 msgid ""
 "Please use corresponding key for that version you choose, otherwise it won't "
 "work."
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:519
+#: src/class-wpso-admin-settings.php:523
 msgid "Site Key"
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:520
+#: src/class-wpso-admin-settings.php:524
 msgid "Enter Google reCaptcha site key for your webiste."
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:530
+#: src/class-wpso-admin-settings.php:534
 msgid "Secret Key"
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:531
+#: src/class-wpso-admin-settings.php:535
 msgid "Enter Google reCahptcha secret key for your webiste."
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:541
+#: src/class-wpso-admin-settings.php:545
 msgid "Language Code"
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:542
+#: src/class-wpso-admin-settings.php:546
 msgid ""
 "ISO 639 - ISO 3166 code. For example, <strong>zh-TW</strong> stands for "
 "Tranditional Chinese of <strong>Taiwan</strong>"
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:552 src/views/dashboard/overview.php:241
+#: src/class-wpso-admin-settings.php:556 src/views/dashboard/overview.php:241
 msgid "Image Captcha"
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:560
+#: src/class-wpso-admin-settings.php:564
 msgid "A simple image CAPTCHA."
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:569 src/views/dashboard/rule_table.php:60
+#: src/class-wpso-admin-settings.php:573 src/views/dashboard/rule_table.php:60
 #: src/views/security/xss_protection.php:99
 #: src/views/security/xss_protection.php:139
 msgid "Type"
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:575
+#: src/class-wpso-admin-settings.php:579
 msgid "Alpha-numeric string with lower and uppercase characters."
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:576
+#: src/class-wpso-admin-settings.php:580
 msgid "A string with lower and uppercase letters only."
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:577
+#: src/class-wpso-admin-settings.php:581
 msgid "Numeric string only."
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:584
+#: src/class-wpso-admin-settings.php:588
 msgid "Length"
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:585
+#: src/class-wpso-admin-settings.php:589
 msgid "How many characters do you like to display on CAPTCHA."
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:602
+#: src/class-wpso-admin-settings.php:606
 msgid "URLs"
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:609
+#: src/class-wpso-admin-settings.php:613
 msgid "Excluded URLs"
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:616
+#: src/class-wpso-admin-settings.php:620
 msgid "Pages"
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:624
+#: src/class-wpso-admin-settings.php:628
 msgid ""
 "Turning this option on will get <code>wp-login.php</code> excluded from "
 "Shieldon protection."
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:624 src/class-wpso-admin-settings.php:633
+#: src/class-wpso-admin-settings.php:628 src/class-wpso-admin-settings.php:637
 #: src/views/setting/ip-manager-strict-login.php:16
 #: src/views/setting/ip-manager-strict-signup.php:15
 #: src/views/setting/ip-manager-strict-xmlrpc.php:15
@@ -523,19 +551,19 @@ msgstr ""
 msgid "(default: off)"
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:633
+#: src/class-wpso-admin-settings.php:637
 msgid ""
 "Turning this option on will get <code>wp-signup.php</code> excluded from "
 "Shieldon protection."
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:642
+#: src/class-wpso-admin-settings.php:646
 msgid ""
 "Turning this option on will get <code>xmlrpc.php</code> excluded from "
 "Shieldon protection."
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:642
+#: src/class-wpso-admin-settings.php:646
 msgid "(default: on)"
 msgstr ""
 
@@ -1061,12 +1089,6 @@ msgstr ""
 
 #: src/views/message/php-version-warning.php:19
 msgid "Please remove WP Shieldon or upgrade your PHP version."
-msgstr ""
-
-#: src/views/message/update_notice.php:18
-msgid ""
-"WP Shieldon has updated successfully. Please reset data circle, then turn on "
-"daemon."
 msgstr ""
 
 #: src/views/security/authentication.php:26

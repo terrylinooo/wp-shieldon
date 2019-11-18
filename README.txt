@@ -143,6 +143,17 @@ GNU General Public License for more details.
 * Exclude password-protected posts' form.
 * Update uninstall.php
 
+= 1.4.0
+
+- Update Shieldon core.
+- Add feature - XSS protection.
+- Add feature - WWW-authenticte page protection.
+- Add setting page - Overview.
+
 == Upgrade Notice ==
+
+= 1.4.0
+
+- Please update data circle if you are using MySQL or SQLite data driver. The reset button is located on the overview page.
 
 = Currently no logs now.

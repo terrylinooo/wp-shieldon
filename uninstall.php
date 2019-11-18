@@ -23,10 +23,18 @@ $options_names = array(
 	'shieldon_component',
 	'shieldon_filter',
 	'shieldon_captcha',
+	'shieldon_ip_global',
+	'shieldon_ip_login',
+	'shieldon_ip_signup',
+	'shieldon_ip_xmlrpc',
+	'shieldon_authetication',
+	'shieldon_xss_protected_type',
+	'shieldon_xss_protected_list',
 	'wpso_channel_id',
 	'wpso_driver_hash',
 	'wpso_lang_code',
 	'wpso_driver_reset',
+	'wpso_update_notice',
 );
 
 foreach ( $options_names as $option_name ) {

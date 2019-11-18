@@ -28,6 +28,22 @@ function wpso_get_option( $option, $section, $default = '' ) {
 }
 
 /**
+* Update a field of a setting array.
+*
+* @param string $option  settings field name.
+* @param string $section the section name this field belongs to.
+* @param string $default default text if it's not found.
+* @return mixed
+*/
+function wpso_set_option( $option, $section, $value ) {
+	$options = get_option( $section );
+
+	$options[ $option ] = $value;
+
+	update_option( $section, $options );
+}
+
+/**
  * Load view files.
  *
  * @param string $template_path The specific template's path.

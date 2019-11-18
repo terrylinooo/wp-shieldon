@@ -55,7 +55,7 @@ $timezone = '';
                     <div class="nums">
                         <?php echo $driver['redis']  ? '<i class="far fa-check-circle"></i>' : '<i class="far fa-circle"></i>'; ?>
                     </div>
-                    <div class="note"><?php _e('panel', 'overview_note_memory_db', 'In-memory dadabase.'); ?></div>
+                    <div class="note"><?php _e('panel', 'overview_note_memory_db', 'In-memory database.'); ?></div>
                     <button class="note-code" onclick="openInfoModal(this)" 
                         data-document="https://shield-on-php.github.io/en/driver/redis.html" 
                         data-id="driver-redis" 

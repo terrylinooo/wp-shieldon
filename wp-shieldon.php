@@ -155,6 +155,27 @@ if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 		update_option( 'wpso_driver_hash', '' );
 	}
 
+	/**
+	 * Admin notice when the update is completed.
+	 *
+	 * @return void
+	 */
+	function wpso_update_notice() {
+		echo wpso_load_view( 'message/update_notice' );
+	}
+
+	/**
+	 * Fire this function when the update is completed.
+	 *
+	 * @return void
+	 */
+	function wpso_upgrade_completed() {
+		wpso_set_option( 'enable_daemon', 'shieldon_daemon', 'no' );
+		update_option( 'wpso_update_notice', 'yes' );
+	}
+
+	
+
 	register_activation_hook( __FILE__, 'wpso_activate_plugin' );
 	register_deactivation_hook( __FILE__, 'wpso_deactivate_plugin' );
 
@@ -162,6 +183,13 @@ if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 	 * Start to run WP Shieldon plugin cores.
 	 */
 	if ( is_admin() ) {
+
+		$update_notice = get_option( 'wpso_update_notice' );
+
+		if ( 'yes' === $update_notice ) {
+			add_action( 'admin_notices', 'wpso_update_notice' );
+			update_option( 'wpso_update_notice', 'no' );
+		}
 	
 		$admin_menu       = new WPSO_Admin_Menu();
 		$admin_settings   = new WPSO_Admin_Settings();
@@ -173,6 +201,7 @@ if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 		add_filter( 'admin_body_class', array( $admin_settings, 'setting_admin_body_class' ) );
 		add_filter( 'plugin_action_links_' . SHIELDON_PLUGIN_NAME, array( $admin_menu, 'plugin_action_links' ), 10, 5 );
 		add_filter( 'plugin_row_meta', array( $admin_menu, 'plugin_extend_links' ), 10, 2 );
+		add_action( 'upgrader_process_complete', 'wpso_upgrade_completed', 10, 2 );
 
 		// If we detect the setting changes.
 		if ( ! empty( $_POST['shieldon_daemon[data_driver_type]'] ) ) {

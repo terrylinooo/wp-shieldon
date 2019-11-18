@@ -118,7 +118,7 @@ return [
     'overview_label_mysql' => 'MySQL',
     'overview_text_rows' => 'rows',
     'overview_note_sql_db' => 'SQL database.',
-    'overview_note_memory_db' =>  'In-memory dadabase.',
+    'overview_note_memory_db' =>  'In-memory database.',
     'overview_label_redis' => 'Redis',
     'overview_btn_document' => 'Document',
     'overview_btn_close' => 'Close',

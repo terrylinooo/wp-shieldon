@@ -139,23 +139,19 @@ class WPSO_Admin_Settings {
 					'parent'  => 'enable_daemon',
 				),
 
-
 				array(
-					'name'    => 'is_behind_cdn_service',
-					'label'   => __( 'CDN', 'wp-shieldon' ),
+					'name'    => 'ip_source',
+					'label'   => __( 'IP Source', 'wp-githuber-md' ),
 					'desc'    => __( 'Is your website behind CDN service? If you use CDN, you have to set this setting, otherwise all IP addresses come from CDN servers, they will be banned.', 'wp-shieldon' ),
-					'type'    => 'select',
-					'default' => 'no',
+					'type'    => 'radio',
+					'default' => 'REMOTE_ADDR',
 					'parent'  => 'enable_daemon',
 					'options' => array(
-						'no'         => __( 'No', 'wp-shieldon' ),
-						'cloudflare' => __( 'CloudFlare (HTTP_CF_CONNECTING_IP)', 'wp-shieldon' ),
-						'google'     => __( 'Google Cloud CDN or Load Balancer (HTTP_X_FORWARDED_FOR)', 'wp-shieldon' ),
-						'aws'        => __( 'AWS CouldFront (HTTP_X_FORWARDED_FOR)', 'wp-shieldon' ),
- 						'keycdn'     => __( 'KeyCDN (HTTP_X_FORWARDED_HOST)', 'wp-shieldon' ),
-						'others'     => __( 'Others (HTTP_X_FORWARDED_FOR)', 'wp-shieldon' ),
-					),
-					'parent' => 'enable_captcha_image',
+						'REMOTE_ADDR'           => 'REMOTE_ADDR - <small>'           . ($_SERVER['REMOTE_ADDR']           ?? '<i class="fas fa-times-circle text-danger"></i>') . '</small>',
+						'HTTP_CF_CONNECTING_IP' => 'HTTP_CF_CONNECTING_IP - <small>' . ($_SERVER['HTTP_CF_CONNECTING_IP'] ?? '<i class="fas fa-times-circle text-danger"></i>') . '</small>',
+						'HTTP_X_FORWARDED_FOR'  => 'HTTP_X_FORWARDED_FOR - <small>'  . ($_SERVER['HTTP_X_FORWARDED_FOR']  ?? '<i class="fas fa-times-circle text-danger"></i>') . '</small>',
+						'HTTP_X_FORWARDED_HOST' => 'HTTP_X_FORWARDED_HOST - <small>' . ($_SERVER['HTTP_X_FORWARDED_HOST'] ?? '<i class="fas fa-times-circle text-danger"></i>') . '</small>',
+					)
 				),
 
 				// Online session limit
