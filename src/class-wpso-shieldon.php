@@ -85,6 +85,14 @@ class WPSO_Shieldon_Guardian {
 		$this->set_session_limit();    // Set online session limit settings.
 		$this->set_authentication();   // Set the URL paths that are protected by WWW-Authenticate protocol.
 		$this->set_xss_protection();   // Filter XSS strings.
+	}
+
+	/**
+	 * Start protecting your website!
+	 *
+	 * @return void
+	 */
+	public function run() {
 
 		// Check ecxluded list before checking process.
 		if ( $this->is_excluded_list() ) {
@@ -97,7 +105,6 @@ class WPSO_Shieldon_Guardian {
 			$this->shieldon->createDatabase( false );
 		}
 
-		// Start protecting your website!
 		$result = $this->shieldon->run();
 
 		if ($result !== $this->shieldon::RESPONSE_ALLOW) {
@@ -431,10 +438,10 @@ class WPSO_Shieldon_Guardian {
 			if ( ( $now_time - $last_reset_time ) > 86400 ) {
 				$last_reset_time = strtotime( date('Y-m-d 00:00:00') );
 
-				// Recond new reset time.
+				// Record new reset time.
 				update_option( 'wpso_last_reset_time', $last_reset_time );
 
-				// Remove all logs.
+				// Remove all data.
 				$this->shieldon->driver->rebuild();
 			}
 		}

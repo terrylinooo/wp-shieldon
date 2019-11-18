@@ -30,6 +30,7 @@ class WPSO_Admin_Menu {
 			return;
 		}
 		wp_enqueue_style( 'custom_wp_admin_css', SHIELDON_PLUGIN_URL . 'src/assets/css/admin-style.css', array(), SHIELDON_PLUGIN_VERSION, 'all' );
+		wp_enqueue_style (  'wp-jquery-ui-dialog' );
 	}
 
 	/**
@@ -41,6 +42,7 @@ class WPSO_Admin_Menu {
 			return;
 		}
 		wp_enqueue_script( 'fontawesome-5-js', SHIELDON_PLUGIN_URL . 'src/assets/js/fontawesome-all.min.js', array( 'jquery' ), SHIELDON_PLUGIN_VERSION, true );
+		wp_enqueue_script( 'jquery-ui-dialog' );
 	}
 
 	/**
@@ -76,6 +78,15 @@ class WPSO_Admin_Menu {
 			'manage_options',
 			'shieldon-action-logs',
 			array( $this, 'action_logs' )
+		);
+
+		add_submenu_page(
+			'shieldon-settings',
+			__( 'Overview', 'wp-shieldon' ),
+			__( 'Overview', 'wp-shieldon' ),
+			'manage_options',
+			'shieldon-overview',
+			array( $this, 'overview' )
 		);
 
 		add_submenu_page(
@@ -268,11 +279,11 @@ class WPSO_Admin_Menu {
 					$logData['type']       = $action_code[ $action ];
 					$logData['reason']     = $wpso->shieldon::REASON_MANUAL_BAN;
 
-					$wpso->shieldon->driver->save($ip, $logData, 'rule');
+					$wpso->shieldon->driver->save( $ip, $logData, 'rule' );
 					break;
 
 				case 'remove':
-					$wpso->shieldon->driver->delete($ip, 'rule');
+					$wpso->shieldon->driver->delete( $ip, 'rule' );
 					break;
 			}
 		}
@@ -350,7 +361,7 @@ class WPSO_Admin_Menu {
 			$data['is_session_limit']     = true;
 			$data['session_limit_count']  = wpso_get_option( 'session_limit_count', 'shieldon_daemon' );
 			$data['session_limit_period'] = wpso_get_option( 'session_limit_period', 'shieldon_daemon' );
-			$data['online_count']         = count($data['session_list']);
+			$data['online_count']         = count( $data['session_list'] );
 			$data['expires']              = (int) $data['session_limit_period'] * 60;
 		}
 
@@ -474,6 +485,190 @@ class WPSO_Admin_Menu {
 
 		wpso_show_settings_header();
 		echo wpso_load_view( 'security/xss_protection', $data );
+		wpso_show_settings_footer();
+	}
+
+	/**
+	 * Overview
+	 *
+	 * @return void
+	 */
+	public function overview() {
+
+		$shieldon = \Shieldon\Container::get( 'shieldon' );
+
+		if ( isset( $_POST['action_type'] ) && check_admin_referer( 'check_form_authentication', 'wpso_authentication_form' ) ) {
+
+            switch ( $_POST['action_type'] ) {
+
+                case 'reset_data_circle':
+					$last_reset_time = strtotime( date( 'Y-m-d 00:00:00') );
+
+					// Record new reset time.
+					update_option( 'wpso_last_reset_time', $last_reset_time );
+
+					// Remove all data and rebuild data circle tables.
+					$this->shieldon->driver->rebuild();
+                    break;
+
+				case 'reset_action_logs':
+					
+					// Remove all action logs.
+                    $shieldon->logger->purgeLogs();
+                    break;
+
+                default:
+            }
+        }
+
+        /*
+        |--------------------------------------------------------------------------
+        | Logger
+        |--------------------------------------------------------------------------
+        |
+        | All logs were recorded by ActionLogger.
+        | Get the summary information from those logs.
+        |
+        */
+
+        $data['action_logger'] = false;
+
+        if ( ! empty( $shieldon->logger)) {
+            $loggerInfo = $shieldon->logger->getCurrentLoggerInfo();
+            $data['action_logger'] = true;
+        }
+
+        $data['logger_started_working_date'] = 'No record';
+        $data['logger_work_days'] = '0 day';
+        $data['logger_total_size'] = '0 MB';
+
+        if ( ! empty( $loggerInfo)) {
+
+            $i = 0;
+            ksort( $loggerInfo);
+
+            foreach ( $loggerInfo as $date => $size) {
+                if (0 === $i) {
+                    $data['logger_started_working_date'] = date( 'Y-m-d', strtotime((string) $date));
+                }
+                $i += (int) $size;
+            }
+
+            $data['logger_work_days'] = count( $loggerInfo);
+            $data['logger_total_size'] = round( $i / (1024 * 1024), 5) . ' MB';
+        }
+
+        /*
+        |--------------------------------------------------------------------------
+        | Data circle
+        |--------------------------------------------------------------------------
+        |
+        | A data circle includes the primary data tables of Shieldon.
+        | They are ip_log_table, ip_rule_table and session_table.
+        |
+        */
+
+        // Data circle.
+        $data['rule_list'] = $shieldon->driver->getAll( 'rule' );
+        $data['ip_log_list'] = $shieldon->driver->getAll( 'filter_log' );
+        $data['session_list'] = $shieldon->driver->getAll( 'session' );
+
+        /*
+        |--------------------------------------------------------------------------
+        | Shieldon status
+        |--------------------------------------------------------------------------
+        |
+        | 1. Components.
+        | 2. Filters.
+        | 3. Configuration.
+        | 4. Captcha modules.
+        | 5. Messenger modules.
+        |
+        */
+
+        $data['components'] = [
+            'Ip'         => ( ! empty( $shieldon->component['Ip'] ) )         ? true : false,
+            'TrustedBot' => ( ! empty( $shieldon->component['TrustedBot'] ) ) ? true : false,
+            'Header'     => ( ! empty( $shieldon->component['Header'] ) )     ? true : false,
+            'Rdns'       => ( ! empty( $shieldon->component['Rdns'] ) )       ? true : false,
+            'UserAgent'  => ( ! empty( $shieldon->component['UserAgent'] ) )  ? true : false,
+        ];
+
+        $reflection = new ReflectionObject( $shieldon );
+        $t = $reflection->getProperty( 'enableCookieCheck' );
+        $t->setAccessible( true );
+        $enableCookieCheck = $t->getValue( $shieldon );
+
+        $reflection = new ReflectionObject( $shieldon );
+        $t = $reflection->getProperty( 'enableSessionCheck' );
+        $t->setAccessible( true );
+        $enableSessionCheck = $t->getValue( $shieldon );
+
+        $reflection = new ReflectionObject( $shieldon );
+        $t = $reflection->getProperty( 'enableFrequencyCheck' );
+        $t->setAccessible( true );
+        $enableFrequencyCheck = $t->getValue( $shieldon );
+
+        $reflection = new ReflectionObject( $shieldon );
+        $t = $reflection->getProperty( 'enableRefererCheck' );
+        $t->setAccessible( true );
+        $enableRefererCheck = $t->getValue( $shieldon );
+
+        $data['filters'] = [
+            'cookie'    => $enableCookieCheck,
+            'session'   => $enableSessionCheck,
+            'frequency' => $enableFrequencyCheck,
+            'referer'   => $enableRefererCheck,
+        ];
+
+        $reflection = new ReflectionObject( $shieldon );
+        $t = $reflection->getProperty( 'properties' );
+        $t->setAccessible( true );
+        $properties = $t->getValue( $shieldon );
+        
+        $data['configuration'] = $properties;
+
+        $data['driver'] = [
+            'mysql'  => ( $shieldon->driver instanceof \Shieldon\Driver\MysqlDriver),
+            'redis'  => ( $shieldon->driver instanceof \Shieldon\Driver\RedisDriver),
+            'file'   => ( $shieldon->driver instanceof \Shieldon\Driver\FileDriver),
+            'sqlite' => ( $shieldon->driver instanceof \Shieldon\Driver\SqliteDriver),
+        ];
+
+        $reflection = new ReflectionObject( $shieldon );
+        $t = $reflection->getProperty( 'captcha' );
+        $t->setAccessible( true );
+        $captcha = $t->getValue( $shieldon );
+
+        $data['captcha'] = [
+            'recaptcha'    => ( isset( $captcha['Recaptcha'] ) ? true : false ),
+            'imagecaptcha' => ( isset( $captcha['ImageCaptcha'] ) ? true : false ),
+        ];
+
+        $reflection = new ReflectionObject( $shieldon );
+        $t = $reflection->getProperty( 'messengers' );
+        $t->setAccessible( true );
+        $messengers = $t->getValue( $shieldon );
+
+        $operatingMessengers = [
+            'telegram'   => false,
+            'linenotify' => false,
+            'sendgrid'   => false,
+        ];
+
+        foreach ( $messengers as $messenger) {
+            $class = get_class( $messenger);
+            $class = strtolower(substr( $class, strrpos( $class, '\\') + 1));
+
+            if ( isset( $operatingMessengers[$class] ) ) {
+                $operatingMessengers[$class] = true;
+            }
+        }
+
+        $data['messengers'] = $operatingMessengers;
+
+		wpso_show_settings_header();
+		echo wpso_load_view( 'dashboard/overview', $data );
 		wpso_show_settings_footer();
 	}
 }

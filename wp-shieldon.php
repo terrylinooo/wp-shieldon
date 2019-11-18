@@ -120,7 +120,7 @@ if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 		
 				foreach ( $files as $file ) {
 					if ( wp_mkdir_p( $file['base'] ) && ! file_exists( trailingslashit( $file['base'] ) . $file['file'] ) ) {
-						@file_put_contents( trailingslashit( $file['base'] ) . $file['file'], $file['content']);
+						@file_put_contents( trailingslashit( $file['base'] ) . $file['file'], $file['content'] );
 					}
 				}
 			}
@@ -179,7 +179,8 @@ if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 			update_option( 'wpso_driver_reset', 'yes' );
 		}
 
-		wpso_instance();
+		$guardian = wpso_instance();
+		$guardian->init();
 
 	} else {
 
@@ -194,6 +195,7 @@ if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 				
 				$guardian = wpso_instance();
 				$guardian->init();
+				$guardian->run();
 			}
 
 			// Load main launcher class of WP Shieldon plugin at a very early hook.

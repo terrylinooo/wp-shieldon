@@ -80,6 +80,31 @@
 .wp-shieldon-admin input, .wp-shieldon-admin textarea, .wp-shieldon-admin select {
   border: 1px #dddddd solid;
 }
+.wp-shieldon-admin .row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+  padding: 0;
+}
+.wp-shieldon-admin .col-sm-3 {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+@media (min-width: 576px) {
+  .wp-shieldon-admin .col-sm-3 {
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+    max-width: calc(25% - 30px);
+  }
+}
 
 .wrap div.updated {
   margin: 0;
@@ -209,12 +234,38 @@ code.tips {
   padding: 10px;
 }
 
-.wpso-databable-heading {
+.wpso-datatable-heading {
   margin: 20px 0 20px;
   font-weight: bold;
   border-left: 9px #00b38a solid;
   padding-left: 15px;
-  font-size: 22px;
+  font-size: 24px;
+  height: 36px;
+  line-height: 36px;
+}
+.wpso-datatable-heading .heading-right {
+  font-size: 13px;
+  float: right;
+  font-weight: normal;
+  vertical-align: top;
+}
+.wpso-datatable-heading .heading-right span {
+  color: #aaaaaa;
+  padding: 3px 5px;
+}
+.wpso-datatable-heading .heading-right strong {
+  font-weight: bold;
+  padding: 3px 8px;
+  border: 1px #dddddd solid;
+  font-weight: normal;
+}
+.wpso-datatable-heading .heading-right ul {
+  list-style: none;
+}
+.wpso-datatable-heading .heading-right li {
+  float: left;
+  vertical-align: top;
+  margin-left: 16px;
 }
 
 .wpso-datatable-description {
@@ -236,6 +287,46 @@ code.tips {
   text-align: right;
   font-size: 12px;
   color: #999999;
+}
+
+.btn-shieldon {
+  background-color: #fff;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fff), color-stop(100%, #eee));
+  background: -webkit-linear-gradient(top, #fff 0%, #eee 100%);
+  background: -moz-linear-gradient(top, #fff 0%, #eee 100%);
+  background: -ms-linear-gradient(top, #fff 0%, #eee 100%);
+  background: -o-linear-gradient(top, #fff 0%, #eee 100%);
+  background: linear-gradient(to bottom, #fff 0%, #eee 100%);
+  vertical-align: middle;
+  font-size: 14px;
+  height: 40px;
+  border: 1px #dddddd solid;
+  padding: 0.25rem 0.5rem;
+  margin: 0 2px;
+  border-radius: 3px;
+}
+.btn-shieldon.btn-sm {
+  height: 30px;
+}
+.btn-shieldon.btn-only-icon {
+  height: 30px;
+  width: 30px;
+  padding: 0;
+  text-align: center;
+  line-height: 30px;
+  vertical-align: middle;
+  font-size: 13px;
+}
+.btn-shieldon.circle {
+  border-radius: 50%;
+}
+.btn-shieldon:hover {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #eee), color-stop(100%, #fff));
+  background: -webkit-linear-gradient(top, #eee 0%, #fff 100%);
+  background: -moz-linear-gradient(top, #eee 0%, #fff 100%);
+  background: -ms-linear-gradient(top, eee 0%, #fff 100%);
+  background: -o-linear-gradient(top, #eee 0%, #fff 100%);
+  background: linear-gradient(to bottom, #eee 0%, #fff 100%);
 }
 
 .wpso-form input,
@@ -310,13 +401,13 @@ code.tips {
   margin-top: 10px;
 }
 .wpso-dashboard .section-title {
-  padding: 10px;
+  padding: 15px;
   padding-left: 20px;
   font-size: 24px;
   display: inline-block;
   background-color: #ffffff;
   color: #333333;
-  border-left: 8px #00b38a solid;
+  border-left: 9px #00b38a solid;
 }
 .wpso-dashboard .circle-section {
   display: flex;
@@ -425,6 +516,84 @@ code.tips {
   align-self: flex-end;
 }
 
+.filter-status {
+  position: relative;
+  text-align: center;
+  border-top: 2px #dddddd solid;
+  border-left: 1px #dddddd solid;
+  border-right: 1px #eeeeee solid;
+  border-bottom: 1px #eeeeee solid;
+  background: white;
+  background-image: radial-gradient(#dddddd 1%, rgba(0, 0, 0, 0) 15%);
+  background-size: 8px 8px;
+  padding: 10px 10px 0 10px;
+  height: 100%;
+}
+.filter-status.info-box table {
+  background-color: #ffffff;
+  margin-top: 10px;
+}
+.filter-status.info-box table td {
+  text-align: left;
+}
+.filter-status .heading {
+  color: #373d3f;
+  font-size: 18px;
+  font-weight: bold;
+}
+.filter-status .nums {
+  font-size: 28px;
+  font-weight: bold;
+  padding: 10px 0;
+  color: #222222;
+}
+.filter-status .note {
+  color: #888888;
+  padding: 3px 5px;
+  font-style: italic;
+  align-self: flex-end;
+}
+.filter-status .note-code, .filter-status .note-document {
+  position: absolute;
+  top: 0;
+  display: inline-block;
+  height: 25px;
+  line-height: 25px;
+  text-align: center;
+  font-size: 15px;
+  cursor: pointer;
+  color: #777777;
+  background: none;
+  border: 0;
+  overflow: hidden;
+}
+.filter-status .note-code:hover, .filter-status .note-document:hover {
+  color: #000;
+}
+.filter-status .note-code {
+  right: 0px;
+}
+.filter-status .note-document {
+  right: 25px;
+}
+.filter-status .far {
+  background-color: #ffffff;
+  border-radius: 50%;
+  padding: 2px;
+}
+.filter-status .fa-stop-circle {
+  color: #ff1c69;
+}
+.filter-status .fa-play-circle {
+  color: #00e396;
+}
+.filter-status .fa-check-circle {
+  color: #008ffb;
+}
+.filter-status .fa-circle {
+  color: #aaaaaa;
+}
+
 .wpso-tabs {
   background-color: #e1e1e1;
   border-top: 1px #d1d1d1 solid;
@@ -436,11 +605,11 @@ code.tips {
 }
 .wpso-tabs ul, .wpso-tabs li {
   list-style-type: none;
-  padding: 0;
   margin: 0;
 }
 .wpso-tabs li {
   display: inline-block;
+  padding: 2px 0;
 }
 .wpso-tabs li.is-active a {
   background-color: #008ffb;
@@ -449,8 +618,8 @@ code.tips {
 .wpso-tabs li a {
   text-decoration: none;
   background-color: #f1f1f1;
-  padding: 5px 15px;
-  margin: 5px 5px;
+  padding: 8px 16px;
+  margin: 7px 5px;
   border: 1px #dddddd solid;
   color: #666666;
 }

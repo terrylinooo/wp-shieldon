@@ -19,7 +19,7 @@ $timezone = wpso_apply_blog_timezone();
 
 <div class="wpso-dashboard">
 	<div id="wpso-rule-table-form" class="wpso-datatables">
-		<div class="wpso-databable-heading">
+		<div class="wpso-datatable-heading">
 			<?php _e( 'Rule Table', 'wp-shieldon' ); ?><br />
 		</div>
 		<div class="wpso-datatable-description">

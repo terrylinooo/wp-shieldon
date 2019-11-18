@@ -14,13 +14,13 @@
 	}
 
 	.section-title {
-		padding: 10px;
+		padding: 15px;
 		padding-left: 20px;
 		font-size: 24px;
 		display: inline-block;
 		background-color: #ffffff;
 		color: #333333;
-		border-left: 8px #00b38a solid;
+		border-left: 9px #00b38a solid;
 	}
 
 	.circle-section {
@@ -152,6 +152,101 @@
     }
 }
 
+.filter-status {
+	position: relative;
+	text-align: center;
+	border-top: 2px #dddddd solid;
+	border-left: 1px #dddddd solid;
+	border-right: 1px #eeeeee solid;
+	border-bottom: 1px #eeeeee solid;
+	background: rgba(255, 255, 255, 1);
+	background-image: radial-gradient(#ddd 1%, transparent 15%);
+	background-size: 8px 8px;
+	padding: 10px 10px 0 10px;
+	height: 100%;
+
+	&.info-box {
+
+		table {
+			background-color: #ffffff;
+			margin-top: 10px;
+			
+			td {
+				text-align: left;
+			}
+		}
+	}
+
+	.heading {
+		color: rgb(55, 61, 63);
+		font-size: 18px;
+		font-weight: bold;
+	}
+
+	.nums {
+		font-size: 28px;
+		font-weight: bold;
+		padding: 10px 0;
+		color: #222222;
+	}
+
+	.note {
+		color: #888888;
+		padding: 3px 5px;
+		font-style: italic;
+		align-self: flex-end;
+	}
+
+	.note-code, .note-document {
+		position: absolute;
+		top: 0;
+		display: inline-block;
+		height: 25px;
+		line-height: 25px;
+		text-align: center;
+		font-size: 15px;
+		cursor: pointer;
+		color: #777777;
+		background: none;
+		border: 0;
+		overflow: hidden;
+
+		&:hover {
+			color: #000;
+		}
+	}
+
+	.note-code {
+		right: 0px;
+	}
+
+	.note-document {
+		right: 25px;
+	}
+
+	.far {
+		background-color: #ffffff;
+		border-radius: 50%;
+		padding: 2px;
+	}
+
+	.fa-stop-circle {
+		color: #ff1c69;
+	}
+
+	.fa-play-circle {
+		color: #00e396;
+	}
+
+	.fa-check-circle {
+		color: #008ffb;
+	}
+
+	.fa-circle {
+		color: #aaaaaa;
+	}
+}
+
 .wpso-tabs {
 	background-color: #e1e1e1;
 	border-top: 1px #d1d1d1 solid;
@@ -163,12 +258,12 @@
 
 	ul, li {
 		list-style-type: none;
-		padding: 0;
 		margin: 0;
 	}
 
 	li {
 		display: inline-block;
+		padding: 2px 0;
 
 		&.is-active {
 			a {
@@ -180,8 +275,8 @@
 		a {
 			text-decoration: none;
 			background-color: #f1f1f1;
-			padding: 5px 15px;
-			margin: 5px 5px;
+			padding: 8px 16px;
+			margin: 7px 5px;
 			border: 1px #dddddd solid;
 			color: #666666;
 
