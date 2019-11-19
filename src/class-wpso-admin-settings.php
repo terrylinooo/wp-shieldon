@@ -130,8 +130,8 @@ class WPSO_Admin_Settings {
 				// Reset Cycle
 
 				array(
-					'name'    => 'data_reset_circle',
-					'label'   => __( 'Data Reset Cycle', 'wp-shieldon' ),
+					'name'    => 'reset_data_circle',
+					'label'   => __( 'Reset Data Cycle', 'wp-shieldon' ),
 					'desc'    => __( 'Clear all logs everyday 0:00 a.m. automatically. Turning this option on will improve performace.', 'wp-shieldon' ),
 					'type'    => 'toggle',
 					'size'    => 'sm',

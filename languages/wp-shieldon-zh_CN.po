@@ -1,0 +1,1264 @@
+# Translation of Plugins - WP Shieldon &#8211; Anti-scraping and security - Stable (latest release) in Chinese (Taiwan)
+# This file is distributed under the same license as the Plugins - WP Shieldon &#8211; Anti-scraping and security - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2019-11-19 02:58+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Loco https://localise.biz/\n"
+"Language: zh-TW\n"
+"Project-Id-Version: Plugins - WP Shieldon &#8211; Anti-scraping and security "
+"- Stable (latest release)\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-11-18 17:04+0000\n"
+"Last-Translator: Terry Lin <contact@terryl.in>\n"
+"Language-Team: Chinese (Taiwan)\n"
+"X-Loco-Version: 2.3.1; wp-5.3"
+
+#: src/class-wpso-admin-ip-manager.php:56
+msgid "Global"
+msgstr "全站范围"
+
+#: src/class-wpso-admin-ip-manager.php:61 src/class-wpso-admin-settings.php:623
+msgid "Login"
+msgstr "用户登录"
+
+#: src/class-wpso-admin-ip-manager.php:66 src/class-wpso-admin-settings.php:632
+msgid "Signup"
+msgstr "用户註冊"
+
+#: src/class-wpso-admin-ip-manager.php:71 src/class-wpso-admin-settings.php:641
+msgid "XML RPC"
+msgstr "XML RPC"
+
+#: src/class-wpso-admin-ip-manager.php:88 
+#: src/class-wpso-admin-ip-manager.php:127 
+#: src/class-wpso-admin-ip-manager.php:178 
+#: src/class-wpso-admin-ip-manager.php:217
+msgid "Whitelist"
+msgstr "允许清单"
+
+#: src/class-wpso-admin-ip-manager.php:95 
+#: src/class-wpso-admin-ip-manager.php:118 
+#: src/class-wpso-admin-ip-manager.php:134 
+#: src/class-wpso-admin-ip-manager.php:168 
+#: src/class-wpso-admin-ip-manager.php:185 
+#: src/class-wpso-admin-ip-manager.php:208 
+#: src/class-wpso-admin-ip-manager.php:224 
+#: src/class-wpso-admin-ip-manager.php:247
+msgid "IP List"
+msgstr "IP 位址清单"
+
+#: src/class-wpso-admin-ip-manager.php:103 
+#: src/class-wpso-admin-ip-manager.php:142 
+#: src/class-wpso-admin-ip-manager.php:193 
+#: src/class-wpso-admin-ip-manager.php:232
+msgid "Deny All"
+msgstr "全部拒绝"
+
+#: src/class-wpso-admin-ip-manager.php:111 
+#: src/class-wpso-admin-ip-manager.php:161 
+#: src/class-wpso-admin-ip-manager.php:201 
+#: src/class-wpso-admin-ip-manager.php:240
+msgid "Blacklist"
+msgstr "封锁清单"
+
+#: src/class-wpso-admin-ip-manager.php:151
+msgid "Passcode"
+msgstr "验证码"
+
+#. Plugin Name of the plugin
+#: src/class-wpso-admin-menu.php:57 src/class-wpso-admin-menu.php:58
+msgid "WP Shieldon"
+msgstr "WP Shieldon"
+
+#: src/class-wpso-admin-menu.php:67 src/class-wpso-admin-menu.php:68 
+#: src/class-wpso-admin-menu.php:170
+msgid "Settings"
+msgstr "设置"
+
+#: src/class-wpso-admin-menu.php:76 src/class-wpso-admin-menu.php:77
+msgid "Action Logs"
+msgstr "动作日志"
+
+#: src/class-wpso-admin-menu.php:85 src/class-wpso-admin-menu.php:86
+msgid "Overview"
+msgstr "总览"
+
+#: src/class-wpso-admin-menu.php:94 src/class-wpso-admin-menu.php:95 
+#: src/views/dashboard/rule_table.php:23
+msgid "Rule Table"
+msgstr "规则表"
+
+#: src/class-wpso-admin-menu.php:103 src/class-wpso-admin-menu.php:104 
+#: src/views/dashboard/filter_log_table.php:57
+msgid "Filter Log Table"
+msgstr "过滤器日志表"
+
+#: src/class-wpso-admin-menu.php:112 src/class-wpso-admin-menu.php:113 
+#: src/views/dashboard/session_table.php:64
+msgid "Session Table"
+msgstr "工工作阶段表"
+
+#: src/class-wpso-admin-menu.php:121 src/class-wpso-admin-menu.php:122
+msgid "IP Manager"
+msgstr "IP 位址管理器"
+
+#: src/class-wpso-admin-menu.php:130 src/class-wpso-admin-menu.php:131 
+#: src/views/security/xss_protection.php:23
+msgid "XSS Protection"
+msgstr "XSS 防护"
+
+#: src/class-wpso-admin-menu.php:139 src/class-wpso-admin-menu.php:140 
+#: src/views/security/authentication.php:23
+msgid "Authentication"
+msgstr "网页验证"
+
+#: src/class-wpso-admin-menu.php:148 src/class-wpso-admin-menu.php:149
+msgid "About"
+msgstr "关于"
+
+#: src/class-wpso-admin-menu.php:189
+msgid "View GitHub project"
+msgstr "检视 GitHub 专案"
+
+#: src/class-wpso-admin-menu.php:190
+msgid "Report issues"
+msgstr "回报问题"
+
+#: src/class-wpso-admin-menu.php:291
+msgid "Added manually by administrator"
+msgstr "已由网站管理员手动新增"
+
+#: src/class-wpso-admin-menu.php:292
+msgid "Search engine bot"
+msgstr "搜寻引擎机器人"
+
+#: src/class-wpso-admin-menu.php:293
+msgid "Google bot"
+msgstr "Google 机器人"
+
+#: src/class-wpso-admin-menu.php:294
+msgid "Bing bot"
+msgstr "Bing 机器人"
+
+#: src/class-wpso-admin-menu.php:295
+msgid "Yahoo bot"
+msgstr "Yahoo 机器人"
+
+#: src/class-wpso-admin-menu.php:296
+msgid "Too many sessions"
+msgstr "太多工作阶段。"
+
+#: src/class-wpso-admin-menu.php:297
+msgid "Too many accesses"
+msgstr "太多存取次数。"
+
+#: src/class-wpso-admin-menu.php:298
+msgid "Cannot create JS cookies"
+msgstr "无法建立 JS Cookie。"
+
+#: src/class-wpso-admin-menu.php:299
+msgid "Empty referrer"
+msgstr "空白来源参照。"
+
+#: src/class-wpso-admin-menu.php:300
+msgid "Daily limit reached"
+msgstr "已达每日上限。"
+
+#: src/class-wpso-admin-menu.php:301
+msgid "Hourly limit reached"
+msgstr "已达每小时上限。"
+
+#: src/class-wpso-admin-menu.php:302
+msgid "Minutely limit reached"
+msgstr "已达每分钟上限。"
+
+#: src/class-wpso-admin-menu.php:303
+msgid "Secondly limit reached"
+msgstr "已达每秒上限。"
+
+#: src/class-wpso-admin-menu.php:305
+msgid "DENY"
+msgstr "拒绝"
+
+#: src/class-wpso-admin-menu.php:306
+msgid "ALLOW"
+msgstr "允许"
+
+#: src/class-wpso-admin-menu.php:307 
+#: src/views/dashboard/dashboard_last_month.php:71 
+#: src/views/dashboard/dashboard_past_seven_days.php:71 
+#: src/views/dashboard/dashboard_this_month.php:71 
+#: src/views/dashboard/dashboard_today.php:71 
+#: src/views/dashboard/dashboard_yesterday.php:71
+msgid "CAPTCHA"
+msgstr "CAPTCHA"
+
+#: src/class-wpso-admin-settings.php:56
+msgid "Daemon"
+msgstr "守护程序"
+
+#: src/class-wpso-admin-settings.php:61 src/views/dashboard/overview.php:139
+msgid "Components"
+msgstr "元件"
+
+#: src/class-wpso-admin-settings.php:66 src/views/dashboard/overview.php:93
+msgid "Filters"
+msgstr "过滤器"
+
+#: src/class-wpso-admin-settings.php:71 
+#: src/views/dashboard/dashboard_last_month.php:28 
+#: src/views/dashboard/dashboard_last_month.php:144 
+#: src/views/dashboard/dashboard_past_seven_days.php:28 
+#: src/views/dashboard/dashboard_past_seven_days.php:144 
+#: src/views/dashboard/dashboard_this_month.php:28 
+#: src/views/dashboard/dashboard_this_month.php:144 
+#: src/views/dashboard/dashboard_today.php:28 
+#: src/views/dashboard/dashboard_today.php:144 
+#: src/views/dashboard/dashboard_yesterday.php:28 
+#: src/views/dashboard/dashboard_yesterday.php:144
+msgid "CAPTCHAs"
+msgstr "CAPTCHA"
+
+#: src/class-wpso-admin-settings.php:76
+msgid "Exclusion"
+msgstr "排除项目"
+
+#: src/class-wpso-admin-settings.php:93
+msgid "Enable"
+msgstr "启用"
+
+#: src/class-wpso-admin-settings.php:101
+msgid ""
+"Start protecting your website by implementing Shieldon. This plugin only "
+"works when this option is enabled."
+msgstr "透过使用 Shieldon 为网站提供保护。启用这项设置后，这个插件才会生效。"
+
+#: src/class-wpso-admin-settings.php:110
+msgid "Data Driver"
+msgstr "资料驱动程序"
+
+#: src/class-wpso-admin-settings.php:111
+msgid "Choose a data driver for Shieldon to use."
+msgstr "请选取 Shieldon 要使用的资料驱动程序。"
+
+#: src/class-wpso-admin-settings.php:124
+msgid "Driver Status"
+msgstr "驱动程序状态"
+
+#: src/class-wpso-admin-settings.php:134
+msgid "Reset Data Cycle"
+msgstr "重设资料周期"
+
+#: src/class-wpso-admin-settings.php:135
+msgid ""
+"Clear all logs everyday 0:00 a.m. automatically. Turning this option on will "
+"improve performace."
+msgstr "自动在每日上午 0:00 清除全部日志。启用这项设置便能增进效能。"
+
+#: src/class-wpso-admin-settings.php:145
+msgid ""
+"Is your website behind CDN service? If you use CDN, you have to set this "
+"setting, otherwise all IP addresses come from CDN servers, they will be "
+"banned."
+msgstr ""
+"这个网站使用 CDN 服务吗？如果这个网站使用了 CDN 服务，就必须设置这项设置，否则全部源自 CDN 伺服器的 IP 位址，均会遭到封锁。"
+
+#: src/class-wpso-admin-settings.php:160
+msgid "Online Session Limit"
+msgstr "线上工作阶段限制"
+
+#: src/class-wpso-admin-settings.php:168
+msgid ""
+"When the online user amount has reached the limit, other users not in the "
+"queue have to line up!"
+msgstr "当在线用户数量达到上限，不在伫列中的其他用户必须等候。"
+
+#: src/class-wpso-admin-settings.php:177
+msgid "Online Limit"
+msgstr "用户人数限制"
+
+#: src/class-wpso-admin-settings.php:178
+msgid "The maximum online user limit."
+msgstr "在线同时用户人数限制。"
+
+#: src/class-wpso-admin-settings.php:188
+msgid "Keep Alive Period"
+msgstr "持续连线周期"
+
+#: src/class-wpso-admin-settings.php:189
+msgid "Unit: minute"
+msgstr "单位: 分钟"
+
+#: src/class-wpso-admin-settings.php:202
+msgid "Frequency Check"
+msgstr "检查频率"
+
+#: src/class-wpso-admin-settings.php:209
+msgid ""
+"Don't worry about the human visitors, if they reach the limit and get banned,"
+" they can easily continue surfing your website by solving CAPTCHA."
+msgstr "即使网站真人访客遭到存取限制或封锁也不必担心，他们可以轻易通过 CAPTCHA 验证继续浏览网站。"
+
+#: src/class-wpso-admin-settings.php:218
+msgid "Secondly Limit"
+msgstr "每秒次数限制"
+
+#: src/class-wpso-admin-settings.php:219
+msgid "Page views per vistor per second."
+msgstr "每位网站访客每秒检视同一页面次数。"
+
+#: src/class-wpso-admin-settings.php:229
+msgid "Minutely Limit"
+msgstr "每分钟次数限制"
+
+#: src/class-wpso-admin-settings.php:230
+msgid "Page views per vistor per minute."
+msgstr "每位网站访客每分钟检视同一页面次数。"
+
+#: src/class-wpso-admin-settings.php:240
+msgid "Hourly Limit"
+msgstr "每小时次数限制"
+
+#: src/class-wpso-admin-settings.php:241
+msgid "Page views per vistor per hour."
+msgstr "每位网站访客每小时检视同一页面次数。"
+
+#: src/class-wpso-admin-settings.php:251
+msgid "Daily Limit"
+msgstr "每日次数限制"
+
+#: src/class-wpso-admin-settings.php:252
+msgid "Page views per vistor per day."
+msgstr "每位網站訪客每天檢視同一页面次數。"
+
+#: src/class-wpso-admin-settings.php:265
+msgid "Trusted Bots"
+msgstr "受信任的檢索机器人"
+
+#: src/class-wpso-admin-settings.php:282 src/class-wpso-admin-settings.php:309 
+#: src/class-wpso-admin-settings.php:336 src/class-wpso-admin-settings.php:363
+msgid "Strict Mode"
+msgstr "严格模式"
+
+#: src/class-wpso-admin-settings.php:283
+msgid "IP resolved hostname and IP address must match."
+msgstr "透过 IP 位址解析出的主机名称必须与 IP 位址相符。"
+
+#: src/class-wpso-admin-settings.php:292 src/views/dashboard/overview.php:163
+msgid "Header"
+msgstr "资料标头"
+
+#: src/class-wpso-admin-settings.php:300
+msgid "Analysis header information from visitors."
+msgstr "网站访客的分析标头资讯。"
+
+#: src/class-wpso-admin-settings.php:310
+msgid "Deny all vistors without common header information."
+msgstr "拒绝没有通用标头资讯的全部网站访客。"
+
+#: src/class-wpso-admin-settings.php:319 src/views/dashboard/overview.php:183
+msgid "User Agent"
+msgstr "用户代理"
+
+#: src/class-wpso-admin-settings.php:327 src/views/dashboard/overview.php:187
+msgid "Analysis user-agent information from visitors."
+msgstr "网站访客的分析用户代理资讯。"
+
+#: src/class-wpso-admin-settings.php:337
+msgid "Visitors with empty user-agent information will be blocked."
+msgstr "含有空白用户代理程序资讯的网站访客会遭到封锁。"
+
+#: src/class-wpso-admin-settings.php:346
+msgid "Reverse DNS"
+msgstr "DNS 反向解析"
+
+#: src/class-wpso-admin-settings.php:354
+msgid ""
+"In general, an IP from Internet Service Provider (ISP) will have RDNS set. "
+"This option only works when strict mode is on."
+msgstr "一般来说，网际网路服务提供商 (ISP) 的 IP 位址会有 DNS 反向解析集。这个功能仅适用于已启用 [严格模式]。"
+
+#: src/class-wpso-admin-settings.php:364
+msgid ""
+"Visitors with empty RDNS record will be blocked.<br />IP resolved hostname "
+"(RDNS) and IP address must match."
+msgstr "含有空白 DNS 反向解析记录的网站访客会遭到封锁。 <br />透过 IP 位址解析出的主机名称必须与 IP 位址相符。"
+
+#: src/class-wpso-admin-settings.php:376 
+#: src/views/dashboard/filter_log_table.php:79 
+#: src/views/dashboard/overview.php:107
+msgid "Session"
+msgstr "工作阶段"
+
+#: src/class-wpso-admin-settings.php:384
+msgid "Detect multiple sessions created by the same visitor."
+msgstr "侦测同一位网站访客所产生的多个工作阶段。"
+
+#: src/class-wpso-admin-settings.php:393 src/class-wpso-admin-settings.php:429 
+#: src/class-wpso-admin-settings.php:466
+msgid "Quota"
+msgstr "配额上限"
+
+#: src/class-wpso-admin-settings.php:394 src/class-wpso-admin-settings.php:430 
+#: src/class-wpso-admin-settings.php:467
+msgid "A visitor reached this limit will get banned temporarily."
+msgstr "同一位网站访客达到配额上限时便会暂时封锁。"
+
+#: src/class-wpso-admin-settings.php:412
+msgid "HTTP Referrer"
+msgstr "HTTP 来源参照"
+
+#: src/class-wpso-admin-settings.php:420 src/views/dashboard/overview.php:129
+msgid "Check HTTP referrer information."
+msgstr "检查 HTTP 来源参照信息。"
+
+#: src/class-wpso-admin-settings.php:449 
+#: src/views/dashboard/filter_log_table.php:78 
+#: src/views/dashboard/overview.php:98
+msgid "Cookie"
+msgstr "Cookie"
+
+#: src/class-wpso-admin-settings.php:457
+msgid "Check cookie generated by JavaScript."
+msgstr "检查 JavaScript 产生的 Cookie。"
+
+#: src/class-wpso-admin-settings.php:489
+msgid "Google reCaptcha"
+msgstr "Google reCaptcha"
+
+#: src/class-wpso-admin-settings.php:506
+msgid "Version"
+msgstr "版本"
+
+#: src/class-wpso-admin-settings.php:507
+msgid ""
+"Please use corresponding key for that version you choose, otherwise it won't "
+"work."
+msgstr "请使用与选用版本对应的金钥，否则无法正确执行。"
+
+#: src/class-wpso-admin-settings.php:519
+msgid "Site Key"
+msgstr "网站金钥"
+
+#: src/class-wpso-admin-settings.php:520
+msgid "Enter Google reCaptcha site key for your webiste."
+msgstr "请输入这个网站的 Google reCaptcha 网站金钥。"
+
+#: src/class-wpso-admin-settings.php:530
+msgid "Secret Key"
+msgstr "密钥"
+
+#: src/class-wpso-admin-settings.php:531
+msgid "Enter Google reCahptcha secret key for your webiste."
+msgstr "请输入这个网站的 Google reCahptcha 密钥。"
+
+#: src/class-wpso-admin-settings.php:541
+msgid "Language Code"
+msgstr "语言代码"
+
+#: src/class-wpso-admin-settings.php:542
+msgid ""
+"ISO 639 - ISO 3166 code. For example, <strong>zh-TW</strong> stands for "
+"Tranditional Chinese of <strong>Taiwan</strong>"
+msgstr ""
+"这项设置采用 ISO 639 - ISO 3166 代码。举例来说，语言代码 <strong>zh-TW</strong> 代表<strong>"
+"台湾</strong>繁体中文。"
+
+#: src/class-wpso-admin-settings.php:552 src/views/dashboard/overview.php:241
+msgid "Image Captcha"
+msgstr "图片 CAPTCHA 验证"
+
+#: src/class-wpso-admin-settings.php:560
+msgid "A simple image CAPTCHA."
+msgstr "简易图片 CAPTCHA 验证。"
+
+#: src/class-wpso-admin-settings.php:569 src/views/dashboard/rule_table.php:60 
+#: src/views/security/xss_protection.php:99 
+#: src/views/security/xss_protection.php:139
+msgid "Type"
+msgstr "验证类型"
+
+#: src/class-wpso-admin-settings.php:575
+msgid "Alpha-numeric string with lower and uppercase characters."
+msgstr "数字、小写及大写字母混合。"
+
+#: src/class-wpso-admin-settings.php:576
+msgid "A string with lower and uppercase letters only."
+msgstr "仅小写及大写字母。"
+
+#: src/class-wpso-admin-settings.php:577
+msgid "Numeric string only."
+msgstr "仅有数字。"
+
+#: src/class-wpso-admin-settings.php:584
+msgid "Length"
+msgstr "字元长度"
+
+#: src/class-wpso-admin-settings.php:585
+msgid "How many characters do you like to display on CAPTCHA."
+msgstr "CAPTCHA 验证圖片中要顯示的字元數量。"
+
+#: src/class-wpso-admin-settings.php:602
+msgid "URLs"
+msgstr "網址"
+
+#: src/class-wpso-admin-settings.php:609
+msgid "Excluded URLs"
+msgstr "排除的網址"
+
+#: src/class-wpso-admin-settings.php:616
+msgid "Pages"
+msgstr "页面"
+
+#: src/class-wpso-admin-settings.php:624
+msgid ""
+"Turning this option on will get <code>wp-login.php</code> excluded from "
+"Shieldon protection."
+msgstr "启用这项设置后，<code>wp-login.php</code> 便会从 WP Shieldon 插件保护机制中排除。"
+
+#: src/class-wpso-admin-settings.php:624 src/class-wpso-admin-settings.php:633 
+#: src/views/setting/ip-manager-strict-login.php:16 
+#: src/views/setting/ip-manager-strict-signup.php:15 
+#: src/views/setting/ip-manager-strict-xmlrpc.php:15 
+#: src/views/setting/ip-manager-strict.php:15
+msgid "(default: off)"
+msgstr "(默认: 停用)"
+
+#: src/class-wpso-admin-settings.php:633
+msgid ""
+"Turning this option on will get <code>wp-signup.php</code> excluded from "
+"Shieldon protection."
+msgstr "启用这项设置后，<code>wp-signup.php</code> 便会从 WP Shieldon 插件保护机制中排除。"
+
+#: src/class-wpso-admin-settings.php:642
+msgid ""
+"Turning this option on will get <code>xmlrpc.php</code> excluded from "
+"Shieldon protection."
+msgstr "启用这项设置后，<code>xmlrpc.php</code> 便会从 WP Shieldon 插件保护机制中排除。"
+
+#: src/class-wpso-admin-settings.php:642
+msgid "(default: on)"
+msgstr "(默认: 启用)"
+
+#: src/views/dashboard/dashboard_last_month.php:30
+msgid "CAPTCHA statistic last month."
+msgstr "上个月的 CAPTCHA 统计资料"
+
+#: src/views/dashboard/dashboard_last_month.php:38 
+#: src/views/dashboard/dashboard_last_month.php:70 
+#: src/views/dashboard/dashboard_last_month.php:144 
+#: src/views/dashboard/dashboard_past_seven_days.php:38 
+#: src/views/dashboard/dashboard_past_seven_days.php:70 
+#: src/views/dashboard/dashboard_past_seven_days.php:144 
+#: src/views/dashboard/dashboard_this_month.php:38 
+#: src/views/dashboard/dashboard_this_month.php:70 
+#: src/views/dashboard/dashboard_this_month.php:144 
+#: src/views/dashboard/dashboard_today.php:38 
+#: src/views/dashboard/dashboard_today.php:70 
+#: src/views/dashboard/dashboard_today.php:144 
+#: src/views/dashboard/dashboard_yesterday.php:38 
+#: src/views/dashboard/dashboard_yesterday.php:70 
+#: src/views/dashboard/dashboard_yesterday.php:144 
+#: src/views/dashboard/filter_log_table.php:69
+msgid "Pageviews"
+msgstr "浏览量"
+
+#: src/views/dashboard/dashboard_last_month.php:40
+msgid "Total pageviews last month."
+msgstr "上个月的总浏览量"
+
+#: src/views/dashboard/dashboard_last_month.php:49 
+#: src/views/dashboard/dashboard_past_seven_days.php:49 
+#: src/views/dashboard/dashboard_this_month.php:49 
+#: src/views/dashboard/dashboard_today.php:49 
+#: src/views/dashboard/dashboard_yesterday.php:49
+msgid "Today"
+msgstr "今天"
+
+#: src/views/dashboard/dashboard_last_month.php:50 
+#: src/views/dashboard/dashboard_past_seven_days.php:50 
+#: src/views/dashboard/dashboard_this_month.php:50 
+#: src/views/dashboard/dashboard_today.php:50 
+#: src/views/dashboard/dashboard_yesterday.php:50
+msgid "Yesterday"
+msgstr "昨天"
+
+#: src/views/dashboard/dashboard_last_month.php:51 
+#: src/views/dashboard/dashboard_past_seven_days.php:51 
+#: src/views/dashboard/dashboard_this_month.php:51 
+#: src/views/dashboard/dashboard_today.php:51 
+#: src/views/dashboard/dashboard_yesterday.php:51
+msgid "Last 7 days"
+msgstr "最近 7 天"
+
+#: src/views/dashboard/dashboard_last_month.php:52 
+#: src/views/dashboard/dashboard_past_seven_days.php:52 
+#: src/views/dashboard/dashboard_this_month.php:52 
+#: src/views/dashboard/dashboard_today.php:52 
+#: src/views/dashboard/dashboard_yesterday.php:52
+msgid "This month"
+msgstr "這个月"
+
+#: src/views/dashboard/dashboard_last_month.php:53 
+#: src/views/dashboard/dashboard_past_seven_days.php:53 
+#: src/views/dashboard/dashboard_this_month.php:53 
+#: src/views/dashboard/dashboard_today.php:53 
+#: src/views/dashboard/dashboard_yesterday.php:53
+msgid "Last month"
+msgstr "上个月"
+
+#: src/views/dashboard/dashboard_last_month.php:68 
+#: src/views/dashboard/dashboard_past_seven_days.php:68 
+#: src/views/dashboard/dashboard_this_month.php:68 
+#: src/views/dashboard/dashboard_today.php:68 
+#: src/views/dashboard/dashboard_yesterday.php:68 
+#: src/views/dashboard/filter_log_table.php:67 
+#: src/views/dashboard/overview.php:144 src/views/dashboard/rule_table.php:58 
+#: src/views/dashboard/session_table.php:76
+msgid "IP"
+msgstr "IP 位址"
+
+#: src/views/dashboard/dashboard_last_month.php:69 
+#: src/views/dashboard/dashboard_past_seven_days.php:69 
+#: src/views/dashboard/dashboard_this_month.php:69 
+#: src/views/dashboard/dashboard_today.php:69 
+#: src/views/dashboard/dashboard_yesterday.php:69
+msgid "Sessions"
+msgstr "工作階段"
+
+#: src/views/dashboard/dashboard_last_month.php:72 
+#: src/views/dashboard/dashboard_past_seven_days.php:72 
+#: src/views/dashboard/dashboard_this_month.php:72 
+#: src/views/dashboard/dashboard_today.php:72 
+#: src/views/dashboard/dashboard_yesterday.php:72
+msgid "In blacklist"
+msgstr "在封锁清单中"
+
+#: src/views/dashboard/dashboard_last_month.php:73 
+#: src/views/dashboard/dashboard_past_seven_days.php:73 
+#: src/views/dashboard/dashboard_this_month.php:73 
+#: src/views/dashboard/dashboard_today.php:73 
+#: src/views/dashboard/dashboard_yesterday.php:73
+msgid "In queue"
+msgstr "在佇列中"
+
+#: src/views/dashboard/dashboard_last_month.php:76 
+#: src/views/dashboard/dashboard_past_seven_days.php:76 
+#: src/views/dashboard/dashboard_this_month.php:76 
+#: src/views/dashboard/dashboard_today.php:76 
+#: src/views/dashboard/dashboard_yesterday.php:76
+msgid "solved"
+msgstr "已解决"
+
+#: src/views/dashboard/dashboard_last_month.php:77 
+#: src/views/dashboard/dashboard_past_seven_days.php:77 
+#: src/views/dashboard/dashboard_this_month.php:77 
+#: src/views/dashboard/dashboard_today.php:77 
+#: src/views/dashboard/dashboard_yesterday.php:77
+msgid "failed"
+msgstr "已失敗"
+
+#: src/views/dashboard/dashboard_last_month.php:78 
+#: src/views/dashboard/dashboard_past_seven_days.php:78 
+#: src/views/dashboard/dashboard_this_month.php:78 
+#: src/views/dashboard/dashboard_today.php:78 
+#: src/views/dashboard/dashboard_yesterday.php:78
+msgid "displays"
+msgstr "显示次数"
+
+#: src/views/dashboard/dashboard_last_month.php:98 
+#: src/views/dashboard/dashboard_past_seven_days.php:98 
+#: src/views/dashboard/dashboard_this_month.php:98 
+#: src/views/dashboard/dashboard_today.php:98 
+#: src/views/dashboard/dashboard_yesterday.php:98 
+#: src/views/dashboard/filter_log_table.php:120 
+#: src/views/dashboard/rule_table.php:94 
+#: src/views/dashboard/session_table.php:119 
+#: src/views/security/authentication.php:90 
+#: src/views/security/xss_protection.php:158
+msgid "Timezone"
+msgstr "时区"
+
+#: src/views/dashboard/dashboard_last_month.php:113 
+#: src/views/dashboard/dashboard_past_seven_days.php:113 
+#: src/views/dashboard/dashboard_this_month.php:113 
+#: src/views/dashboard/dashboard_today.php:113 
+#: src/views/dashboard/dashboard_yesterday.php:113
+msgid "success"
+msgstr "成功"
+
+#: src/views/dashboard/dashboard_last_month.php:113 
+#: src/views/dashboard/dashboard_past_seven_days.php:113 
+#: src/views/dashboard/dashboard_this_month.php:113 
+#: src/views/dashboard/dashboard_today.php:113 
+#: src/views/dashboard/dashboard_yesterday.php:113
+msgid "failure"
+msgstr "失敗"
+
+#: src/views/dashboard/dashboard_past_seven_days.php:30
+msgid "CAPTCHA statistic last 7 days."
+msgstr "最近 7 天的 CAPTCHA 统计资料"
+
+#: src/views/dashboard/dashboard_past_seven_days.php:40
+msgid "Total pageviews last 7 days."
+msgstr "最近 7 天的总浏览量"
+
+#: src/views/dashboard/dashboard_this_month.php:30
+msgid "CAPTCHA statistic this month."
+msgstr "這个月的 CAPTCHA 统计资料"
+
+#: src/views/dashboard/dashboard_this_month.php:40
+msgid "Total pageviews this month."
+msgstr "這个月的总浏览量"
+
+#: src/views/dashboard/dashboard_today.php:30
+msgid "CAPTCHA statistic today."
+msgstr "今天的 CAPTCHA 统计资料"
+
+#: src/views/dashboard/dashboard_today.php:40
+msgid "Total pageviews today."
+msgstr "今天的总浏览量"
+
+#: src/views/dashboard/dashboard_today.php:218
+msgid "Past 7 hours"
+msgstr "過去 7 小时"
+
+#: src/views/dashboard/dashboard_yesterday.php:30
+msgid "CAPTCHA statistic yesterday."
+msgstr "昨天的 CAPTCHA 统计资料"
+
+#: src/views/dashboard/dashboard_yesterday.php:40
+msgid "Total pageviews yesterday."
+msgstr "昨天的总浏览量"
+
+#: src/views/dashboard/filter_log_table.php:60
+msgid "This is where the Shieldon records the users' strange behavior."
+msgstr "这里会显示 Shielon 在目前周期中所记录的用户奇怪行为。"
+
+#: src/views/dashboard/filter_log_table.php:61 
+#: src/views/dashboard/rule_table.php:27 
+#: src/views/dashboard/session_table.php:67
+msgid "All processes are automatic and instant, you can ignore that."
+msgstr "全部程序均会自动并即时处理，网站管理员可以予以忽略。"
+
+#: src/views/dashboard/filter_log_table.php:62
+msgid "IP log table will be all cleared after new cycle begins."
+msgstr "IP 位址记录表会在新的周期开始后清空。"
+
+#: src/views/dashboard/filter_log_table.php:68 
+#: src/views/dashboard/rule_table.php:59
+msgid "Resolved hostname"
+msgstr "已解析的主机名称"
+
+#: src/views/dashboard/filter_log_table.php:70
+msgid "Flags"
+msgstr "旗标"
+
+#: src/views/dashboard/filter_log_table.php:71
+msgid "Last visit"
+msgstr "最后存取时间"
+
+#: src/views/dashboard/filter_log_table.php:74
+msgid "S"
+msgstr "秒"
+
+#: src/views/dashboard/filter_log_table.php:75
+msgid "M"
+msgstr "分"
+
+#: src/views/dashboard/filter_log_table.php:76
+msgid "H"
+msgstr "时"
+
+#: src/views/dashboard/filter_log_table.php:77
+msgid "D"
+msgstr "日"
+
+#: src/views/dashboard/filter_log_table.php:80 
+#: src/views/dashboard/overview.php:125
+msgid "Referrer"
+msgstr "来源参照"
+
+#: src/views/dashboard/filter_log_table.php:119 
+#: src/views/dashboard/rule_table.php:93 
+#: src/views/dashboard/session_table.php:118
+#, php-format
+msgid "Current data circle started from %s."
+msgstr "目前的资料周期始于 %s。"
+
+#: src/views/dashboard/overview.php:36
+msgid "Data Circle"
+msgstr "资料周期"
+
+#: src/views/dashboard/overview.php:42 src/views/dashboard/overview.php:43 
+#: src/views/dashboard/overview.php:44
+msgid "rows"
+msgstr "列"
+
+#: src/views/dashboard/overview.php:52
+msgid "MySQL"
+msgstr "MySQL"
+
+#: src/views/dashboard/overview.php:56 src/views/dashboard/overview.php:84
+msgid "SQL database."
+msgstr "SQL 资料庫。"
+
+#: src/views/dashboard/overview.php:65
+msgid "In-memory database."
+msgstr "使用内存的资料库。"
+
+#: src/views/dashboard/overview.php:70
+msgid "File"
+msgstr "档案"
+
+#: src/views/dashboard/overview.php:74
+msgid "File system."
+msgstr "档案系统。"
+
+#: src/views/dashboard/overview.php:80
+msgid "SQLite"
+msgstr "SQLite"
+
+#: src/views/dashboard/overview.php:102
+msgid "Check whether visitors can create cookie by JavaScript."
+msgstr "检查是否访客可以由 JavaScript 产生 Cookie。"
+
+#: src/views/dashboard/overview.php:111
+msgid "Detect whether multiple sessions created by the same visitor."
+msgstr "侦测是否多个工作阶段由同一位访客产生。"
+
+#: src/views/dashboard/overview.php:116
+msgid "Frequency"
+msgstr "频率"
+
+#: src/views/dashboard/overview.php:120
+msgid "Check how often does a visitor view the pages."
+msgstr "检查访客有多频繁检视网页。"
+
+#: src/views/dashboard/overview.php:148
+msgid "Advanced IP address mangement."
+msgstr "进阶的 IP 位址管理功能。"
+
+#: src/views/dashboard/overview.php:153
+msgid "Trusted Bot"
+msgstr "信任的机器人"
+
+#: src/views/dashboard/overview.php:157
+msgid "Allow popular search engines crawl your website."
+msgstr "允许受欢迎的搜寻引擎检索您的网站。"
+
+#: src/views/dashboard/overview.php:167
+msgid "Analyze header information from visitors."
+msgstr "分析来自访客的头部字段资讯。"
+
+#: src/views/dashboard/overview.php:173
+msgid "RDNS"
+msgstr "RDNS"
+
+#: src/views/dashboard/overview.php:177
+msgid "Identify IP resolved hostname (RDNS) from visitors."
+msgstr "识别来自访客的 IP 反查域名 (RDNS)。"
+
+#: src/views/dashboard/overview.php:196
+msgid "Logger"
+msgstr "记录器"
+
+#: src/views/dashboard/overview.php:202 src/views/dashboard/overview.php:320
+msgid "since"
+msgstr "自从"
+
+#: src/views/dashboard/overview.php:203 src/views/dashboard/overview.php:324
+msgid "days"
+msgstr "天"
+
+#: src/views/dashboard/overview.php:204 src/views/dashboard/overview.php:328
+msgid "size"
+msgstr "尺寸"
+
+#: src/views/dashboard/overview.php:212
+msgid "Action Logger"
+msgstr "动作日志器"
+
+#: src/views/dashboard/overview.php:216
+msgid "Record every visitor’s behavior."
+msgstr "记录每位访客的行为。"
+
+#: src/views/dashboard/overview.php:226
+msgid "Captcha Modules"
+msgstr "验证码模组"
+
+#: src/views/dashboard/overview.php:231
+msgid "reCAPTCHA"
+msgstr "reCAPTCHA"
+
+#: src/views/dashboard/overview.php:235
+msgid "Provided by Google."
+msgstr "由 Google 提供。"
+
+#: src/views/dashboard/overview.php:245
+msgid "A simple text-in-image Captcha."
+msgstr "一个简单的文字图片验证码。"
+
+#: src/views/dashboard/overview.php:259
+msgid "Telegram"
+msgstr "Telegram"
+
+#: src/views/dashboard/overview.php:263
+msgid "Send notifications to your Telegram channel."
+msgstr "发送通知到您的 Telegram 频道。"
+
+#: src/views/dashboard/overview.php:268
+msgid "Line Notify"
+msgstr "Line 通知"
+
+#: src/views/dashboard/overview.php:272
+msgid "Send notifications to your Line group."
+msgstr "发送通知到您的 Line 群组。"
+
+#: src/views/dashboard/overview.php:277
+msgid "SendGrid"
+msgstr "SendGrid"
+
+#: src/views/dashboard/overview.php:281
+msgid "Send notifications to your email through SendGrid API."
+msgstr "透过 SendGrid API 发送通知到您的 Email。"
+
+#: src/views/dashboard/overview.php:288
+msgid "Reset Data Circle"
+msgstr "重设资料周期"
+
+#: src/views/dashboard/overview.php:289
+msgid "Would you like to reset current data circle?"
+msgstr "您要重设当前的资料周期吗？"
+
+#: src/views/dashboard/overview.php:292
+msgid "Table"
+msgstr "资料表"
+
+#: src/views/dashboard/overview.php:293
+msgid "Rows"
+msgstr "列"
+
+#: src/views/dashboard/overview.php:308
+msgid ""
+"Performing this action will remove all data from current data circle and "
+"rebuild data tables."
+msgstr "执行这个动作将会移除当前资料周期内的所有资料以及重建资料表。"
+
+#: src/views/dashboard/overview.php:316
+msgid "Reset Action Logger"
+msgstr "重设动作日志器"
+
+#: src/views/dashboard/overview.php:317
+msgid "Would you like to remove all action logs?"
+msgstr "您要移除所有动作日志吗？"
+
+#: src/views/dashboard/rule_table.php:26
+msgid ""
+"This is where the Shieldon temporarily allows or denys users in current "
+"cycle."
+msgstr "这里会显示 Shielon 在目前周期中暂时允许或拒绝的用户。"
+
+#: src/views/dashboard/rule_table.php:28
+msgid "Rule table will be reset after new cycle begins."
+msgstr "规则表会在新的周期开始后重设。"
+
+#: src/views/dashboard/rule_table.php:35
+msgid "--- please select ---"
+msgstr "--- 选取 ---"
+
+#: src/views/dashboard/rule_table.php:36
+msgid "Deny this IP temporarily"
+msgstr "暂时拒绝这个 IP 位址"
+
+#: src/views/dashboard/rule_table.php:37
+msgid "Deny this IP permanently"
+msgstr "永久拒绝这个 IP 位址"
+
+#: src/views/dashboard/rule_table.php:38
+msgid "Allow this IP"
+msgstr "允许這个 IP 位址"
+
+#: src/views/dashboard/rule_table.php:39
+msgid "Remove this IP"
+msgstr "移除這个 IP 位址"
+
+#: src/views/dashboard/rule_table.php:41 
+#: src/views/security/authentication.php:47 
+#: src/views/security/xss_protection.php:77 
+#: src/views/security/xss_protection.php:110
+msgid "Submit"
+msgstr "储存"
+
+#: src/views/dashboard/rule_table.php:61
+msgid "Reason"
+msgstr "记录原因"
+
+#: src/views/dashboard/rule_table.php:62 
+#: src/views/dashboard/session_table.php:77
+msgid "Time"
+msgstr "记录时间"
+
+#: src/views/dashboard/rule_table.php:63 
+#: src/views/security/authentication.php:72 
+#: src/views/security/xss_protection.php:141
+msgid "Remove"
+msgstr "移除"
+
+#: src/views/dashboard/session_table.php:27
+msgid "Limit"
+msgstr "限制"
+
+#: src/views/dashboard/session_table.php:29
+msgid "Online session limit."
+msgstr "在线工作阶段限制"
+
+#: src/views/dashboard/session_table.php:38
+msgid "Period"
+msgstr "期間"
+
+#: src/views/dashboard/session_table.php:40
+msgid "Keep-alive period. (minutes)"
+msgstr "存续期间 (分钟)"
+
+#: src/views/dashboard/session_table.php:48
+msgid "Online"
+msgstr "在线人数"
+
+#: src/views/dashboard/session_table.php:50
+msgid "Online session amount."
+msgstr "在线工作阶段总数"
+
+#: src/views/dashboard/session_table.php:67
+msgid "Read-time logs for <strong>Online Session Controll</strong>."
+msgstr "<strong>在线工作阶段控制</strong>的即时记录。"
+
+#: src/views/dashboard/session_table.php:68
+msgid "Notice this is only working when you have enabled that function."
+msgstr "请注意，只有网站管理员启用相关功能时才会正确运作。"
+
+#: src/views/dashboard/session_table.php:73
+msgid "Priority"
+msgstr "优先顺序"
+
+#: src/views/dashboard/session_table.php:74
+msgid "Status"
+msgstr "状态"
+
+#: src/views/dashboard/session_table.php:75
+msgid "Session ID"
+msgstr "工作階段 ID"
+
+#: src/views/dashboard/session_table.php:78
+msgid "Remain seconds"
+msgstr "剩余秒数"
+
+#: src/views/message/php-version-warning.php:18
+#, php-format
+msgid ""
+"The minimum required PHP version for WP Shieldon is PHP <strong>7.1."
+"0</strong>, and yours is <strong>%1s</strong>."
+msgstr ""
+"WP Shieldon 的 PHP最低版本版本为 PHP <strong> 7.1.0 </ strong>，而这个网站使用的版本为 <strong>"
+"%1s</strong>。"
+
+#: src/views/message/php-version-warning.php:19
+msgid "Please remove WP Shieldon or upgrade your PHP version."
+msgstr "请移除 WP Shieldon 或升级这个网站的 PHP 版本。"
+
+#: src/views/message/update_notice.php:18
+msgid ""
+"WP Shieldon has updated successfully. Please reset data circle, then turn on "
+"daemon."
+msgstr "WP Shieldon 更新成功。請重设资料週期，然後启用守護進程。"
+
+#: src/views/security/authentication.php:26
+msgid ""
+"The HTTP WWW-Authenticate response header defines the authentication method "
+"that should be used to gain access to a resource."
+msgstr "回應頭部字段 HTTP WWW-Authenticate 定義了獲取對資源的連接權限應該被使用的認證方式。"
+
+#: src/views/security/authentication.php:32 
+#: src/views/security/authentication.php:69
+msgid "URL Path"
+msgstr "网址路径"
+
+#: src/views/security/authentication.php:36
+msgid "User"
+msgstr "用户"
+
+#: src/views/security/authentication.php:40
+msgid "Pass"
+msgstr "密码"
+
+#: src/views/security/authentication.php:70
+msgid "Username"
+msgstr "用户名"
+
+#: src/views/security/authentication.php:71
+msgid "Password"
+msgstr "密码"
+
+#: src/views/security/authentication.php:71
+msgid "encrypted"
+msgstr "已加密"
+
+#: src/views/security/xss_protection.php:26
+msgid "Prevent Cross site scripting (XSS) attacks."
+msgstr "预防跨站脚本（XSS）攻击。"
+
+#: src/views/security/xss_protection.php:42
+msgid "Filter all POST method variables."
+msgstr "过滤全部的 POST 类型的变量。"
+
+#: src/views/security/xss_protection.php:56
+msgid "Filter all GET method variables."
+msgstr "过滤全部的 GET 类型的变量。"
+
+#: src/views/security/xss_protection.php:70
+msgid "Filter all COOKIE method variables."
+msgstr "过滤全部的 COOKIE 类型的变量。"
+
+#: src/views/security/xss_protection.php:88
+msgid "Single variable"
+msgstr "单一变量"
+
+#: src/views/security/xss_protection.php:95
+msgid "Variable Name"
+msgstr "变量名称"
+
+#: src/views/security/xss_protection.php:115
+msgid "Eradicate potential injection string for single variable."
+msgstr "针对单一变量清除潜在的注入字串。"
+
+#: src/views/security/xss_protection.php:140
+msgid "Variable"
+msgstr "变量"
+
+#: src/views/setting/about.php:19
+#, php-format
+msgid ""
+"WP Shieldon is brought to you by <a href=\"%1$s\">Terry L.</a> from <a "
+"href=\"%2$s\">Taiwan</a>."
+msgstr ""
+"WP Shieldon 由<a href=\"%2$s\" target=\"_blank\">台湾</a>开发者 <a href=\"%1$s\" "
+"target=\"_blank\">Terry L.</a> 开发。"
+
+#: src/views/setting/about.php:29
+msgid ""
+"If you have any issues, or found any bugs, please report them in the "
+"following URL."
+msgstr "如果发现任何问题或程序码错误，请通过上方连结回报。"
+
+#: src/views/setting/about.php:31
+msgid "Core"
+msgstr "核心程序"
+
+#: src/views/setting/about.php:32
+msgid "Plugin"
+msgstr "插件程序"
+
+#: src/views/setting/excluded-urls.php:15
+msgid ""
+"Please enter the <strong>begin with</strong> URLs you want them excluded "
+"from Shieldon protection."
+msgstr "请输入要从WP Shieldon插件保护机制中排除的<strong>启动</ strong>网址，这代表要输入的网址需要从网站根目录启动。"
+
+#: src/views/setting/excluded-urls.php:16
+msgid "An URL per line."
+msgstr "请每行输入一个网址。"
+
+#: src/views/setting/excluded-urls.php:17
+msgid ""
+"For example, use <code>/custom-type/</code> instead of <code>www.example."
+"com/custom-type/1/</code> for a web page."
+msgstr ""
+"举例来说，请输入<code>/custom-type/</code>而不是输入 <code>www.example.com/custom-"
+"type/1/</code>。"
+
+#: src/views/setting/google-recaptcha.php:15
+#, php-format
+msgid ""
+"This options needs Google reCaptcha key to work. [<a href=\"%s\" "
+"target=\"_blank\">apply</a>]"
+msgstr ""
+"此功能需要 Google reCaptcha 金钥才能执行。<a href=\"%s\" target=\"_blank\">申请 Google reCaptcha 金钥</a>"
+
+#: src/views/setting/ip-manager-login-pass.php:17
+msgid ""
+"Enter a passcode that only you know. You can use it to avoid checking IP if "
+"you don't have your IP in the whitelist."
+msgstr "请输入唯一网站管理知道的验证码。如果网站管理员的 IP 位址不在允许清单中，便可以透过这个验证码绕过 IP 位址检查机制。"
+
+#: src/views/setting/ip-manager-login-pass.php:20
+msgid ""
+"Using the following URL makes your login URL accessible in <strong>Deny "
+"All</strong> mode."
+msgstr "使用以下网址便能在启用<strong> [全部拒绝] </ strong>模式后访问网站的登录网址。"
+
+#: src/views/setting/ip-manager-strict-login.php:16
+msgid "Only IPs in the whitelist can access login page."
+msgstr "启用此设置后，仅有允许清单中的 IP 位址能访问登录页面。"
+
+#: src/views/setting/ip-manager-strict-login.php:20
+msgid ""
+"Be careful of using this option, please don't block yourself, if you got "
+"blocked, the only way to save you is to delete this plugin manually."
+msgstr ""
+"請審慎使用這項设置，不要因此導致封锁了任何一位網站管理員；如果網站管理員因為錯誤设置而遭到封锁，唯一的處理方式是<strong>手動刪除</strong>"
+"這个插件。"
+
+#: src/views/setting/ip-manager-strict-signup.php:15
+msgid "Only IPs in the whitelist can access signup page."
+msgstr "启用此设置后，仅有允许清单中的 IP 位址能访问注册页面。"
+
+#: src/views/setting/ip-manager-strict-xmlrpc.php:15
+msgid "Only IPs in the whitelist can access XML RPC."
+msgstr "启用此设置后，仅有允许清单中的 IP 位址能访问 XML RPC。"
+
+#: src/views/setting/ip-manager-strict.php:15
+msgid "Only IPs in the whitelist can access your website."
+msgstr "启用此设置后，仅有允许清单中的 IP 位址能访问这个网站。"
+
+#: src/views/setting/ip-manager.php:15
+msgid "An IP address or IP/CIDR specification per line."
+msgstr "请每行输入一个 IP 位址或 IP / CIDR。"
+
+#: src/views/setting/ip-manager.php:16
+msgid ""
+"For example, <code>127.0.0.1</code> (single IP address), <code>127.0."
+"0/16</code> (IP range)"
+msgstr "范例：<code>127.0.0.1</code>（单个IP位址），<code>127.0.0/16 </code>（IP范围）"
+
+#: src/views/setting/trusted-bot.php:15
+#, php-format
+msgid ""
+"Allow popular search engines crawl your webiste. [<a href=\"%s\" "
+"target=\"_blank\">list</a>]"
+msgstr "开放常见的搜寻引擎检索这个网站的资料。 <a href=\"%s\" target=\"_blank\">搜寻引擎开放清单</a>"
+
+#: src/views/setting/trusted-bot.php:17
+msgid ""
+"Notice: Turning this option off will impact your SEO because the bots will "
+"be going to checking process."
+msgstr "注意: 因此停用这项设置会影响网站的 SEO。因为检索机器人会进入检查的处理过程。"
+
+#. Description of the plugin
+msgid "An anti-scraping plugin for WordPress."
+msgstr "这个插件可保护 WordPress 网站不受恶意侵扰。"
+
+#. Plugin URI of the plugin
+msgid "https://github.com/terrylinooo/wp-shieldon"
+msgstr "https://github.com/terrylinooo/wp-shieldon"
+
+#. Author of the plugin
+msgid "Terry Lin"
+msgstr "Terry Lin"
+
+#. Author URI of the plugin
+msgid "https://terryl.in/"
+msgstr "https://terryl.in/"

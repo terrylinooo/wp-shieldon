@@ -7,14 +7,14 @@
  *
  * @package Shieldon
  * @since 1.0.0
- * @version 1.4.0
+ * @version 1.4.1
  */
 
 /**
  * Plugin Name: WP Shieldon
  * Plugin URI:  https://github.com/terrylinooo/wp-shieldon
  * Description: An anti-scraping plugin for WordPress.
- * Version:     1.4.0
+ * Version:     1.4.1
  * Author:      Terry Lin
  * Author URI:  https://terryl.in/
  * License:     GPL 3.0
@@ -64,7 +64,7 @@ define( 'SHIELDON_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'SHIELDON_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'SHIELDON_PLUGIN_PATH', __FILE__ );
 define( 'SHIELDON_PLUGIN_LANGUAGE_PACK', dirname( plugin_basename( __FILE__ ) ) . '/languages' );
-define( 'SHIELDON_PLUGIN_VERSION', '1.4.0' );
+define( 'SHIELDON_PLUGIN_VERSION', '1.4.1' );
 define( 'SHIELDON_CORE_VERSION', '0.1.3' );
 define( 'SHIELDON_PLUGIN_TEXT_DOMAIN', 'wp-shieldon' );
 
@@ -91,6 +91,7 @@ if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 
 		update_option( 'wpso_lang_code', substr( get_locale(), 0, 2 ) );
 		update_option( 'wpso_last_reset_time', time() );
+		update_option( 'wpso_version', SHIELDON_PLUGIN_VERSION );
 
 		// Add default setting. Only execute this action at the first time activation.
 		if ( false === wpso_is_driver_hash() ) {
@@ -164,18 +165,6 @@ if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 		echo wpso_load_view( 'message/update_notice' );
 	}
 
-	/**
-	 * Fire this function when the update is completed.
-	 *
-	 * @return void
-	 */
-	function wpso_upgrade_completed() {
-		wpso_set_option( 'enable_daemon', 'shieldon_daemon', 'no' );
-		update_option( 'wpso_update_notice', 'yes' );
-	}
-
-	
-
 	register_activation_hook( __FILE__, 'wpso_activate_plugin' );
 	register_deactivation_hook( __FILE__, 'wpso_deactivate_plugin' );
 
@@ -184,13 +173,15 @@ if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 	 */
 	if ( is_admin() ) {
 
-		$update_notice = get_option( 'wpso_update_notice' );
+		// Check version.
+		$wpso_version = get_option( 'wpso_version' );
 
-		if ( 'yes' === $update_notice ) {
+		if ( $wpso_version < SHIELDON_PLUGIN_VERSION ) {
+			wpso_set_option( 'enable_daemon', 'shieldon_daemon', 'no' );
+			update_option( 'wpso_version', SHIELDON_PLUGIN_VERSION );
 			add_action( 'admin_notices', 'wpso_update_notice' );
-			update_option( 'wpso_update_notice', 'no' );
 		}
-	
+
 		$admin_menu       = new WPSO_Admin_Menu();
 		$admin_settings   = new WPSO_Admin_Settings();
 		$admin_ip_manager = new WPSO_Admin_IP_Manager();
@@ -201,7 +192,6 @@ if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 		add_filter( 'admin_body_class', array( $admin_settings, 'setting_admin_body_class' ) );
 		add_filter( 'plugin_action_links_' . SHIELDON_PLUGIN_NAME, array( $admin_menu, 'plugin_action_links' ), 10, 5 );
 		add_filter( 'plugin_row_meta', array( $admin_menu, 'plugin_extend_links' ), 10, 2 );
-		add_action( 'upgrader_process_complete', 'wpso_upgrade_completed', 10, 2 );
 
 		// If we detect the setting changes.
 		if ( ! empty( $_POST['shieldon_daemon[data_driver_type]'] ) ) {

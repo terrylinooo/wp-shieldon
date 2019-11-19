@@ -421,7 +421,7 @@ class WPSO_Shieldon_Guardian {
 	 */
 	private function reset_logs() {
 
-		if ( 'yes' === wpso_get_option( 'data_reset_circle', 'shieldon_daemon' ) ) {
+		if ( 'yes' === wpso_get_option( 'reset_data_circle', 'shieldon_daemon' ) ) {
 
 			$now_time = time();
 
