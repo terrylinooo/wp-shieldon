@@ -58,7 +58,7 @@ function wpso_status_icon( $var, $icon_type = 1 ) {
             </div>
             <div class="col-sm-3">
                 <div class="filter-status">
-                    <div class="heading"><?php _e( 'Redi', 'Redis' ); ?></div>
+                    <div class="heading"><?php _e( 'Redis', 'wp-shieldon' ); ?></div>
                     <div class="nums">
                         <?php echo wpso_status_icon( $driver['redis'], 2 ); ?>
                     </div>
