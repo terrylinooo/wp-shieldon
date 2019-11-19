@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP Shieldon\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-18 17:04+0000\n"
+"POT-Creation-Date: 2019-11-19 05:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -248,7 +248,7 @@ msgid "Driver Status"
 msgstr ""
 
 #: src/class-wpso-admin-settings.php:134
-msgid "Data Reset Cycle"
+msgid "Reset Data Cycle"
 msgstr ""
 
 #: src/class-wpso-admin-settings.php:135
@@ -800,6 +800,10 @@ msgstr ""
 
 #: src/views/dashboard/overview.php:56 src/views/dashboard/overview.php:84
 msgid "SQL database."
+msgstr ""
+
+#: src/views/dashboard/overview.php:61
+msgid "Redis"
 msgstr ""
 
 #: src/views/dashboard/overview.php:65

@@ -1,4 +1,4 @@
-=== WP Shieldon - Anti-scraping and security ===
+=== WP Shieldon Security - Firewall, Anti-scraping, XSS Protection ===
 Contributors: terrylin
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=donate%40terryl.in&item_name=WordPress+Plugin+-+WP+Shieldon&currency_code=USD&source=url
 Tags: anti-scriping, security, firewall, brute-force
@@ -11,7 +11,7 @@ License URI: https://www.gnu.org/licenses/gpl.html
 
 == Description ==
 
-WP Shieldon is a WordPress security plugin based on [Shieldon](https://github.com/terrylinooo/shieldon) library, a PHP library that provides anti-scraping and online session control for your WordPress sites.
+WP Shieldon is a WordPress security plugin based on [Shieldon](https://github.com/terrylinooo/shieldon) library, a Web Application Firewall (WAF) for PHP.
 
 When the users or robots are trying to view many your web pages at a short period of time, they will temporarily get banned. To get unbanned by solving Catpcha.
 
@@ -42,6 +42,8 @@ Core library:
 - XML RPC, Login, Signup page protection.
 - Multiple data drivers - Redis, SQLite, File system, MySQL.
 - Multiple CAPTCHA modules - Google reCAPTCHA v2, v3 and Image CAPTCHA.
+- XSS Protection.
+- Page authentication.
 - Many others you can find by yourself :)
 
 Check out my other WordPress works here:

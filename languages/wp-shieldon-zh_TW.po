@@ -2,17 +2,17 @@
 # This file is distributed under the same license as the Plugins - WP Shieldon &#8211; Anti-scraping and security - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-11-19 04:36+0000\n"
+"PO-Revision-Date: 2019-11-19 05:23+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Loco https://localise.biz/\n"
-"Language: zh-TW\n"
+"Language: zh_TW\n"
 "Project-Id-Version: Plugins - WP Shieldon &#8211; Anti-scraping and security "
 "- Stable (latest release)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-18 17:04+0000\n"
+"POT-Creation-Date: 2019-11-19 05:22+0000\n"
 "Last-Translator: Terry Lin <contact@terryl.in>\n"
 "Language-Team: Chinese (Taiwan)\n"
 "X-Loco-Version: 2.3.1; wp-5.3"
@@ -33,34 +33,34 @@ msgstr "使用者註冊"
 msgid "XML RPC"
 msgstr "XML RPC"
 
-#: src/class-wpso-admin-ip-manager.php:88 
-#: src/class-wpso-admin-ip-manager.php:127 
-#: src/class-wpso-admin-ip-manager.php:178 
+#: src/class-wpso-admin-ip-manager.php:88
+#: src/class-wpso-admin-ip-manager.php:127
+#: src/class-wpso-admin-ip-manager.php:178
 #: src/class-wpso-admin-ip-manager.php:217
 msgid "Whitelist"
 msgstr "允許清單"
 
-#: src/class-wpso-admin-ip-manager.php:95 
-#: src/class-wpso-admin-ip-manager.php:118 
-#: src/class-wpso-admin-ip-manager.php:134 
-#: src/class-wpso-admin-ip-manager.php:168 
-#: src/class-wpso-admin-ip-manager.php:185 
-#: src/class-wpso-admin-ip-manager.php:208 
-#: src/class-wpso-admin-ip-manager.php:224 
+#: src/class-wpso-admin-ip-manager.php:95
+#: src/class-wpso-admin-ip-manager.php:118
+#: src/class-wpso-admin-ip-manager.php:134
+#: src/class-wpso-admin-ip-manager.php:168
+#: src/class-wpso-admin-ip-manager.php:185
+#: src/class-wpso-admin-ip-manager.php:208
+#: src/class-wpso-admin-ip-manager.php:224
 #: src/class-wpso-admin-ip-manager.php:247
 msgid "IP List"
 msgstr "IP 位址清單"
 
-#: src/class-wpso-admin-ip-manager.php:103 
-#: src/class-wpso-admin-ip-manager.php:142 
-#: src/class-wpso-admin-ip-manager.php:193 
+#: src/class-wpso-admin-ip-manager.php:103
+#: src/class-wpso-admin-ip-manager.php:142
+#: src/class-wpso-admin-ip-manager.php:193
 #: src/class-wpso-admin-ip-manager.php:232
 msgid "Deny All"
 msgstr "全部拒絕"
 
-#: src/class-wpso-admin-ip-manager.php:111 
-#: src/class-wpso-admin-ip-manager.php:161 
-#: src/class-wpso-admin-ip-manager.php:201 
+#: src/class-wpso-admin-ip-manager.php:111
+#: src/class-wpso-admin-ip-manager.php:161
+#: src/class-wpso-admin-ip-manager.php:201
 #: src/class-wpso-admin-ip-manager.php:240
 msgid "Blacklist"
 msgstr "封鎖清單"
@@ -74,7 +74,7 @@ msgstr "驗證碼"
 msgid "WP Shieldon"
 msgstr "WP Shieldon"
 
-#: src/class-wpso-admin-menu.php:67 src/class-wpso-admin-menu.php:68 
+#: src/class-wpso-admin-menu.php:67 src/class-wpso-admin-menu.php:68
 #: src/class-wpso-admin-menu.php:170
 msgid "Settings"
 msgstr "設定"
@@ -87,17 +87,17 @@ msgstr "動作記錄"
 msgid "Overview"
 msgstr "總覽"
 
-#: src/class-wpso-admin-menu.php:94 src/class-wpso-admin-menu.php:95 
+#: src/class-wpso-admin-menu.php:94 src/class-wpso-admin-menu.php:95
 #: src/views/dashboard/rule_table.php:23
 msgid "Rule Table"
 msgstr "規則表"
 
-#: src/class-wpso-admin-menu.php:103 src/class-wpso-admin-menu.php:104 
+#: src/class-wpso-admin-menu.php:103 src/class-wpso-admin-menu.php:104
 #: src/views/dashboard/filter_log_table.php:57
 msgid "Filter Log Table"
 msgstr "過濾器記錄表"
 
-#: src/class-wpso-admin-menu.php:112 src/class-wpso-admin-menu.php:113 
+#: src/class-wpso-admin-menu.php:112 src/class-wpso-admin-menu.php:113
 #: src/views/dashboard/session_table.php:64
 msgid "Session Table"
 msgstr "工作階段表"
@@ -106,12 +106,12 @@ msgstr "工作階段表"
 msgid "IP Manager"
 msgstr "IP 位址管理程式"
 
-#: src/class-wpso-admin-menu.php:130 src/class-wpso-admin-menu.php:131 
+#: src/class-wpso-admin-menu.php:130 src/class-wpso-admin-menu.php:131
 #: src/views/security/xss_protection.php:23
 msgid "XSS Protection"
 msgstr "XSS 防護"
 
-#: src/class-wpso-admin-menu.php:139 src/class-wpso-admin-menu.php:140 
+#: src/class-wpso-admin-menu.php:139 src/class-wpso-admin-menu.php:140
 #: src/views/security/authentication.php:23
 msgid "Authentication"
 msgstr "網頁驗證"
@@ -188,11 +188,11 @@ msgstr "拒絕"
 msgid "ALLOW"
 msgstr "允許"
 
-#: src/class-wpso-admin-menu.php:307 
-#: src/views/dashboard/dashboard_last_month.php:71 
-#: src/views/dashboard/dashboard_past_seven_days.php:71 
-#: src/views/dashboard/dashboard_this_month.php:71 
-#: src/views/dashboard/dashboard_today.php:71 
+#: src/class-wpso-admin-menu.php:307
+#: src/views/dashboard/dashboard_last_month.php:71
+#: src/views/dashboard/dashboard_past_seven_days.php:71
+#: src/views/dashboard/dashboard_this_month.php:71
+#: src/views/dashboard/dashboard_today.php:71
 #: src/views/dashboard/dashboard_yesterday.php:71
 msgid "CAPTCHA"
 msgstr "CAPTCHA"
@@ -209,16 +209,16 @@ msgstr "元件"
 msgid "Filters"
 msgstr "過濾器"
 
-#: src/class-wpso-admin-settings.php:71 
-#: src/views/dashboard/dashboard_last_month.php:28 
-#: src/views/dashboard/dashboard_last_month.php:144 
-#: src/views/dashboard/dashboard_past_seven_days.php:28 
-#: src/views/dashboard/dashboard_past_seven_days.php:144 
-#: src/views/dashboard/dashboard_this_month.php:28 
-#: src/views/dashboard/dashboard_this_month.php:144 
-#: src/views/dashboard/dashboard_today.php:28 
-#: src/views/dashboard/dashboard_today.php:144 
-#: src/views/dashboard/dashboard_yesterday.php:28 
+#: src/class-wpso-admin-settings.php:71
+#: src/views/dashboard/dashboard_last_month.php:28
+#: src/views/dashboard/dashboard_last_month.php:144
+#: src/views/dashboard/dashboard_past_seven_days.php:28
+#: src/views/dashboard/dashboard_past_seven_days.php:144
+#: src/views/dashboard/dashboard_this_month.php:28
+#: src/views/dashboard/dashboard_this_month.php:144
+#: src/views/dashboard/dashboard_today.php:28
+#: src/views/dashboard/dashboard_today.php:144
+#: src/views/dashboard/dashboard_yesterday.php:28
 #: src/views/dashboard/dashboard_yesterday.php:144
 msgid "CAPTCHAs"
 msgstr "CAPTCHA"
@@ -250,8 +250,8 @@ msgid "Driver Status"
 msgstr "驅動程式狀態"
 
 #: src/class-wpso-admin-settings.php:134
-msgid "Data Reset Cycle"
-msgstr "資料重設週期"
+msgid "Reset Data Cycle"
+msgstr "重設資料週期"
 
 #: src/class-wpso-admin-settings.php:135
 msgid ""
@@ -339,7 +339,7 @@ msgstr "每位網站訪客每天檢視同一頁面次數。"
 msgid "Trusted Bots"
 msgstr "受信任的檢索機器人"
 
-#: src/class-wpso-admin-settings.php:282 src/class-wpso-admin-settings.php:309 
+#: src/class-wpso-admin-settings.php:282 src/class-wpso-admin-settings.php:309
 #: src/class-wpso-admin-settings.php:336 src/class-wpso-admin-settings.php:363
 msgid "Strict Mode"
 msgstr "嚴格模式"
@@ -388,8 +388,8 @@ msgid ""
 "(RDNS) and IP address must match."
 msgstr "含有空白 DNS 反向解析記錄的網站訪客會遭到封鎖。<br />透過 IP 位址解析出的主機名稱必須與 IP 位址相符。"
 
-#: src/class-wpso-admin-settings.php:376 
-#: src/views/dashboard/filter_log_table.php:79 
+#: src/class-wpso-admin-settings.php:376
+#: src/views/dashboard/filter_log_table.php:79
 #: src/views/dashboard/overview.php:107
 msgid "Session"
 msgstr "工作階段"
@@ -398,12 +398,12 @@ msgstr "工作階段"
 msgid "Detect multiple sessions created by the same visitor."
 msgstr "偵測同一位網站訪客所產生的多個工作階段。"
 
-#: src/class-wpso-admin-settings.php:393 src/class-wpso-admin-settings.php:429 
+#: src/class-wpso-admin-settings.php:393 src/class-wpso-admin-settings.php:429
 #: src/class-wpso-admin-settings.php:466
 msgid "Quota"
 msgstr "配額上限"
 
-#: src/class-wpso-admin-settings.php:394 src/class-wpso-admin-settings.php:430 
+#: src/class-wpso-admin-settings.php:394 src/class-wpso-admin-settings.php:430
 #: src/class-wpso-admin-settings.php:467
 msgid "A visitor reached this limit will get banned temporarily."
 msgstr "同一位網站訪客達到配額上限時便會暫時封鎖。"
@@ -416,8 +416,8 @@ msgstr "HTTP 參照位址"
 msgid "Check HTTP referrer information."
 msgstr "檢查 HTTP 參照位址資訊。"
 
-#: src/class-wpso-admin-settings.php:449 
-#: src/views/dashboard/filter_log_table.php:78 
+#: src/class-wpso-admin-settings.php:449
+#: src/views/dashboard/filter_log_table.php:78
 #: src/views/dashboard/overview.php:98
 msgid "Cookie"
 msgstr "Cookie"
@@ -476,8 +476,8 @@ msgstr "圖片 CAPTCHA 驗證"
 msgid "A simple image CAPTCHA."
 msgstr "簡易圖片 CAPTCHA 驗證。"
 
-#: src/class-wpso-admin-settings.php:569 src/views/dashboard/rule_table.php:60 
-#: src/views/security/xss_protection.php:99 
+#: src/class-wpso-admin-settings.php:569 src/views/dashboard/rule_table.php:60
+#: src/views/security/xss_protection.php:99
 #: src/views/security/xss_protection.php:139
 msgid "Type"
 msgstr "驗證類型"
@@ -520,10 +520,10 @@ msgid ""
 "Shieldon protection."
 msgstr "啟用這項設定後，<code>wp-login.php</code> 便會從 WP Shieldon 外掛保護機制中排除。"
 
-#: src/class-wpso-admin-settings.php:624 src/class-wpso-admin-settings.php:633 
-#: src/views/setting/ip-manager-strict-login.php:16 
-#: src/views/setting/ip-manager-strict-signup.php:15 
-#: src/views/setting/ip-manager-strict-xmlrpc.php:15 
+#: src/class-wpso-admin-settings.php:624 src/class-wpso-admin-settings.php:633
+#: src/views/setting/ip-manager-strict-login.php:16
+#: src/views/setting/ip-manager-strict-signup.php:15
+#: src/views/setting/ip-manager-strict-xmlrpc.php:15
 #: src/views/setting/ip-manager-strict.php:15
 msgid "(default: off)"
 msgstr "(預設值: 停用)"
@@ -548,21 +548,21 @@ msgstr "(預設值: 啟用)"
 msgid "CAPTCHA statistic last month."
 msgstr "上個月的 CAPTCHA 統計資料"
 
-#: src/views/dashboard/dashboard_last_month.php:38 
-#: src/views/dashboard/dashboard_last_month.php:70 
-#: src/views/dashboard/dashboard_last_month.php:144 
-#: src/views/dashboard/dashboard_past_seven_days.php:38 
-#: src/views/dashboard/dashboard_past_seven_days.php:70 
-#: src/views/dashboard/dashboard_past_seven_days.php:144 
-#: src/views/dashboard/dashboard_this_month.php:38 
-#: src/views/dashboard/dashboard_this_month.php:70 
-#: src/views/dashboard/dashboard_this_month.php:144 
-#: src/views/dashboard/dashboard_today.php:38 
-#: src/views/dashboard/dashboard_today.php:70 
-#: src/views/dashboard/dashboard_today.php:144 
-#: src/views/dashboard/dashboard_yesterday.php:38 
-#: src/views/dashboard/dashboard_yesterday.php:70 
-#: src/views/dashboard/dashboard_yesterday.php:144 
+#: src/views/dashboard/dashboard_last_month.php:38
+#: src/views/dashboard/dashboard_last_month.php:70
+#: src/views/dashboard/dashboard_last_month.php:144
+#: src/views/dashboard/dashboard_past_seven_days.php:38
+#: src/views/dashboard/dashboard_past_seven_days.php:70
+#: src/views/dashboard/dashboard_past_seven_days.php:144
+#: src/views/dashboard/dashboard_this_month.php:38
+#: src/views/dashboard/dashboard_this_month.php:70
+#: src/views/dashboard/dashboard_this_month.php:144
+#: src/views/dashboard/dashboard_today.php:38
+#: src/views/dashboard/dashboard_today.php:70
+#: src/views/dashboard/dashboard_today.php:144
+#: src/views/dashboard/dashboard_yesterday.php:38
+#: src/views/dashboard/dashboard_yesterday.php:70
+#: src/views/dashboard/dashboard_yesterday.php:144
 #: src/views/dashboard/filter_log_table.php:69
 msgid "Pageviews"
 msgstr "瀏覽量"
@@ -571,130 +571,130 @@ msgstr "瀏覽量"
 msgid "Total pageviews last month."
 msgstr "上個月的總瀏覽量"
 
-#: src/views/dashboard/dashboard_last_month.php:49 
-#: src/views/dashboard/dashboard_past_seven_days.php:49 
-#: src/views/dashboard/dashboard_this_month.php:49 
-#: src/views/dashboard/dashboard_today.php:49 
+#: src/views/dashboard/dashboard_last_month.php:49
+#: src/views/dashboard/dashboard_past_seven_days.php:49
+#: src/views/dashboard/dashboard_this_month.php:49
+#: src/views/dashboard/dashboard_today.php:49
 #: src/views/dashboard/dashboard_yesterday.php:49
 msgid "Today"
 msgstr "今天"
 
-#: src/views/dashboard/dashboard_last_month.php:50 
-#: src/views/dashboard/dashboard_past_seven_days.php:50 
-#: src/views/dashboard/dashboard_this_month.php:50 
-#: src/views/dashboard/dashboard_today.php:50 
+#: src/views/dashboard/dashboard_last_month.php:50
+#: src/views/dashboard/dashboard_past_seven_days.php:50
+#: src/views/dashboard/dashboard_this_month.php:50
+#: src/views/dashboard/dashboard_today.php:50
 #: src/views/dashboard/dashboard_yesterday.php:50
 msgid "Yesterday"
 msgstr "昨天"
 
-#: src/views/dashboard/dashboard_last_month.php:51 
-#: src/views/dashboard/dashboard_past_seven_days.php:51 
-#: src/views/dashboard/dashboard_this_month.php:51 
-#: src/views/dashboard/dashboard_today.php:51 
+#: src/views/dashboard/dashboard_last_month.php:51
+#: src/views/dashboard/dashboard_past_seven_days.php:51
+#: src/views/dashboard/dashboard_this_month.php:51
+#: src/views/dashboard/dashboard_today.php:51
 #: src/views/dashboard/dashboard_yesterday.php:51
 msgid "Last 7 days"
 msgstr "最近 7 天"
 
-#: src/views/dashboard/dashboard_last_month.php:52 
-#: src/views/dashboard/dashboard_past_seven_days.php:52 
-#: src/views/dashboard/dashboard_this_month.php:52 
-#: src/views/dashboard/dashboard_today.php:52 
+#: src/views/dashboard/dashboard_last_month.php:52
+#: src/views/dashboard/dashboard_past_seven_days.php:52
+#: src/views/dashboard/dashboard_this_month.php:52
+#: src/views/dashboard/dashboard_today.php:52
 #: src/views/dashboard/dashboard_yesterday.php:52
 msgid "This month"
 msgstr "這個月"
 
-#: src/views/dashboard/dashboard_last_month.php:53 
-#: src/views/dashboard/dashboard_past_seven_days.php:53 
-#: src/views/dashboard/dashboard_this_month.php:53 
-#: src/views/dashboard/dashboard_today.php:53 
+#: src/views/dashboard/dashboard_last_month.php:53
+#: src/views/dashboard/dashboard_past_seven_days.php:53
+#: src/views/dashboard/dashboard_this_month.php:53
+#: src/views/dashboard/dashboard_today.php:53
 #: src/views/dashboard/dashboard_yesterday.php:53
 msgid "Last month"
 msgstr "上個月"
 
-#: src/views/dashboard/dashboard_last_month.php:68 
-#: src/views/dashboard/dashboard_past_seven_days.php:68 
-#: src/views/dashboard/dashboard_this_month.php:68 
-#: src/views/dashboard/dashboard_today.php:68 
-#: src/views/dashboard/dashboard_yesterday.php:68 
-#: src/views/dashboard/filter_log_table.php:67 
-#: src/views/dashboard/overview.php:144 src/views/dashboard/rule_table.php:58 
+#: src/views/dashboard/dashboard_last_month.php:68
+#: src/views/dashboard/dashboard_past_seven_days.php:68
+#: src/views/dashboard/dashboard_this_month.php:68
+#: src/views/dashboard/dashboard_today.php:68
+#: src/views/dashboard/dashboard_yesterday.php:68
+#: src/views/dashboard/filter_log_table.php:67
+#: src/views/dashboard/overview.php:144 src/views/dashboard/rule_table.php:58
 #: src/views/dashboard/session_table.php:76
 msgid "IP"
 msgstr "IP 位址"
 
-#: src/views/dashboard/dashboard_last_month.php:69 
-#: src/views/dashboard/dashboard_past_seven_days.php:69 
-#: src/views/dashboard/dashboard_this_month.php:69 
-#: src/views/dashboard/dashboard_today.php:69 
+#: src/views/dashboard/dashboard_last_month.php:69
+#: src/views/dashboard/dashboard_past_seven_days.php:69
+#: src/views/dashboard/dashboard_this_month.php:69
+#: src/views/dashboard/dashboard_today.php:69
 #: src/views/dashboard/dashboard_yesterday.php:69
 msgid "Sessions"
 msgstr "工作階段"
 
-#: src/views/dashboard/dashboard_last_month.php:72 
-#: src/views/dashboard/dashboard_past_seven_days.php:72 
-#: src/views/dashboard/dashboard_this_month.php:72 
-#: src/views/dashboard/dashboard_today.php:72 
+#: src/views/dashboard/dashboard_last_month.php:72
+#: src/views/dashboard/dashboard_past_seven_days.php:72
+#: src/views/dashboard/dashboard_this_month.php:72
+#: src/views/dashboard/dashboard_today.php:72
 #: src/views/dashboard/dashboard_yesterday.php:72
 msgid "In blacklist"
 msgstr "在封鎖清單中"
 
-#: src/views/dashboard/dashboard_last_month.php:73 
-#: src/views/dashboard/dashboard_past_seven_days.php:73 
-#: src/views/dashboard/dashboard_this_month.php:73 
-#: src/views/dashboard/dashboard_today.php:73 
+#: src/views/dashboard/dashboard_last_month.php:73
+#: src/views/dashboard/dashboard_past_seven_days.php:73
+#: src/views/dashboard/dashboard_this_month.php:73
+#: src/views/dashboard/dashboard_today.php:73
 #: src/views/dashboard/dashboard_yesterday.php:73
 msgid "In queue"
 msgstr "在佇列中"
 
-#: src/views/dashboard/dashboard_last_month.php:76 
-#: src/views/dashboard/dashboard_past_seven_days.php:76 
-#: src/views/dashboard/dashboard_this_month.php:76 
-#: src/views/dashboard/dashboard_today.php:76 
+#: src/views/dashboard/dashboard_last_month.php:76
+#: src/views/dashboard/dashboard_past_seven_days.php:76
+#: src/views/dashboard/dashboard_this_month.php:76
+#: src/views/dashboard/dashboard_today.php:76
 #: src/views/dashboard/dashboard_yesterday.php:76
 msgid "solved"
 msgstr "已解決"
 
-#: src/views/dashboard/dashboard_last_month.php:77 
-#: src/views/dashboard/dashboard_past_seven_days.php:77 
-#: src/views/dashboard/dashboard_this_month.php:77 
-#: src/views/dashboard/dashboard_today.php:77 
+#: src/views/dashboard/dashboard_last_month.php:77
+#: src/views/dashboard/dashboard_past_seven_days.php:77
+#: src/views/dashboard/dashboard_this_month.php:77
+#: src/views/dashboard/dashboard_today.php:77
 #: src/views/dashboard/dashboard_yesterday.php:77
 msgid "failed"
 msgstr "已失敗"
 
-#: src/views/dashboard/dashboard_last_month.php:78 
-#: src/views/dashboard/dashboard_past_seven_days.php:78 
-#: src/views/dashboard/dashboard_this_month.php:78 
-#: src/views/dashboard/dashboard_today.php:78 
+#: src/views/dashboard/dashboard_last_month.php:78
+#: src/views/dashboard/dashboard_past_seven_days.php:78
+#: src/views/dashboard/dashboard_this_month.php:78
+#: src/views/dashboard/dashboard_today.php:78
 #: src/views/dashboard/dashboard_yesterday.php:78
 msgid "displays"
 msgstr "顯示次數"
 
-#: src/views/dashboard/dashboard_last_month.php:98 
-#: src/views/dashboard/dashboard_past_seven_days.php:98 
-#: src/views/dashboard/dashboard_this_month.php:98 
-#: src/views/dashboard/dashboard_today.php:98 
-#: src/views/dashboard/dashboard_yesterday.php:98 
-#: src/views/dashboard/filter_log_table.php:120 
-#: src/views/dashboard/rule_table.php:94 
-#: src/views/dashboard/session_table.php:119 
-#: src/views/security/authentication.php:90 
+#: src/views/dashboard/dashboard_last_month.php:98
+#: src/views/dashboard/dashboard_past_seven_days.php:98
+#: src/views/dashboard/dashboard_this_month.php:98
+#: src/views/dashboard/dashboard_today.php:98
+#: src/views/dashboard/dashboard_yesterday.php:98
+#: src/views/dashboard/filter_log_table.php:120
+#: src/views/dashboard/rule_table.php:94
+#: src/views/dashboard/session_table.php:119
+#: src/views/security/authentication.php:90
 #: src/views/security/xss_protection.php:158
 msgid "Timezone"
 msgstr "時區"
 
-#: src/views/dashboard/dashboard_last_month.php:113 
-#: src/views/dashboard/dashboard_past_seven_days.php:113 
-#: src/views/dashboard/dashboard_this_month.php:113 
-#: src/views/dashboard/dashboard_today.php:113 
+#: src/views/dashboard/dashboard_last_month.php:113
+#: src/views/dashboard/dashboard_past_seven_days.php:113
+#: src/views/dashboard/dashboard_this_month.php:113
+#: src/views/dashboard/dashboard_today.php:113
 #: src/views/dashboard/dashboard_yesterday.php:113
 msgid "success"
 msgstr "成功"
 
-#: src/views/dashboard/dashboard_last_month.php:113 
-#: src/views/dashboard/dashboard_past_seven_days.php:113 
-#: src/views/dashboard/dashboard_this_month.php:113 
-#: src/views/dashboard/dashboard_today.php:113 
+#: src/views/dashboard/dashboard_last_month.php:113
+#: src/views/dashboard/dashboard_past_seven_days.php:113
+#: src/views/dashboard/dashboard_this_month.php:113
+#: src/views/dashboard/dashboard_today.php:113
 #: src/views/dashboard/dashboard_yesterday.php:113
 msgid "failure"
 msgstr "失敗"
@@ -739,8 +739,8 @@ msgstr "昨天的總瀏覽量"
 msgid "This is where the Shieldon records the users' strange behavior."
 msgstr "這裡會顯示 Shielon 在目前週期中所記錄的使用者奇怪行為。"
 
-#: src/views/dashboard/filter_log_table.php:61 
-#: src/views/dashboard/rule_table.php:27 
+#: src/views/dashboard/filter_log_table.php:61
+#: src/views/dashboard/rule_table.php:27
 #: src/views/dashboard/session_table.php:67
 msgid "All processes are automatic and instant, you can ignore that."
 msgstr "全部程序均會自動並即時處理，網站管理員可以予以忽略。"
@@ -749,7 +749,7 @@ msgstr "全部程序均會自動並即時處理，網站管理員可以予以忽
 msgid "IP log table will be all cleared after new cycle begins."
 msgstr "IP 位址記錄表會在新的週期開始後清空。"
 
-#: src/views/dashboard/filter_log_table.php:68 
+#: src/views/dashboard/filter_log_table.php:68
 #: src/views/dashboard/rule_table.php:59
 msgid "Resolved hostname"
 msgstr "已解析的主機名稱"
@@ -778,13 +778,13 @@ msgstr "時"
 msgid "D"
 msgstr "日"
 
-#: src/views/dashboard/filter_log_table.php:80 
+#: src/views/dashboard/filter_log_table.php:80
 #: src/views/dashboard/overview.php:125
 msgid "Referrer"
 msgstr "來源參照"
 
-#: src/views/dashboard/filter_log_table.php:119 
-#: src/views/dashboard/rule_table.php:93 
+#: src/views/dashboard/filter_log_table.php:119
+#: src/views/dashboard/rule_table.php:93
 #: src/views/dashboard/session_table.php:118
 #, php-format
 msgid "Current data circle started from %s."
@@ -794,7 +794,7 @@ msgstr "目前的資料週期始於 %s。"
 msgid "Data Circle"
 msgstr "資料週期"
 
-#: src/views/dashboard/overview.php:42 src/views/dashboard/overview.php:43 
+#: src/views/dashboard/overview.php:42 src/views/dashboard/overview.php:43
 #: src/views/dashboard/overview.php:44
 msgid "rows"
 msgstr "列"
@@ -806,6 +806,10 @@ msgstr "MySQL"
 #: src/views/dashboard/overview.php:56 src/views/dashboard/overview.php:84
 msgid "SQL database."
 msgstr "SQL 資料庫。"
+
+#: src/views/dashboard/overview.php:61
+msgid "Redis"
+msgstr "Redis"
 
 #: src/views/dashboard/overview.php:65
 msgid "In-memory database."
@@ -917,7 +921,7 @@ msgstr "Line 通知"
 
 #: src/views/dashboard/overview.php:272
 msgid "Send notifications to your Line group."
-msgstr "發送通知道您的 Line 群祖。"
+msgstr "發送通知道您的 Line 群組。"
 
 #: src/views/dashboard/overview.php:277
 msgid "SendGrid"
@@ -987,9 +991,9 @@ msgstr "允許這個 IP 位址"
 msgid "Remove this IP"
 msgstr "移除這個 IP 位址"
 
-#: src/views/dashboard/rule_table.php:41 
-#: src/views/security/authentication.php:47 
-#: src/views/security/xss_protection.php:77 
+#: src/views/dashboard/rule_table.php:41
+#: src/views/security/authentication.php:47
+#: src/views/security/xss_protection.php:77
 #: src/views/security/xss_protection.php:110
 msgid "Submit"
 msgstr "儲存"
@@ -998,13 +1002,13 @@ msgstr "儲存"
 msgid "Reason"
 msgstr "記錄原因"
 
-#: src/views/dashboard/rule_table.php:62 
+#: src/views/dashboard/rule_table.php:62
 #: src/views/dashboard/session_table.php:77
 msgid "Time"
 msgstr "記錄時間"
 
-#: src/views/dashboard/rule_table.php:63 
-#: src/views/security/authentication.php:72 
+#: src/views/dashboard/rule_table.php:63
+#: src/views/security/authentication.php:72
 #: src/views/security/xss_protection.php:141
 msgid "Remove"
 msgstr "移除"
@@ -1082,7 +1086,7 @@ msgid ""
 "that should be used to gain access to a resource."
 msgstr "回應頭部字段 HTTP WWW-Authenticate 定義了獲取對資源的連接權限應該被使用的認證方式。"
 
-#: src/views/security/authentication.php:32 
+#: src/views/security/authentication.php:32
 #: src/views/security/authentication.php:69
 msgid "URL Path"
 msgstr "網址路徑"
