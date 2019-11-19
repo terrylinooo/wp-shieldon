@@ -1,7 +1,7 @@
-=== WP Shieldon Security - Firewall, Anti-scraping, XSS Protection ===
+=== WP Shieldon Security - Web Application Firewall ===
 Contributors: terrylin
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=donate%40terryl.in&item_name=WordPress+Plugin+-+WP+Shieldon&currency_code=USD&source=url
-Tags: anti-scriping, security, firewall, brute-force
+Tags: anti-scriping, security, firewall, brute-force, xss-protection
 Requires at least: 4.0
 Tested up to: 5.2.0
 Stable tag: 1.4.1
