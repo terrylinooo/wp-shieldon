@@ -174,6 +174,8 @@ if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 	if ( is_admin() ) {
 
 		// Check version.
+
+		/*
 		$wpso_version = get_option( 'wpso_version' );
 
 		if ( $wpso_version < SHIELDON_PLUGIN_VERSION ) {
@@ -181,6 +183,7 @@ if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 			update_option( 'wpso_version', SHIELDON_PLUGIN_VERSION );
 			add_action( 'admin_notices', 'wpso_update_notice' );
 		}
+		*/
 
 		$admin_menu       = new WPSO_Admin_Menu();
 		$admin_settings   = new WPSO_Admin_Settings();
