@@ -39,7 +39,7 @@ class WPSO_Shieldon_Guardian {
 
 		$this->shieldon->setProperty( 'lang', wpso_get_lang() );
 
-		$this->current_url = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+		$this->current_url = $_SERVER['REQUEST_URI'];
 
 		$ip_source = wpso_get_option( 'ip_source', 'shieldon_daemon' );
 
@@ -459,10 +459,11 @@ class WPSO_Shieldon_Guardian {
 			$urls = explode(PHP_EOL, $list);
 		}
 
-		array_push( $urls, 'wp-login.php?action=postpass' );
+		array_push( $urls, '/wp-login.php?action=postpass' );
+		array_push( $urls, '/wp-json/' );
 
 		foreach ($urls as $url) {
-			if ( false !== strpos( $this->current_url, $url ) ) {
+			if ( 0 === strpos( $this->current_url, $url ) ) {
 				return true;
 			}
 		}
@@ -470,21 +471,21 @@ class WPSO_Shieldon_Guardian {
 		// Login page.
 		if ( 'yes' === wpso_get_option( 'excluded_page_login', 'shieldon_exclusion' ) ) {
 
-			if ( false !== strpos( $this->current_url, 'wp-login.php' ) ) {
+			if ( 0 === strpos( $this->current_url, '/wp-login.php' ) ) {
 				return true;
 			}
 		}
 
 		// Signup page.
 		if ( 'yes' === wpso_get_option( 'excluded_page_signup', 'shieldon_exclusion' ) ) {
-			if ( false !== strpos( $this->current_url, 'wp-signup.php' ) ) {
+			if ( 0 === strpos( $this->current_url, '/wp-signup.php' ) ) {
 				return true;
 			}
 		}
 
 		// XML RPC.
 		if ( 'yes' === wpso_get_option( 'excluded_page_xmlrpc', 'shieldon_exclusion' ) ) {
-			if ( false !== strpos( $this->current_url, 'xmlrpc.php' ) ) {
+			if ( 0 === strpos( $this->current_url, '/xmlrpc.php' ) ) {
 				return true;
 			}
 		}
@@ -497,7 +498,7 @@ class WPSO_Shieldon_Guardian {
 	 */
 	private function ip_manager() {
 
-		if ( false !== strpos( $this->current_url, 'wp-login.php' ) ) {
+		if ( 0 === strpos( $this->current_url, '/wp-login.php' ) ) {
 
 			// Login page.
 			$login_whitelist = wpso_get_option( 'ip_login_whitelist', 'shieldon_ip_login' );
@@ -533,7 +534,7 @@ class WPSO_Shieldon_Guardian {
 				$this->shieldon->component['Ip']->denyAll();
 			}
 
-		} elseif ( false !== strpos( $this->current_url, 'wp-signup.php' ) ) {
+		} elseif ( 0 === strpos( $this->current_url, '/wp-signup.php' ) ) {
 
 			// Signup page.
 			$signup_whitelist = wpso_get_option( 'ip_signup_whitelist', 'shieldon_ip_signup' );
@@ -554,7 +555,7 @@ class WPSO_Shieldon_Guardian {
 				$this->shieldon->component['Ip']->denyAll();
 			}
 
-		} elseif ( false !== strpos( $this->current_url, 'xmlrpc.php' ) ) {
+		} elseif ( 0 === strpos( $this->current_url, '/xmlrpc.php' ) ) {
 
 			// XML RPC.
 			$xmlrpc_whitelist = wpso_get_option( 'ip_xmlrpc_whitelist', 'shieldon_ip_xmlrpc' );

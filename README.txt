@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=donat
 Tags: anti-scriping, security, firewall, brute-force, xss-protection
 Requires at least: 4.0
 Tested up to: 5.2.0
-Stable tag: 1.4.1
+Stable tag: 1.4.2
 Requires PHP: 7.0.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -162,5 +162,9 @@ GNU General Public License for more details.
 = 1.4.0
 
 - Please update data circle if you are using MySQL or SQLite data driver. The reset button is located on the overview page.
+
+= 1.4.2
+
+- Fix issue #6 - Issue with 'Save Draft' feature.
 
 = Currently no logs now.
