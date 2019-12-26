@@ -359,7 +359,7 @@ class WPSO_Admin_Menu {
 		$wpso = wpso_instance();
 		$wpso->set_driver();
 
-		$data['ip_log_list']     = $wpso->shieldon->driver->getAll( 'log' );
+		$data['ip_log_list']     = $wpso->shieldon->driver->getAll( 'filter_log' );
 		$data['last_reset_time'] = get_option( 'wpso_last_reset_time' );
 
 		wpso_show_settings_header();
