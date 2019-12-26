@@ -157,12 +157,6 @@ GNU General Public License for more details.
 - Update localization strings. (zh_TW, zh_CN)
 - Fix typo.
 
-== Upgrade Notice ==
-
-= 1.4.0
-
-- Please update data circle if you are using MySQL or SQLite data driver. The reset button is located on the overview page.
-
 = 1.4.2
 
 - Fix issue #6 - Issue with 'Save Draft' feature.
@@ -177,4 +171,8 @@ GNU General Public License for more details.
 - Assign language code to dialog UI.
 - Update translation strings.
 
-= Currently no logs now.
+== Upgrade Notice ==
+
+= 1.4.0
+
+- Please update data circle if you are using MySQL or SQLite data driver. The reset button is located on the overview page.
