@@ -23,7 +23,7 @@ $timezone = wpso_apply_blog_timezone();
 			<?php _e( 'Authentication', 'wp-shieldon' ); ?><br />
 		</div>
 		<div class="wpso-datatable-description">
-			<?php _e( 'The HTTP WWW-Authenticate response header defines the authentication method that should be used to gain access to a resource.', 'wp-shieldon' ); ?> 
+			<?php _e( 'The HTTP WWW-Authenticate response header defines the authentication method that should be used to gain access to a resource.', 'wp-shieldon' ); ?>
 		</div>
 		<div class="input-form wpso-form">
 			<form method="post">
@@ -47,8 +47,13 @@ $timezone = wpso_apply_blog_timezone();
 					<input type="submit" name="submit" id="btn-add-rule" value="<?php esc_attr_e( 'Submit', 'wp-shieldon' ); ?>">
 				</div>	
 			</form>
+			<div style="padding: 10px; 0">
+				<?php _e( 'For example:', 'wp-shieldon' ); ?> <strong style="background-color: #eeeeee; padding: 5px;">/wp-login.php</strong> <?php _e( '(login page)', 'wp-shieldon' ); ?>&nbsp;&nbsp;
+				<?php _e( 'This must be a path that it begins with a slash (/)', 'wp-shieldon' ); ?>
+			</div>
 		</div>
 	</div>
+
 	<br />
 
 	<?php if (! empty($authenticated_list)) : ?>

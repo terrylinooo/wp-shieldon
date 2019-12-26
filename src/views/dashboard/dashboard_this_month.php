@@ -96,7 +96,7 @@ if ( ! defined('SHIELDON_PLUGIN_NAME') ) die;
 	</div>
 	<div class="wpso-timezone">
 		<?php if ( ! empty( $last_cached_time ) ) : ?>
-		<?php _e( 'Report generated time', 'wp-shieldon' ); ?>: <strong><?php echo $last_cached_time; ?></strong>
+		<?php _e( 'Report generation time', 'wp-shieldon' ); ?>: <strong><?php echo $last_cached_time; ?></strong>
 			&nbsp;&nbsp;&nbsp;&nbsp; 
 		<?php endif; ?>
 		<?php _e( 'Timezone', 'wp-shieldon' ); ?>: <?php echo date_default_timezone_get(); ?>

@@ -402,5 +402,5 @@ return [
     'overview_note_sendgrid' => 'Send notifications to your email through SendGrid API.',
 
     // 2019/12/13
-    'log_label_cache_time' => 'Report generated time',
+    'log_label_cache_time' => 'Report generation time',
 ];

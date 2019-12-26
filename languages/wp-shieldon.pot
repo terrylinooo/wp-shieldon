@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP Shieldon\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-19 05:22+0000\n"
+"POT-Creation-Date: 2019-12-26 06:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -126,67 +126,67 @@ msgstr ""
 msgid "Report issues"
 msgstr ""
 
-#: src/class-wpso-admin-menu.php:291
+#: src/class-wpso-admin-menu.php:322
 msgid "Added manually by administrator"
 msgstr ""
 
-#: src/class-wpso-admin-menu.php:292
+#: src/class-wpso-admin-menu.php:323
 msgid "Search engine bot"
 msgstr ""
 
-#: src/class-wpso-admin-menu.php:293
+#: src/class-wpso-admin-menu.php:324
 msgid "Google bot"
 msgstr ""
 
-#: src/class-wpso-admin-menu.php:294
+#: src/class-wpso-admin-menu.php:325
 msgid "Bing bot"
 msgstr ""
 
-#: src/class-wpso-admin-menu.php:295
+#: src/class-wpso-admin-menu.php:326
 msgid "Yahoo bot"
 msgstr ""
 
-#: src/class-wpso-admin-menu.php:296
+#: src/class-wpso-admin-menu.php:327
 msgid "Too many sessions"
 msgstr ""
 
-#: src/class-wpso-admin-menu.php:297
+#: src/class-wpso-admin-menu.php:328
 msgid "Too many accesses"
 msgstr ""
 
-#: src/class-wpso-admin-menu.php:298
+#: src/class-wpso-admin-menu.php:329
 msgid "Cannot create JS cookies"
 msgstr ""
 
-#: src/class-wpso-admin-menu.php:299
+#: src/class-wpso-admin-menu.php:330
 msgid "Empty referrer"
 msgstr ""
 
-#: src/class-wpso-admin-menu.php:300
+#: src/class-wpso-admin-menu.php:331
 msgid "Daily limit reached"
 msgstr ""
 
-#: src/class-wpso-admin-menu.php:301
+#: src/class-wpso-admin-menu.php:332
 msgid "Hourly limit reached"
 msgstr ""
 
-#: src/class-wpso-admin-menu.php:302
+#: src/class-wpso-admin-menu.php:333
 msgid "Minutely limit reached"
 msgstr ""
 
-#: src/class-wpso-admin-menu.php:303
+#: src/class-wpso-admin-menu.php:334
 msgid "Secondly limit reached"
 msgstr ""
 
-#: src/class-wpso-admin-menu.php:305
+#: src/class-wpso-admin-menu.php:336
 msgid "DENY"
 msgstr ""
 
-#: src/class-wpso-admin-menu.php:306
+#: src/class-wpso-admin-menu.php:337
 msgid "ALLOW"
 msgstr ""
 
-#: src/class-wpso-admin-menu.php:307
+#: src/class-wpso-admin-menu.php:338
 #: src/views/dashboard/dashboard_last_month.php:71
 #: src/views/dashboard/dashboard_past_seven_days.php:71
 #: src/views/dashboard/dashboard_this_month.php:71
@@ -209,15 +209,15 @@ msgstr ""
 
 #: src/class-wpso-admin-settings.php:71
 #: src/views/dashboard/dashboard_last_month.php:28
-#: src/views/dashboard/dashboard_last_month.php:144
+#: src/views/dashboard/dashboard_last_month.php:148
 #: src/views/dashboard/dashboard_past_seven_days.php:28
-#: src/views/dashboard/dashboard_past_seven_days.php:144
+#: src/views/dashboard/dashboard_past_seven_days.php:148
 #: src/views/dashboard/dashboard_this_month.php:28
-#: src/views/dashboard/dashboard_this_month.php:144
+#: src/views/dashboard/dashboard_this_month.php:148
 #: src/views/dashboard/dashboard_today.php:28
-#: src/views/dashboard/dashboard_today.php:144
+#: src/views/dashboard/dashboard_today.php:148
 #: src/views/dashboard/dashboard_yesterday.php:28
-#: src/views/dashboard/dashboard_yesterday.php:144
+#: src/views/dashboard/dashboard_yesterday.php:148
 msgid "CAPTCHAs"
 msgstr ""
 
@@ -545,19 +545,19 @@ msgstr ""
 
 #: src/views/dashboard/dashboard_last_month.php:38
 #: src/views/dashboard/dashboard_last_month.php:70
-#: src/views/dashboard/dashboard_last_month.php:144
+#: src/views/dashboard/dashboard_last_month.php:148
 #: src/views/dashboard/dashboard_past_seven_days.php:38
 #: src/views/dashboard/dashboard_past_seven_days.php:70
-#: src/views/dashboard/dashboard_past_seven_days.php:144
+#: src/views/dashboard/dashboard_past_seven_days.php:148
 #: src/views/dashboard/dashboard_this_month.php:38
 #: src/views/dashboard/dashboard_this_month.php:70
-#: src/views/dashboard/dashboard_this_month.php:144
+#: src/views/dashboard/dashboard_this_month.php:148
 #: src/views/dashboard/dashboard_today.php:38
 #: src/views/dashboard/dashboard_today.php:70
-#: src/views/dashboard/dashboard_today.php:144
+#: src/views/dashboard/dashboard_today.php:148
 #: src/views/dashboard/dashboard_yesterday.php:38
 #: src/views/dashboard/dashboard_yesterday.php:70
-#: src/views/dashboard/dashboard_yesterday.php:144
+#: src/views/dashboard/dashboard_yesterday.php:148
 #: src/views/dashboard/filter_log_table.php:69
 msgid "Pageviews"
 msgstr ""
@@ -665,32 +665,40 @@ msgstr ""
 msgid "displays"
 msgstr ""
 
-#: src/views/dashboard/dashboard_last_month.php:98
-#: src/views/dashboard/dashboard_past_seven_days.php:98
-#: src/views/dashboard/dashboard_this_month.php:98
-#: src/views/dashboard/dashboard_today.php:98
-#: src/views/dashboard/dashboard_yesterday.php:98
+#: src/views/dashboard/dashboard_last_month.php:99
+#: src/views/dashboard/dashboard_past_seven_days.php:99
+#: src/views/dashboard/dashboard_this_month.php:99
+#: src/views/dashboard/dashboard_today.php:99
+#: src/views/dashboard/dashboard_yesterday.php:99
+msgid "Report generation time"
+msgstr ""
+
+#: src/views/dashboard/dashboard_last_month.php:102
+#: src/views/dashboard/dashboard_past_seven_days.php:102
+#: src/views/dashboard/dashboard_this_month.php:102
+#: src/views/dashboard/dashboard_today.php:102
+#: src/views/dashboard/dashboard_yesterday.php:102
 #: src/views/dashboard/filter_log_table.php:120
 #: src/views/dashboard/rule_table.php:94
 #: src/views/dashboard/session_table.php:119
-#: src/views/security/authentication.php:90
+#: src/views/security/authentication.php:95
 #: src/views/security/xss_protection.php:158
 msgid "Timezone"
 msgstr ""
 
-#: src/views/dashboard/dashboard_last_month.php:113
-#: src/views/dashboard/dashboard_past_seven_days.php:113
-#: src/views/dashboard/dashboard_this_month.php:113
-#: src/views/dashboard/dashboard_today.php:113
-#: src/views/dashboard/dashboard_yesterday.php:113
+#: src/views/dashboard/dashboard_last_month.php:117
+#: src/views/dashboard/dashboard_past_seven_days.php:117
+#: src/views/dashboard/dashboard_this_month.php:117
+#: src/views/dashboard/dashboard_today.php:117
+#: src/views/dashboard/dashboard_yesterday.php:117
 msgid "success"
 msgstr ""
 
-#: src/views/dashboard/dashboard_last_month.php:113
-#: src/views/dashboard/dashboard_past_seven_days.php:113
-#: src/views/dashboard/dashboard_this_month.php:113
-#: src/views/dashboard/dashboard_today.php:113
-#: src/views/dashboard/dashboard_yesterday.php:113
+#: src/views/dashboard/dashboard_last_month.php:117
+#: src/views/dashboard/dashboard_past_seven_days.php:117
+#: src/views/dashboard/dashboard_this_month.php:117
+#: src/views/dashboard/dashboard_today.php:117
+#: src/views/dashboard/dashboard_yesterday.php:117
 msgid "failure"
 msgstr ""
 
@@ -718,7 +726,7 @@ msgstr ""
 msgid "Total pageviews today."
 msgstr ""
 
-#: src/views/dashboard/dashboard_today.php:218
+#: src/views/dashboard/dashboard_today.php:222
 msgid "Past 7 hours"
 msgstr ""
 
@@ -1003,7 +1011,7 @@ msgid "Time"
 msgstr ""
 
 #: src/views/dashboard/rule_table.php:63
-#: src/views/security/authentication.php:72
+#: src/views/security/authentication.php:77
 #: src/views/security/xss_protection.php:141
 msgid "Remove"
 msgstr ""
@@ -1080,7 +1088,7 @@ msgid ""
 msgstr ""
 
 #: src/views/security/authentication.php:32
-#: src/views/security/authentication.php:69
+#: src/views/security/authentication.php:74
 msgid "URL Path"
 msgstr ""
 
@@ -1092,15 +1100,27 @@ msgstr ""
 msgid "Pass"
 msgstr ""
 
-#: src/views/security/authentication.php:70
+#: src/views/security/authentication.php:51
+msgid "For example:"
+msgstr ""
+
+#: src/views/security/authentication.php:51
+msgid "(login page)"
+msgstr ""
+
+#: src/views/security/authentication.php:52
+msgid "This must be a path that it begins with a slash (/)"
+msgstr ""
+
+#: src/views/security/authentication.php:75
 msgid "Username"
 msgstr ""
 
-#: src/views/security/authentication.php:71
+#: src/views/security/authentication.php:76
 msgid "Password"
 msgstr ""
 
-#: src/views/security/authentication.php:71
+#: src/views/security/authentication.php:76
 msgid "encrypted"
 msgstr ""
 

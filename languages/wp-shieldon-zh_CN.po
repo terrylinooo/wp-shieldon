@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - WP Shieldon &#8211; Anti-scraping and security - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-11-19 05:22+0000\n"
+"PO-Revision-Date: 2019-12-26 06:35+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Plugins - WP Shieldon &#8211; Anti-scraping and security "
 "- Stable (latest release)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-19 05:22+0000\n"
+"POT-Creation-Date: 2019-12-26 06:26+0000\n"
 "Last-Translator: Terry Lin <contact@terryl.in>\n"
 "Language-Team: Chinese (China)\n"
 "X-Loco-Version: 2.3.1; wp-5.3"
@@ -128,67 +128,67 @@ msgstr "检视 GitHub 专案"
 msgid "Report issues"
 msgstr "回报问题"
 
-#: src/class-wpso-admin-menu.php:291
+#: src/class-wpso-admin-menu.php:322
 msgid "Added manually by administrator"
 msgstr "已由网站管理员手动新增"
 
-#: src/class-wpso-admin-menu.php:292
+#: src/class-wpso-admin-menu.php:323
 msgid "Search engine bot"
 msgstr "搜寻引擎机器人"
 
-#: src/class-wpso-admin-menu.php:293
+#: src/class-wpso-admin-menu.php:324
 msgid "Google bot"
 msgstr "Google 机器人"
 
-#: src/class-wpso-admin-menu.php:294
+#: src/class-wpso-admin-menu.php:325
 msgid "Bing bot"
 msgstr "Bing 机器人"
 
-#: src/class-wpso-admin-menu.php:295
+#: src/class-wpso-admin-menu.php:326
 msgid "Yahoo bot"
 msgstr "Yahoo 机器人"
 
-#: src/class-wpso-admin-menu.php:296
+#: src/class-wpso-admin-menu.php:327
 msgid "Too many sessions"
 msgstr "太多工作阶段。"
 
-#: src/class-wpso-admin-menu.php:297
+#: src/class-wpso-admin-menu.php:328
 msgid "Too many accesses"
 msgstr "太多存取次数。"
 
-#: src/class-wpso-admin-menu.php:298
+#: src/class-wpso-admin-menu.php:329
 msgid "Cannot create JS cookies"
 msgstr "无法建立 JS Cookie。"
 
-#: src/class-wpso-admin-menu.php:299
+#: src/class-wpso-admin-menu.php:330
 msgid "Empty referrer"
 msgstr "空白来源参照。"
 
-#: src/class-wpso-admin-menu.php:300
+#: src/class-wpso-admin-menu.php:331
 msgid "Daily limit reached"
 msgstr "已达每日上限。"
 
-#: src/class-wpso-admin-menu.php:301
+#: src/class-wpso-admin-menu.php:332
 msgid "Hourly limit reached"
 msgstr "已达每小时上限。"
 
-#: src/class-wpso-admin-menu.php:302
+#: src/class-wpso-admin-menu.php:333
 msgid "Minutely limit reached"
 msgstr "已达每分钟上限。"
 
-#: src/class-wpso-admin-menu.php:303
+#: src/class-wpso-admin-menu.php:334
 msgid "Secondly limit reached"
 msgstr "已达每秒上限。"
 
-#: src/class-wpso-admin-menu.php:305
+#: src/class-wpso-admin-menu.php:336
 msgid "DENY"
 msgstr "拒绝"
 
-#: src/class-wpso-admin-menu.php:306
+#: src/class-wpso-admin-menu.php:337
 msgid "ALLOW"
 msgstr "允许"
 
-#: src/class-wpso-admin-menu.php:307
+#: src/class-wpso-admin-menu.php:338
 #: src/views/dashboard/dashboard_last_month.php:71
 #: src/views/dashboard/dashboard_past_seven_days.php:71
 #: src/views/dashboard/dashboard_this_month.php:71
@@ -211,15 +211,15 @@ msgstr "过滤器"
 
 #: src/class-wpso-admin-settings.php:71
 #: src/views/dashboard/dashboard_last_month.php:28
-#: src/views/dashboard/dashboard_last_month.php:144
+#: src/views/dashboard/dashboard_last_month.php:148
 #: src/views/dashboard/dashboard_past_seven_days.php:28
-#: src/views/dashboard/dashboard_past_seven_days.php:144
+#: src/views/dashboard/dashboard_past_seven_days.php:148
 #: src/views/dashboard/dashboard_this_month.php:28
-#: src/views/dashboard/dashboard_this_month.php:144
+#: src/views/dashboard/dashboard_this_month.php:148
 #: src/views/dashboard/dashboard_today.php:28
-#: src/views/dashboard/dashboard_today.php:144
+#: src/views/dashboard/dashboard_today.php:148
 #: src/views/dashboard/dashboard_yesterday.php:28
-#: src/views/dashboard/dashboard_yesterday.php:144
+#: src/views/dashboard/dashboard_yesterday.php:148
 msgid "CAPTCHAs"
 msgstr "CAPTCHA"
 
@@ -550,19 +550,19 @@ msgstr "上个月的 CAPTCHA 统计资料"
 
 #: src/views/dashboard/dashboard_last_month.php:38
 #: src/views/dashboard/dashboard_last_month.php:70
-#: src/views/dashboard/dashboard_last_month.php:144
+#: src/views/dashboard/dashboard_last_month.php:148
 #: src/views/dashboard/dashboard_past_seven_days.php:38
 #: src/views/dashboard/dashboard_past_seven_days.php:70
-#: src/views/dashboard/dashboard_past_seven_days.php:144
+#: src/views/dashboard/dashboard_past_seven_days.php:148
 #: src/views/dashboard/dashboard_this_month.php:38
 #: src/views/dashboard/dashboard_this_month.php:70
-#: src/views/dashboard/dashboard_this_month.php:144
+#: src/views/dashboard/dashboard_this_month.php:148
 #: src/views/dashboard/dashboard_today.php:38
 #: src/views/dashboard/dashboard_today.php:70
-#: src/views/dashboard/dashboard_today.php:144
+#: src/views/dashboard/dashboard_today.php:148
 #: src/views/dashboard/dashboard_yesterday.php:38
 #: src/views/dashboard/dashboard_yesterday.php:70
-#: src/views/dashboard/dashboard_yesterday.php:144
+#: src/views/dashboard/dashboard_yesterday.php:148
 #: src/views/dashboard/filter_log_table.php:69
 msgid "Pageviews"
 msgstr "浏览量"
@@ -670,32 +670,40 @@ msgstr "已失敗"
 msgid "displays"
 msgstr "显示次数"
 
-#: src/views/dashboard/dashboard_last_month.php:98
-#: src/views/dashboard/dashboard_past_seven_days.php:98
-#: src/views/dashboard/dashboard_this_month.php:98
-#: src/views/dashboard/dashboard_today.php:98
-#: src/views/dashboard/dashboard_yesterday.php:98
+#: src/views/dashboard/dashboard_last_month.php:99
+#: src/views/dashboard/dashboard_past_seven_days.php:99
+#: src/views/dashboard/dashboard_this_month.php:99
+#: src/views/dashboard/dashboard_today.php:99
+#: src/views/dashboard/dashboard_yesterday.php:99
+msgid "Report generation time"
+msgstr "报告产生时间："
+
+#: src/views/dashboard/dashboard_last_month.php:102
+#: src/views/dashboard/dashboard_past_seven_days.php:102
+#: src/views/dashboard/dashboard_this_month.php:102
+#: src/views/dashboard/dashboard_today.php:102
+#: src/views/dashboard/dashboard_yesterday.php:102
 #: src/views/dashboard/filter_log_table.php:120
 #: src/views/dashboard/rule_table.php:94
 #: src/views/dashboard/session_table.php:119
-#: src/views/security/authentication.php:90
+#: src/views/security/authentication.php:95
 #: src/views/security/xss_protection.php:158
 msgid "Timezone"
 msgstr "时区"
 
-#: src/views/dashboard/dashboard_last_month.php:113
-#: src/views/dashboard/dashboard_past_seven_days.php:113
-#: src/views/dashboard/dashboard_this_month.php:113
-#: src/views/dashboard/dashboard_today.php:113
-#: src/views/dashboard/dashboard_yesterday.php:113
+#: src/views/dashboard/dashboard_last_month.php:117
+#: src/views/dashboard/dashboard_past_seven_days.php:117
+#: src/views/dashboard/dashboard_this_month.php:117
+#: src/views/dashboard/dashboard_today.php:117
+#: src/views/dashboard/dashboard_yesterday.php:117
 msgid "success"
 msgstr "成功"
 
-#: src/views/dashboard/dashboard_last_month.php:113
-#: src/views/dashboard/dashboard_past_seven_days.php:113
-#: src/views/dashboard/dashboard_this_month.php:113
-#: src/views/dashboard/dashboard_today.php:113
-#: src/views/dashboard/dashboard_yesterday.php:113
+#: src/views/dashboard/dashboard_last_month.php:117
+#: src/views/dashboard/dashboard_past_seven_days.php:117
+#: src/views/dashboard/dashboard_this_month.php:117
+#: src/views/dashboard/dashboard_today.php:117
+#: src/views/dashboard/dashboard_yesterday.php:117
 msgid "failure"
 msgstr "失敗"
 
@@ -723,7 +731,7 @@ msgstr "今天的 CAPTCHA 统计资料"
 msgid "Total pageviews today."
 msgstr "今天的总浏览量"
 
-#: src/views/dashboard/dashboard_today.php:218
+#: src/views/dashboard/dashboard_today.php:222
 msgid "Past 7 hours"
 msgstr "過去 7 小时"
 
@@ -1008,7 +1016,7 @@ msgid "Time"
 msgstr "记录时间"
 
 #: src/views/dashboard/rule_table.php:63
-#: src/views/security/authentication.php:72
+#: src/views/security/authentication.php:77
 #: src/views/security/xss_protection.php:141
 msgid "Remove"
 msgstr "移除"
@@ -1087,7 +1095,7 @@ msgid ""
 msgstr "回應頭部字段 HTTP WWW-Authenticate 定義了獲取對資源的連接權限應該被使用的認證方式。"
 
 #: src/views/security/authentication.php:32
-#: src/views/security/authentication.php:69
+#: src/views/security/authentication.php:74
 msgid "URL Path"
 msgstr "网址路径"
 
@@ -1099,15 +1107,27 @@ msgstr "用户"
 msgid "Pass"
 msgstr "密码"
 
-#: src/views/security/authentication.php:70
+#: src/views/security/authentication.php:51
+msgid "For example:"
+msgstr "举例："
+
+#: src/views/security/authentication.php:51
+msgid "(login page)"
+msgstr "（登入页）"
+
+#: src/views/security/authentication.php:52
+msgid "This must be a path that it begins with a slash (/)"
+msgstr "这个必须是以反斜线 (/) 为开头的路径。"
+
+#: src/views/security/authentication.php:75
 msgid "Username"
 msgstr "用户名"
 
-#: src/views/security/authentication.php:71
+#: src/views/security/authentication.php:76
 msgid "Password"
 msgstr "密码"
 
-#: src/views/security/authentication.php:71
+#: src/views/security/authentication.php:76
 msgid "encrypted"
 msgstr "已加密"
 
