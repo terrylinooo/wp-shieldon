@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - WP Shieldon &#8211; Anti-scraping and security - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-12-26 06:35+0000\n"
+"PO-Revision-Date: 2019-12-26 08:24+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,10 +12,10 @@ msgstr ""
 "Project-Id-Version: Plugins - WP Shieldon &#8211; Anti-scraping and security "
 "- Stable (latest release)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-26 06:26+0000\n"
+"POT-Creation-Date: 2019-12-26 08:23+0000\n"
 "Last-Translator: Terry Lin <contact@terryl.in>\n"
 "Language-Team: Chinese (China)\n"
-"X-Loco-Version: 2.3.1; wp-5.3"
+"X-Loco-Version: 2.3.1; wp-5.3.2"
 
 #: src/class-wpso-admin-ip-manager.php:56
 msgid "Global"
@@ -258,6 +258,10 @@ msgid ""
 "Clear all logs everyday 0:00 a.m. automatically. Turning this option on will "
 "improve performace."
 msgstr "自动在每日上午 0:00 清除全部日志。启用这项设置便能增进效能。"
+
+#: src/class-wpso-admin-settings.php:144
+msgid "IP Source"
+msgstr "IP地址来源"
 
 #: src/class-wpso-admin-settings.php:145
 msgid ""

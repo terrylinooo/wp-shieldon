@@ -37,7 +37,7 @@ class WPSO_Shieldon_Guardian {
 		 */
 		$this->shieldon = new \Shieldon\Shieldon();
 
-		$this->shieldon->setProperty( 'lang', wpso_get_lang() );
+		$_SESSION['shieldon_ui_lang'] = wpso_get_lang();
 
 		$this->current_url = $_SERVER['REQUEST_URI'];
 

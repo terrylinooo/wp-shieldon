@@ -3,9 +3,9 @@ Contributors: terrylin
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=donate%40terryl.in&item_name=WordPress+Plugin+-+WP+Shieldon&currency_code=USD&source=url
 Tags: anti-scriping, security, firewall, brute-force, xss-protection
 Requires at least: 4.0
-Tested up to: 5.2.0
-Stable tag: 1.4.3
-Requires PHP: 7.0.0
+Tested up to: 5.3.2
+Stable tag: 1.5.0
+Requires PHP: 7.1.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -170,6 +170,11 @@ GNU General Public License for more details.
 = 1.4.3
 
 - Update Shieldon core up to 0.1.7
+- Update translation strings.
+
+= 1.5.0 (WordCamp Taipei version)
+
+- Assign language code to dialog UI.
 - Update translation strings.
 
 = Currently no logs now.

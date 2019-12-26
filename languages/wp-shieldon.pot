@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP Shieldon\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-26 06:26+0000\n"
+"POT-Creation-Date: 2019-12-26 08:23+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -255,6 +255,10 @@ msgstr ""
 msgid ""
 "Clear all logs everyday 0:00 a.m. automatically. Turning this option on will "
 "improve performace."
+msgstr ""
+
+#: src/class-wpso-admin-settings.php:144
+msgid "IP Source"
 msgstr ""
 
 #: src/class-wpso-admin-settings.php:145

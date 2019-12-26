@@ -141,7 +141,7 @@ class WPSO_Admin_Settings {
 
 				array(
 					'name'    => 'ip_source',
-					'label'   => __( 'IP Source', 'wp-githuber-md' ),
+					'label'   => __( 'IP Source', 'wp-shieldon' ),
 					'desc'    => __( 'Is your website behind CDN service? If you use CDN, you have to set this setting, otherwise all IP addresses come from CDN servers, they will be banned.', 'wp-shieldon' ),
 					'type'    => 'radio',
 					'default' => 'REMOTE_ADDR',
