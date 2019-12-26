@@ -515,23 +515,24 @@ class WPSO_Shieldon_Guardian {
 				$this->shieldon->component['Ip']->setDeniedList( $blacklist );
 			}
 
-			$passcode    = wpso_get_option( 'deny_all_passcode', 'shieldon_ip_login' );
-			$is_passcode = false;
+			$passcode         = wpso_get_option( 'deny_all_passcode', 'shieldon_ip_login' );
+			$passcode_confirm = '';
+
+			if ( ! empty( $_COOKIE['wp_shieldon_passcode'] ) ) {
+				$passcode_confirm = $_COOKIE['wp_shieldon_passcode'];
+			}
 
 			if ( ! empty( $passcode ) && isset( $_GET[ $passcode ] ) ) {
-				$is_passcode = true;
-			}
-
-			if ( $is_passcode ) {
-				$_SESSION[ $passcode ] = true;
-			} else {
-				if ( isset( $_SESSION[ $passcode ] ) ) {
-					$is_passcode = true;
+				if ( empty( $_COOKIE['wp_shieldon_passcode'] ) ) {
+					setcookie( 'wp_shieldon_passcode', $passcode, time() + 86400 );
 				}
+				$passcode_confirm = $passcode;
 			}
 
-			if ( ! $is_passcode && 'yes' === $login_deny_all ) {
-				$this->shieldon->component['Ip']->denyAll();
+			if ( 'yes' === $login_deny_all ) {
+				if ( $passcode_confirm !== $passcode ) {
+					$this->shieldon->component['Ip']->denyAll();
+				}
 			}
 
 		} elseif ( 0 === strpos( $this->current_url, '/wp-signup.php' ) ) {

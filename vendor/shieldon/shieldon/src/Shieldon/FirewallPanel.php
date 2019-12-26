@@ -16,6 +16,7 @@ use Shieldon\Driver\MysqlDriver;
 use Shieldon\Driver\RedisDriver;
 use Shieldon\Driver\SqliteDriver;
 use Shieldon\Log\ActionLogParser;
+use Shieldon\Log\ActionLogParsedCache;
 use Shieldon\Shieldon;
 use Shieldon\FirewallTrait;
 use function Shieldon\Helper\__;
@@ -55,6 +56,17 @@ use function round;
 use function strtotime;
 use function time;
 use function umask;
+
+/**
+ * Increase PHP execution time. Becasue of taking long time to parse logs in a high-traffic site.
+ */
+set_time_limit(3600);
+
+/**
+ * Increase the memory limit. Becasue the log files may be large in a high-traffic site.
+ */
+
+ini_set('memory_limit', '128M');
 
 /**
  * Firewall's Control Panel
@@ -114,7 +126,6 @@ class FirewallPanel
         'user' => 'demo',
         'pass' => '$2y$10$MTi1ROPnHEukp5RwGNdxuOSAyhGdpc4sfQpwNCv9yHoVvgl9tz8Xy',
     ];
-
 
     /**
      * Language code.
@@ -438,11 +449,14 @@ class FirewallPanel
             $i = 0;
             ksort($loggerInfo);
 
-            foreach ($loggerInfo as $date => $size) {
-                if (0 === $i) {
-                    $data['logger_started_working_date'] = date('Y-m-d', strtotime((string) $date));
+            foreach ($loggerInfo as $filename => $size) {
+                $filename = (string) $filename;
+                if (false === strpos($filename, '.json')) {
+                    if (0 === $i) {
+                        $data['logger_started_working_date'] = date('Y-m-d', strtotime($filename));
+                    }
+                    $i += (int) $size;
                 }
-                $i += (int) $size;
             }
 
             $data['logger_work_days'] = count($loggerInfo);
@@ -797,22 +811,50 @@ class FirewallPanel
 
         $data['ip_details'] = [];
         $data['period_data'] = [];
-
-        $data['past_seven_hour'] = [];
+        
+        $lastCachedTime = '';
 
         if (! empty($this->parser)) {
-            $this->parser->prepare($type);
 
-            $data['ip_details'] = $this->parser->getIpData();
-            $data['period_data'] = $this->parser->getParsedPeriodData();
+            $logCacheHandler = new ActionLogParsedCache($this->parser->getDirectory());
 
-            if ('today' === $type ) {
-                $this->parser->prepare('past_seven_hours');
-                $data['past_seven_hour'] = $this->parser->getParsedPeriodData();
+            $ipDetailsCachedData = $logCacheHandler->get($type);
+
+            // If we have cached data then we don't need to parse them again.
+            // This will save a lot of time in parsing logs.
+            if (! empty($ipDetailsCachedData)) {
+
+                $data['ip_details'] = $ipDetailsCachedData['ip_details'];
+                $data['period_data'] = $ipDetailsCachedData['period_data'];
+                $lastCachedTime = date('Y-m-d H:i:s', $ipDetailsCachedData['time']);
+    
+                if ('today' === $type ) {
+                    $ipDetailsCachedData = $logCacheHandler->get('past_seven_hours');
+                    $data['past_seven_hours'] = $ipDetailsCachedData['period_data'];
+                }
+
+            } else {
+
+                $this->parser->prepare($type);
+
+                $data['ip_details'] = $this->parser->getIpData();
+                $data['period_data'] = $this->parser->getParsedPeriodData();
+
+                $logCacheHandler->save($type, $data);
+    
+                if ('today' === $type ) {
+                    $this->parser->prepare('past_seven_hours');
+                    $data['past_seven_hours'] = $this->parser->getParsedPeriodData();
+
+                    $logCacheHandler->save('past_seven_hours', [
+                        'period_data' => $data['past_seven_hours']
+                    ]);
+                }
             }
         }
 
         $data['page_availability'] = $this->pageAvailability['logs'];
+        $data['last_cached_time'] = $lastCachedTime;
 
         $data['page_url'] = $this->url('dashboard');
 
@@ -1407,10 +1449,10 @@ class FirewallPanel
         }
 
         // System firewall.
-        $enableIp6tables = $this->getConfig('iptables.enable');
+        $enableIptables = $this->getConfig('iptables.enable');
         $iptablesWatchingFolder = rtrim($this->getConfig('iptables.config.watching_folder'), '\\/ ');
 
-        if ($enableIp6tables) {
+        if ($enableIptables) {
             if (empty($iptablesWatchingFolder)) {
                 $iptablesWatchingFolder = $this->directory . '/iptables';
             }

@@ -118,7 +118,7 @@ return [
     'overview_label_mysql' => 'MySQL',
     'overview_text_rows' => 'rows',
     'overview_note_sql_db' => 'SQL database.',
-    'overview_note_memory_db' =>  'In-memory database.',
+    'overview_note_memory_db' =>  'In-memory dadabase.',
     'overview_label_redis' => 'Redis',
     'overview_btn_document' => 'Document',
     'overview_btn_close' => 'Close',
@@ -400,4 +400,7 @@ return [
     'overview_note_line_notify' => 'Send notifications to your Line group.',
     'overview_label_sendgrid' => 'SendGrid',
     'overview_note_sendgrid' => 'Send notifications to your email through SendGrid API.',
+
+    // 2019/12/13
+    'log_label_cache_time' => 'Report generated time',
 ];

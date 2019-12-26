@@ -95,7 +95,11 @@ if ( ! defined('SHIELDON_PLUGIN_NAME') ) die;
 		</table>
 	</div>
 	<div class="wpso-timezone">
-		<?php _e( 'Timezone', 'wp-shieldon' ); ?>: UTC 
+		<?php if ( ! empty( $last_cached_time ) ) : ?>
+		<?php _e( 'Report generated time', 'wp-shieldon' ); ?>: <strong><?php echo $last_cached_time; ?></strong>
+			&nbsp;&nbsp;&nbsp;&nbsp; 
+		<?php endif; ?>
+		<?php _e( 'Timezone', 'wp-shieldon' ); ?>: <?php echo date_default_timezone_get(); ?>
 	</div>
 </div>
 
@@ -181,12 +185,12 @@ if ( ! defined('SHIELDON_PLUGIN_NAME') ) die;
 		},
 		series: [{
 			name: 'pageview',
-			data: [<?php echo $past_seven_hour['pageview_chart_string']; ?>]
+			data: [<?php echo $past_seven_hours['pageview_chart_string']; ?>]
 		}, {
 			name: 'captcha',
-			data: [<?php echo $past_seven_hour['captcha_chart_string']; ?>]
+			data: [<?php echo $past_seven_hours['captcha_chart_string']; ?>]
 		}],
-		labels: [<?php echo $past_seven_hour['label_chart_string']; ?>],
+		labels: [<?php echo $past_seven_hours['label_chart_string']; ?>],
 		markers: {
 			size: 5
 		},

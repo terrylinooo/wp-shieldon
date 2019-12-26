@@ -214,6 +214,9 @@ class WPSO_Admin_Menu {
 
 		$parser = new \Shieldon\Log\ActionLogParser( wpso_get_logs_dir() );
 
+		// To deal with large logs, we need to cahce the parsed results for saving time.
+		$log_cache_handler = new \Shieldon\Log\ActionLogParsedCache( wpso_get_logs_dir() );
+
 		$tab = 'today';
 
 		if ( ! empty( $_GET['tab'] ) ) {
@@ -233,15 +236,43 @@ class WPSO_Admin_Menu {
 				$type = 'today';
 		}
 
-		$parser->prepare( $type );
+		$ip_details_cached_data = $log_cache_handler->get( $type );
+		$last_cached_time       = '';
 
-		$data['ip_details']  = $parser->getIpData();
-		$data['period_data'] = $parser->getParsedPeriodData();
+		// If we have cached data then we don't need to parse them again.
+		// This will save a lot of time in parsing logs.
+		if ( ! empty( $ip_details_cached_data ) ) {
 
-		if ( 'today' === $type ) {
-			$parser->prepare( 'past_seven_hours' );
-			$data['past_seven_hour'] = $parser->getParsedPeriodData();
+			$data['ip_details'] = $ip_details_cached_data['ip_details'];
+			$data['period_data'] = $ip_details_cached_data['period_data'];
+			$last_cached_time = date( 'Y-m-d H:i:s', $ip_details_cached_data['time'] );
+
+			if ( 'today' === $type ) {
+				$ip_details_cached_data = $log_cache_handler->get( 'past_seven_hours' );
+				$data['past_seven_hours'] = $ip_details_cached_data['period_data'];
+			}
+
+		} else {
+
+			$parser->prepare( $type );
+
+			$data['ip_details']  = $parser->getIpData();
+			$data['period_data'] = $parser->getParsedPeriodData();
+
+			$log_cache_handler->save( $type, $data );
+
+			if ( 'today' === $type ) {
+				$parser->prepare( 'past_seven_hours' );
+				$data['past_seven_hours'] = $parser->getParsedPeriodData();
+
+				$log_cache_handler->save( 'past_seven_hours', array(
+						'period_data' => $data['past_seven_hours']
+					)
+				);
+			}
 		}
+
+		$data['last_cached_time'] = $last_cached_time;
 
 		wpso_show_settings_header();
 		echo wpso_load_view( 'dashboard/dashboard_' . $type, $data );
@@ -541,10 +572,14 @@ class WPSO_Admin_Menu {
             ksort( $loggerInfo);
 
             foreach ( $loggerInfo as $date => $size ) {
-                if ( 0 === $i ) {
-                    $data['logger_started_working_date'] = date( 'Y-m-d', strtotime( (string) $date ) );
-                }
-                $i += (int) $size;
+				$date = (string) $date;
+
+				if ( false === strpos( $date, '.json' ) ) {
+					if ( 0 === $i ) {
+						$data['logger_started_working_date'] = date( 'Y-m-d', strtotime( $date ) );
+					}
+					$i += (int) $size;
+				}
             }
 
             $data['logger_work_days']  = count( $loggerInfo );

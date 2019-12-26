@@ -329,8 +329,8 @@ function wpso_status_icon( $var, $icon_type = 1 ) {
             <td><?php echo $logger_total_size; ?></td>
         <tr>
     </table>
-    <form id="wpso_rest_action_logger_form" method="post">
-        <?php wp_nonce_field( 'check_form_reset_action_logger', 'wpso_rest_action_logger_form' ); ?>
+    <form id="wpso_reset_action_logger_form" method="post">
+        <?php wp_nonce_field( 'check_form_reset_action_logger', 'wpso_reset_action_logger_form' ); ?>
 		<input type="hidden" name="action_type" value="reset_action_logs">
 		<input type="submit" value="submit" style="display: none">
     </form>
@@ -396,7 +396,7 @@ function wpso_status_icon( $var, $icon_type = 1 ) {
                             text: wpso_js_btn_submit,
                             class: 'button-primary',
                             click: function() {
-                                $('#wpso_rest_action_logger_form').submit();
+                                $('#wpso_reset_action_logger_form').submit();
                             }
                         }
                     ]

@@ -11,7 +11,7 @@ return [
     'reason_too_many_accesses' => '太多連線',
     'reason_empty_js_cookie' => '無法建立 JS cookie',
     'reason_empty_referer' => '空的來源網址',
-    'reason_reached_limit_day' => '達成每日限制',
+    'reason_reached_limit_day' => '達到每日限制',
     'reason_reached_limit_hour' => '達到每小時限制',
     'reason_reached_limit_minute' => '達到每分限制',
     'reason_reached_limit_second' => '達到每秒限制',
@@ -400,4 +400,7 @@ return [
     'overview_note_line_notify' => '傳送通知到您的 Line 群組。',
     'overview_label_sendgrid' => 'SendGrid',
     'overview_note_sendgrid' => '透過 SendGrid API 傳送通知到您的 Email。',
+
+    // 2019/12/13
+    'log_label_cache_time' => '報告產生時間',
 ];
