@@ -648,7 +648,7 @@ class WPSO_Admin_Settings {
 				array(
 					'label'         => __( 'Possible Conflicts', 'wp-shieldon' ),
 					'section_title' => true,
-					'desc'          => '<i class="far fa-file-powerpoint"></i>',
+					'desc'          => '<i class="fas fa-cogs"></i>',
 				),
 
 				array(
