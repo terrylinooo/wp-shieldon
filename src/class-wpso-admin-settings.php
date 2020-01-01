@@ -619,7 +619,7 @@ class WPSO_Admin_Settings {
 				),
 
 				array(
-					'name'    => 'excluded_page_login',
+					'name'    => 'ignore_page_login',
 					'label'   => __( 'Login', 'wp-shieldon' ),
 					'desc'    => __( 'Turning this option on will get <code>wp-login.php</code> excluded from Shieldon protection.', 'wp-shieldon' ) . '<br />' . __( '(default: off)', 'wp-shieldon' ),
 					'type'    => 'toggle',
@@ -628,7 +628,7 @@ class WPSO_Admin_Settings {
 				),
 
 				array(
-					'name'    => 'excluded_page_signup',
+					'name'    => 'ignore_page_signup',
 					'label'   => __( 'Signup', 'wp-shieldon' ),
 					'desc'    => __( 'Turning this option on will get <code>wp-signup.php</code> excluded from Shieldon protection.', 'wp-shieldon' ) . '<br />' . __( '(default: off)', 'wp-shieldon' ),
 					'type'    => 'toggle',
@@ -637,12 +637,36 @@ class WPSO_Admin_Settings {
 				),
 
 				array(
-					'name'    => 'excluded_page_xmlrpc',
+					'name'    => 'ignore_wp_xmlrpc',
 					'label'   => __( 'XML RPC', 'wp-shieldon' ),
 					'desc'    => __( 'Turning this option on will get <code>xmlrpc.php</code> excluded from Shieldon protection.', 'wp-shieldon' ) . '<br />' . __( '(default: on)', 'wp-shieldon' ),
 					'type'    => 'toggle',
 					'size'    => 'sm',
 					'default' => 'yes',
+				),
+
+				array(
+					'label'         => __( 'Possible Conflicts', 'wp-shieldon' ),
+					'section_title' => true,
+					'desc'          => '<i class="far fa-file-powerpoint"></i>',
+				),
+
+				array(
+					'name'    => 'ignore_wp_json',
+					'label'   => __( 'REST API', 'wp-shieldon' ),
+					'desc'    => __( 'Some core functions in WordPress such as "Save Draft" and REST API use "<strong>/wp-json/</strong>".', 'wp-shieldon' ) . '<br />' . __( 'Turning this option on will get <code>/wp-json/</code> excluded from Shieldon protection.', 'wp-shieldon' ) . '<br />' . __( '(default: off)', 'wp-shieldon' ),
+					'type'    => 'toggle',
+					'size'    => 'sm',
+					'default' => 'no',
+				),
+
+				array(
+					'name'    => 'ignore_wp_theme_customizer',
+					'label'   => __( 'Theme Customizer', 'wp-shieldon' ),
+					'desc'    => __( 'If you want to use theme customizer, please turn this on. After finishing a while, do not forget to turn this option off.', 'wp-shieldon' ) . '<br />' . __( 'Turning this option on will get <code>/?customize_changeset_uuid=</code> excluded from Shieldon protection.', 'wp-shieldon' ) . '<br />' . __( '(default: off)', 'wp-shieldon' ),
+					'type'    => 'toggle',
+					'size'    => 'sm',
+					'default' => 'no',
 				),
 			),
 		);

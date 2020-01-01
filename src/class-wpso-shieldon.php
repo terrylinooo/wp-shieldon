@@ -459,8 +459,21 @@ class WPSO_Shieldon_Guardian {
 			$urls = explode(PHP_EOL, $list);
 		}
 
-		array_push( $urls, '/wp-login.php?action=postpass' );
-		array_push( $urls, '/wp-json/' );
+		$blog_install_dir = parse_url( get_site_url() , PHP_URL_PATH );
+
+		if ( '/' === $blog_install_dir ) {
+			$blog_install_dir = '';
+		}
+
+		// `Save draft` will use this path.
+		if ( 'yes' === wpso_get_option( 'ignore_wp_json', 'shieldon_exclusion' ) ) {
+			array_push( $urls, $blog_install_dir . '/wp-json/' );
+		}
+		
+		// Customer preview
+		if ( 'yes' === wpso_get_option( 'ignore_wp_theme_customizer', 'shieldon_exclusion' ) ) {
+			array_push( $urls, $blog_install_dir . '/?customize_changeset_uuid=' );
+		}
 
 		foreach ($urls as $url) {
 			if ( 0 === strpos( $this->current_url, $url ) ) {
@@ -469,7 +482,7 @@ class WPSO_Shieldon_Guardian {
 		}
 
 		// Login page.
-		if ( 'yes' === wpso_get_option( 'excluded_page_login', 'shieldon_exclusion' ) ) {
+		if ( 'yes' === wpso_get_option( 'ignore_page_login', 'shieldon_exclusion' ) ) {
 
 			if ( 0 === strpos( $this->current_url, '/wp-login.php' ) ) {
 				return true;
@@ -477,14 +490,14 @@ class WPSO_Shieldon_Guardian {
 		}
 
 		// Signup page.
-		if ( 'yes' === wpso_get_option( 'excluded_page_signup', 'shieldon_exclusion' ) ) {
+		if ( 'yes' === wpso_get_option( 'ignore_page_signup', 'shieldon_exclusion' ) ) {
 			if ( 0 === strpos( $this->current_url, '/wp-signup.php' ) ) {
 				return true;
 			}
 		}
 
 		// XML RPC.
-		if ( 'yes' === wpso_get_option( 'excluded_page_xmlrpc', 'shieldon_exclusion' ) ) {
+		if ( 'yes' === wpso_get_option( 'ignore_wp_xmlrpc', 'shieldon_exclusion' ) ) {
 			if ( 0 === strpos( $this->current_url, '/xmlrpc.php' ) ) {
 				return true;
 			}
