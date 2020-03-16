@@ -56,7 +56,7 @@ $timezone = wpso_apply_blog_timezone();
 
 	<br />
 
-	<?php if (! empty($authenticated_list)) : ?>
+	<?php if ( ! empty( $authenticated_list ) ) : ?>
 	<div id="wpso-table-loading" class="wpso-datatables">
 		<div class="lds-css ng-scope">
 			<div class="lds-ripple">
@@ -78,8 +78,8 @@ $timezone = wpso_apply_blog_timezone();
 				</tr>
 			</thead>
 			<tbody>
-			<?php if (! empty($authenticated_list)) : ?>
-				<?php foreach($authenticated_list as $i => $authInfo) : ?>
+			<?php if (! empty( $authenticated_list ) ) : ?>
+				<?php foreach( $authenticated_list as $i => $authInfo ) : ?>
 				<tr>
 					<td><?php echo $authInfo['url']; ?></td>
 					<td><?php echo $authInfo['user']; ?></td>

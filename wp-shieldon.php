@@ -201,6 +201,60 @@ if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 
 		/* END - Check version after updating plugin. */
 
+		/***************************************************************************/
+
+		/**
+		 * BEGIN - Feature: export settings as a JSON file.
+		 *
+		 * Working URL: /wp-admin/admin.php?page=shieldon-import-export&action=export&_wpnonce=xxxxxxx
+		 * This URL opens a blank page and begin downloading process.
+		 */
+		if ( isset( $_GET['action'] ) && 'export' === $_GET['action'] && ! empty( $_GET['_wpnonce'] ) ) {
+			function wpso_export_json() {
+				if ( wp_verify_nonce( $_GET['_wpnonce'], 'shieldon_export_' . date( 'YmdH' ) ) && current_user_can( 'manage_options' ) ) {
+					header('Content-type: text/plain');
+					header('Content-Disposition: attachment; filename=' . $_SERVER['HTTP_HOST'] . '_wp_shieldon_' . date('YmdHis') . '.json');
+					header('Expires: 0');
+					header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+					header('Pragma: public');
+
+					$setting_sections = array( 
+						'daemon', 
+						'component', 
+						'filter', 
+						'captcha', 
+						'exclusion', 
+						'authetication',
+						'xss_protection',
+						'xss_protected_list',
+						'ip_login',
+						'ip_signup',
+						'ip_xmlrpc',
+						'ip_global',
+					);
+
+					$configuration = array();
+
+					$configuration['plugin_name']    = 'WP Shieldon';
+					$configuration['plugin_version'] = SHIELDON_PLUGIN_VERSION;
+					$configuration['export_date']    = date( 'Y-m-d');
+					$configuration['export_time']    = date( 'H:i:s');
+					$configuration['site_domain']    = $_SERVER['HTTP_HOST'];
+
+					foreach ( $setting_sections as $s ) {
+						$configuration[ $s ] = get_option( 'shieldon_' . $s );
+					}
+					echo json_encode( $configuration, JSON_PRETTY_PRINT );
+					exit;
+				}
+			}
+
+			add_action( 'admin_init', 'wpso_export_json' );
+		}
+		/* END - Feature: export settings as a JSON file . */
+
+		/***************************************************************************/
+
 		$admin_menu       = new WPSO_Admin_Menu();
 		$admin_settings   = new WPSO_Admin_Settings();
 		$admin_ip_manager = new WPSO_Admin_IP_Manager();

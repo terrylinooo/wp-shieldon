@@ -148,7 +148,7 @@ class WPSO_Admin_Menu {
 		add_submenu_page(
 			'shieldon-settings',
 			__( 'Import/Export', 'wp-shieldon' ),
-			$separate . __( 'Import/Export', 'wp-shieldon' ),
+			$separate . __( 'Import / Export', 'wp-shieldon' ),
 			'manage_options',
 			'shieldon-import-export',
 			array( $this, 'import_export' )
@@ -209,8 +209,68 @@ class WPSO_Admin_Menu {
 	 * @return void
 	 */
 	public function import_export() {
+
+		$message = [];
+
+		$field_hash = 'shieldon_import_' . date( 'YmdH' );
+
+		if ( isset( $_POST['action'] ) && 'import' === $_POST['action'] && ! empty( $_POST['wpso_import_form'] ) ) {
+			if ( ! empty( $_FILES['json_file']['tmp_name'] ) ) {
+				if ( wp_verify_nonce( $_POST['wpso_import_form'], $field_hash ) && current_user_can( 'manage_options' ) ) {
+
+					// Fetch setting data from a JSON file.
+					$imported_file_content = file_get_contents( $_FILES['json_file']['tmp_name'] );
+
+					// Decode the JSON content into an array.
+					$setting_data = json_decode( $imported_file_content, true );
+
+					// Check if it is valid JSON content.
+					if ( json_last_error() !== JSON_ERROR_NONE ) {
+						$message = array(
+							'type' => 'error',
+							'body' => __( 'Invalid JSON file.', 'wp-shieldon' ),
+						);
+					} else {
+
+						$setting_sections = array( 
+							'daemon', 
+							'component', 
+							'filter', 
+							'captcha', 
+							'exclusion', 
+							'authetication',
+							'xss_protection',
+							'xss_protected_list',
+							'ip_login',
+							'ip_signup',
+							'ip_xmlrpc',
+							'ip_global',
+						);
+
+						foreach ($setting_sections as $v) {
+							if ( ! empty( $setting_data[ $v ] ) ) {
+								update_option( 'shieldon_' . $v, $setting_data[ $v ] );
+							}
+						}
+
+						$message = array(
+							'type' => 'updated',
+							'body' => __( 'Your configuration file is imported successfully.', 'wp-shieldon' ),
+						);
+					}
+				}
+			} else {
+				$message = array(
+					'type' => 'error',
+					'body' =>  __( 'Please upload a JSON file.', 'wp-shieldon' ),
+				);
+			}
+		}
+
+		$data['message'] = $message;
+		
 		wpso_show_settings_header();
-		echo wpso_load_view( 'setting/import_export' );
+		echo wpso_load_view( 'setting/import-export', $data );
 		wpso_show_settings_footer();
 	}
 

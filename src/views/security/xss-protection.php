@@ -121,7 +121,7 @@ $timezone = wpso_apply_blog_timezone();
 	</div>
 	<br />
 
-	<?php if (empty($xss_protected_list)) : ?>
+	<?php if ( empty( $xss_protected_list ) ) : ?>
 	<div id="wpso-table-loading" class="wpso-datatables">
 		<div class="lds-css ng-scope">
 			<div class="lds-ripple">
@@ -142,8 +142,8 @@ $timezone = wpso_apply_blog_timezone();
 				</tr>
 			</thead>
 			<tbody>
-				<?php if (! empty($xss_protected_list)) : ?>
-				<?php foreach($xss_protected_list as $i => $info) : ?>
+				<?php if (! empty( $xss_protected_list ) ) : ?>
+				<?php foreach( $xss_protected_list as $i => $info ) : ?>
 				<tr>
 					<td><?php echo $info['type']; ?></td>
 					<td><?php echo $info['variable']; ?></td>
