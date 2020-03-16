@@ -1061,7 +1061,7 @@ class FirewallPanel
 
         $data['xss_protected_list'] = $this->getConfig('xss_protected_list');
 
-        $this->renderPage('panel/xss_protection', $data);
+        $this->renderPage('panel/xss-protection', $data);
     }
 
     /**

@@ -162,7 +162,7 @@ if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 	 * @return void
 	 */
 	function wpso_update_notice() {
-		echo wpso_load_view( 'message/update_notice' );
+		echo wpso_load_view( 'message/update-notice' );
 	}
 
 	register_activation_hook( __FILE__, 'wpso_activate_plugin' );

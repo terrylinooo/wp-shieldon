@@ -174,7 +174,9 @@ GNU General Public License for more details.
 = 1.6.0
 
 - Update Shieldon kernel.
-- Add new options in settings allowing to avoid conflicts with some WordPress core functions.
+- Add options in settings allowing to avoid conflicts with some WordPress core functions.
+- Add an option for switching Action Logger.
+- Add import/export settings feature.
 - Update translation strings.
 
 == Upgrade Notice ==

@@ -140,6 +140,16 @@ class WPSO_Admin_Settings {
 				),
 
 				array(
+					'name'    => 'enable_action_logger',
+					'label'   => __( 'Action Logger', 'wp-shieldon' ),
+					'desc'    => __( 'Record every visitor’s behavior.', 'wp-shieldon' ) . '<br />' . __( 'Not recommend for high-traffic webites.', 'wp-shieldon' ),
+					'type'    => 'toggle',
+					'size'    => 'sm',
+					'default' => 'no',
+					'parent'  => 'enable_daemon',
+				),
+
+				array(
 					'name'    => 'ip_source',
 					'label'   => __( 'IP Source', 'wp-shieldon' ),
 					'desc'    => __( 'Is your website behind CDN service? If you use CDN, you have to set this setting, otherwise all IP addresses come from CDN servers, they will be banned.', 'wp-shieldon' ),

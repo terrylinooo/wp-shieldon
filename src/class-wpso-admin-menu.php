@@ -73,21 +73,23 @@ class WPSO_Admin_Menu {
 
 		add_submenu_page(
 			'shieldon-settings',
-			__( 'Action Logs', 'wp-shieldon' ),
-			__( 'Action Logs', 'wp-shieldon' ),
-			'manage_options',
-			'shieldon-action-logs',
-			array( $this, 'action_logs' )
-		);
-
-		add_submenu_page(
-			'shieldon-settings',
 			__( 'Overview', 'wp-shieldon' ),
 			__( 'Overview', 'wp-shieldon' ),
 			'manage_options',
 			'shieldon-overview',
 			array( $this, 'overview' )
 		);
+
+		if ( 'yes' === wpso_get_option( 'enable_action_logger', 'shieldon_daemon' ) ) {
+			add_submenu_page(
+				'shieldon-settings',
+				__( 'Action Logs', 'wp-shieldon' ),
+				__( 'Action Logs', 'wp-shieldon' ),
+				'manage_options',
+				'shieldon-action-logs',
+				array( $this, 'action_logs' )
+			);
+		}
 
 		add_submenu_page(
 			'shieldon-settings',
@@ -145,6 +147,15 @@ class WPSO_Admin_Menu {
 
 		add_submenu_page(
 			'shieldon-settings',
+			__( 'Import/Export', 'wp-shieldon' ),
+			$separate . __( 'Import/Export', 'wp-shieldon' ),
+			'manage_options',
+			'shieldon-import-export',
+			array( $this, 'import_export' )
+		);
+
+		add_submenu_page(
+			'shieldon-settings',
 			__( 'About', 'wp-shieldon' ),
 			$separate . __( 'About', 'wp-shieldon' ),
 			'manage_options',
@@ -190,6 +201,17 @@ class WPSO_Admin_Menu {
 			$links[] = '<a href="https://github.com/terrylinooo/shieldon/issues" target="_blank">' . __( 'Report issues', 'wp-shieldon' ) . '</a>';
 		}
 		return $links;
+	}
+
+	/**
+	 * Import / Export settings.
+	 *
+	 * @return void
+	 */
+	public function import_export() {
+		wpso_show_settings_header();
+		echo wpso_load_view( 'setting/import_export' );
+		wpso_show_settings_footer();
 	}
 
 	/**
@@ -275,7 +297,7 @@ class WPSO_Admin_Menu {
 		$data['last_cached_time'] = $last_cached_time;
 
 		wpso_show_settings_header();
-		echo wpso_load_view( 'dashboard/dashboard_' . $type, $data );
+		echo wpso_load_view( 'dashboard/dashboard-' . str_replace( '_', '-', $type ), $data );
 		wpso_show_settings_footer();
 	}
 
@@ -343,7 +365,7 @@ class WPSO_Admin_Menu {
 		$data['last_reset_time'] = get_option( 'wpso_last_reset_time' );
 
 		wpso_show_settings_header();
-		echo wpso_load_view( 'dashboard/rule_table', $data );
+		echo wpso_load_view( 'dashboard/rule-table', $data );
 		wpso_show_settings_footer();
 	}
 
@@ -363,7 +385,7 @@ class WPSO_Admin_Menu {
 		$data['last_reset_time'] = get_option( 'wpso_last_reset_time' );
 
 		wpso_show_settings_header();
-		echo wpso_load_view( 'dashboard/filter_log_table', $data );
+		echo wpso_load_view( 'dashboard/filter-log-table', $data );
 		wpso_show_settings_footer();
 	}
 
@@ -398,7 +420,7 @@ class WPSO_Admin_Menu {
 		$data['last_reset_time'] = get_option( 'wpso_last_reset_time' );
 
 		wpso_show_settings_header();
-		echo wpso_load_view( 'dashboard/session_table', $data );
+		echo wpso_load_view( 'dashboard/session-table', $data );
 		wpso_show_settings_footer();
 	}
 
@@ -514,7 +536,7 @@ class WPSO_Admin_Menu {
 		$data['xss_type'] = $xss_type;
 
 		wpso_show_settings_header();
-		echo wpso_load_view( 'security/xss_protection', $data );
+		echo wpso_load_view( 'security/xss-protection', $data );
 		wpso_show_settings_footer();
 	}
 

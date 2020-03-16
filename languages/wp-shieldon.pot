@@ -86,17 +86,17 @@ msgid "Overview"
 msgstr ""
 
 #: src/class-wpso-admin-menu.php:94 src/class-wpso-admin-menu.php:95
-#: src/views/dashboard/rule_table.php:23
+#: src/views/dashboard/rule-table.php:23
 msgid "Rule Table"
 msgstr ""
 
 #: src/class-wpso-admin-menu.php:103 src/class-wpso-admin-menu.php:104
-#: src/views/dashboard/filter_log_table.php:57
+#: src/views/dashboard/filter-log-table.php:57
 msgid "Filter Log Table"
 msgstr ""
 
 #: src/class-wpso-admin-menu.php:112 src/class-wpso-admin-menu.php:113
-#: src/views/dashboard/session_table.php:64
+#: src/views/dashboard/session-table.php:64
 msgid "Session Table"
 msgstr ""
 
@@ -105,7 +105,7 @@ msgid "IP Manager"
 msgstr ""
 
 #: src/class-wpso-admin-menu.php:130 src/class-wpso-admin-menu.php:131
-#: src/views/security/xss_protection.php:23
+#: src/views/security/xss-protection.php:23
 msgid "XSS Protection"
 msgstr ""
 
@@ -187,11 +187,11 @@ msgid "ALLOW"
 msgstr ""
 
 #: src/class-wpso-admin-menu.php:338
-#: src/views/dashboard/dashboard_last_month.php:71
-#: src/views/dashboard/dashboard_past_seven_days.php:71
-#: src/views/dashboard/dashboard_this_month.php:71
-#: src/views/dashboard/dashboard_today.php:71
-#: src/views/dashboard/dashboard_yesterday.php:71
+#: src/views/dashboard/dashboard-last-month.php:71
+#: src/views/dashboard/dashboard-past-seven-days.php:71
+#: src/views/dashboard/dashboard-this-month.php:71
+#: src/views/dashboard/dashboard-today.php:71
+#: src/views/dashboard/dashboard-yesterday.php:71
 msgid "CAPTCHA"
 msgstr ""
 
@@ -208,16 +208,16 @@ msgid "Filters"
 msgstr ""
 
 #: src/class-wpso-admin-settings.php:71
-#: src/views/dashboard/dashboard_last_month.php:28
-#: src/views/dashboard/dashboard_last_month.php:148
-#: src/views/dashboard/dashboard_past_seven_days.php:28
-#: src/views/dashboard/dashboard_past_seven_days.php:148
-#: src/views/dashboard/dashboard_this_month.php:28
-#: src/views/dashboard/dashboard_this_month.php:148
-#: src/views/dashboard/dashboard_today.php:28
-#: src/views/dashboard/dashboard_today.php:148
-#: src/views/dashboard/dashboard_yesterday.php:28
-#: src/views/dashboard/dashboard_yesterday.php:148
+#: src/views/dashboard/dashboard-last-month.php:28
+#: src/views/dashboard/dashboard-last-month.php:148
+#: src/views/dashboard/dashboard-past-seven-days.php:28
+#: src/views/dashboard/dashboard-past-seven-days.php:148
+#: src/views/dashboard/dashboard-this-month.php:28
+#: src/views/dashboard/dashboard-this-month.php:148
+#: src/views/dashboard/dashboard-today.php:28
+#: src/views/dashboard/dashboard-today.php:148
+#: src/views/dashboard/dashboard-yesterday.php:28
+#: src/views/dashboard/dashboard-yesterday.php:148
 msgid "CAPTCHAs"
 msgstr ""
 
@@ -390,7 +390,7 @@ msgid ""
 msgstr ""
 
 #: src/class-wpso-admin-settings.php:376
-#: src/views/dashboard/filter_log_table.php:79
+#: src/views/dashboard/filter-log-table.php:79
 #: src/views/dashboard/overview.php:107
 msgid "Session"
 msgstr ""
@@ -418,7 +418,7 @@ msgid "Check HTTP referrer information."
 msgstr ""
 
 #: src/class-wpso-admin-settings.php:449
-#: src/views/dashboard/filter_log_table.php:78
+#: src/views/dashboard/filter-log-table.php:78
 #: src/views/dashboard/overview.php:98
 msgid "Cookie"
 msgstr ""
@@ -475,9 +475,9 @@ msgstr ""
 msgid "A simple image CAPTCHA."
 msgstr ""
 
-#: src/class-wpso-admin-settings.php:569 src/views/dashboard/rule_table.php:60
-#: src/views/security/xss_protection.php:99
-#: src/views/security/xss_protection.php:139
+#: src/class-wpso-admin-settings.php:569 src/views/dashboard/rule-table.php:60
+#: src/views/security/xss-protection.php:99
+#: src/views/security/xss-protection.php:139
 msgid "Type"
 msgstr ""
 
@@ -543,256 +543,256 @@ msgstr ""
 msgid "(default: on)"
 msgstr ""
 
-#: src/views/dashboard/dashboard_last_month.php:30
+#: src/views/dashboard/dashboard-last-month.php:30
 msgid "CAPTCHA statistic last month."
 msgstr ""
 
-#: src/views/dashboard/dashboard_last_month.php:38
-#: src/views/dashboard/dashboard_last_month.php:70
-#: src/views/dashboard/dashboard_last_month.php:148
-#: src/views/dashboard/dashboard_past_seven_days.php:38
-#: src/views/dashboard/dashboard_past_seven_days.php:70
-#: src/views/dashboard/dashboard_past_seven_days.php:148
-#: src/views/dashboard/dashboard_this_month.php:38
-#: src/views/dashboard/dashboard_this_month.php:70
-#: src/views/dashboard/dashboard_this_month.php:148
-#: src/views/dashboard/dashboard_today.php:38
-#: src/views/dashboard/dashboard_today.php:70
-#: src/views/dashboard/dashboard_today.php:148
-#: src/views/dashboard/dashboard_yesterday.php:38
-#: src/views/dashboard/dashboard_yesterday.php:70
-#: src/views/dashboard/dashboard_yesterday.php:148
-#: src/views/dashboard/filter_log_table.php:69
+#: src/views/dashboard/dashboard-last-month.php:38
+#: src/views/dashboard/dashboard-last-month.php:70
+#: src/views/dashboard/dashboard-last-month.php:148
+#: src/views/dashboard/dashboard-past-seven-days.php:38
+#: src/views/dashboard/dashboard-past-seven-days.php:70
+#: src/views/dashboard/dashboard-past-seven-days.php:148
+#: src/views/dashboard/dashboard-this-month.php:38
+#: src/views/dashboard/dashboard-this-month.php:70
+#: src/views/dashboard/dashboard-this-month.php:148
+#: src/views/dashboard/dashboard-today.php:38
+#: src/views/dashboard/dashboard-today.php:70
+#: src/views/dashboard/dashboard-today.php:148
+#: src/views/dashboard/dashboard-yesterday.php:38
+#: src/views/dashboard/dashboard-yesterday.php:70
+#: src/views/dashboard/dashboard-yesterday.php:148
+#: src/views/dashboard/filter-log-table.php:69
 msgid "Pageviews"
 msgstr ""
 
-#: src/views/dashboard/dashboard_last_month.php:40
+#: src/views/dashboard/dashboard-last-month.php:40
 msgid "Total pageviews last month."
 msgstr ""
 
-#: src/views/dashboard/dashboard_last_month.php:49
-#: src/views/dashboard/dashboard_past_seven_days.php:49
-#: src/views/dashboard/dashboard_this_month.php:49
-#: src/views/dashboard/dashboard_today.php:49
-#: src/views/dashboard/dashboard_yesterday.php:49
+#: src/views/dashboard/dashboard-last-month.php:49
+#: src/views/dashboard/dashboard-past-seven-days.php:49
+#: src/views/dashboard/dashboard-this-month.php:49
+#: src/views/dashboard/dashboard-today.php:49
+#: src/views/dashboard/dashboard-yesterday.php:49
 msgid "Today"
 msgstr ""
 
-#: src/views/dashboard/dashboard_last_month.php:50
-#: src/views/dashboard/dashboard_past_seven_days.php:50
-#: src/views/dashboard/dashboard_this_month.php:50
-#: src/views/dashboard/dashboard_today.php:50
-#: src/views/dashboard/dashboard_yesterday.php:50
+#: src/views/dashboard/dashboard-last-month.php:50
+#: src/views/dashboard/dashboard-past-seven-days.php:50
+#: src/views/dashboard/dashboard-this-month.php:50
+#: src/views/dashboard/dashboard-today.php:50
+#: src/views/dashboard/dashboard-yesterday.php:50
 msgid "Yesterday"
 msgstr ""
 
-#: src/views/dashboard/dashboard_last_month.php:51
-#: src/views/dashboard/dashboard_past_seven_days.php:51
-#: src/views/dashboard/dashboard_this_month.php:51
-#: src/views/dashboard/dashboard_today.php:51
-#: src/views/dashboard/dashboard_yesterday.php:51
+#: src/views/dashboard/dashboard-last-month.php:51
+#: src/views/dashboard/dashboard-past-seven-days.php:51
+#: src/views/dashboard/dashboard-this-month.php:51
+#: src/views/dashboard/dashboard-today.php:51
+#: src/views/dashboard/dashboard-yesterday.php:51
 msgid "Last 7 days"
 msgstr ""
 
-#: src/views/dashboard/dashboard_last_month.php:52
-#: src/views/dashboard/dashboard_past_seven_days.php:52
-#: src/views/dashboard/dashboard_this_month.php:52
-#: src/views/dashboard/dashboard_today.php:52
-#: src/views/dashboard/dashboard_yesterday.php:52
+#: src/views/dashboard/dashboard-last-month.php:52
+#: src/views/dashboard/dashboard-past-seven-days.php:52
+#: src/views/dashboard/dashboard-this-month.php:52
+#: src/views/dashboard/dashboard-today.php:52
+#: src/views/dashboard/dashboard-yesterday.php:52
 msgid "This month"
 msgstr ""
 
-#: src/views/dashboard/dashboard_last_month.php:53
-#: src/views/dashboard/dashboard_past_seven_days.php:53
-#: src/views/dashboard/dashboard_this_month.php:53
-#: src/views/dashboard/dashboard_today.php:53
-#: src/views/dashboard/dashboard_yesterday.php:53
+#: src/views/dashboard/dashboard-last-month.php:53
+#: src/views/dashboard/dashboard-past-seven-days.php:53
+#: src/views/dashboard/dashboard-this-month.php:53
+#: src/views/dashboard/dashboard-today.php:53
+#: src/views/dashboard/dashboard-yesterday.php:53
 msgid "Last month"
 msgstr ""
 
-#: src/views/dashboard/dashboard_last_month.php:68
-#: src/views/dashboard/dashboard_past_seven_days.php:68
-#: src/views/dashboard/dashboard_this_month.php:68
-#: src/views/dashboard/dashboard_today.php:68
-#: src/views/dashboard/dashboard_yesterday.php:68
-#: src/views/dashboard/filter_log_table.php:67
-#: src/views/dashboard/overview.php:144 src/views/dashboard/rule_table.php:58
-#: src/views/dashboard/session_table.php:76
+#: src/views/dashboard/dashboard-last-month.php:68
+#: src/views/dashboard/dashboard-past-seven-days.php:68
+#: src/views/dashboard/dashboard-this-month.php:68
+#: src/views/dashboard/dashboard-today.php:68
+#: src/views/dashboard/dashboard-yesterday.php:68
+#: src/views/dashboard/filter-log-table.php:67
+#: src/views/dashboard/overview.php:144 src/views/dashboard/rule-table.php:58
+#: src/views/dashboard/session-table.php:76
 msgid "IP"
 msgstr ""
 
-#: src/views/dashboard/dashboard_last_month.php:69
-#: src/views/dashboard/dashboard_past_seven_days.php:69
-#: src/views/dashboard/dashboard_this_month.php:69
-#: src/views/dashboard/dashboard_today.php:69
-#: src/views/dashboard/dashboard_yesterday.php:69
+#: src/views/dashboard/dashboard-last-month.php:69
+#: src/views/dashboard/dashboard-past-seven-days.php:69
+#: src/views/dashboard/dashboard-this-month.php:69
+#: src/views/dashboard/dashboard-today.php:69
+#: src/views/dashboard/dashboard-yesterday.php:69
 msgid "Sessions"
 msgstr ""
 
-#: src/views/dashboard/dashboard_last_month.php:72
-#: src/views/dashboard/dashboard_past_seven_days.php:72
-#: src/views/dashboard/dashboard_this_month.php:72
-#: src/views/dashboard/dashboard_today.php:72
-#: src/views/dashboard/dashboard_yesterday.php:72
+#: src/views/dashboard/dashboard-last-month.php:72
+#: src/views/dashboard/dashboard-past-seven-days.php:72
+#: src/views/dashboard/dashboard-this-month.php:72
+#: src/views/dashboard/dashboard-today.php:72
+#: src/views/dashboard/dashboard-yesterday.php:72
 msgid "In blacklist"
 msgstr ""
 
-#: src/views/dashboard/dashboard_last_month.php:73
-#: src/views/dashboard/dashboard_past_seven_days.php:73
-#: src/views/dashboard/dashboard_this_month.php:73
-#: src/views/dashboard/dashboard_today.php:73
-#: src/views/dashboard/dashboard_yesterday.php:73
+#: src/views/dashboard/dashboard-last-month.php:73
+#: src/views/dashboard/dashboard-past-seven-days.php:73
+#: src/views/dashboard/dashboard-this-month.php:73
+#: src/views/dashboard/dashboard-today.php:73
+#: src/views/dashboard/dashboard-yesterday.php:73
 msgid "In queue"
 msgstr ""
 
-#: src/views/dashboard/dashboard_last_month.php:76
-#: src/views/dashboard/dashboard_past_seven_days.php:76
-#: src/views/dashboard/dashboard_this_month.php:76
-#: src/views/dashboard/dashboard_today.php:76
-#: src/views/dashboard/dashboard_yesterday.php:76
+#: src/views/dashboard/dashboard-last-month.php:76
+#: src/views/dashboard/dashboard-past-seven-days.php:76
+#: src/views/dashboard/dashboard-this-month.php:76
+#: src/views/dashboard/dashboard-today.php:76
+#: src/views/dashboard/dashboard-yesterday.php:76
 msgid "solved"
 msgstr ""
 
-#: src/views/dashboard/dashboard_last_month.php:77
-#: src/views/dashboard/dashboard_past_seven_days.php:77
-#: src/views/dashboard/dashboard_this_month.php:77
-#: src/views/dashboard/dashboard_today.php:77
-#: src/views/dashboard/dashboard_yesterday.php:77
+#: src/views/dashboard/dashboard-last-month.php:77
+#: src/views/dashboard/dashboard-past-seven-days.php:77
+#: src/views/dashboard/dashboard-this-month.php:77
+#: src/views/dashboard/dashboard-today.php:77
+#: src/views/dashboard/dashboard-yesterday.php:77
 msgid "failed"
 msgstr ""
 
-#: src/views/dashboard/dashboard_last_month.php:78
-#: src/views/dashboard/dashboard_past_seven_days.php:78
-#: src/views/dashboard/dashboard_this_month.php:78
-#: src/views/dashboard/dashboard_today.php:78
-#: src/views/dashboard/dashboard_yesterday.php:78
+#: src/views/dashboard/dashboard-last-month.php:78
+#: src/views/dashboard/dashboard-past-seven-days.php:78
+#: src/views/dashboard/dashboard-this-month.php:78
+#: src/views/dashboard/dashboard-today.php:78
+#: src/views/dashboard/dashboard-yesterday.php:78
 msgid "displays"
 msgstr ""
 
-#: src/views/dashboard/dashboard_last_month.php:99
-#: src/views/dashboard/dashboard_past_seven_days.php:99
-#: src/views/dashboard/dashboard_this_month.php:99
-#: src/views/dashboard/dashboard_today.php:99
-#: src/views/dashboard/dashboard_yesterday.php:99
+#: src/views/dashboard/dashboard-last-month.php:99
+#: src/views/dashboard/dashboard-past-seven-days.php:99
+#: src/views/dashboard/dashboard-this-month.php:99
+#: src/views/dashboard/dashboard-today.php:99
+#: src/views/dashboard/dashboard-yesterday.php:99
 msgid "Report generation time"
 msgstr ""
 
-#: src/views/dashboard/dashboard_last_month.php:102
-#: src/views/dashboard/dashboard_past_seven_days.php:102
-#: src/views/dashboard/dashboard_this_month.php:102
-#: src/views/dashboard/dashboard_today.php:102
-#: src/views/dashboard/dashboard_yesterday.php:102
-#: src/views/dashboard/filter_log_table.php:120
-#: src/views/dashboard/rule_table.php:94
-#: src/views/dashboard/session_table.php:119
+#: src/views/dashboard/dashboard-last-month.php:102
+#: src/views/dashboard/dashboard-past-seven-days.php:102
+#: src/views/dashboard/dashboard-this-month.php:102
+#: src/views/dashboard/dashboard-today.php:102
+#: src/views/dashboard/dashboard-yesterday.php:102
+#: src/views/dashboard/filter-log-table.php:120
+#: src/views/dashboard/rule-table.php:94
+#: src/views/dashboard/session-table.php:119
 #: src/views/security/authentication.php:95
-#: src/views/security/xss_protection.php:158
+#: src/views/security/xss-protection.php:158
 msgid "Timezone"
 msgstr ""
 
-#: src/views/dashboard/dashboard_last_month.php:117
-#: src/views/dashboard/dashboard_past_seven_days.php:117
-#: src/views/dashboard/dashboard_this_month.php:117
-#: src/views/dashboard/dashboard_today.php:117
-#: src/views/dashboard/dashboard_yesterday.php:117
+#: src/views/dashboard/dashboard-last-month.php:117
+#: src/views/dashboard/dashboard-past-seven-days.php:117
+#: src/views/dashboard/dashboard-this-month.php:117
+#: src/views/dashboard/dashboard-today.php:117
+#: src/views/dashboard/dashboard-yesterday.php:117
 msgid "success"
 msgstr ""
 
-#: src/views/dashboard/dashboard_last_month.php:117
-#: src/views/dashboard/dashboard_past_seven_days.php:117
-#: src/views/dashboard/dashboard_this_month.php:117
-#: src/views/dashboard/dashboard_today.php:117
-#: src/views/dashboard/dashboard_yesterday.php:117
+#: src/views/dashboard/dashboard-last-month.php:117
+#: src/views/dashboard/dashboard-past-seven-days.php:117
+#: src/views/dashboard/dashboard-this-month.php:117
+#: src/views/dashboard/dashboard-today.php:117
+#: src/views/dashboard/dashboard-yesterday.php:117
 msgid "failure"
 msgstr ""
 
-#: src/views/dashboard/dashboard_past_seven_days.php:30
+#: src/views/dashboard/dashboard-past-seven-days.php:30
 msgid "CAPTCHA statistic last 7 days."
 msgstr ""
 
-#: src/views/dashboard/dashboard_past_seven_days.php:40
+#: src/views/dashboard/dashboard-past-seven-days.php:40
 msgid "Total pageviews last 7 days."
 msgstr ""
 
-#: src/views/dashboard/dashboard_this_month.php:30
+#: src/views/dashboard/dashboard-this-month.php:30
 msgid "CAPTCHA statistic this month."
 msgstr ""
 
-#: src/views/dashboard/dashboard_this_month.php:40
+#: src/views/dashboard/dashboard-this-month.php:40
 msgid "Total pageviews this month."
 msgstr ""
 
-#: src/views/dashboard/dashboard_today.php:30
+#: src/views/dashboard/dashboard-today.php:30
 msgid "CAPTCHA statistic today."
 msgstr ""
 
-#: src/views/dashboard/dashboard_today.php:40
+#: src/views/dashboard/dashboard-today.php:40
 msgid "Total pageviews today."
 msgstr ""
 
-#: src/views/dashboard/dashboard_today.php:222
+#: src/views/dashboard/dashboard-today.php:222
 msgid "Past 7 hours"
 msgstr ""
 
-#: src/views/dashboard/dashboard_yesterday.php:30
+#: src/views/dashboard/dashboard-yesterday.php:30
 msgid "CAPTCHA statistic yesterday."
 msgstr ""
 
-#: src/views/dashboard/dashboard_yesterday.php:40
+#: src/views/dashboard/dashboard-yesterday.php:40
 msgid "Total pageviews yesterday."
 msgstr ""
 
-#: src/views/dashboard/filter_log_table.php:60
+#: src/views/dashboard/filter-log-table.php:60
 msgid "This is where the Shieldon records the users' strange behavior."
 msgstr ""
 
-#: src/views/dashboard/filter_log_table.php:61
-#: src/views/dashboard/rule_table.php:27
-#: src/views/dashboard/session_table.php:67
+#: src/views/dashboard/filter-log-table.php:61
+#: src/views/dashboard/rule-table.php:27
+#: src/views/dashboard/session-table.php:67
 msgid "All processes are automatic and instant, you can ignore that."
 msgstr ""
 
-#: src/views/dashboard/filter_log_table.php:62
+#: src/views/dashboard/filter-log-table.php:62
 msgid "IP log table will be all cleared after new cycle begins."
 msgstr ""
 
-#: src/views/dashboard/filter_log_table.php:68
-#: src/views/dashboard/rule_table.php:59
+#: src/views/dashboard/filter-log-table.php:68
+#: src/views/dashboard/rule-table.php:59
 msgid "Resolved hostname"
 msgstr ""
 
-#: src/views/dashboard/filter_log_table.php:70
+#: src/views/dashboard/filter-log-table.php:70
 msgid "Flags"
 msgstr ""
 
-#: src/views/dashboard/filter_log_table.php:71
+#: src/views/dashboard/filter-log-table.php:71
 msgid "Last visit"
 msgstr ""
 
-#: src/views/dashboard/filter_log_table.php:74
+#: src/views/dashboard/filter-log-table.php:74
 msgid "S"
 msgstr ""
 
-#: src/views/dashboard/filter_log_table.php:75
+#: src/views/dashboard/filter-log-table.php:75
 msgid "M"
 msgstr ""
 
-#: src/views/dashboard/filter_log_table.php:76
+#: src/views/dashboard/filter-log-table.php:76
 msgid "H"
 msgstr ""
 
-#: src/views/dashboard/filter_log_table.php:77
+#: src/views/dashboard/filter-log-table.php:77
 msgid "D"
 msgstr ""
 
-#: src/views/dashboard/filter_log_table.php:80
+#: src/views/dashboard/filter-log-table.php:80
 #: src/views/dashboard/overview.php:125
 msgid "Referrer"
 msgstr ""
 
-#: src/views/dashboard/filter_log_table.php:119
-#: src/views/dashboard/rule_table.php:93
-#: src/views/dashboard/session_table.php:118
+#: src/views/dashboard/filter-log-table.php:119
+#: src/views/dashboard/rule-table.php:93
+#: src/views/dashboard/session-table.php:118
 #, php-format
 msgid "Current data circle started from %s."
 msgstr ""
@@ -968,103 +968,103 @@ msgstr ""
 msgid "Would you like to remove all action logs?"
 msgstr ""
 
-#: src/views/dashboard/rule_table.php:26
+#: src/views/dashboard/rule-table.php:26
 msgid ""
 "This is where the Shieldon temporarily allows or denys users in current "
 "cycle."
 msgstr ""
 
-#: src/views/dashboard/rule_table.php:28
+#: src/views/dashboard/rule-table.php:28
 msgid "Rule table will be reset after new cycle begins."
 msgstr ""
 
-#: src/views/dashboard/rule_table.php:35
+#: src/views/dashboard/rule-table.php:35
 msgid "--- please select ---"
 msgstr ""
 
-#: src/views/dashboard/rule_table.php:36
+#: src/views/dashboard/rule-table.php:36
 msgid "Deny this IP temporarily"
 msgstr ""
 
-#: src/views/dashboard/rule_table.php:37
+#: src/views/dashboard/rule-table.php:37
 msgid "Deny this IP permanently"
 msgstr ""
 
-#: src/views/dashboard/rule_table.php:38
+#: src/views/dashboard/rule-table.php:38
 msgid "Allow this IP"
 msgstr ""
 
-#: src/views/dashboard/rule_table.php:39
+#: src/views/dashboard/rule-table.php:39
 msgid "Remove this IP"
 msgstr ""
 
-#: src/views/dashboard/rule_table.php:41
+#: src/views/dashboard/rule-table.php:41
 #: src/views/security/authentication.php:47
-#: src/views/security/xss_protection.php:77
-#: src/views/security/xss_protection.php:110
+#: src/views/security/xss-protection.php:77
+#: src/views/security/xss-protection.php:110
 msgid "Submit"
 msgstr ""
 
-#: src/views/dashboard/rule_table.php:61
+#: src/views/dashboard/rule-table.php:61
 msgid "Reason"
 msgstr ""
 
-#: src/views/dashboard/rule_table.php:62
-#: src/views/dashboard/session_table.php:77
+#: src/views/dashboard/rule-table.php:62
+#: src/views/dashboard/session-table.php:77
 msgid "Time"
 msgstr ""
 
-#: src/views/dashboard/rule_table.php:63
+#: src/views/dashboard/rule-table.php:63
 #: src/views/security/authentication.php:77
-#: src/views/security/xss_protection.php:141
+#: src/views/security/xss-protection.php:141
 msgid "Remove"
 msgstr ""
 
-#: src/views/dashboard/session_table.php:27
+#: src/views/dashboard/session-table.php:27
 msgid "Limit"
 msgstr ""
 
-#: src/views/dashboard/session_table.php:29
+#: src/views/dashboard/session-table.php:29
 msgid "Online session limit."
 msgstr ""
 
-#: src/views/dashboard/session_table.php:38
+#: src/views/dashboard/session-table.php:38
 msgid "Period"
 msgstr ""
 
-#: src/views/dashboard/session_table.php:40
+#: src/views/dashboard/session-table.php:40
 msgid "Keep-alive period. (minutes)"
 msgstr ""
 
-#: src/views/dashboard/session_table.php:48
+#: src/views/dashboard/session-table.php:48
 msgid "Online"
 msgstr ""
 
-#: src/views/dashboard/session_table.php:50
+#: src/views/dashboard/session-table.php:50
 msgid "Online session amount."
 msgstr ""
 
-#: src/views/dashboard/session_table.php:67
+#: src/views/dashboard/session-table.php:67
 msgid "Read-time logs for <strong>Online Session Controll</strong>."
 msgstr ""
 
-#: src/views/dashboard/session_table.php:68
+#: src/views/dashboard/session-table.php:68
 msgid "Notice this is only working when you have enabled that function."
 msgstr ""
 
-#: src/views/dashboard/session_table.php:73
+#: src/views/dashboard/session-table.php:73
 msgid "Priority"
 msgstr ""
 
-#: src/views/dashboard/session_table.php:74
+#: src/views/dashboard/session-table.php:74
 msgid "Status"
 msgstr ""
 
-#: src/views/dashboard/session_table.php:75
+#: src/views/dashboard/session-table.php:75
 msgid "Session ID"
 msgstr ""
 
-#: src/views/dashboard/session_table.php:78
+#: src/views/dashboard/session-table.php:78
 msgid "Remain seconds"
 msgstr ""
 
@@ -1079,7 +1079,7 @@ msgstr ""
 msgid "Please remove WP Shieldon or upgrade your PHP version."
 msgstr ""
 
-#: src/views/message/update_notice.php:18
+#: src/views/message/update-notice.php:18
 msgid ""
 "WP Shieldon has updated successfully. Please reset data circle, then turn on "
 "daemon."
@@ -1128,35 +1128,35 @@ msgstr ""
 msgid "encrypted"
 msgstr ""
 
-#: src/views/security/xss_protection.php:26
+#: src/views/security/xss-protection.php:26
 msgid "Prevent Cross site scripting (XSS) attacks."
 msgstr ""
 
-#: src/views/security/xss_protection.php:42
+#: src/views/security/xss-protection.php:42
 msgid "Filter all POST method variables."
 msgstr ""
 
-#: src/views/security/xss_protection.php:56
+#: src/views/security/xss-protection.php:56
 msgid "Filter all GET method variables."
 msgstr ""
 
-#: src/views/security/xss_protection.php:70
+#: src/views/security/xss-protection.php:70
 msgid "Filter all COOKIE method variables."
 msgstr ""
 
-#: src/views/security/xss_protection.php:88
+#: src/views/security/xss-protection.php:88
 msgid "Single variable"
 msgstr ""
 
-#: src/views/security/xss_protection.php:95
+#: src/views/security/xss-protection.php:95
 msgid "Variable Name"
 msgstr ""
 
-#: src/views/security/xss_protection.php:115
+#: src/views/security/xss-protection.php:115
 msgid "Eradicate potential injection string for single variable."
 msgstr ""
 
-#: src/views/security/xss_protection.php:140
+#: src/views/security/xss-protection.php:140
 msgid "Variable"
 msgstr ""
 

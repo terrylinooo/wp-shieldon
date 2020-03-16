@@ -611,9 +611,12 @@ class WPSO_Shieldon_Guardian {
 	 */
 	private function set_logger() {
 
-		$logger = new \Shieldon\Log\ActionLogger( wpso_get_logs_dir() );
+		if ( 'yes' === wpso_get_option( 'enable_action_logger', 'shieldon_daemon' ) ) {
 
-		$this->shieldon->setLogger( $logger );
+			$logger = new \Shieldon\Log\ActionLogger( wpso_get_logs_dir() );
+
+			$this->shieldon->setLogger( $logger );
+		}
 	}
 
 	/**

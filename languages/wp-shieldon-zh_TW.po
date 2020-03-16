@@ -88,17 +88,17 @@ msgid "Overview"
 msgstr "總覽"
 
 #: src/class-wpso-admin-menu.php:94 src/class-wpso-admin-menu.php:95
-#: src/views/dashboard/rule_table.php:23
+#: src/views/dashboard/rule-table.php:23
 msgid "Rule Table"
 msgstr "規則表"
 
 #: src/class-wpso-admin-menu.php:103 src/class-wpso-admin-menu.php:104
-#: src/views/dashboard/filter_log_table.php:57
+#: src/views/dashboard/filter-log-table.php:57
 msgid "Filter Log Table"
 msgstr "過濾器記錄表"
 
 #: src/class-wpso-admin-menu.php:112 src/class-wpso-admin-menu.php:113
-#: src/views/dashboard/session_table.php:64
+#: src/views/dashboard/session-table.php:64
 msgid "Session Table"
 msgstr "工作階段表"
 
@@ -107,7 +107,7 @@ msgid "IP Manager"
 msgstr "IP 位址管理程式"
 
 #: src/class-wpso-admin-menu.php:130 src/class-wpso-admin-menu.php:131
-#: src/views/security/xss_protection.php:23
+#: src/views/security/xss-protection.php:23
 msgid "XSS Protection"
 msgstr "XSS 防護"
 
@@ -189,11 +189,11 @@ msgid "ALLOW"
 msgstr "允許"
 
 #: src/class-wpso-admin-menu.php:338
-#: src/views/dashboard/dashboard_last_month.php:71
-#: src/views/dashboard/dashboard_past_seven_days.php:71
-#: src/views/dashboard/dashboard_this_month.php:71
-#: src/views/dashboard/dashboard_today.php:71
-#: src/views/dashboard/dashboard_yesterday.php:71
+#: src/views/dashboard/dashboard-last-month.php:71
+#: src/views/dashboard/dashboard-past-seven-days.php:71
+#: src/views/dashboard/dashboard-this-month.php:71
+#: src/views/dashboard/dashboard-today.php:71
+#: src/views/dashboard/dashboard-yesterday.php:71
 msgid "CAPTCHA"
 msgstr "CAPTCHA"
 
@@ -210,16 +210,16 @@ msgid "Filters"
 msgstr "過濾器"
 
 #: src/class-wpso-admin-settings.php:71
-#: src/views/dashboard/dashboard_last_month.php:28
-#: src/views/dashboard/dashboard_last_month.php:148
-#: src/views/dashboard/dashboard_past_seven_days.php:28
-#: src/views/dashboard/dashboard_past_seven_days.php:148
-#: src/views/dashboard/dashboard_this_month.php:28
-#: src/views/dashboard/dashboard_this_month.php:148
-#: src/views/dashboard/dashboard_today.php:28
-#: src/views/dashboard/dashboard_today.php:148
-#: src/views/dashboard/dashboard_yesterday.php:28
-#: src/views/dashboard/dashboard_yesterday.php:148
+#: src/views/dashboard/dashboard-last-month.php:28
+#: src/views/dashboard/dashboard-last-month.php:148
+#: src/views/dashboard/dashboard-past-seven-days.php:28
+#: src/views/dashboard/dashboard-past-seven-days.php:148
+#: src/views/dashboard/dashboard-this-month.php:28
+#: src/views/dashboard/dashboard-this-month.php:148
+#: src/views/dashboard/dashboard-today.php:28
+#: src/views/dashboard/dashboard-today.php:148
+#: src/views/dashboard/dashboard-yesterday.php:28
+#: src/views/dashboard/dashboard-yesterday.php:148
 msgid "CAPTCHAs"
 msgstr "CAPTCHA"
 
@@ -393,7 +393,7 @@ msgid ""
 msgstr "含有空白 DNS 反向解析記錄的網站訪客會遭到封鎖。<br />透過 IP 位址解析出的主機名稱必須與 IP 位址相符。"
 
 #: src/class-wpso-admin-settings.php:376
-#: src/views/dashboard/filter_log_table.php:79
+#: src/views/dashboard/filter-log-table.php:79
 #: src/views/dashboard/overview.php:107
 msgid "Session"
 msgstr "工作階段"
@@ -421,7 +421,7 @@ msgid "Check HTTP referrer information."
 msgstr "檢查 HTTP 參照位址資訊。"
 
 #: src/class-wpso-admin-settings.php:449
-#: src/views/dashboard/filter_log_table.php:78
+#: src/views/dashboard/filter-log-table.php:78
 #: src/views/dashboard/overview.php:98
 msgid "Cookie"
 msgstr "Cookie"
@@ -480,9 +480,9 @@ msgstr "圖片 CAPTCHA 驗證"
 msgid "A simple image CAPTCHA."
 msgstr "簡易圖片 CAPTCHA 驗證。"
 
-#: src/class-wpso-admin-settings.php:569 src/views/dashboard/rule_table.php:60
-#: src/views/security/xss_protection.php:99
-#: src/views/security/xss_protection.php:139
+#: src/class-wpso-admin-settings.php:569 src/views/dashboard/rule-table.php:60
+#: src/views/security/xss-protection.php:99
+#: src/views/security/xss-protection.php:139
 msgid "Type"
 msgstr "驗證類型"
 
@@ -548,256 +548,256 @@ msgstr "啟用這項設定後，<code>xmlrpc.php</code> 便會從 WP Shieldon �
 msgid "(default: on)"
 msgstr "(預設值: 啟用)"
 
-#: src/views/dashboard/dashboard_last_month.php:30
+#: src/views/dashboard/dashboard-last-month.php:30
 msgid "CAPTCHA statistic last month."
 msgstr "上個月的 CAPTCHA 統計資料"
 
-#: src/views/dashboard/dashboard_last_month.php:38
-#: src/views/dashboard/dashboard_last_month.php:70
-#: src/views/dashboard/dashboard_last_month.php:148
-#: src/views/dashboard/dashboard_past_seven_days.php:38
-#: src/views/dashboard/dashboard_past_seven_days.php:70
-#: src/views/dashboard/dashboard_past_seven_days.php:148
-#: src/views/dashboard/dashboard_this_month.php:38
-#: src/views/dashboard/dashboard_this_month.php:70
-#: src/views/dashboard/dashboard_this_month.php:148
-#: src/views/dashboard/dashboard_today.php:38
-#: src/views/dashboard/dashboard_today.php:70
-#: src/views/dashboard/dashboard_today.php:148
-#: src/views/dashboard/dashboard_yesterday.php:38
-#: src/views/dashboard/dashboard_yesterday.php:70
-#: src/views/dashboard/dashboard_yesterday.php:148
-#: src/views/dashboard/filter_log_table.php:69
+#: src/views/dashboard/dashboard-last-month.php:38
+#: src/views/dashboard/dashboard-last-month.php:70
+#: src/views/dashboard/dashboard-last-month.php:148
+#: src/views/dashboard/dashboard-past-seven-days.php:38
+#: src/views/dashboard/dashboard-past-seven-days.php:70
+#: src/views/dashboard/dashboard-past-seven-days.php:148
+#: src/views/dashboard/dashboard-this-month.php:38
+#: src/views/dashboard/dashboard-this-month.php:70
+#: src/views/dashboard/dashboard-this-month.php:148
+#: src/views/dashboard/dashboard-today.php:38
+#: src/views/dashboard/dashboard-today.php:70
+#: src/views/dashboard/dashboard-today.php:148
+#: src/views/dashboard/dashboard-yesterday.php:38
+#: src/views/dashboard/dashboard-yesterday.php:70
+#: src/views/dashboard/dashboard-yesterday.php:148
+#: src/views/dashboard/filter-log-table.php:69
 msgid "Pageviews"
 msgstr "瀏覽量"
 
-#: src/views/dashboard/dashboard_last_month.php:40
+#: src/views/dashboard/dashboard-last-month.php:40
 msgid "Total pageviews last month."
 msgstr "上個月的總瀏覽量"
 
-#: src/views/dashboard/dashboard_last_month.php:49
-#: src/views/dashboard/dashboard_past_seven_days.php:49
-#: src/views/dashboard/dashboard_this_month.php:49
-#: src/views/dashboard/dashboard_today.php:49
-#: src/views/dashboard/dashboard_yesterday.php:49
+#: src/views/dashboard/dashboard-last-month.php:49
+#: src/views/dashboard/dashboard-past-seven-days.php:49
+#: src/views/dashboard/dashboard-this-month.php:49
+#: src/views/dashboard/dashboard-today.php:49
+#: src/views/dashboard/dashboard-yesterday.php:49
 msgid "Today"
 msgstr "今天"
 
-#: src/views/dashboard/dashboard_last_month.php:50
-#: src/views/dashboard/dashboard_past_seven_days.php:50
-#: src/views/dashboard/dashboard_this_month.php:50
-#: src/views/dashboard/dashboard_today.php:50
-#: src/views/dashboard/dashboard_yesterday.php:50
+#: src/views/dashboard/dashboard-last-month.php:50
+#: src/views/dashboard/dashboard-past-seven-days.php:50
+#: src/views/dashboard/dashboard-this-month.php:50
+#: src/views/dashboard/dashboard-today.php:50
+#: src/views/dashboard/dashboard-yesterday.php:50
 msgid "Yesterday"
 msgstr "昨天"
 
-#: src/views/dashboard/dashboard_last_month.php:51
-#: src/views/dashboard/dashboard_past_seven_days.php:51
-#: src/views/dashboard/dashboard_this_month.php:51
-#: src/views/dashboard/dashboard_today.php:51
-#: src/views/dashboard/dashboard_yesterday.php:51
+#: src/views/dashboard/dashboard-last-month.php:51
+#: src/views/dashboard/dashboard-past-seven-days.php:51
+#: src/views/dashboard/dashboard-this-month.php:51
+#: src/views/dashboard/dashboard-today.php:51
+#: src/views/dashboard/dashboard-yesterday.php:51
 msgid "Last 7 days"
 msgstr "最近 7 天"
 
-#: src/views/dashboard/dashboard_last_month.php:52
-#: src/views/dashboard/dashboard_past_seven_days.php:52
-#: src/views/dashboard/dashboard_this_month.php:52
-#: src/views/dashboard/dashboard_today.php:52
-#: src/views/dashboard/dashboard_yesterday.php:52
+#: src/views/dashboard/dashboard-last-month.php:52
+#: src/views/dashboard/dashboard-past-seven-days.php:52
+#: src/views/dashboard/dashboard-this-month.php:52
+#: src/views/dashboard/dashboard-today.php:52
+#: src/views/dashboard/dashboard-yesterday.php:52
 msgid "This month"
 msgstr "這個月"
 
-#: src/views/dashboard/dashboard_last_month.php:53
-#: src/views/dashboard/dashboard_past_seven_days.php:53
-#: src/views/dashboard/dashboard_this_month.php:53
-#: src/views/dashboard/dashboard_today.php:53
-#: src/views/dashboard/dashboard_yesterday.php:53
+#: src/views/dashboard/dashboard-last-month.php:53
+#: src/views/dashboard/dashboard-past-seven-days.php:53
+#: src/views/dashboard/dashboard-this-month.php:53
+#: src/views/dashboard/dashboard-today.php:53
+#: src/views/dashboard/dashboard-yesterday.php:53
 msgid "Last month"
 msgstr "上個月"
 
-#: src/views/dashboard/dashboard_last_month.php:68
-#: src/views/dashboard/dashboard_past_seven_days.php:68
-#: src/views/dashboard/dashboard_this_month.php:68
-#: src/views/dashboard/dashboard_today.php:68
-#: src/views/dashboard/dashboard_yesterday.php:68
-#: src/views/dashboard/filter_log_table.php:67
-#: src/views/dashboard/overview.php:144 src/views/dashboard/rule_table.php:58
-#: src/views/dashboard/session_table.php:76
+#: src/views/dashboard/dashboard-last-month.php:68
+#: src/views/dashboard/dashboard-past-seven-days.php:68
+#: src/views/dashboard/dashboard-this-month.php:68
+#: src/views/dashboard/dashboard-today.php:68
+#: src/views/dashboard/dashboard-yesterday.php:68
+#: src/views/dashboard/filter-log-table.php:67
+#: src/views/dashboard/overview.php:144 src/views/dashboard/rule-table.php:58
+#: src/views/dashboard/session-table.php:76
 msgid "IP"
 msgstr "IP 位址"
 
-#: src/views/dashboard/dashboard_last_month.php:69
-#: src/views/dashboard/dashboard_past_seven_days.php:69
-#: src/views/dashboard/dashboard_this_month.php:69
-#: src/views/dashboard/dashboard_today.php:69
-#: src/views/dashboard/dashboard_yesterday.php:69
+#: src/views/dashboard/dashboard-last-month.php:69
+#: src/views/dashboard/dashboard-past-seven-days.php:69
+#: src/views/dashboard/dashboard-this-month.php:69
+#: src/views/dashboard/dashboard-today.php:69
+#: src/views/dashboard/dashboard-yesterday.php:69
 msgid "Sessions"
 msgstr "工作階段"
 
-#: src/views/dashboard/dashboard_last_month.php:72
-#: src/views/dashboard/dashboard_past_seven_days.php:72
-#: src/views/dashboard/dashboard_this_month.php:72
-#: src/views/dashboard/dashboard_today.php:72
-#: src/views/dashboard/dashboard_yesterday.php:72
+#: src/views/dashboard/dashboard-last-month.php:72
+#: src/views/dashboard/dashboard-past-seven-days.php:72
+#: src/views/dashboard/dashboard-this-month.php:72
+#: src/views/dashboard/dashboard-today.php:72
+#: src/views/dashboard/dashboard-yesterday.php:72
 msgid "In blacklist"
 msgstr "在封鎖清單中"
 
-#: src/views/dashboard/dashboard_last_month.php:73
-#: src/views/dashboard/dashboard_past_seven_days.php:73
-#: src/views/dashboard/dashboard_this_month.php:73
-#: src/views/dashboard/dashboard_today.php:73
-#: src/views/dashboard/dashboard_yesterday.php:73
+#: src/views/dashboard/dashboard-last-month.php:73
+#: src/views/dashboard/dashboard-past-seven-days.php:73
+#: src/views/dashboard/dashboard-this-month.php:73
+#: src/views/dashboard/dashboard-today.php:73
+#: src/views/dashboard/dashboard-yesterday.php:73
 msgid "In queue"
 msgstr "在佇列中"
 
-#: src/views/dashboard/dashboard_last_month.php:76
-#: src/views/dashboard/dashboard_past_seven_days.php:76
-#: src/views/dashboard/dashboard_this_month.php:76
-#: src/views/dashboard/dashboard_today.php:76
-#: src/views/dashboard/dashboard_yesterday.php:76
+#: src/views/dashboard/dashboard-last-month.php:76
+#: src/views/dashboard/dashboard-past-seven-days.php:76
+#: src/views/dashboard/dashboard-this-month.php:76
+#: src/views/dashboard/dashboard-today.php:76
+#: src/views/dashboard/dashboard-yesterday.php:76
 msgid "solved"
 msgstr "已解決"
 
-#: src/views/dashboard/dashboard_last_month.php:77
-#: src/views/dashboard/dashboard_past_seven_days.php:77
-#: src/views/dashboard/dashboard_this_month.php:77
-#: src/views/dashboard/dashboard_today.php:77
-#: src/views/dashboard/dashboard_yesterday.php:77
+#: src/views/dashboard/dashboard-last-month.php:77
+#: src/views/dashboard/dashboard-past-seven-days.php:77
+#: src/views/dashboard/dashboard-this-month.php:77
+#: src/views/dashboard/dashboard-today.php:77
+#: src/views/dashboard/dashboard-yesterday.php:77
 msgid "failed"
 msgstr "已失敗"
 
-#: src/views/dashboard/dashboard_last_month.php:78
-#: src/views/dashboard/dashboard_past_seven_days.php:78
-#: src/views/dashboard/dashboard_this_month.php:78
-#: src/views/dashboard/dashboard_today.php:78
-#: src/views/dashboard/dashboard_yesterday.php:78
+#: src/views/dashboard/dashboard-last-month.php:78
+#: src/views/dashboard/dashboard-past-seven-days.php:78
+#: src/views/dashboard/dashboard-this-month.php:78
+#: src/views/dashboard/dashboard-today.php:78
+#: src/views/dashboard/dashboard-yesterday.php:78
 msgid "displays"
 msgstr "顯示次數"
 
-#: src/views/dashboard/dashboard_last_month.php:99
-#: src/views/dashboard/dashboard_past_seven_days.php:99
-#: src/views/dashboard/dashboard_this_month.php:99
-#: src/views/dashboard/dashboard_today.php:99
-#: src/views/dashboard/dashboard_yesterday.php:99
+#: src/views/dashboard/dashboard-last-month.php:99
+#: src/views/dashboard/dashboard-past-seven-days.php:99
+#: src/views/dashboard/dashboard-this-month.php:99
+#: src/views/dashboard/dashboard-today.php:99
+#: src/views/dashboard/dashboard-yesterday.php:99
 msgid "Report generation time"
 msgstr "報告產生時間"
 
-#: src/views/dashboard/dashboard_last_month.php:102
-#: src/views/dashboard/dashboard_past_seven_days.php:102
-#: src/views/dashboard/dashboard_this_month.php:102
-#: src/views/dashboard/dashboard_today.php:102
-#: src/views/dashboard/dashboard_yesterday.php:102
-#: src/views/dashboard/filter_log_table.php:120
-#: src/views/dashboard/rule_table.php:94
-#: src/views/dashboard/session_table.php:119
+#: src/views/dashboard/dashboard-last-month.php:102
+#: src/views/dashboard/dashboard-past-seven-days.php:102
+#: src/views/dashboard/dashboard-this-month.php:102
+#: src/views/dashboard/dashboard-today.php:102
+#: src/views/dashboard/dashboard-yesterday.php:102
+#: src/views/dashboard/filter-log-table.php:120
+#: src/views/dashboard/rule-table.php:94
+#: src/views/dashboard/session-table.php:119
 #: src/views/security/authentication.php:95
-#: src/views/security/xss_protection.php:158
+#: src/views/security/xss-protection.php:158
 msgid "Timezone"
 msgstr "時區"
 
-#: src/views/dashboard/dashboard_last_month.php:117
-#: src/views/dashboard/dashboard_past_seven_days.php:117
-#: src/views/dashboard/dashboard_this_month.php:117
-#: src/views/dashboard/dashboard_today.php:117
-#: src/views/dashboard/dashboard_yesterday.php:117
+#: src/views/dashboard/dashboard-last-month.php:117
+#: src/views/dashboard/dashboard-past-seven-days.php:117
+#: src/views/dashboard/dashboard-this-month.php:117
+#: src/views/dashboard/dashboard-today.php:117
+#: src/views/dashboard/dashboard-yesterday.php:117
 msgid "success"
 msgstr "成功"
 
-#: src/views/dashboard/dashboard_last_month.php:117
-#: src/views/dashboard/dashboard_past_seven_days.php:117
-#: src/views/dashboard/dashboard_this_month.php:117
-#: src/views/dashboard/dashboard_today.php:117
-#: src/views/dashboard/dashboard_yesterday.php:117
+#: src/views/dashboard/dashboard-last-month.php:117
+#: src/views/dashboard/dashboard-past-seven-days.php:117
+#: src/views/dashboard/dashboard-this-month.php:117
+#: src/views/dashboard/dashboard-today.php:117
+#: src/views/dashboard/dashboard-yesterday.php:117
 msgid "failure"
 msgstr "失敗"
 
-#: src/views/dashboard/dashboard_past_seven_days.php:30
+#: src/views/dashboard/dashboard-past-seven-days.php:30
 msgid "CAPTCHA statistic last 7 days."
 msgstr "最近 7 天的 CAPTCHA 統計資料"
 
-#: src/views/dashboard/dashboard_past_seven_days.php:40
+#: src/views/dashboard/dashboard-past-seven-days.php:40
 msgid "Total pageviews last 7 days."
 msgstr "最近 7 天的總瀏覽量"
 
-#: src/views/dashboard/dashboard_this_month.php:30
+#: src/views/dashboard/dashboard-this-month.php:30
 msgid "CAPTCHA statistic this month."
 msgstr "這個月的 CAPTCHA 統計資料"
 
-#: src/views/dashboard/dashboard_this_month.php:40
+#: src/views/dashboard/dashboard-this-month.php:40
 msgid "Total pageviews this month."
 msgstr "這個月的總瀏覽量"
 
-#: src/views/dashboard/dashboard_today.php:30
+#: src/views/dashboard/dashboard-today.php:30
 msgid "CAPTCHA statistic today."
 msgstr "今天的 CAPTCHA 統計資料"
 
-#: src/views/dashboard/dashboard_today.php:40
+#: src/views/dashboard/dashboard-today.php:40
 msgid "Total pageviews today."
 msgstr "今天的總瀏覽量"
 
-#: src/views/dashboard/dashboard_today.php:222
+#: src/views/dashboard/dashboard-today.php:222
 msgid "Past 7 hours"
 msgstr "過去 7 小時"
 
-#: src/views/dashboard/dashboard_yesterday.php:30
+#: src/views/dashboard/dashboard-yesterday.php:30
 msgid "CAPTCHA statistic yesterday."
 msgstr "昨天的 CAPTCHA 統計資料"
 
-#: src/views/dashboard/dashboard_yesterday.php:40
+#: src/views/dashboard/dashboard-yesterday.php:40
 msgid "Total pageviews yesterday."
 msgstr "昨天的總瀏覽量"
 
-#: src/views/dashboard/filter_log_table.php:60
+#: src/views/dashboard/filter-log-table.php:60
 msgid "This is where the Shieldon records the users' strange behavior."
 msgstr "這裡會顯示 Shielon 在目前週期中所記錄的使用者奇怪行為。"
 
-#: src/views/dashboard/filter_log_table.php:61
-#: src/views/dashboard/rule_table.php:27
-#: src/views/dashboard/session_table.php:67
+#: src/views/dashboard/filter-log-table.php:61
+#: src/views/dashboard/rule-table.php:27
+#: src/views/dashboard/session-table.php:67
 msgid "All processes are automatic and instant, you can ignore that."
 msgstr "全部程序均會自動並即時處理，網站管理員可以予以忽略。"
 
-#: src/views/dashboard/filter_log_table.php:62
+#: src/views/dashboard/filter-log-table.php:62
 msgid "IP log table will be all cleared after new cycle begins."
 msgstr "IP 位址記錄表會在新的週期開始後清空。"
 
-#: src/views/dashboard/filter_log_table.php:68
-#: src/views/dashboard/rule_table.php:59
+#: src/views/dashboard/filter-log-table.php:68
+#: src/views/dashboard/rule-table.php:59
 msgid "Resolved hostname"
 msgstr "已解析的主機名稱"
 
-#: src/views/dashboard/filter_log_table.php:70
+#: src/views/dashboard/filter-log-table.php:70
 msgid "Flags"
 msgstr "旗標"
 
-#: src/views/dashboard/filter_log_table.php:71
+#: src/views/dashboard/filter-log-table.php:71
 msgid "Last visit"
 msgstr "最後存取時間"
 
-#: src/views/dashboard/filter_log_table.php:74
+#: src/views/dashboard/filter-log-table.php:74
 msgid "S"
 msgstr "秒"
 
-#: src/views/dashboard/filter_log_table.php:75
+#: src/views/dashboard/filter-log-table.php:75
 msgid "M"
 msgstr "分"
 
-#: src/views/dashboard/filter_log_table.php:76
+#: src/views/dashboard/filter-log-table.php:76
 msgid "H"
 msgstr "時"
 
-#: src/views/dashboard/filter_log_table.php:77
+#: src/views/dashboard/filter-log-table.php:77
 msgid "D"
 msgstr "日"
 
-#: src/views/dashboard/filter_log_table.php:80
+#: src/views/dashboard/filter-log-table.php:80
 #: src/views/dashboard/overview.php:125
 msgid "Referrer"
 msgstr "來源參照"
 
-#: src/views/dashboard/filter_log_table.php:119
-#: src/views/dashboard/rule_table.php:93
-#: src/views/dashboard/session_table.php:118
+#: src/views/dashboard/filter-log-table.php:119
+#: src/views/dashboard/rule-table.php:93
+#: src/views/dashboard/session-table.php:118
 #, php-format
 msgid "Current data circle started from %s."
 msgstr "目前的資料週期始於 %s。"
@@ -973,103 +973,103 @@ msgstr "重設動作記錄器"
 msgid "Would you like to remove all action logs?"
 msgstr "您要移除所有動作記錄嗎？"
 
-#: src/views/dashboard/rule_table.php:26
+#: src/views/dashboard/rule-table.php:26
 msgid ""
 "This is where the Shieldon temporarily allows or denys users in current "
 "cycle."
 msgstr "這裡會顯示 Shielon 在目前週期中暫時允許或拒絕的使用者。"
 
-#: src/views/dashboard/rule_table.php:28
+#: src/views/dashboard/rule-table.php:28
 msgid "Rule table will be reset after new cycle begins."
 msgstr "規則表會在新的週期開始後重設。"
 
-#: src/views/dashboard/rule_table.php:35
+#: src/views/dashboard/rule-table.php:35
 msgid "--- please select ---"
 msgstr "--- 選取 ---"
 
-#: src/views/dashboard/rule_table.php:36
+#: src/views/dashboard/rule-table.php:36
 msgid "Deny this IP temporarily"
 msgstr "暫時拒絕這個 IP 位址"
 
-#: src/views/dashboard/rule_table.php:37
+#: src/views/dashboard/rule-table.php:37
 msgid "Deny this IP permanently"
 msgstr "永久拒絕這個 IP 位址"
 
-#: src/views/dashboard/rule_table.php:38
+#: src/views/dashboard/rule-table.php:38
 msgid "Allow this IP"
 msgstr "允許這個 IP 位址"
 
-#: src/views/dashboard/rule_table.php:39
+#: src/views/dashboard/rule-table.php:39
 msgid "Remove this IP"
 msgstr "移除這個 IP 位址"
 
-#: src/views/dashboard/rule_table.php:41
+#: src/views/dashboard/rule-table.php:41
 #: src/views/security/authentication.php:47
-#: src/views/security/xss_protection.php:77
-#: src/views/security/xss_protection.php:110
+#: src/views/security/xss-protection.php:77
+#: src/views/security/xss-protection.php:110
 msgid "Submit"
 msgstr "儲存"
 
-#: src/views/dashboard/rule_table.php:61
+#: src/views/dashboard/rule-table.php:61
 msgid "Reason"
 msgstr "記錄原因"
 
-#: src/views/dashboard/rule_table.php:62
-#: src/views/dashboard/session_table.php:77
+#: src/views/dashboard/rule-table.php:62
+#: src/views/dashboard/session-table.php:77
 msgid "Time"
 msgstr "記錄時間"
 
-#: src/views/dashboard/rule_table.php:63
+#: src/views/dashboard/rule-table.php:63
 #: src/views/security/authentication.php:77
-#: src/views/security/xss_protection.php:141
+#: src/views/security/xss-protection.php:141
 msgid "Remove"
 msgstr "移除"
 
-#: src/views/dashboard/session_table.php:27
+#: src/views/dashboard/session-table.php:27
 msgid "Limit"
 msgstr "限制"
 
-#: src/views/dashboard/session_table.php:29
+#: src/views/dashboard/session-table.php:29
 msgid "Online session limit."
 msgstr "線上工作階段限制"
 
-#: src/views/dashboard/session_table.php:38
+#: src/views/dashboard/session-table.php:38
 msgid "Period"
 msgstr "期間"
 
-#: src/views/dashboard/session_table.php:40
+#: src/views/dashboard/session-table.php:40
 msgid "Keep-alive period. (minutes)"
 msgstr "存續期間 (分鐘)"
 
-#: src/views/dashboard/session_table.php:48
+#: src/views/dashboard/session-table.php:48
 msgid "Online"
 msgstr "線上人數"
 
-#: src/views/dashboard/session_table.php:50
+#: src/views/dashboard/session-table.php:50
 msgid "Online session amount."
 msgstr "線上工作階段總數"
 
-#: src/views/dashboard/session_table.php:67
+#: src/views/dashboard/session-table.php:67
 msgid "Read-time logs for <strong>Online Session Controll</strong>."
 msgstr "<strong>線上工作階段控制</strong>的即時記錄。"
 
-#: src/views/dashboard/session_table.php:68
+#: src/views/dashboard/session-table.php:68
 msgid "Notice this is only working when you have enabled that function."
 msgstr "請注意，只有網站管理員啟用相關功能時才會正確運作。"
 
-#: src/views/dashboard/session_table.php:73
+#: src/views/dashboard/session-table.php:73
 msgid "Priority"
 msgstr "優先順序"
 
-#: src/views/dashboard/session_table.php:74
+#: src/views/dashboard/session-table.php:74
 msgid "Status"
 msgstr "狀態"
 
-#: src/views/dashboard/session_table.php:75
+#: src/views/dashboard/session-table.php:75
 msgid "Session ID"
 msgstr "工作階段 ID"
 
-#: src/views/dashboard/session_table.php:78
+#: src/views/dashboard/session-table.php:78
 msgid "Remain seconds"
 msgstr "停留秒數"
 
@@ -1086,7 +1086,7 @@ msgstr ""
 msgid "Please remove WP Shieldon or upgrade your PHP version."
 msgstr "請移除 WP Shieldon 或升級這個網站的 PHP 版本。"
 
-#: src/views/message/update_notice.php:18
+#: src/views/message/update-notice.php:18
 msgid ""
 "WP Shieldon has updated successfully. Please reset data circle, then turn on "
 "daemon."
@@ -1135,35 +1135,35 @@ msgstr "密碼"
 msgid "encrypted"
 msgstr "已加密"
 
-#: src/views/security/xss_protection.php:26
+#: src/views/security/xss-protection.php:26
 msgid "Prevent Cross site scripting (XSS) attacks."
 msgstr "預防跨站腳本 (XSS) 攻擊。"
 
-#: src/views/security/xss_protection.php:42
+#: src/views/security/xss-protection.php:42
 msgid "Filter all POST method variables."
 msgstr "過濾全部的 POST 類型的變數。"
 
-#: src/views/security/xss_protection.php:56
+#: src/views/security/xss-protection.php:56
 msgid "Filter all GET method variables."
 msgstr "過濾全部的 GET 類型的變數。"
 
-#: src/views/security/xss_protection.php:70
+#: src/views/security/xss-protection.php:70
 msgid "Filter all COOKIE method variables."
 msgstr "過濾全部的 COOKIE 類型的變數。"
 
-#: src/views/security/xss_protection.php:88
+#: src/views/security/xss-protection.php:88
 msgid "Single variable"
 msgstr "單一變數"
 
-#: src/views/security/xss_protection.php:95
+#: src/views/security/xss-protection.php:95
 msgid "Variable Name"
 msgstr "變數名稱"
 
-#: src/views/security/xss_protection.php:115
+#: src/views/security/xss-protection.php:115
 msgid "Eradicate potential injection string for single variable."
 msgstr "針對單一變數清除潛在的注入字串。"
 
-#: src/views/security/xss_protection.php:140
+#: src/views/security/xss-protection.php:140
 msgid "Variable"
 msgstr "變數"
 
