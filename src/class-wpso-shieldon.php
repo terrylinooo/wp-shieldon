@@ -142,11 +142,10 @@ class WPSO_Shieldon_Guardian {
 			'session'   => ( 'yes' === wpso_get_option( 'enable_filter_session',   'shieldon_filter' ) ) ? true : false,
 			'cookie'    => ( 'yes' === wpso_get_option( 'enable_filter_cookie',    'shieldon_filter' ) ) ? true : false,
 			'referer'   => ( 'yes' === wpso_get_option( 'enable_filter_referer',   'shieldon_filter' ) ) ? true : false,
-			'frequency' => ( 'yes' === wpso_get_option( 'enable_filter_frequency', 'shieldon_daemon' ) ) ? true : false,
+			'frequency' => ( 'yes' === wpso_get_option( 'enable_filter_frequency', 'shieldon_filter' ) ) ? true : false,
 		);
 
 		$this->shieldon->setFilters( $filter_config );
-
 
 		if ( $filter_config['frequency'] ) {
 

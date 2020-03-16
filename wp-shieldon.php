@@ -64,8 +64,8 @@ define( 'SHIELDON_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'SHIELDON_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'SHIELDON_PLUGIN_PATH', __FILE__ );
 define( 'SHIELDON_PLUGIN_LANGUAGE_PACK', dirname( plugin_basename( __FILE__ ) ) . '/languages' );
-define( 'SHIELDON_PLUGIN_VERSION', '1.5.0' );
-define( 'SHIELDON_CORE_VERSION', '0.1.7' );
+define( 'SHIELDON_PLUGIN_VERSION', '1.6.0' );
+define( 'SHIELDON_CORE_VERSION', '1.0.0' );
 define( 'SHIELDON_PLUGIN_TEXT_DOMAIN', 'wp-shieldon' );
 
 // Load helper functions
@@ -173,17 +173,33 @@ if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 	 */
 	if ( is_admin() ) {
 
-		// Check version.
+		/* BEGIN - Check version after updating plugin. */
 
-		/*
 		$wpso_version = get_option( 'wpso_version' );
 
-		if ( $wpso_version < SHIELDON_PLUGIN_VERSION ) {
-			wpso_set_option( 'enable_daemon', 'shieldon_daemon', 'no' );
-			update_option( 'wpso_version', SHIELDON_PLUGIN_VERSION );
+		if ( $wpso_version !== SHIELDON_PLUGIN_VERSION ) {
+		 	wpso_set_option( 'enable_daemon', 'shieldon_daemon', 'no' );
+		 	update_option( 'wpso_version', SHIELDON_PLUGIN_VERSION );
 			add_action( 'admin_notices', 'wpso_update_notice' );
+
+			// Turn off strict mode in components, make sure user will review the settings again.
+			$component_settings = get_option( 'shieldon_component' );
+
+			if ( ! empty( $component_settings ) && is_array( $component_settings ) ) {
+				$remove_strict_settings = array();
+
+				foreach ( $component_settings as $k => $v ) {
+					$remove_strict_settings[ $k ] = $v;
+					if ( strpos( $k, 'strict_mode' ) !== false ) {
+						$remove_strict_settings[ $k ] = 'no';
+					}
+				}
+
+				update_option( 'shieldon_component', $remove_strict_settings );
+			}
 		}
-		*/
+
+		/* END - Check version after updating plugin. */
 
 		$admin_menu       = new WPSO_Admin_Menu();
 		$admin_settings   = new WPSO_Admin_Settings();
