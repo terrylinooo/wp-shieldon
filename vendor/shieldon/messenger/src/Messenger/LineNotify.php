@@ -10,11 +10,10 @@
 
 namespace Messenger;
 
-use Messenger\MessengerInterface;
+use Messenger\Messenger\MessengerInterface;
+use Messenger\Messenger\MessengerTrait;
 use RuntimeException;
 
-use function curl_errno;
-use function curl_exec;
 use function curl_init;
 use function curl_setopt;
 use function json_decode;
@@ -27,6 +26,8 @@ use function json_decode;
  */
 class LineNotify implements MessengerInterface
 {
+    use MessengerTrait;
+
     /**
      * This access token is obtained by clicking `Generate token` button
      * at https://notify-bot.line.me/my/
@@ -36,14 +37,8 @@ class LineNotify implements MessengerInterface
     private $accessToken = '';
 
     /**
-     * The connection timeout when calling Telegram API.
-     *
-     * @var integer
-     */
-    private $timeout = 5;
-
-    /**
      * @param string $accessToken The developer access token.
+     * @param int    $timeout     After n seconds the connection will be stopped.
      */
     public function __construct(string $accessToken, int $timeout = 5)
     {
@@ -54,41 +49,43 @@ class LineNotify implements MessengerInterface
     /**
      * @inheritDoc
      */
-    public function send(string $message, array $logData = []): void
+    public function send(string $message): bool
     {
-        if (! empty($logData)) {
-            $message .= "\n";
-
-            foreach ($logData as $key => $value) {
-                $message .= $key . ': ' . $value . "\n";
-            }
-        }
-
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $this->provider());
         curl_setopt($ch, CURLOPT_TIMEOUT, $this->timeout);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-        curl_setopt($ch, CURLOPT_POST, 1 );
-
-        $headers = [
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, "message=$message");
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
             'Content-type: '  . 'application/x-www-form-urlencoded',
             'Authorization: ' . 'Bearer ' . $this->accessToken,
-        ];
-    
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, "message=$message");
+        ]);
 
-        $result = curl_exec($ch);
+        $ret = $this->executeCurl($ch);
 
-        if (! curl_errno($ch)) {
-            $result = json_decode($result, true);
+        if ($ret['success']) {
+
+            $result = json_decode($ret['result'], true);
 
             if (200 !== $result['status']) {
-                throw new RuntimeException('An error occurred when accessing Line Notify API. (' . $result['message'] . ')');
+                $this->resultData['success'] = false;
+                $this->resultData['message'] = 'An error occurs when connecting Line Notify API. (' . $result['message'] . ')';
+                $this->resultData['result'] = $result;
+
+                if ($this->isDebug()) {
+                    throw new RuntimeException($this->resultData['message']);
+                }
+
+                return false;
             }
+
+            return true;
         }
+
+        return false;
     }
 
     /**

@@ -23,6 +23,8 @@ class Rdns extends ComponentProvider
 {
     use IpTrait;
 
+    const STATUS_CODE = 82;
+
     /**
      * Constructor.
      * 
@@ -56,6 +58,16 @@ class Rdns extends ComponentProvider
                 return true;
             }
 
+            // If the RDNS is an IP adress, not a FQDN.
+            if ($this->ip === $this->ipResolvedHostname) {
+                return true;
+            }
+
+            // Not a valid domain name.
+            if (! filter_var($this->ipResolvedHostname, FILTER_VALIDATE_DOMAIN, FILTER_FLAG_HOSTNAME)) {
+                return true;
+            }
+
             // confirm hostname's IP again
             $ip = gethostbyname($this->ipResolvedHostname);
 
@@ -66,5 +78,15 @@ class Rdns extends ComponentProvider
         }
 
         return false;
+    }
+
+    /**
+     * Unique deny status code.
+     *
+     * @return int
+     */
+    public function getDenyStatusCode(): int
+    {
+        return self::STATUS_CODE;
     }
 }

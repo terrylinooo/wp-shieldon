@@ -6,6 +6,7 @@ Shieldon is a Web Application Firewall (WAF) for PHP. Taking less than 10 minute
 
 - Website: [https://shieldon.io](https://shieldon.io/)
 - GitHub Repository:  [https://github.com/terrylinooo/shieldon](https://github.com/terrylinooo/shieldon)
+- [Changelog](https://github.com/terrylinooo/shieldon/wiki/Changelog)
 
 ## Concepts
 
@@ -36,9 +37,13 @@ This is basic concepts about how Shieldon works.
 - Send notifications when specific events occurred. Supported modules:
     - Telegram
     - Line Notify
+    - Rocket Chat
+    - Slack
     - SendGrid
+    - Mailgun
+    - Mail (Using Native PHP mail function.)
+    - SMTP
 - Web UI for System firewall - iptables and ip6tables.
-- More features will come...
 
 ## Installation
 
@@ -79,6 +84,8 @@ Click [here](https://shieldon.io/demo/) to view demo.
 - user: `demo`
 - password: `demo`
 
+---
+
 ## Screenshots
 
 Only a few screenshots are listed below.
@@ -101,13 +108,11 @@ You can temporarily ban a user here.
 
 ![Firewall Panel - Rule Table](https://i.imgur.com/5Vg2brX.png)
 
-
 #### Responsive
 
 Shieldon's Firewall Panel is fully responsive, and you can manage it when you are not in front of your computer, using your mobile phone at any time.
 
 ![Responsive Firewall Panel](https://i.imgur.com/fUz9lZD.png)
-
 
 ### Dialog
 
@@ -123,10 +128,77 @@ When a user has been permanently banned.
 
 ![Firewall Dialog 2](https://i.imgur.com/Qy1sADw.png)
 
+#### Online Session Control
+
+![Firewall Dialog 3](https://i.imgur.com/cAOKIY8.png)
+
+When a user has reached the online session limit.
+
+### Notification
+
+Provided by [Messenger](https://github.com/terrylinooo/messenger) library.
+
+![Telegram](https://i.imgur.com/3lqamO7.png)
+
+Send notification via Telegram API.
+
+---
+
+## Contributing
+
+### Core Function
+
+Welcome to contribute your idea to this project. Before sending your pull request, please make sure everything is tested well without errors.
+
+#### Requirements
+
+- MySQL or MariaDB installed.
+- Redis installed. (Also require PHP extension `php_redis`)
+
+#### Steps
+
+1. Run `composer update` to install required libraries.
+    ```bash
+    composer update
+    ```
+
+2. Create a writable folder `tmp`. (same level with `src` folder.) for temporary testing files.
+    ```bash
+    mkdir tmp
+    chmod 777 tmp
+    ```
+3. Create a MySQL database `shieldon_unittest`
+    ```bash
+    mysql -u root -e 'CREATE DATABASE shieldon_unittest;'
+    ```
+4. Create a user `shieldon'@'localhost` with password `taiwan`.
+    ```bash
+    mysql -u root -e "CREATE USER 'shieldon'@'localhost' IDENTIFIED BY 'taiwan';"
+    ```
+5. Grant database permissions on `shieldon_unittest` to `shieldon'@'localhost`.
+    ```bash
+    mysql -u root -e "GRANT ALL ON shieldon_unittest.* TO 'shieldon'@'localhost';"
+    ```
+
+#### Run test
+```bash
+composer test
+```
+
+### Help with Transation
+
+Thank you very much for considering contributing to Shieldon Firewall, yet we need your help to translate our webiste, documentation and i18n files in Shieldon library. Here are the links:
+
+- [Website](https://github.com/shieldon-io/website-translations)
+- [Documentation](https://github.com/shieldon-io/document-translations)
+- [i18n files in Shieldon library](https://github.com/shieldon-io/library-translations)
+
+---
+
 ## Author
 
 Shieldon library is brought to you by [Terry L.](https://terryl.in) from Taiwan.
 
 ## License
 
-MIT
+Shieldon Firewall is an open-sourced software licensed under the **MIT** license.

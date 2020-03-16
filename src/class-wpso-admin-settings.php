@@ -193,69 +193,6 @@ class WPSO_Admin_Settings {
 					'sanitize_callback' => 'sanitize_text_field',
 					'parent'            => 'enable_online_session_limit',
 				),
-
-
-				// Frequency check
-
-				array(
-					'section_title' => true,
-					'label'         => __( 'Frequency Check', 'wp-shieldon' ),
-					'location_id'   => 'shieldon_frequency_check',
-					'desc'          => '<i class="fas fa-eye"></i>',
-				),
-
-				array(
-					'name'        => 'enable_filter_frequency',
-					'desc'        => __( "Don't worry about the human visitors, if they reach the limit and get banned, they can easily continue surfing your website by solving CAPTCHA.", 'wp-shieldon' ),
-					'type'        => 'toggle',
-					'has_child'   => true,
-					'location_id' => 'shieldon_frequency_check',
-					'default'     => 'no',
-				),
-
-				array(
-					'name'              => 'time_unit_quota_s',
-					'label'             => __( 'Secondly Limit', 'wp-shieldon' ),
-					'desc'              => __( 'Page views per vistor per second.', 'wp-shieldon' ),
-					'placeholder'       => '',
-					'type'              => 'text',
-					'default'           => '2',
-					'sanitize_callback' => 'sanitize_text_field',
-					'parent'            => 'enable_filter_frequency',
-				),
-
-				array(
-					'name'              => 'time_unit_quota_m',
-					'label'             => __( 'Minutely Limit', 'wp-shieldon' ),
-					'desc'              => __( 'Page views per vistor per minute.', 'wp-shieldon' ),
-					'placeholder'       => '',
-					'type'              => 'text',
-					'default'           => '10',
-					'sanitize_callback' => 'sanitize_text_field',
-					'parent'            => 'enable_filter_frequency',
-				),
-
-				array(
-					'name'              => 'time_unit_quota_h',
-					'label'             => __( 'Hourly Limit', 'wp-shieldon' ),
-					'desc'              => __( 'Page views per vistor per hour.', 'wp-shieldon' ),
-					'placeholder'       => '',
-					'type'              => 'text',
-					'default'           => '30',
-					'sanitize_callback' => 'sanitize_text_field',
-					'parent'            => 'enable_filter_frequency',
-				),
-
-				array(
-					'name'              => 'time_unit_quota_d',
-					'label'             => __( 'Daily Limit', 'wp-shieldon' ),
-					'desc'              => __( 'Page views per vistor per day.', 'wp-shieldon' ),
-					'placeholder'       => '',
-					'type'              => 'text',
-					'default'           => '60',
-					'sanitize_callback' => 'sanitize_text_field',
-					'parent'            => 'enable_filter_frequency',
-				),
 			),
 
 			'shieldon_component' => array(
@@ -370,6 +307,69 @@ class WPSO_Admin_Settings {
 			),
 
 			'shieldon_filter' => array(
+
+
+				// Frequency check
+
+				array(
+					'section_title' => true,
+					'label'         => __( 'Frequency Check', 'wp-shieldon' ),
+					'location_id'   => 'shieldon_filter_frequency',
+					'desc'          => '<i class="fas fa-eye"></i>',
+				),
+
+				array(
+					'name'        => 'enable_filter_frequency',
+					'desc'        => __( "Don't worry about the human visitors, if they reach the limit and get banned, they can easily continue surfing your website by solving CAPTCHA.", 'wp-shieldon' ),
+					'type'        => 'toggle',
+					'has_child'   => true,
+					'location_id' => 'shieldon_filter_frequency',
+					'default'     => 'no',
+				),
+
+				array(
+					'name'              => 'time_unit_quota_s',
+					'label'             => __( 'Secondly Limit', 'wp-shieldon' ),
+					'desc'              => __( 'Page views per vistor per second.', 'wp-shieldon' ),
+					'placeholder'       => '',
+					'type'              => 'text',
+					'default'           => '2',
+					'sanitize_callback' => 'sanitize_text_field',
+					'parent'            => 'enable_filter_frequency',
+				),
+
+				array(
+					'name'              => 'time_unit_quota_m',
+					'label'             => __( 'Minutely Limit', 'wp-shieldon' ),
+					'desc'              => __( 'Page views per vistor per minute.', 'wp-shieldon' ),
+					'placeholder'       => '',
+					'type'              => 'text',
+					'default'           => '10',
+					'sanitize_callback' => 'sanitize_text_field',
+					'parent'            => 'enable_filter_frequency',
+				),
+
+				array(
+					'name'              => 'time_unit_quota_h',
+					'label'             => __( 'Hourly Limit', 'wp-shieldon' ),
+					'desc'              => __( 'Page views per vistor per hour.', 'wp-shieldon' ),
+					'placeholder'       => '',
+					'type'              => 'text',
+					'default'           => '30',
+					'sanitize_callback' => 'sanitize_text_field',
+					'parent'            => 'enable_filter_frequency',
+				),
+
+				array(
+					'name'              => 'time_unit_quota_d',
+					'label'             => __( 'Daily Limit', 'wp-shieldon' ),
+					'desc'              => __( 'Page views per vistor per day.', 'wp-shieldon' ),
+					'placeholder'       => '',
+					'type'              => 'text',
+					'default'           => '60',
+					'sanitize_callback' => 'sanitize_text_field',
+					'parent'            => 'enable_filter_frequency',
+				),
 
 				// Session
 				array(

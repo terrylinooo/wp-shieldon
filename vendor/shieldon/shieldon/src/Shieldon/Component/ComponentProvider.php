@@ -24,8 +24,8 @@ abstract class ComponentProvider implements ComponentInterface
 
     /**
      * It is really strict.
-     * 
-     * @var boolean
+     *
+     * @var bool
      */
     protected $strictMode = false;
 
@@ -107,4 +107,11 @@ abstract class ComponentProvider implements ComponentInterface
      * @return bool
      */
     abstract function isDenied(): bool;
+
+    /**
+     * Unique deny status code.
+     *
+     * @return int
+     */
+    abstract function getDenyStatusCode(): int;
 }

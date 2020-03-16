@@ -23,7 +23,7 @@ use function Shieldon\Helper\mask_string;
             <div class="board-field right">
                 <div class="heading"><?php _e('panel', 'log_heading_captchas', 'CAPTCHAs'); ?></div>
                 <div class="nums"><?php echo number_format($period_data['captcha_count']); ?></div>
-                <div class="note"><?php _e('panel', 'log_note_captcha_yesterday', 'CAPTCHA statistic yesterday.'); ?></div>
+                <div class="note"><?php _e('panel', 'log_note_captcha_today', 'CAPTCHA statistic today.'); ?></div>
             </div>
         </div>
         <div class="so-board">
@@ -33,7 +33,7 @@ use function Shieldon\Helper\mask_string;
             <div class="board-field right">
                 <div class="heading"><?php _e('panel', 'log_heading_pageviews', 'Pageviews'); ?></div>
                 <div class="nums"><?php echo number_format($period_data['pageview_count']); ?></div>
-                <div class="note"><?php _e('panel', 'log_note_pageview_yesterday', 'Total pageviews yesterday.'); ?></div>
+                <div class="note"><?php _e('panel', 'log_note_pageview_today', 'Total pageviews today.'); ?></div>
             </div>
         </div>
         <div class="so-board area-chart-container">
@@ -43,8 +43,8 @@ use function Shieldon\Helper\mask_string;
     <?php endif; ?>
     <div class="so-tabs">
         <ul>
-            <li><a href="<?php echo $page_url; ?>&tab=today"><?php _e('panel', 'log_label_today', 'Today'); ?></a></li>
-            <li class="is-active"><a href="<?php echo $page_url; ?>&tab=yesterday"><?php _e('panel', 'log_label_yesterday', 'Yesterday'); ?></a></li>
+            <li class="is-active"><a href="<?php echo $page_url; ?>&tab=today"><?php _e('panel', 'log_label_today', 'Today'); ?></a></li>
+            <li><a href="<?php echo $page_url; ?>&tab=yesterday"><?php _e('panel', 'log_label_yesterday', 'Yesterday'); ?></a></li>
             <li><a href="<?php echo $page_url; ?>&tab=past_seven_days"><?php _e('panel', 'log_label_last_7_days', 'Last 7 days'); ?></a></li>
             <li><a href="<?php echo $page_url; ?>&tab=this_month"><?php _e('panel', 'log_label_this_month', 'This month'); ?></a></li>
             <li><a href="<?php echo $page_url; ?>&tab=last_month"><?php _e('panel', 'log_label_last_month', 'Last month'); ?></a></li>
@@ -63,7 +63,6 @@ use function Shieldon\Helper\mask_string;
     <?php else : ?>
         <div class="alert alert-danger">
             <?php _e('panel', 'log_msg_no_logger', 'Sorry, you have to implement ActionLogger to use this function.'); ?>
-            
         </div>
     <?php endif; ?>
 
@@ -109,7 +108,7 @@ use function Shieldon\Helper\mask_string;
     </div>
     <div class="so-timezone">
         <?php if (! empty($last_cached_time)) : ?>
-            <?php _e('panel', 'log_label_cache_time', 'Report generation time'); ?>: <strong class="text-info"><?php echo $last_cached_time; ?></strong>
+            <?php _e('panel', 'log_label_cache_time', 'Report generated time'); ?>: <strong class="text-info"><?php echo $last_cached_time; ?></strong>
             &nbsp;&nbsp;&nbsp;&nbsp; 
         <?php endif; ?>
         <?php _e('panel', 'log_label_timezone', 'Timezone'); ?>: <?php echo date_default_timezone_get(); ?>
@@ -120,6 +119,7 @@ use function Shieldon\Helper\mask_string;
 
     if (! empty($period_data)) {
         $data['period_data'] = $period_data;
+        $data['past_seven_hours'] = $past_seven_hours;
         $this->_include('panel/js/chart', $data);
     }
 ?>

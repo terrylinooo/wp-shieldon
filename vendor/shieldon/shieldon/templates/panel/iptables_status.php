@@ -31,7 +31,7 @@ use function Shieldon\Helper\_e;
     <br />
     <div class="so-datatables">
         <?php if (! empty($last_cached_time)) : ?>
-            <?php _e('panel', 'log_label_cache_time', 'Report generation time'); ?>: <strong class="text-info"><?php echo $last_cached_time; ?></strong>
+            <?php _e('panel', 'log_label_cache_time', 'Report generated time'); ?>: <strong class="text-info"><?php echo $last_cached_time; ?></strong>
             &nbsp;&nbsp;&nbsp;&nbsp; 
         <?php endif; ?>
         <?php if (! empty($ipStatus)) : ?>

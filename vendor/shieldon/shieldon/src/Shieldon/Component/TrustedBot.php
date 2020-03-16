@@ -18,6 +18,7 @@ use function array_unique;
 use function gethostbyname;
 use function implode;
 use function preg_match;
+use function strstr;
 
 /**
  * TrustedBot
@@ -25,6 +26,8 @@ use function preg_match;
 class TrustedBot extends ComponentProvider
 {
     use IpTrait;
+
+    const STATUS_CODE = 85;
 
     /**
      * Robot's user-agent text.
@@ -39,6 +42,20 @@ class TrustedBot extends ComponentProvider
      * @var array
      */
     private $trustedBotList = [];
+
+    /**
+     * For testing purpse. (Unit test)
+     *
+     * @var bool
+     */
+    private $checkFakeRdns = true;
+
+    /**
+     * Is the current access a fake robot?
+     *
+     * @var bool
+     */
+    private $isFake = false;
 
     /**
      * Constructor.
@@ -133,26 +150,64 @@ class TrustedBot extends ComponentProvider
             $userAgent = array_unique(array_column($this->trustedBotList, 'userAgent'));
 
             if (! preg_match('/(' . implode('|', $userAgent) . ')/i', $this->userAgentString)) {
-                
+                // Okay, current request's user-agent string doesn't contain our truested bots' infroamtion.
+                // Ignore it.
                 return false;
             }
 
             $rdns = array_unique(array_column($this->trustedBotList, 'rdns'));
 
+            $rdnsCheck = false;
+
             // We will check the RDNS record to see if it is in the whitelist.
             if (preg_match('/(' . implode('|', $rdns) . ')/i', $this->ipResolvedHostname)) {
 
-                $ip = gethostbyname($this->ipResolvedHostname);
+                if ($this->checkFakeRdns) {
 
-                // If the IP is different as hostname's resolved IP. It is maybe a fake bot.
-                if ($this->strictMode) {
-                    if ($ip !== $this->ip) {
+                    // To prevent "fake" RDNS such as "abc.google.com.fakedomain.com" pass thorugh our checking process.
+                    // We need to check it one by one.
+                    foreach ($rdns as $r) {
+
+                        // For example:
+                        // $x = strstr('abc.googlebot.com.fake', '.googlebot.com');
+                        // $x will be `.googlebot.com.fake` so that we can identify this is a fake domain.
+                        $x = strstr($this->ipResolvedHostname, $r);
+            
+                        // `.googlebot.com` === `.googlebot.com`
+                        if ($x === $r) {
+                            $rdnsCheck = true;
+                        }
+                    }
+                }
+
+                if ($rdnsCheck) {
+                    $ip = gethostbyname($this->ipResolvedHostname);
+
+                    if ($this->strictMode) {
+
+                        // If the IP is different as hostname's resolved IP. It is maybe a fake bot.
+                        if ($ip !== $this->ip) {
+                            $this->isFake = true;
+                            return false;
+                        }
+                    }
+                }
+
+                if ($this->checkFakeRdns) {
+
+                    // We can identify that current access uses a fake RDNS record.
+                    if (! $rdnsCheck) {
+                        $this->isFake = true;
                         return false;
                     }
                 }
 
                 return true;
             }
+
+            // Here, once a request uses a user-agent that contains search engine information, but it does't pass the RDNS check.
+            // We can identify it is fake.
+            $this->isFake = true;
         }
 
         return false;
@@ -278,5 +333,26 @@ class TrustedBot extends ComponentProvider
     public function isDenied(): bool
     {
         return false;
+    }
+
+    /**
+     * Check if the current access a fake robot.
+     * To get real value from this method, execution must be after `isAllowed`.
+     *
+     * @return bool
+     */
+    public function isFakeRobot(): bool
+    {
+        return $this->isFake;
+    }
+
+    /**
+     * Unique deny status code.
+     *
+     * @return int
+     */
+    public function getDenyStatusCode(): int
+    {
+        return self::STATUS_CODE;
     }
 }

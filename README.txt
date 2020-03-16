@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=donat
 Tags: anti-scriping, security, firewall, brute-force, xss-protection
 Requires at least: 4.0
 Tested up to: 5.3.2
-Stable tag: 1.5.0
+Stable tag: 1.6.0
 Requires PHP: 7.1.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -171,8 +171,12 @@ GNU General Public License for more details.
 - Assign language code to dialog UI.
 - Update translation strings.
 
+= 1.6.0
+
+- Update Shieldon kernel.
+- Add new options in settings allowing to avoid conflicts with some WordPress core functions.
+- Update translation strings.
+
 == Upgrade Notice ==
 
-= 1.4.0
 
-- Please update data circle if you are using MySQL or SQLite data driver. The reset button is located on the overview page.

@@ -31,15 +31,14 @@ return [
     |
     | The users who can login Shieldon Firewall's control panel.
     | Deault: shieldon_user / shieldon_pass
-    | This is a basic protection. Please change the user and password instead 
-    | of a complex and strong one.
+    | This is a basic protection. Please change the user and password.
     |
     */
 
     'admin' => [
         'user' => 'shieldon_user',
-        'pass' => '$2y$10$x/celAC.L8xBn1UPPq619uG6ZGKoA6yfbjxtAJqAAtB.yLjU3S3Fu',
-        'last_modified' => '1989-06-04',
+        'pass' => 'shieldon_pass',
+        'last_modified' => '2020-02-05',
     ],
 
     /*
@@ -454,6 +453,12 @@ return [
     |--------------------------------------------------------------------------
     | Messenger
     |--------------------------------------------------------------------------
+    |
+    | Docs: https://github.com/terrylinooo/messenger
+    |
+    | The `confirm_test` value is must be True to execute a messener module.
+    | Test the configuration before sending a message.
+    |--------------------------------------------------------------------------
     */
 
     'messengers' => [
@@ -462,15 +467,44 @@ return [
             'enable' => false,
             'config' => [
                 'access_token' => 'your_access_token',
-            ]
-            
+            ],
+            'confirm_test' => false,
         ],
 
         'telegram' => [
             'enable' => false,
             'config' => [
                 'api_key' => 'your_api_key',
-            ]
+            ],
+            'confirm_test' => false,
+        ],
+
+        'slack' => [
+            'enable' => false,
+            'config' => [
+                'bot_token' => 'your_bot_token',
+                'channel' => 'your_channel',
+            ],
+            'confirm_test' => false,
+        ],
+
+        'slack_webhook' => [
+            'enable' => false,
+            'config' => [
+                'webhook_url' => 'your_webhook_url',
+            ],
+            'confirm_test' => false,
+        ],
+
+        'rocket_chat' => [
+            'enable' => false,
+            'config' => [
+                'server_url' => 'your_server_url',
+                'user_id' => 'your_rocketchat_user_id',
+                'access_token' => 'your_accress_token',
+                'channel' => 'your_channel',
+            ],
+            'confirm_test' => false,
         ],
 
         'sendgrid' => [
@@ -482,8 +516,64 @@ return [
                     'user1@email.com',
                     'user2@email.com',
                 ]
-            ]
-        ]
+            ],
+            'confirm_test' => false,
+        ],
+
+        'mailgun' => [
+            'enable' => false,
+            'config' => [
+                'api_key'     => 'your_api_key',
+                'domain_name' => 'your_domain.com',
+                'sender'      => 'your@email.com',
+                'recipients'  => [
+                    'user1@email.com',
+                    'user2@email.com',
+                ]
+            ],
+            'confirm_test' => false,
+        ],
+
+        'native_php_mail' => [
+            'enable' => false,
+            'config' => [
+                'sender'      => 'your@email.com',
+                'recipients'  => [
+                    'user1@email.com',
+                    'user2@email.com',
+                ]
+            ],
+            'confirm_test' => false,
+        ],
+
+        'native_php_mail' => [
+            'enable' => false,
+            'config' => [
+                'sender'      => 'your@email.com',
+                'recipients'  => [
+                    'user1@email.com',
+                    'user2@email.com',
+                ]
+            ],
+            'confirm_test' => false,
+        ],
+
+        'smtp' => [
+            'enable' => false,
+            'config' => [
+                'host' => "127.0.0.1",
+                'port' => 25,
+                'type' => '', // null, ssl, tls
+                'user' => '',
+                'pass' => '',
+                'sender'      => 'your@email.com',
+                'recipients'  => [
+                    'user1@email.com',
+                    'user2@email.com',
+                ]
+            ],
+            'confirm_test' => false,
+        ],
     ],
 
     /*
@@ -511,6 +601,16 @@ return [
 
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Checking the last failure time
+    |--------------------------------------------------------------------------
+    */
+
+    'record_attempt' => [
+        'detection_period' => 5,
+        'time_to_reset'=> 1800,
+    ],
 
     /*
     |--------------------------------------------------------------------------

@@ -59,6 +59,7 @@ use function Shieldon\Helper\_e;
                                     <p><?php _e('panel', 'setting_note_directory', 'Please fill in the absolute path of the directory where you store the data.'); ?></p>
                                 </div>
                             </div>
+                            <p class="text-info"><?php _e('panel', 'setting_note_driver_not_recommended', 'Not recommended for high-traffic wwebsite.'); ?></p>
                         </div>
                     </div>
                 </div>
@@ -131,6 +132,7 @@ use function Shieldon\Helper\_e;
                                     <p><?php _e('panel', 'setting_note_directory', 'Please fill in the absolute path of the directory where you store the data.'); ?></p>
                                 </div>
                             </div>
+                            <p class="text-info"><?php _e('panel', 'setting_note_driver_not_recommended', 'Not recommended for high-traffic wwebsite.'); ?></p>
                         </div>
                     </div>
                 </div>
@@ -160,38 +162,34 @@ use function Shieldon\Helper\_e;
             <td class="r1"><?php _e('panel', 'setting_label_ip_source', 'IP Source'); ?></td>
             <td class="r2">
                 <p><?php _e('panel', 'setting_note_ip_source', 'Is your website behind the CDN service? If you use CDN, you have to set this setting correctly; otherwise, all IP addresses from CDN servers will probably get banned.'); ?></p>
-                <div class="container">
-                    <div ckass="row">
-                        <div class="col-sm-12">
-                            <div class="radio-style">
-                                <input name="ip_variable_source" value="REMOTE_ADDR" type="radio" id="ip-source-1" <?php $this->checked('ip_variable_source.REMOTE_ADDR', true); ?> /> 
-                                <label for="ip-source-1" class="radio-label">
-                                    REMOTE_ADDR
-                                    <small><?php echo ($_SERVER['REMOTE_ADDR']) ?? '<i class="fas fa-times-circle text-danger"></i>'; ?></small>
-                                </label> 
-                            </div>
-                            <div class="radio-style">
-                                <input name="ip_variable_source" value="HTTP_CF_CONNECTING_IP" type="radio" id="ip-source-2" <?php $this->checked('ip_variable_source.HTTP_CF_CONNECTING_IP', true); ?> /> 
-                                <label for="ip-source-2" class="radio-label">
-                                    HTTP_CF_CONNECTING_IP
-                                    <small><?php echo ($_SERVER['HTTP_CF_CONNECTING_IP']) ?? '<i class="fas fa-times-circle text-danger"></i>'; ?></small>
-                                </label> 
-                            </div>
-                            <div class="radio-style">
-                                <input name="ip_variable_source" value="HTTP_X_FORWARDED_FOR" type="radio" id="ip-source-3" <?php $this->checked('ip_variable_source.HTTP_X_FORWARDED_FOR', true); ?> /> 
-                                <label for="ip-source-3" class="radio-label">
-                                    HTTP_X_FORWARDED_FOR
-                                    <small><?php echo ($_SERVER['HTTP_X_FORWARDED_FOR']) ?? '<i class="fas fa-times-circle text-danger"></i>'; ?></small>
-                                </label> 
-                            </div>
-                            <div class="radio-style">
-                                <input name="ip_variable_source" value="HTTP_X_FORWARDED_HOST" type="radio" id="ip-source-4" <?php $this->checked('ip_variable_source.HTTP_X_FORWARDED_HOST', true); ?> /> 
-                                <label for="ip-source-4" class="radio-label">
-                                    HTTP_X_FORWARDED_HOST
-                                    <small><?php echo ($_SERVER['HTTP_X_FORWARDED_HOST']) ?? '<i class="fas fa-times-circle text-danger"></i>'; ?></small>
-                                </label> 
-                            </div>
-                        </div>
+                <div class="col-sm-12">
+                    <div class="radio-style">
+                        <input name="ip_variable_source" value="REMOTE_ADDR" type="radio" id="ip-source-1" <?php $this->checked('ip_variable_source.REMOTE_ADDR', true); ?> /> 
+                        <label for="ip-source-1" class="radio-label">
+                            REMOTE_ADDR
+                            <small><?php echo ($_SERVER['REMOTE_ADDR']) ?? '<i class="fas fa-times-circle text-danger"></i>'; ?></small>
+                        </label> 
+                    </div>
+                    <div class="radio-style">
+                        <input name="ip_variable_source" value="HTTP_CF_CONNECTING_IP" type="radio" id="ip-source-2" <?php $this->checked('ip_variable_source.HTTP_CF_CONNECTING_IP', true); ?> /> 
+                        <label for="ip-source-2" class="radio-label">
+                            HTTP_CF_CONNECTING_IP
+                            <small><?php echo ($_SERVER['HTTP_CF_CONNECTING_IP']) ?? '<i class="fas fa-times-circle text-danger"></i>'; ?></small>
+                        </label> 
+                    </div>
+                    <div class="radio-style">
+                        <input name="ip_variable_source" value="HTTP_X_FORWARDED_FOR" type="radio" id="ip-source-3" <?php $this->checked('ip_variable_source.HTTP_X_FORWARDED_FOR', true); ?> /> 
+                        <label for="ip-source-3" class="radio-label">
+                            HTTP_X_FORWARDED_FOR
+                            <small><?php echo ($_SERVER['HTTP_X_FORWARDED_FOR']) ?? '<i class="fas fa-times-circle text-danger"></i>'; ?></small>
+                        </label> 
+                    </div>
+                    <div class="radio-style">
+                        <input name="ip_variable_source" value="HTTP_X_FORWARDED_HOST" type="radio" id="ip-source-4" <?php $this->checked('ip_variable_source.HTTP_X_FORWARDED_HOST', true); ?> /> 
+                        <label for="ip-source-4" class="radio-label">
+                            HTTP_X_FORWARDED_HOST
+                            <small><?php echo ($_SERVER['HTTP_X_FORWARDED_HOST']) ?? '<i class="fas fa-times-circle text-danger"></i>'; ?></small>
+                        </label> 
                     </div>
                 </div>
             </td>
@@ -219,7 +217,6 @@ use function Shieldon\Helper\_e;
                     <?php _e('panel', 'setting_note_session_limit_1', 'When the online user amount has reached the limitation, other users not in the queue have to line up!'); ?><br />
                     <?php _e('panel', 'setting_note_session_limit_2', 'The following image is an example.'); ?>
                 </p>
-                <p><img src="https://shieldon-io.github.io/static/images/please-line-up.png"></p>
             </td>
         </tr>
         <tr>
@@ -244,7 +241,7 @@ use function Shieldon\Helper\_e;
 </div>
 <!-------------------------------------------------------------------------------------------------------------->
 <div class="section-title bg-glass mt-3">
-    <h2><?php _e('panel', 'setting_label_logs', 'Logs'); ?></h2>
+    <h2><?php _e('panel', 'setting_label_action_logs', 'Action Logs'); ?></h2>
     <div class="toggle-container">
         <label class="rocker rocker-md">
             <input type="hidden" name="loggers__action__enable" value="off" />
@@ -263,6 +260,7 @@ use function Shieldon\Helper\_e;
                 <input type="text" name="loggers__action__config__directory_path" class="form-control form-control-sm col-sm-7" value="<?php $this->_('loggers.action.config.directory_path'); ?>">
                 <br />
                 <p><?php _e('panel', 'setting_note_directory', 'Please fill in the absolute path of the directory where you store the data.'); ?></p>
+                <p class="text-info"><?php _e('panel', 'setting_note_driver_not_recommended', 'Not recommended for high-traffic wwebsite.'); ?></p>
             </td>
         </tr>
     </table>
@@ -272,7 +270,7 @@ use function Shieldon\Helper\_e;
     <h2><?php _e('panel', 'setting_label_system_firewall', 'System Firewall'); ?></h2>
     <div class="toggle-container">
         <label class="rocker rocker-md">
-            <input type="hidden" name="loggers__iptables__enable" value="off" />
+            <input type="hidden" name="iptables__enable" value="off" />
             <input type="checkbox" name="iptables__enable" class="toggle-block" value="on" data-target="iptables-section" <?php $this->checked('iptables.enable', true); ?> />
             <span class="switch-left">ON</span>
             <span class="switch-right">OFF</span>
@@ -321,12 +319,30 @@ use function Shieldon\Helper\_e;
     <h2><?php _e('panel', 'setting_heading_deny_attempts', 'Deny Attempts'); ?></h2>
 </div>
 <div class="section-body my-0">
-<p><?php _e('panel', 'setting_desc_deny_attempts', 'Say goodbye to bad behavior visitors.'); ?></p>
+    <p><?php _e('panel', 'setting_desc_deny_attempts', 'Say goodbye to bad behavior visitors.'); ?></p>
+    <table class="setting-table">
+        <tr>
+            <td class="r1"><?php _e('panel', 'setting_label_record_attempt_detection_period', 'Detection Period'); ?></td>
+            <td class="r2">
+                <input type="text" name="record_attempt__detection_period" class="form-control form-control-sm col-sm-3" value="<?php $this->_('record_attempt.detection_period', 5); ?>"><br />
+                <p><?php _e('panel', 'setting_desc_record_attempt_detection_period', 'Check the time difference between now and last failed attempt. Failure attempts within the time difference are recorded. A bigger value of this filed means more strict. (unit: second)'); ?></p>
+            </td>
+        </tr>
+        <tr>
+            <td class="r1"><?php _e('panel', 'setting_label_record_attempt_reset', 'Reset'); ?></td>
+            <td class="r2">
+                <input type="text" name="record_attempt__time_to_reset" class="form-control form-control-sm col-sm-3" value="<?php $this->_('record_attempt.time_to_reset', 1800); ?>"><br />
+                <p><?php _e('panel', 'setting_desc_record_attempt_reset', 'Reset counter after n seconds.'); ?></p>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="section-body my-0">
     <table class="setting-table">
         <tr>
             <td class="r1"><?php _e('panel', 'messenger_label_event_1', 'Ban a user permanently in current data cycle.'); ?></td>
             <td class="r2">
-                <p><?php _e('panel', 'messenger_desc_event_1', 'This event happens typically when a user fails too many times due to invalid CAPTCHA in a row.'); ?></p>
+                <p><?php _e('panel', 'messenger_desc_event_1', 'This event is triggered typically when a user fails too many times due to invalid CAPTCHA in a row.'); ?></p>
                 <label class="rocker rocker-sm">
                     <input type="hidden" name="events__failed_attempts_in_a_row__data_circle__enable" value="off" />
                     <input type="checkbox" name="events__failed_attempts_in_a_row__data_circle__enable" class="toggle-block" value="on" <?php $this->checked('events.failed_attempts_in_a_row.data_circle.enable', true); ?>>
@@ -350,7 +366,7 @@ use function Shieldon\Helper\_e;
             <td class="r1"><?php _e('panel', 'messenger_label_event_2', 'Ban a user permanently in system firwall'); ?></td>
             <td class="r2">
                 <p>
-                    <?php _e('panel', 'messenger_desc_event_2', 'This event happens typically when a user is already banned permanently in curent data cycle, but they are still access the warning pages too many times in a row, we can confirm that they are malicious bots.'); ?><br />
+                    <?php _e('panel', 'messenger_desc_event_2', 'This event is triggered typically when a user is already banned permanently in curent data cycle, but they are still access the warning pages too many times in a row, we can confirm that they are malicious bots.'); ?><br />
                     <?php _e('panel', 'messenger_desc_event_3', 'This option will take effect only when you have set the system-layer firewall correctly.'); ?>
                 </p>
                 <label class="rocker rocker-sm">

@@ -11,6 +11,9 @@
 namespace Shieldon;
 
 use Shieldon\Firewall;
+use Shieldon\Captcha\Foundation;
+use Shieldon\Captcha\ImageCaptcha;
+use Shieldon\Captcha\Recaptcha;
 use Shieldon\Driver\FileDriver;
 use Shieldon\Driver\MysqlDriver;
 use Shieldon\Driver\RedisDriver;
@@ -19,6 +22,8 @@ use Shieldon\Log\ActionLogParser;
 use Shieldon\Log\ActionLogParsedCache;
 use Shieldon\Shieldon;
 use Shieldon\FirewallTrait;
+use Messenger as MessengerModule;
+
 use function Shieldon\Helper\__;
 
 use PDO;
@@ -52,7 +57,10 @@ use function ob_get_contents;
 use function ob_start;
 use function parse_url;
 use function password_verify;
+use function php_sapi_name;
 use function round;
+use function session_start;
+use function session_status;
 use function strtotime;
 use function time;
 use function umask;
@@ -135,6 +143,13 @@ class FirewallPanel
     public $locate = 'en';
 
     /**
+     * Captcha modules.
+     *
+     * @var Interface
+     */
+    private $captcha = [];
+
+    /**
      * Constructor.
      *
      * @param object $instance Shieldon | Firewall
@@ -163,6 +178,18 @@ class FirewallPanel
 
             $this->pageAvailability['logs'] = true;
         }
+
+        if ((php_sapi_name() !== 'cli')) {
+            if (session_status() === PHP_SESSION_NONE) {
+                session_start();
+            }
+        }
+
+        // Flash message, use it when redirecting page.
+        if (! empty($_SESSION['flash_messages'])) {
+            $this->messages = $_SESSION['flash_messages'];
+            unset($_SESSION['flash_messages']);
+        }
     }
 
      // @codeCoverageIgnoreStart
@@ -174,34 +201,27 @@ class FirewallPanel
      *
      * @return void
      */
-    public function entry()
+    public function entry(): void
     {
-        if ((php_sapi_name() !== 'cli')) {
-            if (session_status() === PHP_SESSION_NONE) {
-                session_start();
-            }
-        }
-
         $this->locate = 'en';
-        if (! empty($_SESSION['shieldon_panel_lang'])) {
-            $this->locate = $_SESSION['shieldon_panel_lang'];
+
+        if (! empty($_SESSION['SHIELDON_PANEL_LANG'])) {
+            $this->locate = $_SESSION['SHIELDON_PANEL_LANG'];
         }
 
         $slug = $_GET['so_page'] ?? '';
 
         if ('logout' === $slug) {
-            if (isset($_SERVER['PHP_AUTH_USER'])) {
-                unset($_SERVER['PHP_AUTH_USER']);
-            }
-            if (isset($_SERVER['PHP_AUTH_PW'])) {
-                unset($_SERVER['PHP_AUTH_PW']);
+
+            if (isset($_SESSION['SHIELDON_USER_LOGIN'])) {
+                unset($_SESSION['SHIELDON_USER_LOGIN']);
             }
 
-            if (isset($_SESSION['shieldon_panel_lang'])) {
-                unset($_SESSION['shieldon_panel_lang']);
+            if (isset($_SESSION['SHIELDON_PANEL_LANG'])) {
+                unset($_SESSION['SHIELDON_PANEL_LANG']);
             }
-            $this->httpAuth();
-            header('Location: ' . $this->url('overview'));
+
+            header('Location: ' . $this->url('login'));
             exit;
         }
 
@@ -215,6 +235,10 @@ class FirewallPanel
 
             case 'overview':
                 $this->overview();
+                break;
+
+            case 'operation_status':
+                $this->operationStatus();
                 break;
 
             case 'settings':
@@ -249,8 +273,8 @@ class FirewallPanel
                 $this->ruleTable();
                 break;
 
-            case 'dashboard':
-                $this->dashboard();
+            case 'action_log':
+                $this->actionLog();
                 break;
 
             case 'messenger':
@@ -277,8 +301,24 @@ class FirewallPanel
                 $this->ajaxChangeLocale();
                 break;
 
+            case 'ajax_test_messenger_modules':
+                $this->ajaxTestMessengerModules();
+                break;
+
+            case 'login':
+                $this->login();
+                break;
+
+            case 'export_settings':
+                $this->exportSettings();
+                break;
+
+            case 'import_settings':
+                $this->importSettings();
+                break;
+
             default:
-                header('Location: ' . $this->url('overview'));
+                header('Location: ' . $this->url('login'));
                 break;
         }
 
@@ -375,6 +415,76 @@ class FirewallPanel
         }
 
         $this->renderPage('panel/setting', $data);
+    }
+
+    /**
+     * Login reminder
+     *
+     * @return void
+     */
+    protected function login(): void
+    {
+        $this->applyCaptchaForms();
+
+        $login = false;
+        $data['error'] = '';
+
+        if (isset($_POST['s_user']) && isset($_POST['s_pass'])) {
+
+            $admin = $this->getConfig('admin');
+
+            if (
+                // Default password, unencrypted.
+                $admin['user']  === $_POST['s_user'] && 
+                'shieldon_pass' === $_POST['s_pass'] &&
+                'shieldon_pass' === $admin['pass']
+            ) {
+                $login = true;
+
+            } elseif (
+                // User has already changed password, encrypted.
+                $admin['user'] === $_POST['s_user'] && 
+                password_verify($_POST['s_pass'], $admin['pass'])
+            ) {
+                $login = true;
+    
+            } else {
+                $data['error'] = __('panel', 'login_message_invalid_user_or_pass', 'Invalid username or password.');
+            }
+
+            // Check the response from Captcha modules.
+            foreach ($this->captcha as $captcha) {
+                if (! $captcha->response()) {
+                    $login = false;
+                    $data['error'] = __('panel', 'login_message_invalid_captcha', 'Invalid Captcha code.');
+                }
+            }
+        }
+
+        if ($login) {
+            // Mark as logged user.
+            $_SESSION['SHIELDON_USER_LOGIN'] = true;
+
+            // Redirect to overview page if logged in successfully.
+            header('Location: ' . $this->url('overview'));
+        }
+
+        // Start to prompt a login form is not logged.
+        define('SHIELDON_VIEW', true);
+
+        // `$ui` will be used in `css-default.php`. Do not remove it.
+        $ui = [
+            'background_image' => '',
+            'bg_color'         => '#ffffff',
+            'header_bg_color'  => '#212531',
+            'header_color'     => '#ffffff',
+            'shadow_opacity'   => '0.2',
+        ];
+
+        $data['css'] = require $this->shieldon::SHIELDON_DIR . '/../../templates/frontend/css/default.php';
+        unset($ui);
+
+        $this->loadView('frontend/login', $data, true);
     }
 
     /**
@@ -556,9 +666,15 @@ class FirewallPanel
         $messengers = $t->getValue($this->shieldon);
 
         $operatingMessengers = [
-            'telegram'   => false,
-            'linenotify' => false,
-            'sendgrid'   => false,
+            'telegram'     => false,
+            'linenotify'   => false,
+            'sendgrid'     => false,
+            'mailgun'      => false,
+            'smtp'         => false,
+            'slack'        => false,
+            'slackwebhook' => false,
+            'rocketchat'   => false,
+            'mail'         => false,
         ];
 
         foreach ($messengers as $messenger) {
@@ -576,11 +692,172 @@ class FirewallPanel
     }
 
     /**
+     * Operation status.
+     *
+     * @return void
+     */
+    protected function operationStatus(): void
+    {
+        $data['components'] = [
+            'Ip'         => (! empty($this->shieldon->component['Ip']))         ? true : false,
+            'TrustedBot' => (! empty($this->shieldon->component['TrustedBot'])) ? true : false,
+            'Header'     => (! empty($this->shieldon->component['Header']))     ? true : false,
+            'Rdns'       => (! empty($this->shieldon->component['Rdns']))       ? true : false,
+            'UserAgent'  => (! empty($this->shieldon->component['UserAgent']))  ? true : false,
+        ];
+
+        $reflection = new ReflectionObject($this->shieldon);
+        $t = $reflection->getProperty('enableCookieCheck');
+        $t->setAccessible(true);
+        $enableCookieCheck = $t->getValue($this->shieldon);
+
+        $reflection = new ReflectionObject($this->shieldon);
+        $t = $reflection->getProperty('enableSessionCheck');
+        $t->setAccessible(true);
+        $enableSessionCheck = $t->getValue($this->shieldon);
+
+        $reflection = new ReflectionObject($this->shieldon);
+        $t = $reflection->getProperty('enableFrequencyCheck');
+        $t->setAccessible(true);
+        $enableFrequencyCheck = $t->getValue($this->shieldon);
+
+        $reflection = new ReflectionObject($this->shieldon);
+        $t = $reflection->getProperty('enableRefererCheck');
+        $t->setAccessible(true);
+        $enableRefererCheck = $t->getValue($this->shieldon);
+
+        $data['filters'] = [
+            'cookie'    => $enableCookieCheck,
+            'session'   => $enableSessionCheck,
+            'frequency' => $enableFrequencyCheck,
+            'referer'   => $enableRefererCheck,
+        ];
+
+        $ruleList = $this->shieldon->driver->getAll('rule');
+
+        $data['component_ip'] = 0;
+        $data['component_trustedbot'] = 0;
+        $data['component_rdns'] = 0;
+        $data['component_header'] = 0;
+        $data['component_useragent'] = 0;
+
+        $data['filter_frequency'] = 0;
+        $data['filter_referer'] = 0;
+        $data['filter_cookie'] = 0;
+        $data['filter_session'] = 0;
+
+        // Components.
+        $data['rule_list']['ip'] = [];
+        $data['rule_list']['trustedbot'] = [];
+        $data['rule_list']['rdns'] = [];
+        $data['rule_list']['header'] = [];
+        $data['rule_list']['useragent'] = [];
+
+        // Filters.
+        $data['rule_list']['frequency'] = [];
+        $data['rule_list']['referer'] = [];
+        $data['rule_list']['cookie'] = [];
+        $data['rule_list']['session'] = [];
+
+        foreach ($ruleList as $ruleInfo) {
+    
+            switch ($ruleInfo['reason']) {
+                case $this->shieldon::REASON_DENY_IP:
+                case $this->shieldon::REASON_COMPONENT_IP:
+                    $data['component_ip']++;
+                    $data['rule_list']['ip'][] = $ruleInfo;
+                    break;
+
+                case $this->shieldon::REASON_COMPONENT_RDNS:
+                    $data['component_rdns']++;
+                    $data['rule_list']['rdns'][] = $ruleInfo;
+                    break;
+                
+                case $this->shieldon::REASON_COMPONENT_HEADER:
+                    $data['component_header']++;
+                    $data['rule_list']['header'][] = $ruleInfo;
+                    break;
+
+                case $this->shieldon::REASON_COMPONENT_USERAGENT:
+                    $data['component_useragent']++;
+                    $data['rule_list']['useragent'][] = $ruleInfo;
+                    break;
+
+                case $this->shieldon::REASON_COMPONENT_TRUSTED_ROBOT:
+                    $data['component_trustedbot']++;
+                    $data['rule_list']['trustedbot'][] = $ruleInfo;
+                    break;
+
+                case $this->shieldon::REASON_TOO_MANY_ACCESSES:
+                case $this->shieldon::REASON_REACHED_LIMIT_DAY:
+                case $this->shieldon::REASON_REACHED_LIMIT_HOUR:
+                case $this->shieldon::REASON_REACHED_LIMIT_MINUTE:
+                case $this->shieldon::REASON_REACHED_LIMIT_SECOND:
+                    $data['filter_frequency']++;
+                    $data['rule_list']['frequency'][] = $ruleInfo;
+                    break;
+
+                case $this->shieldon::REASON_EMPTY_REFERER:
+                    $data['filter_referer']++;
+                    $data['rule_list']['referer'][] = $ruleInfo;
+                    break;
+
+                case $this->shieldon::REASON_EMPTY_JS_COOKIE:
+                    $data['filter_cookie']++;
+                    $data['rule_list']['cookie'][] = $ruleInfo;
+                    break;
+
+                case $this->shieldon::REASON_TOO_MANY_SESSIONS:
+                    $data['filter_session']++;
+                    $data['rule_list']['session'][] = $ruleInfo;
+                    break;
+            }
+        }
+
+        $reasons = [
+            $this->shieldon::REASON_MANUAL_BAN           => __('panel', 'reason_manual_ban', 'Added manually by administrator'),
+            $this->shieldon::REASON_IS_SEARCH_ENGINE     => __('panel', 'reason_is_search_engine', 'Search engine bot'),
+            $this->shieldon::REASON_IS_GOOGLE            => __('panel', 'reason_is_google', 'Google bot'),
+            $this->shieldon::REASON_IS_BING              => __('panel', 'reason_is_bing', 'Bing bot'),
+            $this->shieldon::REASON_IS_YAHOO             => __('panel', 'reason_is_yahoo', 'Yahoo bot'),
+            $this->shieldon::REASON_TOO_MANY_SESSIONS    => __('panel', 'reason_too_many_sessions', 'Too many sessions'),
+            $this->shieldon::REASON_TOO_MANY_ACCESSES    => __('panel', 'reason_too_many_accesses', 'Too many accesses'),
+            $this->shieldon::REASON_EMPTY_JS_COOKIE      => __('panel', 'reason_empty_js_cookie', 'Cannot create JS cookies'),
+            $this->shieldon::REASON_EMPTY_REFERER        => __('panel', 'reason_empty_referer', 'Empty referrer'),
+            $this->shieldon::REASON_REACHED_LIMIT_DAY    => __('panel', 'reason_reached_limit_day', 'Daily limit reached'),
+            $this->shieldon::REASON_REACHED_LIMIT_HOUR   => __('panel', 'reason_reached_limit_hour', 'Hourly limit reached'),
+            $this->shieldon::REASON_REACHED_LIMIT_MINUTE => __('panel', 'reason_reached_limit_minute', 'Minutely limit reached'),
+            $this->shieldon::REASON_REACHED_LIMIT_SECOND => __('panel', 'reason_reached_limit_second', 'Secondly limit reached'),
+
+            // @since 0.1.8
+            $this->shieldon::REASON_INVALID_IP              => __('panel', 'reason_invalid_ip', 'Invalid IP address.'),
+            $this->shieldon::REASON_DENY_IP                 => __('panel', 'reason_deny_ip', 'Denied by IP component.'),
+            $this->shieldon::REASON_ALLOW_IP                => __('panel', 'reason_allow_ip', 'Allowed by IP component.'),
+            $this->shieldon::REASON_COMPONENT_IP            => __('panel', 'reason_component_ip', 'Denied by IP component.'),
+            $this->shieldon::REASON_COMPONENT_RDNS          => __('panel', 'reason_component_rdns', 'Denied by RDNS component.'),
+            $this->shieldon::REASON_COMPONENT_HEADER        => __('panel', 'reason_component_header', 'Denied by Header component.'),
+            $this->shieldon::REASON_COMPONENT_USERAGENT     => __('panel', 'reason_component_useragent', 'Denied by User-agent component.'),
+            $this->shieldon::REASON_COMPONENT_TRUSTED_ROBOT => __('panel', 'reason_component_trusted_robot', 'Identified as fake search engine.'),
+        ];
+
+        $types = [
+            $this->shieldon::ACTION_DENY             => 'DENY',
+            $this->shieldon::ACTION_ALLOW            => 'ALLOW',
+            $this->shieldon::ACTION_TEMPORARILY_DENY => 'CAPTCHA',
+        ];
+
+        $data['reason_mapping'] = $reasons;
+        $data['type_mapping'] = $types;
+
+        $this->renderPage('panel/operation_status', $data);
+    }
+
+    /**
      * IP manager.
      *
      * @return void
      */
-    protected function ipManager()
+    protected function ipManager(): void
     {
         if (isset($_POST['ip']) && filter_var(explode('/', $_POST['ip'])[0], FILTER_VALIDATE_IP)) {
 
@@ -788,11 +1065,11 @@ class FirewallPanel
     }
 
     /**
-     * Dsiplay dashboard.
+     * Dsiplay action logs.
      *
      * @return void
      */
-    protected function dashboard(): void
+    protected function actionLog(): void
     {
         $tab = $_GET['tab'] ?? 'today';
 
@@ -856,9 +1133,9 @@ class FirewallPanel
         $data['page_availability'] = $this->pageAvailability['logs'];
         $data['last_cached_time'] = $lastCachedTime;
 
-        $data['page_url'] = $this->url('dashboard');
+        $data['page_url'] = $this->url('action_log');
 
-        $this->renderPage('panel/log_' . $type, $data);
+        $this->renderPage('panel/action_log_' . $type, $data);
     }
 
     /**
@@ -912,6 +1189,16 @@ class FirewallPanel
             $this->shieldon::REASON_REACHED_LIMIT_HOUR   => __('panel', 'reason_reached_limit_hour', 'Hourly limit reached'),
             $this->shieldon::REASON_REACHED_LIMIT_MINUTE => __('panel', 'reason_reached_limit_minute', 'Minutely limit reached'),
             $this->shieldon::REASON_REACHED_LIMIT_SECOND => __('panel', 'reason_reached_limit_second', 'Secondly limit reached'),
+
+            // @since 0.1.8
+            $this->shieldon::REASON_INVALID_IP              => __('panel', 'reason_invalid_ip', 'Invalid IP address.'),
+            $this->shieldon::REASON_DENY_IP                 => __('panel', 'reason_deny_ip', 'Denied by IP component.'),
+            $this->shieldon::REASON_ALLOW_IP                => __('panel', 'reason_allow_ip', 'Allowed by IP component.'),
+            $this->shieldon::REASON_COMPONENT_IP            => __('panel', 'reason_component_ip', 'Denied by IP component.'),
+            $this->shieldon::REASON_COMPONENT_RDNS          => __('panel', 'reason_component_rdns', 'Denied by RDNS component.'),
+            $this->shieldon::REASON_COMPONENT_HEADER        => __('panel', 'reason_component_header', 'Denied by Header component.'),
+            $this->shieldon::REASON_COMPONENT_USERAGENT     => __('panel', 'reason_component_useragent', 'Denied by User-agent component.'),
+            $this->shieldon::REASON_COMPONENT_TRUSTED_ROBOT => __('panel', 'reason_component_trusted_robot', 'Identified as fake search engine.'),
         ];
 
         $types = [
@@ -939,7 +1226,7 @@ class FirewallPanel
     {
         $data['ip_log_list'] = $this->shieldon->driver->getAll('filter_log');
 
-        $this->renderPage('panel/table_ip_logs', $data);
+        $this->renderPage('panel/table_filter_logs', $data);
     }
 
     /**
@@ -1215,7 +1502,7 @@ class FirewallPanel
      *
      * @return void
      */
-    private function saveConfig()
+    private function saveConfig(): void
     {
         $configFilePath = $this->directory . '/' . $this->filename;
 
@@ -1501,12 +1788,105 @@ class FirewallPanel
     }
 
     /**
+     * Export settings.
+     *
+     * @return void
+     */
+    protected function exportSettings()
+    {
+        header('Content-type: text/plain');
+        header('Content-Disposition: attachment; filename=shieldon-' . date('YmdHis') . '.json');
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+        header('Pragma: public');
+        echo json_encode($this->configuration);
+    }
+
+    /**
+     * Import settings.
+     *
+     * @return void
+     */
+    protected function importSettings()
+    {
+        if (! empty($_FILES['json_file']['tmp_name'])) {
+            $importedFileContent = file_get_contents($_FILES['json_file']['tmp_name']);
+        }
+
+        if (! empty($importedFileContent)) {
+            $jsonData = json_decode($importedFileContent, true);
+
+            if (json_last_error() !== JSON_ERROR_NONE) {
+                $this->responseMessage('error',
+                    __(
+                        'panel',
+                        'error_invalid_json_file',
+                        'Invalid JSON file.'
+                    )
+                );
+
+                $_SESSION['flash_messages'] = $this->messages;
+                header('Location: ' . $this->url('settings'));
+                exit;
+            }
+
+            $checkFileVaild = true;
+
+            foreach (array_keys($this->configuration) as $key) {
+                if (! isset($jsonData[$key])) {
+                    $checkFileVaild = false;
+                }
+            }
+
+            if ($checkFileVaild) {
+                foreach (array_keys($jsonData) as $key) {
+                    if (isset($this->configuration[$key])) {
+                        unset($this->configuration[$key]);
+                    }
+                }
+
+                $this->configuration = $this->configuration + $jsonData;
+
+                // Save settings into a configuration file.
+                $configFilePath = $this->directory . '/' . $this->filename;
+                file_put_contents($configFilePath, json_encode($this->configuration));
+
+                $this->responseMessage('success',
+                    __(
+                        'panel',
+                        'success_json_imported',
+                        'JSON file imported successfully.'
+                    )
+                );
+
+                $_SESSION['flash_messages'] = $this->messages;
+                header('Location: ' . $this->url('settings'));
+                exit;
+            }
+        }
+
+        $this->responseMessage('error',
+            __(
+                'panel',
+                'error_invalid_config_file',
+                'Invalid Shieldon configuration file.'
+            )
+        );
+
+        $_SESSION['flash_messages'] = $this->messages;
+        header('Location: ' . $this->url('settings'));
+        exit;
+    }
+
+    /**
      * Echo the setting string to the template.
      *
-     * @param string $field
-     * @return string
+     * @param string $field   Field.
+     * @param mixed  $defailt Default value.
+     *
+     * @return void
      */
-    protected function _(string $field)
+    protected function _(string $field, $default = ''): void
     {
         if (is_string($this->getConfig($field)) || is_numeric($this->getConfig($field))) {
 
@@ -1539,11 +1919,11 @@ class FirewallPanel
                 if (in_array($field, $hiddenForDemo)) {
                     echo __('panel', 'field_not_visible', 'Cannot view this field in demo mode.');
                 } else {
-                    echo $this->getConfig($field);
+                    echo (! empty($this->getConfig($field))) ? $this->getConfig($field) : $default;
                 }
 
             } else {
-                echo $this->getConfig($field);
+                echo (! empty($this->getConfig($field))) ? $this->getConfig($field) : $default;
             }
         } elseif (is_array($this->getConfig($field))) {
 
@@ -1587,6 +1967,25 @@ class FirewallPanel
             } else {
                 echo '';
             }
+        }
+    }
+
+    /**
+     * Echo correspondence string on Messenger setting page.
+     *
+     * @param string $moduleName
+     * @param string $echoType
+     *
+     * @return void
+     */
+    protected function _m(string $moduleName, string $echoType = 'css'): void
+    {
+        if ('css' === $echoType) {
+            echo $this->getConfig('messengers.' . $moduleName . '.confirm_test') ? 'success' : '';
+        }
+
+        if ('icon' === $echoType) {
+            echo $this->getConfig('messengers.' . $moduleName . '.confirm_test') ? '<i class="fas fa-check"></i>' : '<i class="fas fa-exclamation"></i>';
         }
     }
 
@@ -1653,7 +2052,7 @@ class FirewallPanel
      *
      * @return void
      */
-    private function _include(string $page, array $data = [])
+    private function _include(string $page, array $data = []): void
     {
         if (! defined('SHIELDON_VIEW')) {
             define('SHIELDON_VIEW', true);
@@ -1674,7 +2073,7 @@ class FirewallPanel
      *
      * @return void
      */
-    private function renderPage(string $page, array $data)
+    private function renderPage(string $page, array $data): void
     {
         $channelName = $this->shieldon->driver->getChannel();
 
@@ -1699,7 +2098,7 @@ class FirewallPanel
      *
      * @return void
      */
-    private function responseMessage(string $type, string $text)
+    private function responseMessage(string $type, string $text): void
     {
         $class = $type;
 
@@ -1722,7 +2121,7 @@ class FirewallPanel
      *
      * @return string
      */
-    private function url(string $page = '', string $tab = '')
+    private function url(string $page = '', string $tab = ''): string
     {
         $httpProtocal = 'http://';
 
@@ -1744,28 +2143,14 @@ class FirewallPanel
      *
      * @return void
      */
-    private function httpAuth()
+    private function httpAuth(): void
     {
-        $admin = $this->getConfig('admin');
-
         if ('demo' === $this->mode || 'self' === $this->mode) {
             $admin = $this->demoUser;
         }
 
-        if (! isset($_SERVER['PHP_AUTH_USER']) || ! isset($_SERVER['PHP_AUTH_PW'])) {
-            header('WWW-Authenticate: Basic realm=""');
-            header('HTTP/1.0 401 Unauthorized');
-            die(__('panel', 'permission_required', 'Permission required.'));
-        }
-
-        if (
-            $admin['user'] === $_SERVER['PHP_AUTH_USER'] && 
-            password_verify($_SERVER['PHP_AUTH_PW'], $admin['pass'])
-        ) {} else {
-            header('HTTP/1.0 401 Unauthorized');
-
-            unset($_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW']);
-            die(__('panel', 'permission_required', 'Permission required.'));
+        if (! isset($_SESSION['SHIELDON_USER_LOGIN'])) {
+            $this->login();
         }
     }
 
@@ -1774,17 +2159,310 @@ class FirewallPanel
      *
      * @return void
      */
-    private function ajaxChangeLocale()
+    private function ajaxChangeLocale(): void
     {
-        $_SESSION['shieldon_panel_lang'] = $_GET['langCode'] ?? 'en';
+        $_SESSION['SHIELDON_PANEL_LANG'] = $_GET['langCode'] ?? 'en';
 
         $response['status'] = 'success';
         $response['lang_code'] = $_GET['langCode'];
-        $response['session_lang_code'] = $_SESSION['shieldon_panel_lang'];
+        $response['session_lang_code'] = $_SESSION['SHIELDON_PANEL_LANG'];
  
         header('Content-Type: application/json; charset=utf-8');
         echo json_encode($response);
         exit;
+    }
+
+    /**
+     * Test messenger modules.
+     *
+     * @return void
+     */
+    private function ajaxTestMessengerModules(): void
+    {
+        header('Content-Type: application/json; charset=utf-8');
+
+        $moduleName = $_GET['module'] ?? '';
+
+        $response = [];
+        $response['status'] = 'error';
+        $response['result']['moduleName'] = $moduleName;
+
+        $testMsgTitle = __('panel', 'test_msg_title', 'Testing Message from Host: ') . $_SERVER['SERVER_ADDR'];
+        $testMsgBody = __('panel', 'test_msg_body', 'Messenger module "{0}" has been tested and confirmed successfully.', [$moduleName]);
+    
+        switch($moduleName) {
+
+            case 'telegram':
+                $apiKey = $_GET['apiKey'] ?? '';
+                $channel = $_GET['channel'] ?? '';
+                if (! empty($apiKey) && ! empty($channel)) {
+                    $messenger = new MessengerModule\Telegram($apiKey, $channel);
+                    if ($messenger->send($testMsgBody)) {
+                        $response['status'] = 'success';
+                    }
+                }
+                break;
+
+            case 'line-notify':
+                $accessToken = $_GET['accessToken'] ?? '';
+                if (! empty($accessToken)) {
+                    $messenger = new MessengerModule\LineNotify($accessToken);
+                    if ($messenger->send($testMsgBody)) {
+                        $response['status'] = 'success';
+                    }
+                }
+                break;
+
+            case 'slack':
+                $botToken = $_GET['botToken'] ?? '';
+                $channel = $_GET['channel'] ?? '';
+                if (! empty($botToken) && ! empty($channel)) {
+                    $messenger = new MessengerModule\Slack($botToken, $channel);
+                    if ($messenger->send($testMsgBody)) {
+                        $response['status'] = 'success';
+                    }
+                }
+                break;
+
+            case 'slack-webhook':
+                $webhookUrl = $_GET['webhookUrl'] ?? '';
+                if (! empty($webhookUrl)) {
+                    $messenger = new MessengerModule\SlackWebhook($webhookUrl);
+                    if ($messenger->send($testMsgBody)) {
+                        $response['status'] = 'success';
+                    }
+                }
+                break;
+
+            case 'rocket-chat':
+                $serverUrl = $_GET['serverUrl'] ?? '';
+                $userId = $_GET['userId'] ?? '';
+                $accessToken = $_GET['accessToken'] ?? '';
+                $channel = $_GET['channel'] ?? '';
+
+                if (
+                       ! empty($serverUrl) 
+                    && ! empty($userId)
+                    && ! empty($accessToken)
+                    && ! empty($channel)
+                ) {
+                    $messenger = new MessengerModule\RocketChat($accessToken, $userId, $serverUrl, $channel);
+                    if ($messenger->send($testMsgBody)) {
+                        $response['status'] = 'success';
+                    }
+                }
+                break;
+
+            case 'smtp':
+                $type = $_GET['type'] ?? '';
+                $host = $_GET['host'] ?? '';
+                $user = $_GET['user'] ?? '';
+                $pass = $_GET['pass'] ?? '';
+                $port = $_GET['port'] ?? '';
+
+                $sender = $_GET['sender'] ?? '';
+                $recipients = $_GET['recipients'] ?? '';
+
+                if (
+                    (! filter_var($host, FILTER_VALIDATE_IP) && ! filter_var($host, FILTER_VALIDATE_DOMAIN))
+                    || ! is_numeric($port)
+                    || empty($user)
+                    || empty($pass) 
+                ) {
+                    $response['result']['message'] = 'Invalid fields.';
+                    echo json_encode($response);
+                    exit;
+                }
+
+                if ('ssl' === $type || 'tls' === $type) {
+                    $host = $type . '://' . $host;
+                }
+
+                if (! empty($sender) && $recipients) {
+                    $recipients = str_replace("\r", '|', $recipients);
+                    $recipients = str_replace("\n", '|', $recipients);
+                    $recipients = explode('|', $recipients);
+
+                    $messenger = new MessengerModule\Smtp($user, $pass, $host, (int) $port);
+
+                    foreach($recipients as $recipient) {
+                        if (filter_var($recipient, FILTER_VALIDATE_EMAIL)) {
+                            $messenger->addRecipient($recipient);
+                        }
+                    }
+
+                    if (filter_var($sender, FILTER_VALIDATE_EMAIL)) {
+                        $messenger->addSender($sender);
+                    }
+
+                    $messenger->setSubject($testMsgTitle);
+
+                    if ($messenger->send($testMsgBody)) {
+                        $response['status'] = 'success';
+                    }
+                }
+                break;
+
+            case 'native-php-mail':
+                $sender = $_GET['sender'] ?? '';
+                $recipients = $_GET['recipients'] ?? '';
+
+                if (! empty($sender) && ! empty($recipients)) {
+                    $recipients = str_replace("\r", '|', $recipients);
+                    $recipients = str_replace("\n", '|', $recipients);
+                    $recipients = explode('|', $recipients);
+
+                    $messenger = new MessengerModule\Mail();
+
+                    foreach($recipients as $recipient) {
+                   
+                        if (filter_var($recipient, FILTER_VALIDATE_EMAIL)) {
+                            $messenger->addRecipient($recipient);
+                        }
+                    }
+
+                    if (filter_var($sender, FILTER_VALIDATE_EMAIL)) {
+                        $messenger->addSender($sender);
+                    }
+
+                    $messenger->setSubject($testMsgTitle);
+
+                    if ($messenger->send($testMsgBody)) {
+                        $response['status'] = 'success';
+                    }
+                }
+                break;
+
+            case 'sendgrid':
+                $apiKey = $_GET['apiKey'] ?? '';
+                $sender = $_GET['sender'] ?? '';
+                $recipients = $_GET['recipients'] ?? '';
+
+                if (! empty($sender) && ! empty($recipients) && ! empty($apiKey)) {
+                    $recipients = str_replace("\r", '|', $recipients);
+                    $recipients = str_replace("\n", '|', $recipients);
+                    $recipients = explode('|', $recipients);
+
+                    $messenger = new MessengerModule\Sendgrid($apiKey);
+
+                    foreach($recipients as $recipient) {
+                        if (filter_var($recipient, FILTER_VALIDATE_EMAIL)) {
+                            $messenger->addRecipient($recipient);
+                        }
+                    }
+
+                    if (filter_var($sender, FILTER_VALIDATE_EMAIL)) {
+                        $messenger->addSender($sender);
+                    }
+
+                    $messenger->setSubject($testMsgTitle);
+
+                    if ($messenger->send($testMsgBody)) {
+                        $response['status'] = 'success';
+                    }
+                }
+                break;
+
+            case 'mailgun':
+                $apiKey = $_GET['apiKey'] ?? '';
+                $domain = $_GET['domain'] ?? '';
+                $sender = $_GET['sender'] ?? '';
+                $recipients = $_GET['recipients'] ?? '';
+
+                if (! empty($sender) && ! empty($recipients) && ! empty($apiKey) && ! empty($domain)) {
+                    $recipients = str_replace("\r", '|', $recipients);
+                    $recipients = str_replace("\n", '|', $recipients);
+                    $recipients = explode('|', $recipients);
+
+                    $messenger = new MessengerModule\Mailgun($apiKey, $domain);
+
+                    foreach($recipients as $recipient) {
+                        if (filter_var($recipient, FILTER_VALIDATE_EMAIL)) {
+                            $messenger->addRecipient($recipient);
+                        }
+                    }
+
+                    if (filter_var($sender, FILTER_VALIDATE_EMAIL)) {
+                        $messenger->addSender($sender);
+                    }
+
+                    $messenger->setSubject($testMsgTitle);
+
+                    if ($messenger->send($testMsgBody)) {
+                        $response['status'] = 'success';
+                    }
+                }
+                break;
+
+            default:
+                $response['status'] = 'undefined';
+        }
+
+        $moduleName = str_replace('-', '_', $moduleName);
+
+        $postKey = 'messengers__' . $moduleName . '__confirm_test';
+
+        if ('success' === $response['status']) {
+            $_POST[$postKey] = 'on';
+            $this->saveConfig();
+        } elseif ('error' === $response['status']) {
+            $_POST[$postKey] = 'off';
+            $this->saveConfig();
+        }
+
+        $response['result']['postKey'] = $postKey;
+
+        echo json_encode($response);
+        exit;
+    }
+
+    /**
+     * Set the Captcha modules.
+     *
+     * @return void
+     */
+    protected function applyCaptchaForms(): void
+    {
+        $this->captcha[] = new Foundation();
+
+        $recaptchaSetting = $this->getConfig('captcha_modules.recaptcha');
+        $imageSetting = $this->getConfig('captcha_modules.image');
+
+        if ($recaptchaSetting['enable']) {
+
+            $googleRecaptcha = [
+                'key'     => $recaptchaSetting['config']['site_key'],
+                'secret'  => $recaptchaSetting['config']['secret_key'],
+                'version' => $recaptchaSetting['config']['version'],
+                'lang'    => $recaptchaSetting['config']['lang'],
+            ];
+
+            $this->captcha[] = new Recaptcha($googleRecaptcha);
+        }
+
+        if ($imageSetting['enable']) {
+
+            $type = $imageSetting['config']['type'] ?? 'alnum';
+            $length = $imageSetting['config']['length'] ?? 8;
+
+            switch ($type) {
+                case 'numeric':
+                    $imageCaptchaConfig['pool'] = '0123456789';
+                    break;
+
+                case 'alpha':
+                    $imageCaptchaConfig['pool'] = '0123456789abcdefghijklmnopqrstuvwxyz';
+                    break;
+
+                case 'alnum':
+                default:
+                    $imageCaptchaConfig['pool'] = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            }
+
+            $imageCaptchaConfig['word_length'] = $length;
+
+            $this->captcha[] = new ImageCaptcha($imageCaptchaConfig);
+        }
     }
 
     // @codeCoverageIgnoreEnd

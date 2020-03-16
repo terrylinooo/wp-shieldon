@@ -7,8 +7,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace Shieldon\Helper;
+
+define('SHIELDON_VERSION', '1.0.0');
 
 /**
  * @since 3.1.0
@@ -43,10 +44,10 @@ function __(): string
     $replacement = ($num > 3) ? func_get_arg(3) : [];
     $lang        = 'en';
 
-    if (isset($_SESSION['shieldon_panel_lang'])) {
-        $lang = $_SESSION['shieldon_panel_lang'];
-    } elseif (isset($_SESSION['shieldon_ui_lang'])) {
-        $lang = $_SESSION['shieldon_ui_lang'];
+    if (isset($_SESSION['SHIELDON_PANEL_LANG'])) {
+        $lang = $_SESSION['SHIELDON_PANEL_LANG'];
+    } elseif (isset($_SESSION['SHIELDON_UI_LANG'])) {
+        $lang = $_SESSION['SHIELDON_UI_LANG'];
     }
 
     if (empty($i18n[$filename]) && empty($fileChecked[$filename])) {
@@ -144,6 +145,12 @@ function mask_string($str)
 function get_cpu_usage()
 {
     $return = '';
+
+    // This feature is not available on Windows platform.
+    if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+        return $return;
+    }
+
     $cpuLoads = @sys_getloadavg();
     $cpuCores = trim(@shell_exec("grep -P '^processor' /proc/cpuinfo|wc -l"));
 
@@ -164,6 +171,12 @@ function get_cpu_usage()
 function get_memory_usage()
 {
     $return = '';
+
+    // This feature is not available on Windows platform.
+    if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+        return $return;
+    }
+
     $freeResult = explode("\n", trim(@shell_exec('free')));
 
     if (! empty($freeResult)) {

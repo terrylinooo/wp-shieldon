@@ -31,16 +31,14 @@ class Ip extends ComponentProvider
 {
     use IpTrait;
 
+    const STATUS_CODE = 81;
+
     /**
      * Constant
      */
-    const CODE_INVAILD_IP     = 99;
-    const CODE_DENY_IP        = 11;
-    const CODE_DENY_IP_RANGE  = 12;
-    const CODE_DENY_IP_RULE   = 13;
-    const CODE_ALLOW_IP       = 21;
-    const CODE_ALLOW_IP_RANGE = 22;
-    const CODE_ALLOW_IP_RULE  = 23;
+    const REASON_INVALID_IP     = 40;
+    const REASON_DENY_IP        = 41;
+    const REASON_ALLOW_IP       = 42;
 
     /**
      * Data pool for hard whitelist.
@@ -74,7 +72,7 @@ class Ip extends ComponentProvider
         if (! filter_var($this->ip, FILTER_VALIDATE_IP)) {
             return [
                 'status' => 'deny',
-                'code' => self::CODE_INVAILD_IP,
+                'code' => self::REASON_INVALID_IP,
                 'comment' => 'Invalid IP.',
             ];
         }
@@ -82,7 +80,7 @@ class Ip extends ComponentProvider
         if ($this->isAllowed()) {
             return [
                 'status' => 'allow',
-                'code' => self::CODE_ALLOW_IP,
+                'code' => self::REASON_ALLOW_IP,
                 'comment' => 'IP is in allowed list.',
             ];
         }
@@ -90,7 +88,7 @@ class Ip extends ComponentProvider
         if ($this->isDenied()) {
             return [
                 'status' => 'deny',
-                'code' => self::CODE_DENY_IP,
+                'code' => self::REASON_DENY_IP,
                 'comment' => 'IP is in denied list.',
             ];
         }
@@ -98,7 +96,7 @@ class Ip extends ComponentProvider
         if ($this->isDenyAll) {
             return [
                 'status' => 'deny',
-                'code' => self::CODE_DENY_IP,
+                'code' => self::REASON_DENY_IP,
                 'comment' => 'Deny all in strict mode.',
             ];
         }
@@ -357,5 +355,15 @@ class Ip extends ComponentProvider
     public function denyAll(): bool
     {
         return $this->isDenyAll = true;
+    }
+
+    /**
+     * Unique deny status code.
+     *
+     * @return int
+     */
+    public function getDenyStatusCode(): int
+    {
+        return self::STATUS_CODE;
     }
 }

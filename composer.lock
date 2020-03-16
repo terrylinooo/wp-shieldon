@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e9cfbe9a12e95f9e81baf4e5c9491040",
+    "content-hash": "1fce8841aba7fb1d9a6ac5fe28837a15",
     "packages": [
         {
             "name": "shieldon/messenger",
-            "version": "1.2.0",
+            "version": "1.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/terrylinooo/messenger.git",
-                "reference": "b34984e56ade96129579a8e844a9d3835497d616"
+                "reference": "c9c8eb05a3c5d37fc9357180b044d3ee66aea139"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/terrylinooo/messenger/zipball/b34984e56ade96129579a8e844a9d3835497d616",
-                "reference": "b34984e56ade96129579a8e844a9d3835497d616",
+                "url": "https://api.github.com/repos/terrylinooo/messenger/zipball/c9c8eb05a3c5d37fc9357180b044d3ee66aea139",
+                "reference": "c9c8eb05a3c5d37fc9357180b044d3ee66aea139",
                 "shasum": ""
             },
             "require": {
@@ -44,27 +44,28 @@
                     "role": "Developer"
                 }
             ],
-            "description": "Sending messages to the third-party API services made easy for PHP.",
+            "description": "Sending messages to the third-party services made easy for PHP.",
             "homepage": "https://github.com/terrylinooo/messenger",
             "keywords": [
                 "Messenger",
                 "mailer",
-                "message"
+                "message",
+                "smtp"
             ],
-            "time": "2019-11-11T02:56:11+00:00"
+            "time": "2020-02-13T08:04:05+00:00"
         },
         {
             "name": "shieldon/shieldon",
-            "version": "0.1.7",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/terrylinooo/shieldon.git",
-                "reference": "5deccedb71d6263ae0869f4d1b74b3addbf82221"
+                "reference": "02493e2c95f57d9751953c719ef4f264e4cececa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/terrylinooo/shieldon/zipball/5deccedb71d6263ae0869f4d1b74b3addbf82221",
-                "reference": "5deccedb71d6263ae0869f4d1b74b3addbf82221",
+                "url": "https://api.github.com/repos/terrylinooo/shieldon/zipball/02493e2c95f57d9751953c719ef4f264e4cececa",
+                "reference": "02493e2c95f57d9751953c719ef4f264e4cececa",
                 "shasum": ""
             },
             "require": {
@@ -104,7 +105,7 @@
                 "xss-filter",
                 "xss-protection"
             ],
-            "time": "2019-12-16T10:01:48+00:00"
+            "time": "2020-03-10T09:35:01+00:00"
         }
     ],
     "packages-dev": [],

@@ -36,7 +36,7 @@ use Shieldon\Component\ComponentProvider;
 use Shieldon\Container;
 use Shieldon\Driver\DriverProvider;
 use Shieldon\Log\ActionLogger;
-use Messenger\MessengerInterface;
+use Messenger\Messenger\MessengerInterface;
 use function Shieldon\Helper\get_cpu_usage;
 use function Shieldon\Helper\get_memory_usage;
 use function Shieldon\Helper\__;
@@ -44,17 +44,20 @@ use function Shieldon\Helper\__;
 use LogicException;
 use RuntimeException;
 use Closure;
-
+use function file_exists;
+use function file_put_contents;
+use function filter_var;
 use function get_class;
 use function gethostbyaddr;
-use function session_id;
-use function strrpos;
-use function strpos;
-use function substr;
-use function ob_start;
+use function is_writable;
 use function ob_end_clean;
+use function ob_start;
 use function php_sapi_name;
+use function session_id;
 use function str_replace;
+use function strpos;
+use function strrpos;
+use function substr;
 use function time;
 
 /**
@@ -75,14 +78,24 @@ class Shieldon
 
     // Reason codes (deny)
     const REASON_TOO_MANY_SESSIONS = 1;
-    const REASON_TOO_MANY_ACCESSES = 2;
+    const REASON_TOO_MANY_ACCESSES = 2; // Filter - frequency (not used)
     const REASON_EMPTY_JS_COOKIE = 3;
     const REASON_EMPTY_REFERER = 4;
-
+    
     const REASON_REACHED_LIMIT_DAY = 11;
     const REASON_REACHED_LIMIT_HOUR = 12;
     const REASON_REACHED_LIMIT_MINUTE = 13;
     const REASON_REACHED_LIMIT_SECOND = 14;
+
+    const REASON_INVALID_IP = 40;
+    const REASON_DENY_IP = 41;
+    const REASON_ALLOW_IP = 42;
+
+    const REASON_COMPONENT_IP = 81;
+    const REASON_COMPONENT_RDNS = 82;
+    const REASON_COMPONENT_HEADER = 83;
+    const REASON_COMPONENT_USERAGENT = 84;
+    const REASON_COMPONENT_TRUSTED_ROBOT = 85;
 
     const REASON_MANUAL_BAN = 99;
 
@@ -139,7 +152,7 @@ class Shieldon
      * so we can check if the cookie can be created by JavaScript.
      * This is hard to prevent headless browser robots, but it can stop probably 70% poor robots.
      *
-     * @var boolean
+     * @var bool
      */
     private $enableCookieCheck = false;
 
@@ -149,7 +162,7 @@ class Shieldon
      * It is almost impossible that modern browsers don't support cookie, so we suspect the user is a robot or web crawler,
      * that is why we need session cookie check.
      *
-     * @var boolean
+     * @var bool
      */
     private $enableSessionCheck = true;
 
@@ -157,7 +170,7 @@ class Shieldon
      * Check how many pageviews an user made in a short period time.
      * For example, limit an user can only view 30 pages in 60 minutes.
      *
-     * @var boolean
+     * @var bool
      */
     private $enableFrequencyCheck = true;
 
@@ -167,7 +180,7 @@ class Shieldon
      * If an user view many pages on your website without HTTP_REFERER information, that means the user is a web crawler
      * and it directly downloads your web pages.
      *
-     * @var boolean
+     * @var bool
      */
     private $enableRefererCheck = true;
 
@@ -175,7 +188,7 @@ class Shieldon
      * If you don't want Shieldon to detect bad robots or crawlers, you can set it FALSE;
      * In this case AntiScriping can still deny users by querying rule table (in MySQL, or Redis, etc.) and $denyIpPool (Array)
      *
-     * @var boolean
+     * @var bool
      */
     private $enableFiltering = true;
 
@@ -225,6 +238,15 @@ class Shieldon
             'data_circle'     => 10,
             'system_firewall' => 10,
         ],
+        /**
+         * To prevent dropping social platform robots into iptables firewall, such as Facebook, Line, 
+         * and others who scrape snapshots from your web pages, you should adjust the values below 
+         * to fit your needs. (unit: second)
+         */
+        'record_attempt_detection_period' => 5, // 5 seconds.
+
+        // Reset the counter after n second.
+        'reset_attempt_counter' => 1800, // 30 minutes.
 
         /**
          * System-layer firewall, ip6table service watches this folder to receive command created by Shieldon Firewall.
@@ -292,30 +314,32 @@ class Shieldon
     /**
      * Get online session count
      *
-     * @var integer
+     * @var int
      */
     private $sessionCount = 0;
 
     /**
      * Current session order.
      *
-     * @var integer
+     * @var int
      */
     private $currentSessionOrder = 0;
 
     /**
      * Used on limitSession.
      *
-     * @var integer
+     * @var int
      */
     private $currentWaitNumber = 0;
 
     /**
      * Strict mode.
+     * 
+     * Set by `strictMode()` only. The default value of this propertry is undefined.
      *
-     * @var boolean
+     * @var bool
      */
-    private $strictMode = false;
+    private $strictMode;
 
     /**
      * Vistor's current browsering URL.
@@ -370,9 +394,9 @@ class Shieldon
 
         $this->setSessionId();
 
-        // At least load a captcha instance. Example is the base one.
-        // if (! isset($this->captcha['Example'])) {
-        $this->setCaptcha(new \Shieldon\Captcha\Example());
+        // At least load a captcha instance. Foundation is the base one.
+        // if (! isset($this->captcha['Foundation'])) {
+        $this->setCaptcha(new \Shieldon\Captcha\Foundation());
         // }
 
         if (! empty($properties)) {
@@ -1064,7 +1088,7 @@ class Shieldon
      */
     public function setView(string $content, string $type): self
     {
-        if ('limit' === $type || 'stop' === $type || 'deny' === $type) {
+        if ('session_limitation' === $type || 'captcha' === $type || 'rejection' === $type) {
             $this->html[$type] = $content;
         }
 
@@ -1098,12 +1122,11 @@ class Shieldon
         $output = '';
 
         if (self::RESPONSE_TEMPORARILY_DENY === $this->result) {
-            $type = 'stop';
+            $type = 'captcha';
         } elseif (self::RESPONSE_LIMIT === $this->result) {
-            $type = 'limit';
+            $type = 'session_limitation';
         } elseif (self::RESPONSE_DENY === $this->result) {
-            
-            $type = 'deny';
+            $type = 'rejection';
         } else {
 
             // @codeCoverageIgnoreStart
@@ -1118,7 +1141,7 @@ class Shieldon
         /**
          * @var string The language of output UI. It is used on views.
          */
-        $langCode = $_SESSION['shieldon_ui_lang'] ?? 'en';
+        $langCode = $_SESSION['SHIELDON_UI_LANG'] ?? 'en';
 
         /**
          * @var bool Show online session count. It is used on views.
@@ -1133,7 +1156,7 @@ class Shieldon
         // Use default template if there is no custom HTML template.
         if (empty($this->html[$type])) {
 
-            $viewPath = self::SHIELDON_DIR . '/../../templates/' . $type . '.php';
+            $viewPath = self::SHIELDON_DIR . '/../../templates/frontend/' . $type . '.php';
 
             if (empty($this->properties['display_online_info'])) {
                 $showOnlineInformation = false;
@@ -1163,7 +1186,7 @@ class Shieldon
                     'shadow_opacity'   => $this->dialogUI['shadow_opacity'] ?? '0.2',
                 ];
 
-                $css = require self::SHIELDON_DIR . '/../../templates/css-default.php';
+                $css = require self::SHIELDON_DIR . '/../../templates/frontend/css/default.php';
 
                 ob_start();
                 require $viewPath;
@@ -1178,7 +1201,7 @@ class Shieldon
 
             $output = $this->html[$type];
 
-            if ('stop' === $type) {
+            if ('captcha' === $type) {
 
                 // Build captcha form.
                 ob_start();
@@ -1303,56 +1326,55 @@ class Shieldon
         foreach (array_keys($this->component) as $name) {
             $this->component[$name]->setIp($this->ip);
             $this->component[$name]->setRdns($this->ipResolvedHostname);
-            $this->component[$name]->setStrict($this->strictMode);
-        }
 
-        if ($this->getComponent('Ip')) {
-
-            $result = $this->getComponent('Ip')->check();
-
-            if (! empty($result)) {
-
-                switch ($result['status']) {
-
-                    case 'allow':
-                        $resultCode = self::RESPONSE_ALLOW;
-                        break;
-    
-                    case 'deny':
-                        $resultCode = self::RESPONSE_DENY;
-                        break;
-                }
-
-                return $this->result = $this->sessionHandler($resultCode);
+            // Apply global strict mode to all components by `strictMode()` if nesscessary.
+            if (isset($this->strictMode)) {
+                $this->component[$name]->setStrict($this->strictMode);
             }
         }
 
-        foreach ($this->component as $component) {
+        /*
+        |--------------------------------------------------------------------------
+        | Stage - Looking for rule table.
+        |--------------------------------------------------------------------------
+        */
 
-            // First of all, check if is a a bad robot already defined in settings.
-            if ($component->isDenied()) {
-                return $this->result = self::RESPONSE_DENY;
-            }
-        }
-
-        // Looking for rule table.
         $ipRule = $this->driver->get($this->ip, 'rule');
 
         if (! empty($ipRule)) {
+
             $ruleType = (int) $ipRule['type'];
 
             if ($ruleType === self::ACTION_ALLOW) {
                 $this->isAllowedRule = true;
+                
             } else {
-
+                
+                // Current visitor has been blocked. If he still attempts accessing the site, 
+                // then we can drop him into the permanent block list.
                 $attempts = $ipRule['attempts'];
+                $now      = time();
 
                 $logData['log_ip']     = $ipRule['log_ip'];
                 $logData['ip_resolve'] = $ipRule['ip_resolve'];
-                $logData['time']       = time();
+                $logData['time']       = $now;
                 $logData['type']       = $ipRule['type'];
                 $logData['reason']     = $ipRule['reason'];
-                $logData['attempts']   = ++$attempts;
+                $logData['attempts']   = $attempts;
+
+                // @since 0.2.0
+                $attemptPeriod = $this->properties['record_attempt_detection_period'];
+                $attemptReset  = $this->properties['reset_attempt_counter'];
+
+                $lastTimeDiff = $now - $ipRule['time'];
+
+                if ($lastTimeDiff <= $attemptPeriod) {
+                    $logData['attempts'] = ++$attempts;
+                }
+
+                if ($lastTimeDiff > $attemptReset) {
+                    $logData['attempts'] = 0;
+                }
 
                 $isTriggerMessenger = false;
                 $isUpdatRuleTable = false;
@@ -1371,7 +1393,10 @@ class Shieldon
                         $buffer = $this->properties['deny_attempt_buffer']['data_circle'];
 
                         if ($attempts >= $buffer) {
-                            $isTriggerMessenger = true;
+
+                            if ($this->properties['deny_attempt_notify']['data_circle']) {
+                                $isTriggerMessenger = true;
+                            }
 
                             $logData['type'] = self::ACTION_DENY;
 
@@ -1394,7 +1419,10 @@ class Shieldon
                         $bufferIptable = $this->properties['deny_attempt_buffer']['system_firewall'];
 
                         if ($attempts >= $bufferIptable) {
-                            $isTriggerMessenger = true;
+
+                            if ($this->properties['deny_attempt_notify']['system_firewall']) {
+                                $isTriggerMessenger = true;
+                            }
 
                             $folder = rtrim($this->properties['iptables_watching_folder'], '/');
 
@@ -1421,6 +1449,9 @@ class Shieldon
                     }
                 }
 
+                // We only update data when `deny_attempt_enable` is enable.
+                // Because we want to get the last visited time and attempt counter.
+                // Otherwise we don't update it everytime to avoid wasting CPU resource.
                 if ($isUpdatRuleTable) {
                     $this->driver->save($this->ip, $logData, 'rule');
                 }
@@ -1443,22 +1474,24 @@ class Shieldon
                         __('core', 'messenger_text_timezone') => date_default_timezone_get(),
                     ];
 
+                    $message = __('core', 'messenger_notification_subject', 'Notification for {0}', [$this->ip]) . "\n\n";
+
+                    foreach ($prepareMessageData as $key => $value) {
+                        $message .= $key . ': ' . $value . "\n";
+                    }
+
                     try {
+
                         foreach ($this->messengers as $messenger) {
-                            $messenger->send(
-                                \Shieldon\Helper\__(
-                                    'core', 'messenger_notification_subject',
-                                    'Notification for {0}',
-                                    array($this->ip)
-                                ),
-                                $prepareMessageData
-                            );
+                            $messenger->send($message);
                         }
 
+                    // @codeCoverageIgnoreStart
                     } catch (RuntimeException $e) {
                         // echo $e->getMessage();
                         // Do not throw error, becasue the third-party services might be unavailable.
                     }
+                    // @codeCoverageIgnoreEnd
                 }
 
                 // For an incoming request already in the rule list, return the rule type immediately.
@@ -1466,7 +1499,18 @@ class Shieldon
             }
         }
 
-        if (! $this->isAllowedRule) {
+        if ($this->isAllowedRule) {
+
+            // The requests that are allowed in rule table will not go into sessionHandler.
+            return $this->result = self::RESPONSE_ALLOW;
+
+        } else {
+
+            /*
+            |--------------------------------------------------------------------------
+            | Statge - Detect popular search engine.
+            |--------------------------------------------------------------------------
+            */
 
             if ($this->getComponent('TrustedBot')) {
  
@@ -1499,13 +1543,75 @@ class Shieldon
                     // Allowed robots not join to our traffic handler.
                     return $this->result = self::RESPONSE_ALLOW;
                 }
+
+                // After `isAllowed()` executed, we can check if the currect access is fake by `isFakeRobot()`.
+                if ($this->getComponent('TrustedBot')->isFakeRobot()) {
+                    $this->action(self::ACTION_DENY, self::REASON_COMPONENT_TRUSTED_ROBOT);
+
+                    return $this->result = self::RESPONSE_DENY;
+                }
             }
-        } else {
-            // The requests that are allowed in rule table will not go into sessionHandler.
-            return $this->result = self::RESPONSE_ALLOW;
+
+            /*
+            |--------------------------------------------------------------------------
+            | Stage - IP component.
+            |--------------------------------------------------------------------------
+            */
+
+            if ($this->getComponent('Ip')) {
+
+                $result = $this->getComponent('Ip')->check();
+
+                if (! empty($result)) {
+    
+                    switch ($result['status']) {
+    
+                        case 'allow':
+                            $actionCode = self::ACTION_ALLOW;
+                            $reasonCode = $result['code'];
+                            break;
+        
+                        case 'deny':
+                            $actionCode = self::ACTION_DENY;
+                            $reasonCode = $result['code']; 
+                            break;
+                    }
+    
+                    // @since 0.1.8
+                    $this->action($actionCode, $reasonCode);
+    
+                    // $resultCode = $actionCode
+                    return $this->result = $this->sessionHandler($actionCode);
+                }
+            }
+    
+            /*
+            |--------------------------------------------------------------------------
+            | Stage - Check all other components.
+            |--------------------------------------------------------------------------
+            */
+
+            foreach ($this->component as $component) {
+    
+                // check if is a a bad robot already defined in settings.
+                if ($component->isDenied()) {
+    
+                    // @since 0.1.8
+                    $this->action(self::ACTION_DENY, $component->getDenyStatusCode());
+    
+                    return $this->result = self::RESPONSE_DENY;
+                }
+            }
         }
 
-        // This IP address is not listed in rule table, let's detect it.
+        /*
+        |--------------------------------------------------------------------------
+        | Stage - Filters
+        |--------------------------------------------------------------------------
+        | This IP address is not listed in rule table, let's detect it.
+        |
+        */
+
         if ($this->enableFiltering) {
             return $this->result = $this->sessionHandler($this->filter());
         }

@@ -28,9 +28,7 @@ use Shieldon\Log\ActionLogger;
 use Shieldon\Security\Xss;
 use Shieldon\Security\httpAuthentication;
 use Shieldon\FirewallTrait;
-use Messenger\Telegram;
-use Messenger\LineNotify;
-use Messenger\Sendgrid;
+use Messenger as MessengerModule;
 
 use PDO;
 use PDOException;
@@ -67,7 +65,7 @@ class Firewall
      * the page will be refeshed after submitting Capatcha form.
      * No refresh? An Error will be occurred while current URL does't support POST method request.
      *
-     * @var boolean
+     * @var bool
      */
     protected $restful = false;
 
@@ -118,6 +116,8 @@ class Firewall
      */
     public function setup(): void
     {
+        $this->status = $this->getOption('daemon');
+
         $this->setDriver();
 
         $this->setChannel();
@@ -151,8 +151,6 @@ class Firewall
         $this->setDenyAttempts();
 
         $this->setIptablesWatchingFolder();
-
-        $this->status = $this->getOption('daemon');
     }
 
     /**
@@ -270,7 +268,6 @@ class Firewall
 
                 if (empty($fileSetting['directory_path'])) {
                     $fileSetting['directory_path'] = $this->directory;
-                    $this->status = false;
                 }
 
                 // Use File data driver.
@@ -300,6 +297,8 @@ class Firewall
     
                 // @codeCoverageIgnoreStart
                 } catch(PDOException $e) {
+                    $this->status = false;
+
                     echo $e->getMessage();
                 }
                 // @codeCoverageIgnoreEnd
@@ -559,35 +558,146 @@ class Firewall
      */
     protected function setMessengers(): void
     {
-        $telegramSetting = $this->getOption('telegram', 'messengers');
-        $linenotodySetting = $this->getOption('line_notify', 'messengers');
-        $sendgridSetting = $this->getOption('sendgrid', 'messengers');
+        $telegramSetting     = $this->getOption('telegram', 'messengers');
+        $linenotodySetting   = $this->getOption('line_notify', 'messengers');
+        $sendgridSetting     = $this->getOption('sendgrid', 'messengers');
+        $phpMailSetting      = $this->getOption('native_php_mail', 'messengers');
+        $smtpSetting         = $this->getOption('smtp', 'messengers');
+        $mailgunSetting      = $this->getOption('mailgun', 'messengers');
+        $rocketchatSetting   = $this->getOption('rocket_chat', 'messengers');
+        $slackSetting        = $this->getOption('slack', 'messengers');
+        $slackWebhookSetting = $this->getOption('slack_webhook', 'messengers');
 
-        if ($telegramSetting['enable']) {
-            $apiKey = $telegramSetting['config']['api_key'] ?? '';
-            $channel = $telegramSetting['config']['channel'] ?? '';
-            $this->shieldon->setMessenger(new Telegram($apiKey, $channel));
-        }
+        $messageTitle = 'Firewall Notification';
 
-        if ($linenotodySetting['enable']) {
-            $accessToken = $linenotodySetting['config']['access_token'] ?? '';
-            $this->shieldon->setMessenger(new LineNotify($accessToken));
-        }
-
-        if ($sendgridSetting['enable']) {
-            $apiKey = $sendgridSetting['config']['api_key'] ?? '';
-            $sender = $sendgridSetting['config']['sender'] ?? '';
-            $recipients = $sendgridSetting['config']['recipients'] ?? [];
-
-            $sendgrid = new Sendgrid($apiKey);
-            $sendgrid->setSubject('Firewall Notification');
-            $sendgrid->addSender($sender);
-
-            foreach ($recipients as $recipient) {
-                $sendgrid->addRecipient($recipient);
+        if (! empty($telegramSetting['enable'])) {
+            if (! empty($telegramSetting['confirm_test'])) {
+                $apiKey = $telegramSetting['config']['api_key'] ?? '';
+                $channel = $telegramSetting['config']['channel'] ?? '';
+                $this->shieldon->setMessenger(
+                    new MessengerModule\Telegram($apiKey, $channel)
+                );
             }
+        }
 
-            $this->shieldon->setMessenger($sendgrid);
+        if (! empty($linenotodySetting['enable'])) {
+            if (! empty($linenotodySetting['confirm_test'])) {
+                $accessToken = $linenotodySetting['config']['access_token'] ?? '';
+                $this->shieldon->setMessenger(
+                    new MessengerModule\LineNotify($accessToken)
+                );
+            }
+        }
+
+        if (! empty($sendgridSetting['enable'])) {
+            if (! empty($sendgridSetting['confirm_test'])) {
+                $apiKey = $sendgridSetting['config']['api_key'] ?? '';
+                $sender = $sendgridSetting['config']['sender'] ?? '';
+                $recipients = $sendgridSetting['config']['recipients'] ?? [];
+
+                $sendgrid = new MessengerModule\Sendgrid($apiKey);
+                $sendgrid->setSubject($messageTitle);
+                $sendgrid->addSender($sender);
+
+                foreach ($recipients as $recipient) {
+                    $sendgrid->addRecipient($recipient);
+                }
+
+                $this->shieldon->setMessenger($sendgrid);
+            }
+        }
+
+        if (! empty($phpMailSetting['enable'])) {
+            if (! empty($phpMailSetting['confirm_test'])) {
+                $sender = $phpMailSetting['config']['sender'] ?? '';
+                $recipients = $phpMailSetting['config']['recipients'] ?? [];
+
+                $phpNativeMail = new MessengerModule\Mail();
+                $phpNativeMail->setSubject($messageTitle);
+                $phpNativeMail->addSender($sender);
+
+                foreach ($recipients as $recipient) {
+                    $phpNativeMail->addRecipient($recipient);
+                }
+
+                $this->shieldon->setMessenger($phpNativeMail);
+            }
+        }
+
+        if (! empty($smtpSetting['enable'])) {
+            if (! empty($smtpSetting['confirm_test'])) {
+                $sender = $smtpSetting['config']['sender'] ?? '';
+                $recipients = $smtpSetting['config']['recipients'] ?? [];
+                $host = $smtpSetting['config']['host'] ?? '';
+                $user = $smtpSetting['config']['user'] ?? '';
+                $pass = $smtpSetting['config']['pass'] ?? '';
+                $port = (int) $smtpSetting['config']['port'] ?? '';
+
+                $smtpMail = new MessengerModule\Smtp($user, $pass, $host, $port);
+                $smtpMail->setSubject($messageTitle);
+                $smtpMail->addSender($sender);
+
+                foreach ($recipients as $recipient) {
+                    $smtpMail->addRecipient($recipient);
+                }
+
+                $this->shieldon->setMessenger($smtpMail);
+            }
+        }
+
+        if (! empty($mailgunSetting['enable'])) {
+            if (! empty($mailgunSetting['confirm_test'])) {
+                $apiKey = $mailgunSetting['config']['api_key'] ?? '';
+                $domain = $mailgunSetting['config']['domain_name'] ?? '';
+                $sender = $mailgunSetting['config']['sender'] ?? '';
+                $recipients = $mailgunSetting['config']['recipients'] ?? [];
+
+                $mailgun = new MessengerModule\Mailgun($apiKey, $domain);
+                $mailgun->setSubject($messageTitle);
+                $mailgun->addSender($sender);
+
+                foreach ($recipients as $recipient) {
+                    $mailgun->addRecipient($recipient);
+                }
+
+                $this->shieldon->setMessenger($mailgun);
+            }
+        }
+
+        if (! empty($rocketchatSetting['enable'])) {
+            if (! empty($rocketchatSetting['confirm_test'])) {
+                $serverUrl = $rocketchatSetting['config']['server_url'] ?? '';
+                $userId = $rocketchatSetting['config']['user_id'] ?? '';
+                $accessToken = $rocketchatSetting['config']['access_token'] ?? '';
+                $channel = $rocketchatSetting['config']['channel'] ?? [];
+
+                $this->shieldon->setMessenger(
+                    new MessengerModule\RocketChat(
+                        $accessToken, $userId, $serverUrl, $channel
+                    )
+                );
+            }
+        }
+
+        if (! empty($slackSetting['enable'])) {
+            if (! empty($slackSetting['confirm_test'])) {
+                $botToken = $slackSetting['config']['bot_token'] ?? '';
+                $channel = $slackSetting['config']['channel'] ?? '';
+
+                $this->shieldon->setMessenger(
+                    new MessengerModule\Slack($botToken, $channel)
+                );
+            }
+        }
+
+        if (! empty($slackWebhookSetting['enable'])) {
+            if (! empty($slackWebhookSetting['confirm_test'])) {
+                $webhookUrl = $slackWebhookSetting['config']['webhook_url'] ?? '';
+
+                $this->shieldon->setMessenger(
+                    new MessengerModule\SlackWebhook($webhookUrl)
+                );
+            }
         }
     }
 
@@ -646,6 +756,15 @@ class Firewall
             'data_circle' => $eventSetting['data_circle']['buffer'] ?? 10,
             'system_firewall' => $eventSetting['data_circle']['buffer'] ?? 10,
         ]);
+
+        // Check the time of the last failed attempt. @since 0.2.0
+        $recordAttempt = $this->getOption('record_attempt');
+
+        $detectionPeriod = $recordAttempt['detection_period'] ?? 5;
+        $timeToReset = $recordAttempt['time_to_reset'] ?? 1800;
+
+        $this->shieldon->setProperty('record_attempt_detection_period', $detectionPeriod);
+        $this->shieldon->setProperty('reset_attempt_counter', $timeToReset);
     }
 
     /**
@@ -876,7 +995,7 @@ class Firewall
         $ui = $this->getOption('dialog_ui');
 
         if (! empty($ui)) {
-            $_SESSION['shieldon_ui_lang'] = $ui['lang'];
+            $_SESSION['SHIELDON_UI_LANG'] = $ui['lang'];
             $this->shieldon->setDialogUI($this->getOption('dialog_ui'));
         }
     }

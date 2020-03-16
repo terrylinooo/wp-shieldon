@@ -12,6 +12,6 @@
         }
     ],
     "require": {
-        "shieldon/shieldon": "^0.1.3"
+        "shieldon/shieldon": "^1.0"
     }
 }
