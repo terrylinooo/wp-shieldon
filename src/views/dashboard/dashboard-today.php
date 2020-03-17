@@ -15,8 +15,6 @@ if ( ! defined('SHIELDON_PLUGIN_NAME') ) die;
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script src="https://cdn.datatables.net/v/dt/dt-1.10.18/b-1.5.6/fh-3.1.4/kt-2.5.0/r-2.2.2/datatables.min.js"></script>
 
-
-
 <div class="wpso-dashboard">
 
 	<div class="wpso-flex">

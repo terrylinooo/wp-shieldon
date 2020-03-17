@@ -360,6 +360,10 @@ code.tips {
   background: linear-gradient(to bottom, #eee 0%, #fff 100%);
 }
 
+.filter-status a {
+  text-decoration: none;
+}
+
 .wpso-custom-file {
   position: relative;
   display: inline-block;

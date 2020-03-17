@@ -80,6 +80,15 @@ class WPSO_Admin_Menu {
 			array( $this, 'overview' )
 		);
 
+		add_submenu_page(
+			'shieldon-settings',
+			__( 'Operation Status', 'wp-shieldon' ),
+			__( 'Operation Status', 'wp-shieldon' ),
+			'manage_options',
+			'shieldon-operation-status',
+			array( $this, 'operation_status' )
+		);
+
 		if ( 'yes' === wpso_get_option( 'enable_action_logger', 'shieldon_daemon' ) ) {
 			add_submenu_page(
 				'shieldon-settings',
@@ -204,7 +213,7 @@ class WPSO_Admin_Menu {
 	}
 
 	/**
-	 * Import / Export settings.
+	 * Import
 	 *
 	 * @return void
 	 */
@@ -230,7 +239,7 @@ class WPSO_Admin_Menu {
 							'type' => 'error',
 							'body' => __( 'Invalid JSON file.', 'wp-shieldon' ),
 						);
-					} else {
+					} elseif ( ! empty( $setting_data['settings'] ) ) {
 
 						$setting_sections = array( 
 							'daemon', 
@@ -248,7 +257,7 @@ class WPSO_Admin_Menu {
 						);
 
 						foreach ($setting_sections as $v) {
-							if ( ! empty( $setting_data[ $v ] ) ) {
+							if ( ! empty( $setting_data['settings'][ $v ] ) ) {
 								update_option( 'shieldon_' . $v, $setting_data[ $v ] );
 							}
 						}
@@ -256,6 +265,11 @@ class WPSO_Admin_Menu {
 						$message = array(
 							'type' => 'updated',
 							'body' => __( 'Your configuration file is imported successfully.', 'wp-shieldon' ),
+						);
+					} else {
+						$message = array(
+							'type' => 'error',
+							'body' => __( 'Invalid configuration file.', 'wp-shieldon' ),
 						);
 					}
 				}
@@ -272,6 +286,56 @@ class WPSO_Admin_Menu {
 		wpso_show_settings_header();
 		echo wpso_load_view( 'setting/import-export', $data );
 		wpso_show_settings_footer();
+	}
+
+	/**
+	 * Export settings.
+	 *
+	 * Feature: export settings as a JSON file.
+	 * Working URL: /wp-admin/admin.php?page=shieldon-import-export&action=export&_wpnonce=xxxxxxx
+	 * This URL opens a blank page and begin downloading process.
+	 *
+	 * @return void
+	 */
+	public function export_settings() {
+		if ( isset( $_GET['action'] ) && 'export' === $_GET['action'] && ! empty( $_GET['_wpnonce'] ) ) {
+			if ( wp_verify_nonce( $_GET['_wpnonce'], 'shieldon_export_' . date( 'YmdH' ) ) && current_user_can( 'manage_options' ) ) {
+				header('Content-type: text/plain');
+				header('Content-Disposition: attachment; filename=' . $_SERVER['HTTP_HOST'] . '_wp_shieldon_' . date('YmdHis') . '.json');
+				header('Expires: 0');
+				header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+				header('Pragma: public');
+
+				$setting_sections = array( 
+					'daemon', 
+					'component', 
+					'filter', 
+					'captcha', 
+					'exclusion', 
+					'authetication',
+					'xss_protection',
+					'xss_protected_list',
+					'ip_login',
+					'ip_signup',
+					'ip_xmlrpc',
+					'ip_global',
+				);
+
+				$configuration = array();
+
+				$configuration['plugin_name']    = 'WP Shieldon';
+				$configuration['plugin_version'] = SHIELDON_PLUGIN_VERSION;
+				$configuration['export_date']    = date( 'Y-m-d');
+				$configuration['export_time']    = date( 'H:i:s');
+				$configuration['site_domain']    = $_SERVER['HTTP_HOST'];
+
+				foreach ( $setting_sections as $s ) {
+					$configuration['settings'][ $s ] = get_option( 'shieldon_' . $s );
+				}
+				echo json_encode( $configuration, JSON_PRETTY_PRINT );
+				exit;
+			}
+		}
 	}
 
 	/**
@@ -764,12 +828,188 @@ class WPSO_Admin_Menu {
             if ( isset( $operatingMessengers[ $class ] ) ) {
                 $operatingMessengers[ $class ] = true;
             }
-        }
+		}
 
         $data['messengers'] = $operatingMessengers;
 
 		wpso_show_settings_header();
 		echo wpso_load_view( 'dashboard/overview', $data );
+		wpso_show_settings_footer();
+	}
+
+	/**
+	 * Operation status and real-time stats of current data circle.
+	 *
+	 * @return void
+	 */
+	public function operation_status() {
+
+		$shieldon = \Shieldon\Container::get( 'shieldon' );
+		
+		$data['components'] = [
+            'Ip'         => (! empty($shieldon->component['Ip']))         ? true : false,
+            'TrustedBot' => (! empty($shieldon->component['TrustedBot'])) ? true : false,
+            'Header'     => (! empty($shieldon->component['Header']))     ? true : false,
+            'Rdns'       => (! empty($shieldon->component['Rdns']))       ? true : false,
+            'UserAgent'  => (! empty($shieldon->component['UserAgent']))  ? true : false,
+        ];
+
+        $reflection = new ReflectionObject($shieldon);
+        $t = $reflection->getProperty('enableCookieCheck');
+        $t->setAccessible(true);
+        $enableCookieCheck = $t->getValue($shieldon);
+
+        $reflection = new ReflectionObject($shieldon);
+        $t = $reflection->getProperty('enableSessionCheck');
+        $t->setAccessible(true);
+        $enableSessionCheck = $t->getValue($shieldon);
+
+        $reflection = new ReflectionObject($shieldon);
+        $t = $reflection->getProperty('enableFrequencyCheck');
+        $t->setAccessible(true);
+        $enableFrequencyCheck = $t->getValue($shieldon);
+
+        $reflection = new ReflectionObject($shieldon);
+        $t = $reflection->getProperty('enableRefererCheck');
+        $t->setAccessible(true);
+        $enableRefererCheck = $t->getValue($shieldon);
+
+        $data['filters'] = [
+            'cookie'    => $enableCookieCheck,
+            'session'   => $enableSessionCheck,
+            'frequency' => $enableFrequencyCheck,
+            'referer'   => $enableRefererCheck,
+        ];
+		
+		$ruleList = $shieldon->driver->getAll('rule');
+
+		// Components.
+        $data['component_ip']         = 0;
+        $data['component_trustedbot'] = 0;
+        $data['component_rdns']       = 0;
+        $data['component_header']     = 0;
+		$data['component_useragent']  = 0;
+		
+		// Filters.
+        $data['filter_frequency'] = 0;
+        $data['filter_referer']   = 0;
+        $data['filter_cookie']    = 0;
+        $data['filter_session']   = 0;
+
+        // Components.
+        $data['rule_list']['ip']         = array();
+        $data['rule_list']['trustedbot'] = array();
+        $data['rule_list']['rdns']       = array();
+        $data['rule_list']['header']     = array();
+        $data['rule_list']['useragent']  = array();
+
+        // Filters.
+        $data['rule_list']['frequency'] = array();
+        $data['rule_list']['referer']   = array();
+        $data['rule_list']['cookie']    = array();
+        $data['rule_list']['session']   = array();
+
+        foreach ($ruleList as $ruleInfo) {
+    
+            switch ($ruleInfo['reason']) {
+                case $shieldon::REASON_DENY_IP:
+                case $shieldon::REASON_COMPONENT_IP:
+                    $data['component_ip']++;
+                    $data['rule_list']['ip'][] = $ruleInfo;
+                    break;
+
+                case $shieldon::REASON_COMPONENT_RDNS:
+                    $data['component_rdns']++;
+                    $data['rule_list']['rdns'][] = $ruleInfo;
+                    break;
+                
+                case $shieldon::REASON_COMPONENT_HEADER:
+                    $data['component_header']++;
+                    $data['rule_list']['header'][] = $ruleInfo;
+                    break;
+
+                case $shieldon::REASON_COMPONENT_USERAGENT:
+                    $data['component_useragent']++;
+                    $data['rule_list']['useragent'][] = $ruleInfo;
+                    break;
+
+                case $shieldon::REASON_COMPONENT_TRUSTED_ROBOT:
+                    $data['component_trustedbot']++;
+                    $data['rule_list']['trustedbot'][] = $ruleInfo;
+                    break;
+
+                case $shieldon::REASON_TOO_MANY_ACCESSES:
+                case $shieldon::REASON_REACHED_LIMIT_DAY:
+                case $shieldon::REASON_REACHED_LIMIT_HOUR:
+                case $shieldon::REASON_REACHED_LIMIT_MINUTE:
+                case $shieldon::REASON_REACHED_LIMIT_SECOND:
+                    $data['filter_frequency']++;
+                    $data['rule_list']['frequency'][] = $ruleInfo;
+                    break;
+
+                case $shieldon::REASON_EMPTY_REFERER:
+                    $data['filter_referer']++;
+                    $data['rule_list']['referer'][] = $ruleInfo;
+                    break;
+
+                case $shieldon::REASON_EMPTY_JS_COOKIE:
+                    $data['filter_cookie']++;
+                    $data['rule_list']['cookie'][] = $ruleInfo;
+                    break;
+
+                case $shieldon::REASON_TOO_MANY_SESSIONS:
+                    $data['filter_session']++;
+                    $data['rule_list']['session'][] = $ruleInfo;
+                    break;
+            }
+		}
+
+        $reasons = array(
+            $shieldon::REASON_MANUAL_BAN              => __( 'Added manually by administrator', 'wp-shieldon' ),
+            $shieldon::REASON_IS_SEARCH_ENGINE        => __( 'Search engine bot', 'wp-shieldon' ),
+            $shieldon::REASON_IS_GOOGLE               => __( 'Google bot', 'wp-shieldon' ),
+            $shieldon::REASON_IS_BING                 => __( 'Bing bot', 'wp-shieldon' ),
+            $shieldon::REASON_IS_YAHOO                => __( 'Yahoo bot', 'wp-shieldon' ),
+            $shieldon::REASON_TOO_MANY_SESSIONS       => __( 'Too many sessions', 'wp-shieldon' ),
+            $shieldon::REASON_TOO_MANY_ACCESSES       => __( 'Too many accesses', 'wp-shieldon' ),
+            $shieldon::REASON_EMPTY_JS_COOKIE         => __( 'Cannot create JS cookies', 'wp-shieldon' ),
+            $shieldon::REASON_EMPTY_REFERER           => __( 'Empty referrer', 'wp-shieldon' ),
+            $shieldon::REASON_REACHED_LIMIT_DAY       => __( 'Daily limit reached', 'wp-shieldon' ),
+            $shieldon::REASON_REACHED_LIMIT_HOUR      => __( 'Hourly limit reached', 'wp-shieldon' ),
+            $shieldon::REASON_REACHED_LIMIT_MINUTE    => __( 'Minutely limit reached', 'wp-shieldon' ),
+			$shieldon::REASON_REACHED_LIMIT_SECOND    => __( 'Secondly limit reached', 'wp-shieldon' ),
+            $shieldon::REASON_INVALID_IP              => __( 'Invalid IP address.', 'wp-shieldon' ),
+            $shieldon::REASON_DENY_IP                 => __( 'Denied by IP component.', 'wp-shieldon' ),
+			$shieldon::REASON_ALLOW_IP                => __( 'Allowed by IP component.', 'wp-shieldon' ),
+            $shieldon::REASON_COMPONENT_IP            => __( 'Denied by IP component.', 'wp-shieldon' ),
+            $shieldon::REASON_COMPONENT_RDNS          => __( 'Denied by RDNS component.', 'wp-shieldon' ),
+            $shieldon::REASON_COMPONENT_HEADER        => __( 'Denied by Header component.', 'wp-shieldon' ),
+            $shieldon::REASON_COMPONENT_USERAGENT     => __( 'Denied by User-agent component.', 'wp-shieldon' ),
+            $shieldon::REASON_COMPONENT_TRUSTED_ROBOT => __( 'Identified as fake search engine.', 'wp-shieldon' ),
+        );
+
+        $types = array(
+            $shieldon::ACTION_DENY             => 'DENY',
+            $shieldon::ACTION_ALLOW            => 'ALLOW',
+            $shieldon::ACTION_TEMPORARILY_DENY => 'CAPTCHA',
+        );
+
+        $data['reason_mapping'] = $reasons;
+		$data['type_mapping']   = $types;
+		$data['panel_title']    = array(
+			'ip'         => __( 'IP', 'wp-shieldon' ),
+			'trustedbot' => __( 'Trusted Bot', 'wp-shieldon' ),
+			'header'     => __( 'Header', 'wp-shieldon' ),
+			'rdns'       => __( 'RDNS', 'wp-shieldon' ),
+			'useragent'  => __( 'User Agent', 'wp-shieldon' ),
+			'frequency'  => __( 'Frequency', 'wp-shieldon' ),
+			'referer'    => __( 'Referrer', 'wp-shieldon' ),
+			'session'    => __( 'Session', 'wp-shieldon' ), 
+			'cookie'     => __( 'Cookie', 'wp-shieldon' ), 
+		);
+		
+		wpso_show_settings_header();
+		echo wpso_load_view( 'dashboard/operation-status', $data );
 		wpso_show_settings_footer();
 	}
 }
