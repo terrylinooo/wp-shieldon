@@ -19,7 +19,7 @@ if ( ! defined('SHIELDON_PLUGIN_NAME') ) die;
         </div>
         <hr />
 		<div>
-            <p>Import a JSON file that you previously exported.<p>
+            <p><?php _e( 'Import a JSON file that you previously exported.', 'wp-shieldon' ); ?><p>
             <?php if ( ! empty( $message['body'] ) ) : ?>
                 <div class="<?php echo $message['type']; ?>">
                     <p><?php echo $message['body']; ?></p>
@@ -45,7 +45,7 @@ if ( ! defined('SHIELDON_PLUGIN_NAME') ) die;
         <br />
         <hr />
 		<div>
-            <p>Export all settings into a JSON file.<p>
+            <p><?php _e( 'Export all settings into a JSON file.', 'wp-shieldon' ); ?><p>
             <?php $wpso_nonce = wp_create_nonce( 'shieldon_export_' . date( 'YmdH' ) ); ?>
             <a href="<?php menu_page_url( 'shieldon-import-export' ); ?>&action=export&_wpnonce=<?php echo $wpso_nonce ?>" class="btn-shieldon" target="_blank">
                 <i class="fas fa-file-export"></i> <?php _e( 'Export', 'wp-shieldon' ); ?>

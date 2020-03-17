@@ -254,7 +254,7 @@ class WPSO_Admin_Settings {
 				array(
 					'name'    => 'header_strict_mode',
 					'label'   => __( 'Strict Mode', 'wp-shieldon' ),
-					'desc'    => __( 'Deny all vistors without common header information.', 'wp-shieldon' ),
+					'desc'    => __( 'Deny all vistors without common header information.', 'wp-shieldon' ) . '<br /><br />Accept, Accept-Language, Accept-Encoding',
 					'type'    => 'toggle',
 					'size'    => 'sm',
 					'default' => 'no',
@@ -308,7 +308,7 @@ class WPSO_Admin_Settings {
 				array(
 					'name'    => 'rdns_strict_mode',
 					'label'   => __( 'Strict Mode', 'wp-shieldon' ),
-					'desc'    => __( 'Visitors with empty RDNS record will be blocked.<br />IP resolved hostname (RDNS) and IP address must match.', 'wp-shieldon' ),
+					'desc'    => wpso_load_view( 'setting/rdns' ),
 					'type'    => 'toggle',
 					'size'    => 'sm',
 					'default' => 'no',

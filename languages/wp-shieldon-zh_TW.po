@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - WP Shieldon &#8211; Anti-scraping and security - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-12-26 08:23+0000\n"
+"PO-Revision-Date: 2020-03-17 07:09+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Plugins - WP Shieldon &#8211; Anti-scraping and security "
 "- Stable (latest release)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-26 08:23+0000\n"
+"POT-Creation-Date: 2020-03-17 07:06+0000\n"
 "Last-Translator: Terry Lin <contact@terryl.in>\n"
 "Language-Team: Chinese (Taiwan)\n"
 "X-Loco-Version: 2.3.1; wp-5.3.2"
@@ -21,15 +21,15 @@ msgstr ""
 msgid "Global"
 msgstr "全站範圍"
 
-#: src/class-wpso-admin-ip-manager.php:61 src/class-wpso-admin-settings.php:623
+#: src/class-wpso-admin-ip-manager.php:61 src/class-wpso-admin-settings.php:633
 msgid "Login"
 msgstr "使用者登入"
 
-#: src/class-wpso-admin-ip-manager.php:66 src/class-wpso-admin-settings.php:632
+#: src/class-wpso-admin-ip-manager.php:66 src/class-wpso-admin-settings.php:642
 msgid "Signup"
 msgstr "使用者註冊"
 
-#: src/class-wpso-admin-ip-manager.php:71 src/class-wpso-admin-settings.php:641
+#: src/class-wpso-admin-ip-manager.php:71 src/class-wpso-admin-settings.php:651
 msgid "XML RPC"
 msgstr "XML RPC"
 
@@ -75,151 +75,276 @@ msgid "WP Shieldon"
 msgstr "WP Shieldon"
 
 #: src/class-wpso-admin-menu.php:67 src/class-wpso-admin-menu.php:68
-#: src/class-wpso-admin-menu.php:170
+#: src/class-wpso-admin-menu.php:190
 msgid "Settings"
 msgstr "設定"
 
 #: src/class-wpso-admin-menu.php:76 src/class-wpso-admin-menu.php:77
-msgid "Action Logs"
-msgstr "動作記錄"
-
-#: src/class-wpso-admin-menu.php:85 src/class-wpso-admin-menu.php:86
 msgid "Overview"
 msgstr "總覽"
 
-#: src/class-wpso-admin-menu.php:94 src/class-wpso-admin-menu.php:95
+#: src/class-wpso-admin-menu.php:85 src/class-wpso-admin-menu.php:86
+msgid "Operation Status"
+msgstr "運行狀態"
+
+#: src/class-wpso-admin-menu.php:95 src/class-wpso-admin-menu.php:96
+msgid "Action Logs"
+msgstr "動作記錄"
+
+#: src/class-wpso-admin-menu.php:105 src/class-wpso-admin-menu.php:106
 #: src/views/dashboard/rule-table.php:23
 msgid "Rule Table"
 msgstr "規則表"
 
-#: src/class-wpso-admin-menu.php:103 src/class-wpso-admin-menu.php:104
+#: src/class-wpso-admin-menu.php:114 src/class-wpso-admin-menu.php:115
 #: src/views/dashboard/filter-log-table.php:57
 msgid "Filter Log Table"
 msgstr "過濾器記錄表"
 
-#: src/class-wpso-admin-menu.php:112 src/class-wpso-admin-menu.php:113
+#: src/class-wpso-admin-menu.php:123 src/class-wpso-admin-menu.php:124
 #: src/views/dashboard/session-table.php:64
 msgid "Session Table"
 msgstr "工作階段表"
 
-#: src/class-wpso-admin-menu.php:121 src/class-wpso-admin-menu.php:122
+#: src/class-wpso-admin-menu.php:132 src/class-wpso-admin-menu.php:133
 msgid "IP Manager"
 msgstr "IP 位址管理程式"
 
-#: src/class-wpso-admin-menu.php:130 src/class-wpso-admin-menu.php:131
+#: src/class-wpso-admin-menu.php:141 src/class-wpso-admin-menu.php:142
 #: src/views/security/xss-protection.php:23
 msgid "XSS Protection"
 msgstr "XSS 防護"
 
-#: src/class-wpso-admin-menu.php:139 src/class-wpso-admin-menu.php:140
+#: src/class-wpso-admin-menu.php:150 src/class-wpso-admin-menu.php:151
 #: src/views/security/authentication.php:23
 msgid "Authentication"
 msgstr "網頁驗證"
 
-#: src/class-wpso-admin-menu.php:148 src/class-wpso-admin-menu.php:149
+#: src/class-wpso-admin-menu.php:159
+msgid "Import/Export"
+msgstr "匯入／匯出"
+
+#: src/class-wpso-admin-menu.php:160 src/views/setting/import-export.php:18
+msgid "Import / Export"
+msgstr "匯入 / 匯出"
+
+#: src/class-wpso-admin-menu.php:168 src/class-wpso-admin-menu.php:169
 msgid "About"
 msgstr "關於"
 
-#: src/class-wpso-admin-menu.php:189
+#: src/class-wpso-admin-menu.php:209
 msgid "View GitHub project"
 msgstr "檢視 GitHub 專案"
 
-#: src/class-wpso-admin-menu.php:190
+#: src/class-wpso-admin-menu.php:210
 msgid "Report issues"
 msgstr "回報問題"
 
-#: src/class-wpso-admin-menu.php:322
+#: src/class-wpso-admin-menu.php:240
+msgid "Invalid JSON file."
+msgstr "無效的 JSON 檔案。"
+
+#: src/class-wpso-admin-menu.php:267
+msgid "Your configuration file is imported successfully."
+msgstr "您的組態設定檔案已被成功匯入。"
+
+#: src/class-wpso-admin-menu.php:272
+msgid "Invalid configuration file."
+msgstr "無效的組態設定檔案。"
+
+#: src/class-wpso-admin-menu.php:279
+msgid "Please upload a JSON file."
+msgstr "請上傳有效的 JSON 檔案。"
+
+#: src/class-wpso-admin-menu.php:468 src/class-wpso-admin-menu.php:968
 msgid "Added manually by administrator"
 msgstr "已由網站管理員手動新增"
 
-#: src/class-wpso-admin-menu.php:323
+#: src/class-wpso-admin-menu.php:469 src/class-wpso-admin-menu.php:969
 msgid "Search engine bot"
 msgstr "搜尋引擎機器人"
 
-#: src/class-wpso-admin-menu.php:324
+#: src/class-wpso-admin-menu.php:470 src/class-wpso-admin-menu.php:970
 msgid "Google bot"
 msgstr "Google 機器人"
 
-#: src/class-wpso-admin-menu.php:325
+#: src/class-wpso-admin-menu.php:471 src/class-wpso-admin-menu.php:971
 msgid "Bing bot"
 msgstr "Bing 機器人"
 
-#: src/class-wpso-admin-menu.php:326
+#: src/class-wpso-admin-menu.php:472 src/class-wpso-admin-menu.php:972
 msgid "Yahoo bot"
 msgstr "Yahoo 機器人"
 
-#: src/class-wpso-admin-menu.php:327
+#: src/class-wpso-admin-menu.php:473 src/class-wpso-admin-menu.php:973
 msgid "Too many sessions"
 msgstr "太多工作階段。"
 
-#: src/class-wpso-admin-menu.php:328
+#: src/class-wpso-admin-menu.php:474 src/class-wpso-admin-menu.php:974
 msgid "Too many accesses"
 msgstr "太多存取次數。"
 
-#: src/class-wpso-admin-menu.php:329
+#: src/class-wpso-admin-menu.php:475 src/class-wpso-admin-menu.php:975
 msgid "Cannot create JS cookies"
 msgstr "無法建立 JS Cookie。"
 
-#: src/class-wpso-admin-menu.php:330
+#: src/class-wpso-admin-menu.php:476 src/class-wpso-admin-menu.php:976
 msgid "Empty referrer"
 msgstr "空白參照。"
 
-#: src/class-wpso-admin-menu.php:331
+#: src/class-wpso-admin-menu.php:477 src/class-wpso-admin-menu.php:977
 msgid "Daily limit reached"
 msgstr "已達每日上限。"
 
-#: src/class-wpso-admin-menu.php:332
+#: src/class-wpso-admin-menu.php:478 src/class-wpso-admin-menu.php:978
 msgid "Hourly limit reached"
 msgstr "已達每小時上限。"
 
-#: src/class-wpso-admin-menu.php:333
+#: src/class-wpso-admin-menu.php:479 src/class-wpso-admin-menu.php:979
 msgid "Minutely limit reached"
 msgstr "已達每分鐘上限。"
 
-#: src/class-wpso-admin-menu.php:334
+#: src/class-wpso-admin-menu.php:480 src/class-wpso-admin-menu.php:980
 msgid "Secondly limit reached"
 msgstr "已達每秒上限。"
 
-#: src/class-wpso-admin-menu.php:336
+#: src/class-wpso-admin-menu.php:482
 msgid "DENY"
 msgstr "拒絕"
 
-#: src/class-wpso-admin-menu.php:337
+#: src/class-wpso-admin-menu.php:483
 msgid "ALLOW"
 msgstr "允許"
 
-#: src/class-wpso-admin-menu.php:338
+#: src/class-wpso-admin-menu.php:484
 #: src/views/dashboard/dashboard-last-month.php:71
 #: src/views/dashboard/dashboard-past-seven-days.php:71
 #: src/views/dashboard/dashboard-this-month.php:71
-#: src/views/dashboard/dashboard-today.php:71
+#: src/views/dashboard/dashboard-today.php:69
 #: src/views/dashboard/dashboard-yesterday.php:71
 msgid "CAPTCHA"
 msgstr "CAPTCHA"
+
+#: src/class-wpso-admin-menu.php:981
+msgid "Invalid IP address."
+msgstr "無效的 IP 位址。"
+
+#: src/class-wpso-admin-menu.php:982 src/class-wpso-admin-menu.php:984
+msgid "Denied by IP component."
+msgstr "被 IP 元件阻擋。"
+
+#: src/class-wpso-admin-menu.php:983
+msgid "Allowed by IP component."
+msgstr "由 IP 元件許可。"
+
+#: src/class-wpso-admin-menu.php:985
+msgid "Denied by RDNS component."
+msgstr "被 RDNS 元件阻擋。"
+
+#: src/class-wpso-admin-menu.php:986
+msgid "Denied by Header component."
+msgstr "被標頭資訊元件阻擋。"
+
+#: src/class-wpso-admin-menu.php:987
+msgid "Denied by User-agent component."
+msgstr "被使用者代理元件阻擋。"
+
+#: src/class-wpso-admin-menu.php:988
+msgid "Identified as fake search engine."
+msgstr "被辨識為偽造的搜索引擎。"
+
+#: src/class-wpso-admin-menu.php:1000
+#: src/views/dashboard/dashboard-last-month.php:68
+#: src/views/dashboard/dashboard-past-seven-days.php:68
+#: src/views/dashboard/dashboard-this-month.php:68
+#: src/views/dashboard/dashboard-today.php:66
+#: src/views/dashboard/dashboard-yesterday.php:68
+#: src/views/dashboard/filter-log-table.php:67
+#: src/views/dashboard/operation-status.php:99
+#: src/views/dashboard/operation-status.php:193
+#: src/views/dashboard/overview.php:144 src/views/dashboard/rule-table.php:58
+#: src/views/dashboard/session-table.php:76
+msgid "IP"
+msgstr "IP 位址"
+
+#: src/class-wpso-admin-menu.php:1001
+#: src/views/dashboard/operation-status.php:115
+#: src/views/dashboard/overview.php:153
+msgid "Trusted Bot"
+msgstr "信任的機器人"
+
+#: src/class-wpso-admin-menu.php:1002 src/class-wpso-admin-settings.php:239
+#: src/views/dashboard/operation-status.php:131
+#: src/views/dashboard/overview.php:163
+msgid "Header"
+msgstr "資料標頭"
+
+#: src/class-wpso-admin-menu.php:1003
+#: src/views/dashboard/operation-status.php:147
+#: src/views/dashboard/overview.php:173
+msgid "RDNS"
+msgstr "RDNS"
+
+#: src/class-wpso-admin-menu.php:1004 src/class-wpso-admin-settings.php:266
+#: src/views/dashboard/operation-status.php:163
+#: src/views/dashboard/overview.php:183
+msgid "User Agent"
+msgstr "使用者代理"
+
+#: src/class-wpso-admin-menu.php:1005
+#: src/views/dashboard/operation-status.php:58
+#: src/views/dashboard/overview.php:116
+msgid "Frequency"
+msgstr "頻率"
+
+#: src/class-wpso-admin-menu.php:1006
+#: src/views/dashboard/filter-log-table.php:80
+#: src/views/dashboard/operation-status.php:74
+#: src/views/dashboard/overview.php:125
+msgid "Referrer"
+msgstr "來源參照"
+
+#: src/class-wpso-admin-menu.php:1007 src/class-wpso-admin-settings.php:386
+#: src/views/dashboard/filter-log-table.php:79
+#: src/views/dashboard/operation-status.php:42
+#: src/views/dashboard/overview.php:107
+msgid "Session"
+msgstr "工作階段"
+
+#: src/class-wpso-admin-menu.php:1008 src/class-wpso-admin-settings.php:459
+#: src/views/dashboard/filter-log-table.php:78
+#: src/views/dashboard/operation-status.php:26
+#: src/views/dashboard/overview.php:98
+msgid "Cookie"
+msgstr "Cookie"
 
 #: src/class-wpso-admin-settings.php:56
 msgid "Daemon"
 msgstr "守護進程"
 
-#: src/class-wpso-admin-settings.php:61 src/views/dashboard/overview.php:139
+#: src/class-wpso-admin-settings.php:61
+#: src/views/dashboard/operation-status.php:94
+#: src/views/dashboard/overview.php:139
 msgid "Components"
 msgstr "元件"
 
-#: src/class-wpso-admin-settings.php:66 src/views/dashboard/overview.php:93
+#: src/class-wpso-admin-settings.php:66
+#: src/views/dashboard/operation-status.php:21
+#: src/views/dashboard/overview.php:93
 msgid "Filters"
 msgstr "過濾器"
 
 #: src/class-wpso-admin-settings.php:71
 #: src/views/dashboard/dashboard-last-month.php:28
-#: src/views/dashboard/dashboard-last-month.php:148
+#: src/views/dashboard/dashboard-last-month.php:150
 #: src/views/dashboard/dashboard-past-seven-days.php:28
-#: src/views/dashboard/dashboard-past-seven-days.php:148
+#: src/views/dashboard/dashboard-past-seven-days.php:150
 #: src/views/dashboard/dashboard-this-month.php:28
-#: src/views/dashboard/dashboard-this-month.php:148
-#: src/views/dashboard/dashboard-today.php:28
+#: src/views/dashboard/dashboard-this-month.php:150
+#: src/views/dashboard/dashboard-today.php:26
 #: src/views/dashboard/dashboard-today.php:148
 #: src/views/dashboard/dashboard-yesterday.php:28
-#: src/views/dashboard/dashboard-yesterday.php:148
+#: src/views/dashboard/dashboard-yesterday.php:150
 msgid "CAPTCHAs"
 msgstr "CAPTCHA"
 
@@ -259,11 +384,23 @@ msgid ""
 "improve performace."
 msgstr "自動在每日上午 0:00 清除全部記錄。啟用這項設定便能增進效能。"
 
-#: src/class-wpso-admin-settings.php:144
+#: src/class-wpso-admin-settings.php:144 src/views/dashboard/overview.php:212
+msgid "Action Logger"
+msgstr "動作記錄器"
+
+#: src/class-wpso-admin-settings.php:145 src/views/dashboard/overview.php:216
+msgid "Record every visitor’s behavior."
+msgstr "記錄每位訪客的行為。"
+
+#: src/class-wpso-admin-settings.php:145
+msgid "Not recommend for high-traffic webites."
+msgstr "不建議用在高流量網站。"
+
+#: src/class-wpso-admin-settings.php:154
 msgid "IP Source"
 msgstr "IP 位址來源"
 
-#: src/class-wpso-admin-settings.php:145
+#: src/class-wpso-admin-settings.php:155
 msgid ""
 "Is your website behind CDN service? If you use CDN, you have to set this "
 "setting, otherwise all IP addresses come from CDN servers, they will be "
@@ -271,200 +408,178 @@ msgid ""
 msgstr ""
 "這個網站使用 CDN 服務嗎？如果這個網站使用了 CDN 服務，就必須設定這項設定，否則全部源自 CDN 伺服器的 IP 位址，均會遭到封鎖。"
 
-#: src/class-wpso-admin-settings.php:160
+#: src/class-wpso-admin-settings.php:170
 msgid "Online Session Limit"
 msgstr "線上工作階段限制"
 
-#: src/class-wpso-admin-settings.php:168
+#: src/class-wpso-admin-settings.php:178
 msgid ""
 "When the online user amount has reached the limit, other users not in the "
 "queue have to line up!"
 msgstr "當線上使用者數量達到上限，不在佇列中的其他使用者必須等候。"
 
-#: src/class-wpso-admin-settings.php:177
+#: src/class-wpso-admin-settings.php:187
 msgid "Online Limit"
 msgstr "使用者人數限制"
 
-#: src/class-wpso-admin-settings.php:178
+#: src/class-wpso-admin-settings.php:188
 msgid "The maximum online user limit."
 msgstr "線上同時使用者人數限制。"
 
-#: src/class-wpso-admin-settings.php:188
+#: src/class-wpso-admin-settings.php:198
 msgid "Keep Alive Period"
 msgstr "存續期間"
 
-#: src/class-wpso-admin-settings.php:189
+#: src/class-wpso-admin-settings.php:199
 msgid "Unit: minute"
 msgstr "單位: 分鐘"
 
-#: src/class-wpso-admin-settings.php:202
-msgid "Frequency Check"
-msgstr "檢查頻率"
-
-#: src/class-wpso-admin-settings.php:209
-msgid ""
-"Don't worry about the human visitors, if they reach the limit and get banned,"
-" they can easily continue surfing your website by solving CAPTCHA."
-msgstr "即使網站真人訪客遭到存取限制或封鎖也不必擔心，他們可以輕易通過 CAPTCHA 驗證繼續瀏覽網站。"
-
-#: src/class-wpso-admin-settings.php:218
-msgid "Secondly Limit"
-msgstr "每秒次數限制"
-
-#: src/class-wpso-admin-settings.php:219
-msgid "Page views per vistor per second."
-msgstr "每位網站訪客每秒檢視同一頁面次數。"
-
-#: src/class-wpso-admin-settings.php:229
-msgid "Minutely Limit"
-msgstr "每分鐘次數限制"
-
-#: src/class-wpso-admin-settings.php:230
-msgid "Page views per vistor per minute."
-msgstr "每位網站訪客每分鐘檢視同一頁面次數。"
-
-#: src/class-wpso-admin-settings.php:240
-msgid "Hourly Limit"
-msgstr "每小時次數限制"
-
-#: src/class-wpso-admin-settings.php:241
-msgid "Page views per vistor per hour."
-msgstr "每位網站訪客每小時檢視同一頁面次數。"
-
-#: src/class-wpso-admin-settings.php:251
-msgid "Daily Limit"
-msgstr "每日次數限制"
-
-#: src/class-wpso-admin-settings.php:252
-msgid "Page views per vistor per day."
-msgstr "每位網站訪客每天檢視同一頁面次數。"
-
-#: src/class-wpso-admin-settings.php:265
+#: src/class-wpso-admin-settings.php:212
 msgid "Trusted Bots"
 msgstr "受信任的檢索機器人"
 
-#: src/class-wpso-admin-settings.php:282 src/class-wpso-admin-settings.php:309
-#: src/class-wpso-admin-settings.php:336 src/class-wpso-admin-settings.php:363
+#: src/class-wpso-admin-settings.php:229 src/class-wpso-admin-settings.php:256
+#: src/class-wpso-admin-settings.php:283 src/class-wpso-admin-settings.php:310
 msgid "Strict Mode"
 msgstr "嚴格模式"
 
-#: src/class-wpso-admin-settings.php:283
+#: src/class-wpso-admin-settings.php:230
 msgid "IP resolved hostname and IP address must match."
 msgstr "透過 IP 位址解析出的主機名稱必須與 IP 位址相符。"
 
-#: src/class-wpso-admin-settings.php:292 src/views/dashboard/overview.php:163
-msgid "Header"
-msgstr "資料標頭"
-
-#: src/class-wpso-admin-settings.php:300
+#: src/class-wpso-admin-settings.php:247
 msgid "Analysis header information from visitors."
 msgstr "網站訪客的分析標頭資訊。"
 
-#: src/class-wpso-admin-settings.php:310
+#: src/class-wpso-admin-settings.php:257
 msgid "Deny all vistors without common header information."
 msgstr "拒絕沒有通用標頭資訊的全部網站訪客。"
 
-#: src/class-wpso-admin-settings.php:319 src/views/dashboard/overview.php:183
-msgid "User Agent"
-msgstr "使用者代理"
-
-#: src/class-wpso-admin-settings.php:327 src/views/dashboard/overview.php:187
+#: src/class-wpso-admin-settings.php:274
+#: src/views/dashboard/operation-status.php:171
+#: src/views/dashboard/overview.php:187
 msgid "Analysis user-agent information from visitors."
 msgstr "網站訪客的分析使用者代理資訊。"
 
-#: src/class-wpso-admin-settings.php:337
+#: src/class-wpso-admin-settings.php:284
 msgid "Visitors with empty user-agent information will be blocked."
 msgstr "含有空白使用者代理程式資訊的網站訪客會遭到封鎖。"
 
-#: src/class-wpso-admin-settings.php:346
+#: src/class-wpso-admin-settings.php:293
 msgid "Reverse DNS"
 msgstr "DNS 反向解析"
 
-#: src/class-wpso-admin-settings.php:354
+#: src/class-wpso-admin-settings.php:301
 msgid ""
 "In general, an IP from Internet Service Provider (ISP) will have RDNS set. "
 "This option only works when strict mode is on."
 msgstr "一般來說，網際網路服務提供商 (ISP) 的 IP 位址會有 DNS 反向解析集。這個功能僅適用於已啟用 [嚴格模式]。"
 
-#: src/class-wpso-admin-settings.php:364
+#: src/class-wpso-admin-settings.php:326
+msgid "Frequency Check"
+msgstr "檢查頻率"
+
+#: src/class-wpso-admin-settings.php:333
 msgid ""
-"Visitors with empty RDNS record will be blocked.<br />IP resolved hostname "
-"(RDNS) and IP address must match."
-msgstr "含有空白 DNS 反向解析記錄的網站訪客會遭到封鎖。<br />透過 IP 位址解析出的主機名稱必須與 IP 位址相符。"
+"Don't worry about the human visitors, if they reach the limit and get banned,"
+" they can easily continue surfing your website by solving CAPTCHA."
+msgstr "即使網站真人訪客遭到存取限制或封鎖也不必擔心，他們可以輕易通過 CAPTCHA 驗證繼續瀏覽網站。"
+
+#: src/class-wpso-admin-settings.php:342
+msgid "Secondly Limit"
+msgstr "每秒次數限制"
+
+#: src/class-wpso-admin-settings.php:343
+msgid "Page views per vistor per second."
+msgstr "每位網站訪客每秒檢視同一頁面次數。"
+
+#: src/class-wpso-admin-settings.php:353
+msgid "Minutely Limit"
+msgstr "每分鐘次數限制"
+
+#: src/class-wpso-admin-settings.php:354
+msgid "Page views per vistor per minute."
+msgstr "每位網站訪客每分鐘檢視同一頁面次數。"
+
+#: src/class-wpso-admin-settings.php:364
+msgid "Hourly Limit"
+msgstr "每小時次數限制"
+
+#: src/class-wpso-admin-settings.php:365
+msgid "Page views per vistor per hour."
+msgstr "每位網站訪客每小時檢視同一頁面次數。"
+
+#: src/class-wpso-admin-settings.php:375
+msgid "Daily Limit"
+msgstr "每日次數限制"
 
 #: src/class-wpso-admin-settings.php:376
-#: src/views/dashboard/filter-log-table.php:79
-#: src/views/dashboard/overview.php:107
-msgid "Session"
-msgstr "工作階段"
+msgid "Page views per vistor per day."
+msgstr "每位網站訪客每天檢視同一頁面次數。"
 
-#: src/class-wpso-admin-settings.php:384
+#: src/class-wpso-admin-settings.php:394
 msgid "Detect multiple sessions created by the same visitor."
 msgstr "偵測同一位網站訪客所產生的多個工作階段。"
 
-#: src/class-wpso-admin-settings.php:393 src/class-wpso-admin-settings.php:429
-#: src/class-wpso-admin-settings.php:466
+#: src/class-wpso-admin-settings.php:403 src/class-wpso-admin-settings.php:439
+#: src/class-wpso-admin-settings.php:476
 msgid "Quota"
 msgstr "配額上限"
 
-#: src/class-wpso-admin-settings.php:394 src/class-wpso-admin-settings.php:430
-#: src/class-wpso-admin-settings.php:467
+#: src/class-wpso-admin-settings.php:404 src/class-wpso-admin-settings.php:440
+#: src/class-wpso-admin-settings.php:477
 msgid "A visitor reached this limit will get banned temporarily."
 msgstr "同一位網站訪客達到配額上限時便會暫時封鎖。"
 
-#: src/class-wpso-admin-settings.php:412
+#: src/class-wpso-admin-settings.php:422
 msgid "HTTP Referrer"
 msgstr "HTTP 參照位址"
 
-#: src/class-wpso-admin-settings.php:420 src/views/dashboard/overview.php:129
+#: src/class-wpso-admin-settings.php:430
+#: src/views/dashboard/operation-status.php:82
+#: src/views/dashboard/overview.php:129
 msgid "Check HTTP referrer information."
 msgstr "檢查 HTTP 參照位址資訊。"
 
-#: src/class-wpso-admin-settings.php:449
-#: src/views/dashboard/filter-log-table.php:78
-#: src/views/dashboard/overview.php:98
-msgid "Cookie"
-msgstr "Cookie"
-
-#: src/class-wpso-admin-settings.php:457
+#: src/class-wpso-admin-settings.php:467
 msgid "Check cookie generated by JavaScript."
 msgstr "檢查 JavaScript 產生的 Cookie。"
 
-#: src/class-wpso-admin-settings.php:489
+#: src/class-wpso-admin-settings.php:499
 msgid "Google reCaptcha"
 msgstr "Google reCaptcha"
 
-#: src/class-wpso-admin-settings.php:506
+#: src/class-wpso-admin-settings.php:516
 msgid "Version"
 msgstr "版本"
 
-#: src/class-wpso-admin-settings.php:507
+#: src/class-wpso-admin-settings.php:517
 msgid ""
 "Please use corresponding key for that version you choose, otherwise it won't "
 "work."
 msgstr "請使用與選用版本對應的金鑰，否則無法正確執行。"
 
-#: src/class-wpso-admin-settings.php:519
+#: src/class-wpso-admin-settings.php:529
 msgid "Site Key"
 msgstr "網站金鑰"
 
-#: src/class-wpso-admin-settings.php:520
+#: src/class-wpso-admin-settings.php:530
 msgid "Enter Google reCaptcha site key for your webiste."
 msgstr "請輸入這個網站的 Google reCaptcha 網站金鑰。"
 
-#: src/class-wpso-admin-settings.php:530
+#: src/class-wpso-admin-settings.php:540
 msgid "Secret Key"
 msgstr "密鑰"
 
-#: src/class-wpso-admin-settings.php:531
+#: src/class-wpso-admin-settings.php:541
 msgid "Enter Google reCahptcha secret key for your webiste."
 msgstr "請輸入這個網站的 Google reCahptcha 密鑰。"
 
-#: src/class-wpso-admin-settings.php:541
+#: src/class-wpso-admin-settings.php:551
 msgid "Language Code"
 msgstr "語言代碼"
 
-#: src/class-wpso-admin-settings.php:542
+#: src/class-wpso-admin-settings.php:552
 msgid ""
 "ISO 639 - ISO 3166 code. For example, <strong>zh-TW</strong> stands for "
 "Tranditional Chinese of <strong>Taiwan</strong>"
@@ -472,59 +587,61 @@ msgstr ""
 "這項設定採用 ISO 639 - ISO 3166 代碼。舉例來說，語言代碼 <strong>zh-TW</strong> 代表<strong>"
 "台灣</strong>繁體中文。"
 
-#: src/class-wpso-admin-settings.php:552 src/views/dashboard/overview.php:241
+#: src/class-wpso-admin-settings.php:562 src/views/dashboard/overview.php:241
 msgid "Image Captcha"
 msgstr "圖片 CAPTCHA 驗證"
 
-#: src/class-wpso-admin-settings.php:560
+#: src/class-wpso-admin-settings.php:570
 msgid "A simple image CAPTCHA."
 msgstr "簡易圖片 CAPTCHA 驗證。"
 
-#: src/class-wpso-admin-settings.php:569 src/views/dashboard/rule-table.php:60
+#: src/class-wpso-admin-settings.php:579
+#: src/views/dashboard/operation-status.php:195
+#: src/views/dashboard/rule-table.php:60
 #: src/views/security/xss-protection.php:99
 #: src/views/security/xss-protection.php:139
 msgid "Type"
 msgstr "驗證類型"
 
-#: src/class-wpso-admin-settings.php:575
+#: src/class-wpso-admin-settings.php:585
 msgid "Alpha-numeric string with lower and uppercase characters."
 msgstr "數字、小寫及大寫字母混合"
 
-#: src/class-wpso-admin-settings.php:576
+#: src/class-wpso-admin-settings.php:586
 msgid "A string with lower and uppercase letters only."
 msgstr "僅小寫及大寫字母"
 
-#: src/class-wpso-admin-settings.php:577
+#: src/class-wpso-admin-settings.php:587
 msgid "Numeric string only."
 msgstr "僅數字"
 
-#: src/class-wpso-admin-settings.php:584
+#: src/class-wpso-admin-settings.php:594
 msgid "Length"
 msgstr "字元長度"
 
-#: src/class-wpso-admin-settings.php:585
+#: src/class-wpso-admin-settings.php:595
 msgid "How many characters do you like to display on CAPTCHA."
 msgstr "CAPTCHA 驗證圖片中要顯示的字元數量。"
 
-#: src/class-wpso-admin-settings.php:602
+#: src/class-wpso-admin-settings.php:612
 msgid "URLs"
 msgstr "網址"
 
-#: src/class-wpso-admin-settings.php:609
+#: src/class-wpso-admin-settings.php:619
 msgid "Excluded URLs"
 msgstr "排除的網址"
 
-#: src/class-wpso-admin-settings.php:616
+#: src/class-wpso-admin-settings.php:626
 msgid "Pages"
 msgstr "頁面"
 
-#: src/class-wpso-admin-settings.php:624
+#: src/class-wpso-admin-settings.php:634
 msgid ""
 "Turning this option on will get <code>wp-login.php</code> excluded from "
 "Shieldon protection."
 msgstr "啟用這項設定後，<code>wp-login.php</code> 便會從 WP Shieldon 外掛保護機制中排除。"
 
-#: src/class-wpso-admin-settings.php:624 src/class-wpso-admin-settings.php:633
+#: src/class-wpso-admin-settings.php:634 src/class-wpso-admin-settings.php:643
 #: src/views/setting/ip-manager-strict-login.php:16
 #: src/views/setting/ip-manager-strict-signup.php:15
 #: src/views/setting/ip-manager-strict-xmlrpc.php:15
@@ -532,21 +649,56 @@ msgstr "啟用這項設定後，<code>wp-login.php</code> 便會從 WP Shieldon 
 msgid "(default: off)"
 msgstr "(預設值: 停用)"
 
-#: src/class-wpso-admin-settings.php:633
+#: src/class-wpso-admin-settings.php:643
 msgid ""
 "Turning this option on will get <code>wp-signup.php</code> excluded from "
 "Shieldon protection."
 msgstr "啟用這項設定後，<code>wp-signup.php</code> 便會從 WP Shieldon 外掛保護機制中排除。"
 
-#: src/class-wpso-admin-settings.php:642
+#: src/class-wpso-admin-settings.php:652
 msgid ""
 "Turning this option on will get <code>xmlrpc.php</code> excluded from "
 "Shieldon protection."
 msgstr "啟用這項設定後，<code>xmlrpc.php</code> 便會從 WP Shieldon 外掛保護機制中排除。"
 
-#: src/class-wpso-admin-settings.php:642
+#: src/class-wpso-admin-settings.php:652 src/class-wpso-admin-settings.php:661
+#: src/class-wpso-admin-settings.php:670
 msgid "(default: on)"
 msgstr "(預設值: 啟用)"
+
+#: src/class-wpso-admin-settings.php:660
+msgid "REST API"
+msgstr "REST API"
+
+#: src/class-wpso-admin-settings.php:661
+msgid ""
+"Some WordPress core functions such as \"Save Draft\" and REST API use "
+"\"<strong>/wp-json/</strong>\"."
+msgstr ""
+"一些 WordPress 核心功能像是 [儲存草稿] 和 REST API 使用 \"<strong>/wp-json/</strong>\" 網址路徑。"
+
+#: src/class-wpso-admin-settings.php:661
+msgid ""
+"Turning this option on will get <code>/wp-json/</code> excluded from "
+"Shieldon protection."
+msgstr "把這個選項開啟，將使 <code>/wp-json/</code> 被排除在 Shieldon 防護機制。"
+
+#: src/class-wpso-admin-settings.php:669
+msgid "Theme Customizer"
+msgstr "佈景主題外觀自訂器"
+
+#: src/class-wpso-admin-settings.php:670
+msgid ""
+"If you want to use theme customizer, please turn this on. After finishing a "
+"while, do not forget to turn this option off."
+msgstr "如果您要使用佈景主題自訂外觀，請啟用此項。在使用結束後，別忘了關閉此項。"
+
+#: src/class-wpso-admin-settings.php:670
+msgid ""
+"Turning this option on will get <code>/?customize_changeset_uuid=</code> "
+"excluded from Shieldon protection."
+msgstr ""
+"把這個選項開啟，將使 <code>/?customize_changeset_uuid=</code> 被排除在 Shieldon 防護機制。"
 
 #: src/views/dashboard/dashboard-last-month.php:30
 msgid "CAPTCHA statistic last month."
@@ -554,19 +706,19 @@ msgstr "上個月的 CAPTCHA 統計資料"
 
 #: src/views/dashboard/dashboard-last-month.php:38
 #: src/views/dashboard/dashboard-last-month.php:70
-#: src/views/dashboard/dashboard-last-month.php:148
+#: src/views/dashboard/dashboard-last-month.php:150
 #: src/views/dashboard/dashboard-past-seven-days.php:38
 #: src/views/dashboard/dashboard-past-seven-days.php:70
-#: src/views/dashboard/dashboard-past-seven-days.php:148
+#: src/views/dashboard/dashboard-past-seven-days.php:150
 #: src/views/dashboard/dashboard-this-month.php:38
 #: src/views/dashboard/dashboard-this-month.php:70
-#: src/views/dashboard/dashboard-this-month.php:148
-#: src/views/dashboard/dashboard-today.php:38
-#: src/views/dashboard/dashboard-today.php:70
+#: src/views/dashboard/dashboard-this-month.php:150
+#: src/views/dashboard/dashboard-today.php:36
+#: src/views/dashboard/dashboard-today.php:68
 #: src/views/dashboard/dashboard-today.php:148
 #: src/views/dashboard/dashboard-yesterday.php:38
 #: src/views/dashboard/dashboard-yesterday.php:70
-#: src/views/dashboard/dashboard-yesterday.php:148
+#: src/views/dashboard/dashboard-yesterday.php:150
 #: src/views/dashboard/filter-log-table.php:69
 msgid "Pageviews"
 msgstr "瀏覽量"
@@ -578,7 +730,7 @@ msgstr "上個月的總瀏覽量"
 #: src/views/dashboard/dashboard-last-month.php:49
 #: src/views/dashboard/dashboard-past-seven-days.php:49
 #: src/views/dashboard/dashboard-this-month.php:49
-#: src/views/dashboard/dashboard-today.php:49
+#: src/views/dashboard/dashboard-today.php:47
 #: src/views/dashboard/dashboard-yesterday.php:49
 msgid "Today"
 msgstr "今天"
@@ -586,7 +738,7 @@ msgstr "今天"
 #: src/views/dashboard/dashboard-last-month.php:50
 #: src/views/dashboard/dashboard-past-seven-days.php:50
 #: src/views/dashboard/dashboard-this-month.php:50
-#: src/views/dashboard/dashboard-today.php:50
+#: src/views/dashboard/dashboard-today.php:48
 #: src/views/dashboard/dashboard-yesterday.php:50
 msgid "Yesterday"
 msgstr "昨天"
@@ -594,7 +746,7 @@ msgstr "昨天"
 #: src/views/dashboard/dashboard-last-month.php:51
 #: src/views/dashboard/dashboard-past-seven-days.php:51
 #: src/views/dashboard/dashboard-this-month.php:51
-#: src/views/dashboard/dashboard-today.php:51
+#: src/views/dashboard/dashboard-today.php:49
 #: src/views/dashboard/dashboard-yesterday.php:51
 msgid "Last 7 days"
 msgstr "最近 7 天"
@@ -602,7 +754,7 @@ msgstr "最近 7 天"
 #: src/views/dashboard/dashboard-last-month.php:52
 #: src/views/dashboard/dashboard-past-seven-days.php:52
 #: src/views/dashboard/dashboard-this-month.php:52
-#: src/views/dashboard/dashboard-today.php:52
+#: src/views/dashboard/dashboard-today.php:50
 #: src/views/dashboard/dashboard-yesterday.php:52
 msgid "This month"
 msgstr "這個月"
@@ -610,26 +762,15 @@ msgstr "這個月"
 #: src/views/dashboard/dashboard-last-month.php:53
 #: src/views/dashboard/dashboard-past-seven-days.php:53
 #: src/views/dashboard/dashboard-this-month.php:53
-#: src/views/dashboard/dashboard-today.php:53
+#: src/views/dashboard/dashboard-today.php:51
 #: src/views/dashboard/dashboard-yesterday.php:53
 msgid "Last month"
 msgstr "上個月"
 
-#: src/views/dashboard/dashboard-last-month.php:68
-#: src/views/dashboard/dashboard-past-seven-days.php:68
-#: src/views/dashboard/dashboard-this-month.php:68
-#: src/views/dashboard/dashboard-today.php:68
-#: src/views/dashboard/dashboard-yesterday.php:68
-#: src/views/dashboard/filter-log-table.php:67
-#: src/views/dashboard/overview.php:144 src/views/dashboard/rule-table.php:58
-#: src/views/dashboard/session-table.php:76
-msgid "IP"
-msgstr "IP 位址"
-
 #: src/views/dashboard/dashboard-last-month.php:69
 #: src/views/dashboard/dashboard-past-seven-days.php:69
 #: src/views/dashboard/dashboard-this-month.php:69
-#: src/views/dashboard/dashboard-today.php:69
+#: src/views/dashboard/dashboard-today.php:67
 #: src/views/dashboard/dashboard-yesterday.php:69
 msgid "Sessions"
 msgstr "工作階段"
@@ -637,7 +778,7 @@ msgstr "工作階段"
 #: src/views/dashboard/dashboard-last-month.php:72
 #: src/views/dashboard/dashboard-past-seven-days.php:72
 #: src/views/dashboard/dashboard-this-month.php:72
-#: src/views/dashboard/dashboard-today.php:72
+#: src/views/dashboard/dashboard-today.php:70
 #: src/views/dashboard/dashboard-yesterday.php:72
 msgid "In blacklist"
 msgstr "在封鎖清單中"
@@ -645,7 +786,7 @@ msgstr "在封鎖清單中"
 #: src/views/dashboard/dashboard-last-month.php:73
 #: src/views/dashboard/dashboard-past-seven-days.php:73
 #: src/views/dashboard/dashboard-this-month.php:73
-#: src/views/dashboard/dashboard-today.php:73
+#: src/views/dashboard/dashboard-today.php:71
 #: src/views/dashboard/dashboard-yesterday.php:73
 msgid "In queue"
 msgstr "在佇列中"
@@ -653,7 +794,7 @@ msgstr "在佇列中"
 #: src/views/dashboard/dashboard-last-month.php:76
 #: src/views/dashboard/dashboard-past-seven-days.php:76
 #: src/views/dashboard/dashboard-this-month.php:76
-#: src/views/dashboard/dashboard-today.php:76
+#: src/views/dashboard/dashboard-today.php:74
 #: src/views/dashboard/dashboard-yesterday.php:76
 msgid "solved"
 msgstr "已解決"
@@ -661,7 +802,7 @@ msgstr "已解決"
 #: src/views/dashboard/dashboard-last-month.php:77
 #: src/views/dashboard/dashboard-past-seven-days.php:77
 #: src/views/dashboard/dashboard-this-month.php:77
-#: src/views/dashboard/dashboard-today.php:77
+#: src/views/dashboard/dashboard-today.php:75
 #: src/views/dashboard/dashboard-yesterday.php:77
 msgid "failed"
 msgstr "已失敗"
@@ -669,7 +810,7 @@ msgstr "已失敗"
 #: src/views/dashboard/dashboard-last-month.php:78
 #: src/views/dashboard/dashboard-past-seven-days.php:78
 #: src/views/dashboard/dashboard-this-month.php:78
-#: src/views/dashboard/dashboard-today.php:78
+#: src/views/dashboard/dashboard-today.php:76
 #: src/views/dashboard/dashboard-yesterday.php:78
 msgid "displays"
 msgstr "顯示次數"
@@ -677,16 +818,20 @@ msgstr "顯示次數"
 #: src/views/dashboard/dashboard-last-month.php:99
 #: src/views/dashboard/dashboard-past-seven-days.php:99
 #: src/views/dashboard/dashboard-this-month.php:99
-#: src/views/dashboard/dashboard-today.php:99
+#: src/views/dashboard/dashboard-today.php:97
 #: src/views/dashboard/dashboard-yesterday.php:99
 msgid "Report generation time"
 msgstr "報告產生時間"
 
-#: src/views/dashboard/dashboard-last-month.php:102
-#: src/views/dashboard/dashboard-past-seven-days.php:102
-#: src/views/dashboard/dashboard-this-month.php:102
+#: src/views/dashboard/dashboard-last-month.php:101
+msgid "(Updated monthly)"
+msgstr "（每月更新）"
+
+#: src/views/dashboard/dashboard-last-month.php:104
+#: src/views/dashboard/dashboard-past-seven-days.php:104
+#: src/views/dashboard/dashboard-this-month.php:104
 #: src/views/dashboard/dashboard-today.php:102
-#: src/views/dashboard/dashboard-yesterday.php:102
+#: src/views/dashboard/dashboard-yesterday.php:104
 #: src/views/dashboard/filter-log-table.php:120
 #: src/views/dashboard/rule-table.php:94
 #: src/views/dashboard/session-table.php:119
@@ -695,19 +840,19 @@ msgstr "報告產生時間"
 msgid "Timezone"
 msgstr "時區"
 
-#: src/views/dashboard/dashboard-last-month.php:117
-#: src/views/dashboard/dashboard-past-seven-days.php:117
-#: src/views/dashboard/dashboard-this-month.php:117
+#: src/views/dashboard/dashboard-last-month.php:119
+#: src/views/dashboard/dashboard-past-seven-days.php:119
+#: src/views/dashboard/dashboard-this-month.php:119
 #: src/views/dashboard/dashboard-today.php:117
-#: src/views/dashboard/dashboard-yesterday.php:117
+#: src/views/dashboard/dashboard-yesterday.php:119
 msgid "success"
 msgstr "成功"
 
-#: src/views/dashboard/dashboard-last-month.php:117
-#: src/views/dashboard/dashboard-past-seven-days.php:117
-#: src/views/dashboard/dashboard-this-month.php:117
+#: src/views/dashboard/dashboard-last-month.php:119
+#: src/views/dashboard/dashboard-past-seven-days.php:119
+#: src/views/dashboard/dashboard-this-month.php:119
 #: src/views/dashboard/dashboard-today.php:117
-#: src/views/dashboard/dashboard-yesterday.php:117
+#: src/views/dashboard/dashboard-yesterday.php:119
 msgid "failure"
 msgstr "失敗"
 
@@ -719,6 +864,11 @@ msgstr "最近 7 天的 CAPTCHA 統計資料"
 msgid "Total pageviews last 7 days."
 msgstr "最近 7 天的總瀏覽量"
 
+#: src/views/dashboard/dashboard-past-seven-days.php:101
+#: src/views/dashboard/dashboard-yesterday.php:101
+msgid "(Updated daily)"
+msgstr "（每日更新）"
+
 #: src/views/dashboard/dashboard-this-month.php:30
 msgid "CAPTCHA statistic this month."
 msgstr "這個月的 CAPTCHA 統計資料"
@@ -727,11 +877,16 @@ msgstr "這個月的 CAPTCHA 統計資料"
 msgid "Total pageviews this month."
 msgstr "這個月的總瀏覽量"
 
-#: src/views/dashboard/dashboard-today.php:30
+#: src/views/dashboard/dashboard-this-month.php:101
+#: src/views/dashboard/dashboard-today.php:99
+msgid "(Updated hourly)"
+msgstr "（每小時更新）"
+
+#: src/views/dashboard/dashboard-today.php:28
 msgid "CAPTCHA statistic today."
 msgstr "今天的 CAPTCHA 統計資料"
 
-#: src/views/dashboard/dashboard-today.php:40
+#: src/views/dashboard/dashboard-today.php:38
 msgid "Total pageviews today."
 msgstr "今天的總瀏覽量"
 
@@ -762,6 +917,7 @@ msgid "IP log table will be all cleared after new cycle begins."
 msgstr "IP 位址記錄表會在新的週期開始後清空。"
 
 #: src/views/dashboard/filter-log-table.php:68
+#: src/views/dashboard/operation-status.php:194
 #: src/views/dashboard/rule-table.php:59
 msgid "Resolved hostname"
 msgstr "已解析的主機名稱"
@@ -790,17 +946,58 @@ msgstr "時"
 msgid "D"
 msgstr "日"
 
-#: src/views/dashboard/filter-log-table.php:80
-#: src/views/dashboard/overview.php:125
-msgid "Referrer"
-msgstr "來源參照"
-
 #: src/views/dashboard/filter-log-table.php:119
 #: src/views/dashboard/rule-table.php:93
 #: src/views/dashboard/session-table.php:118
 #, php-format
 msgid "Current data circle started from %s."
 msgstr "目前的資料週期始於 %s。"
+
+#: src/views/dashboard/operation-status.php:34
+#: src/views/dashboard/overview.php:102
+msgid "Check whether visitors can create cookie by JavaScript."
+msgstr "檢查是否訪客可以由 JavaScript 產生 Cookie。"
+
+#: src/views/dashboard/operation-status.php:50
+#: src/views/dashboard/overview.php:111
+msgid "Detect whether multiple sessions created by the same visitor."
+msgstr "偵測是否多個工作階段由同一位訪客產生。"
+
+#: src/views/dashboard/operation-status.php:66
+#: src/views/dashboard/overview.php:120
+msgid "Check how often does a visitor view the pages."
+msgstr "檢查訪客有多頻繁檢視網頁。"
+
+#: src/views/dashboard/operation-status.php:107
+#: src/views/dashboard/overview.php:148
+msgid "Advanced IP address mangement."
+msgstr "進階的 IP 位址管理功能。"
+
+#: src/views/dashboard/operation-status.php:123
+#: src/views/dashboard/overview.php:157
+msgid "Allow popular search engines crawl your website."
+msgstr "允許受歡迎的搜尋引擎檢索您的網站。"
+
+#: src/views/dashboard/operation-status.php:139
+#: src/views/dashboard/overview.php:167
+msgid "Analyze header information from visitors."
+msgstr "分析來自訪客的頭部字段資訊。"
+
+#: src/views/dashboard/operation-status.php:155
+#: src/views/dashboard/overview.php:177
+msgid "Identify IP resolved hostname (RDNS) from visitors."
+msgstr "識別來自訪客的 IP 反查域名 (RDNS)。"
+
+#: src/views/dashboard/operation-status.php:196
+#: src/views/dashboard/rule-table.php:61
+msgid "Reason"
+msgstr "記錄原因"
+
+#: src/views/dashboard/operation-status.php:197
+#: src/views/dashboard/rule-table.php:62
+#: src/views/dashboard/session-table.php:77
+msgid "Time"
+msgstr "記錄時間"
 
 #: src/views/dashboard/overview.php:36
 msgid "Data Circle"
@@ -839,46 +1036,6 @@ msgstr "檔案系統。"
 msgid "SQLite"
 msgstr "SQLite"
 
-#: src/views/dashboard/overview.php:102
-msgid "Check whether visitors can create cookie by JavaScript."
-msgstr "檢查是否訪客可以由 JavaScript 產生 Cookie。"
-
-#: src/views/dashboard/overview.php:111
-msgid "Detect whether multiple sessions created by the same visitor."
-msgstr "偵測是否多個工作階段由同一位訪客產生。"
-
-#: src/views/dashboard/overview.php:116
-msgid "Frequency"
-msgstr "頻率"
-
-#: src/views/dashboard/overview.php:120
-msgid "Check how often does a visitor view the pages."
-msgstr "檢查訪客有多頻繁檢視網頁。"
-
-#: src/views/dashboard/overview.php:148
-msgid "Advanced IP address mangement."
-msgstr "進階的 IP 位址管理功能。"
-
-#: src/views/dashboard/overview.php:153
-msgid "Trusted Bot"
-msgstr "信任的機器人"
-
-#: src/views/dashboard/overview.php:157
-msgid "Allow popular search engines crawl your website."
-msgstr "允許受歡迎的搜尋引擎檢索您的網站。"
-
-#: src/views/dashboard/overview.php:167
-msgid "Analyze header information from visitors."
-msgstr "分析來自訪客的頭部字段資訊。"
-
-#: src/views/dashboard/overview.php:173
-msgid "RDNS"
-msgstr "RDNS"
-
-#: src/views/dashboard/overview.php:177
-msgid "Identify IP resolved hostname (RDNS) from visitors."
-msgstr "識別來自訪客的 IP 反查域名 (RDNS)。"
-
 #: src/views/dashboard/overview.php:196
 msgid "Logger"
 msgstr "記錄器"
@@ -894,14 +1051,6 @@ msgstr "天"
 #: src/views/dashboard/overview.php:204 src/views/dashboard/overview.php:328
 msgid "size"
 msgstr "尺寸"
-
-#: src/views/dashboard/overview.php:212
-msgid "Action Logger"
-msgstr "動作記錄器"
-
-#: src/views/dashboard/overview.php:216
-msgid "Record every visitor’s behavior."
-msgstr "記錄每位訪客的行為。"
 
 #: src/views/dashboard/overview.php:226
 msgid "Captcha Modules"
@@ -1010,15 +1159,6 @@ msgstr "移除這個 IP 位址"
 msgid "Submit"
 msgstr "儲存"
 
-#: src/views/dashboard/rule-table.php:61
-msgid "Reason"
-msgstr "記錄原因"
-
-#: src/views/dashboard/rule-table.php:62
-#: src/views/dashboard/session-table.php:77
-msgid "Time"
-msgstr "記錄時間"
-
 #: src/views/dashboard/rule-table.php:63
 #: src/views/security/authentication.php:77
 #: src/views/security/xss-protection.php:141
@@ -1088,9 +1228,15 @@ msgstr "請移除 WP Shieldon 或升級這個網站的 PHP 版本。"
 
 #: src/views/message/update-notice.php:18
 msgid ""
-"WP Shieldon has updated successfully. Please reset data circle, then turn on "
-"daemon."
-msgstr "WP Shieldon 更新成功。請重設資料週期，然後啟用守護進程。"
+"WP Shieldon has updated successfully. Please reset the data circle, then "
+"turn on the daemon."
+msgstr "WP Shieldon 已經成功地更新。請重設資料週期，然後開啟 [守護進程]。"
+
+#: src/views/message/update-notice.php:19
+msgid ""
+"Strict mode in each Shieldon component has been disabled. Please carefully "
+"review all setting options again."
+msgstr "顏格模式在各個元件中已被關閉。請再一次仔細地檢閱全部的設定選項。"
 
 #: src/views/security/authentication.php:26
 msgid ""
@@ -1217,6 +1363,26 @@ msgstr ""
 "這項功能需要 Google reCaptcha 金鑰才能執行。<a href=\"%s\" target=\"_blank\">申請 Google "
 "reCaptcha 金鑰</a>"
 
+#: src/views/setting/import-export.php:22
+msgid "Import a JSON file that you previously exported."
+msgstr "匯入您先前匯出的 JSON 檔案。"
+
+#: src/views/setting/import-export.php:35
+msgid "Choose a JSON file."
+msgstr "選擇一個 JSON 檔案。"
+
+#: src/views/setting/import-export.php:39
+msgid "Import"
+msgstr "匯入"
+
+#: src/views/setting/import-export.php:48
+msgid "Export all settings into a JSON file."
+msgstr "匯出所有設定值到 JSON 檔案中。"
+
+#: src/views/setting/import-export.php:51
+msgid "Export"
+msgstr "匯出"
+
 #: src/views/setting/ip-manager-login-pass.php:17
 msgid ""
 "Enter a passcode that only you know. You can use it to avoid checking IP if "
@@ -1262,6 +1428,30 @@ msgid ""
 "For example, <code>127.0.0.1</code> (single IP address), <code>127.0."
 "0/16</code> (IP range)"
 msgstr "範例: <code>127.0.0.1</code> (單一 IP 位址)，<code>127.0.0/16</code> (IP 範圍)"
+
+#: src/views/setting/rdns.php:16
+msgid "Strict mode blocks visitors by the following conditions."
+msgstr "嚴格模式使用以下規則封鎖訪客。"
+
+#: src/views/setting/rdns.php:19
+msgid "IP address without PTR record."
+msgstr "IP 位址沒有 PTR 記錄。"
+
+#: src/views/setting/rdns.php:20
+msgid "Returned value of pinging PTR and IP address doesn not match up."
+msgstr "Ping 指令查詢的 PTR 記錄回傳值和 IP 位址並不相符。"
+
+#: src/views/setting/rdns.php:21
+msgid "PTR is not a valid FQDN."
+msgstr "PTR 不是有效的 FQDN。"
+
+#: src/views/setting/rdns.php:24
+msgid ""
+"This option will deny almost Proxy and VPN servers on the Internet, and some "
+"ISP might not provide PTR for their IP addresses, therefore using it "
+"carefully."
+msgstr ""
+"此選項將拒絕幾乎所有在網際網路上的 Proxy 及 VPN 伺服器，且有些 ISP 或許未對他們的 IP 位址提供 PTR 記錄，因此小心使用此選項。"
 
 #: src/views/setting/trusted-bot.php:15
 #, php-format
