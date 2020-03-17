@@ -15,7 +15,7 @@ WP Shieldon is a WordPress security plugin based on [Shieldon](https://github.co
 
 When the users or robots are trying to view many your web pages at a short period of time, they will temporarily get banned. To get unbanned by solving Catpcha.
 
-Of course, this plugin protects your webiste from [Brute Force Attacks](https://wordpress.org/support/article/brute-force-attacks/) very well. 
+Of course, this plugin protects your webiste from [Brute Force Attacks](https://wordpress.org/support/article/brute-force-attacks/) very well.
 
 You can visit the plugin author - [Terry L.](https://terryl.in)'s blog and try reloading the pages several times then you will see how this plugin works. You can also try Terry's login page then you will find it protected.
 
@@ -177,6 +177,7 @@ GNU General Public License for more details.
 - Add options in settings allowing to avoid conflicts with some WordPress core functions.
 - Add an option for switching Action Logger.
 - Add import/export settings feature.
+- Add page - operation status.
 - Update translation strings.
 
 == Upgrade Notice ==
