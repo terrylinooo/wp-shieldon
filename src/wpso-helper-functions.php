@@ -274,14 +274,16 @@ function wpso_show_settings_footer() {
 
 /**
  * Get WP Shieldon instance.
+ * 
+ * @param string $session_id Session ID if needed.
  *
  * @return WPSO_Shieldon_Guardian
  */
-function wpso_instance() {
+function wpso_instance( $session_id = '' ) {
 	static $instance;
 
 	if (empty($instance)) {
-		$instance = new WPSO_Shieldon_Guardian();
+		$instance = new WPSO_Shieldon_Guardian( $session_id );
 	}
 
 	return $instance;

@@ -29,13 +29,15 @@ class WPSO_Shieldon_Guardian {
 
 	/**
 	 * Constructer.
+	 * 
+	 * @param string $session_id 
 	 */
-	public function __construct() {
+	public function __construct( $session_id = '' ) {
 
 		/**
 		 * Start a Shieldon instance.
 		 */
-		$this->shieldon = new \Shieldon\Shieldon();
+		$this->shieldon = new \Shieldon\Shieldon( array(), $session_id );
 
 		$_SESSION['shieldon_ui_lang'] = wpso_get_lang();
 

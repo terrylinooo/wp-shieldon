@@ -64,8 +64,8 @@ define( 'SHIELDON_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'SHIELDON_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'SHIELDON_PLUGIN_PATH', __FILE__ );
 define( 'SHIELDON_PLUGIN_LANGUAGE_PACK', dirname( plugin_basename( __FILE__ ) ) . '/languages' );
-define( 'SHIELDON_PLUGIN_VERSION', '1.6.0' );
-define( 'SHIELDON_CORE_VERSION', '1.0.0' );
+define( 'SHIELDON_PLUGIN_VERSION', '1.6.1' );
+define( 'SHIELDON_CORE_VERSION', '1.0.1' );
 define( 'SHIELDON_PLUGIN_TEXT_DOMAIN', 'wp-shieldon' );
 
 // Load helper functions
@@ -220,8 +220,21 @@ if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 			update_option( 'wpso_driver_reset', 'yes' );
 		}
 
-		$guardian = wpso_instance();
-		$guardian->init();
+		/**
+		 * Shieldon daemon.
+		 *
+		 * @return void
+		 */
+		function wpso_admin_init() {
+			
+			// '_disabled_php_session' is just a meaningless string for disabling PHP session
+			// initialized by Shieldon. PHP native session is not needed here.
+			$guardian = wpso_instance( '_disabled_php_session' );
+			// $guardian = wpso_instance();
+			$guardian->init();
+		}
+
+		add_action( 'admin_init', 'wpso_admin_init', 999 );
 
 	} else {
 

@@ -385,14 +385,14 @@ class Shieldon
      * 
      * @return void
      */
-    public function __construct(array $properties = [])
+    public function __construct(array $properties = [], string $sessionId = '')
     {
         // Set to container.
         Container::set('shieldon', $this);
 
         $this->referer = $_SERVER['HTTP_REFERER'] ?? '';
 
-        $this->setSessionId();
+        $this->setSessionId($sessionId);
 
         // At least load a captcha instance. Foundation is the base one.
         // if (! isset($this->captcha['Foundation'])) {
@@ -801,6 +801,7 @@ class Shieldon
         if ('' !== $sessionId) {
             $this->sessionId = $sessionId;
         } else {
+           
             if ((php_sapi_name() !== 'cli')) {
                 if ($this->enableSessionCheck) {
                     if (session_status() === PHP_SESSION_NONE) {
