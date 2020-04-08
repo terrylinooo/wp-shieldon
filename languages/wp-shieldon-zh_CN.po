@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - WP Shieldon &#8211; Anti-scraping and security - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2020-03-17 07:09+0000\n"
+"PO-Revision-Date: 2020-04-08 08:27+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,24 +12,24 @@ msgstr ""
 "Project-Id-Version: Plugins - WP Shieldon &#8211; Anti-scraping and security "
 "- Stable (latest release)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-17 07:06+0000\n"
+"POT-Creation-Date: 2020-04-08 08:21+0000\n"
 "Last-Translator: Terry Lin <contact@terryl.in>\n"
 "Language-Team: Chinese (China)\n"
-"X-Loco-Version: 2.3.1; wp-5.3.2"
+"X-Loco-Version: 2.3.1; wp-5.4"
 
 #: src/class-wpso-admin-ip-manager.php:56
 msgid "Global"
 msgstr "全站范围"
 
-#: src/class-wpso-admin-ip-manager.php:61 src/class-wpso-admin-settings.php:633
+#: src/class-wpso-admin-ip-manager.php:61 src/class-wpso-admin-settings.php:638
 msgid "Login"
 msgstr "用户登录"
 
-#: src/class-wpso-admin-ip-manager.php:66 src/class-wpso-admin-settings.php:642
+#: src/class-wpso-admin-ip-manager.php:66 src/class-wpso-admin-settings.php:647
 msgid "Signup"
 msgstr "用户註冊"
 
-#: src/class-wpso-admin-ip-manager.php:71 src/class-wpso-admin-settings.php:651
+#: src/class-wpso-admin-ip-manager.php:71 src/class-wpso-admin-settings.php:656
 msgid "XML RPC"
 msgstr "XML RPC"
 
@@ -146,79 +146,79 @@ msgstr "回报问题"
 msgid "Invalid JSON file."
 msgstr "无效的 JSON 文件。"
 
-#: src/class-wpso-admin-menu.php:267
+#: src/class-wpso-admin-menu.php:268
 msgid "Your configuration file is imported successfully."
 msgstr "您的组态设定文件已被成功汇入。"
 
-#: src/class-wpso-admin-menu.php:272
+#: src/class-wpso-admin-menu.php:273
 msgid "Invalid configuration file."
 msgstr "无效的组态设定文件。"
 
-#: src/class-wpso-admin-menu.php:279
+#: src/class-wpso-admin-menu.php:280
 msgid "Please upload a JSON file."
 msgstr "请上传有效的 JSON 文件。"
 
-#: src/class-wpso-admin-menu.php:468 src/class-wpso-admin-menu.php:968
+#: src/class-wpso-admin-menu.php:470 src/class-wpso-admin-menu.php:970
 msgid "Added manually by administrator"
 msgstr "已由网站管理员手动新增"
 
-#: src/class-wpso-admin-menu.php:469 src/class-wpso-admin-menu.php:969
+#: src/class-wpso-admin-menu.php:471 src/class-wpso-admin-menu.php:971
 msgid "Search engine bot"
 msgstr "搜寻引擎机器人"
 
-#: src/class-wpso-admin-menu.php:470 src/class-wpso-admin-menu.php:970
+#: src/class-wpso-admin-menu.php:472 src/class-wpso-admin-menu.php:972
 msgid "Google bot"
 msgstr "Google 机器人"
 
-#: src/class-wpso-admin-menu.php:471 src/class-wpso-admin-menu.php:971
+#: src/class-wpso-admin-menu.php:473 src/class-wpso-admin-menu.php:973
 msgid "Bing bot"
 msgstr "Bing 机器人"
 
-#: src/class-wpso-admin-menu.php:472 src/class-wpso-admin-menu.php:972
+#: src/class-wpso-admin-menu.php:474 src/class-wpso-admin-menu.php:974
 msgid "Yahoo bot"
 msgstr "Yahoo 机器人"
 
-#: src/class-wpso-admin-menu.php:473 src/class-wpso-admin-menu.php:973
+#: src/class-wpso-admin-menu.php:475 src/class-wpso-admin-menu.php:975
 msgid "Too many sessions"
 msgstr "太多工作阶段。"
 
-#: src/class-wpso-admin-menu.php:474 src/class-wpso-admin-menu.php:974
+#: src/class-wpso-admin-menu.php:476 src/class-wpso-admin-menu.php:976
 msgid "Too many accesses"
 msgstr "太多存取次数。"
 
-#: src/class-wpso-admin-menu.php:475 src/class-wpso-admin-menu.php:975
+#: src/class-wpso-admin-menu.php:477 src/class-wpso-admin-menu.php:977
 msgid "Cannot create JS cookies"
 msgstr "无法建立 JS Cookie。"
 
-#: src/class-wpso-admin-menu.php:476 src/class-wpso-admin-menu.php:976
+#: src/class-wpso-admin-menu.php:478 src/class-wpso-admin-menu.php:978
 msgid "Empty referrer"
 msgstr "空白来源参照。"
 
-#: src/class-wpso-admin-menu.php:477 src/class-wpso-admin-menu.php:977
+#: src/class-wpso-admin-menu.php:479 src/class-wpso-admin-menu.php:979
 msgid "Daily limit reached"
 msgstr "已达每日上限。"
 
-#: src/class-wpso-admin-menu.php:478 src/class-wpso-admin-menu.php:978
+#: src/class-wpso-admin-menu.php:480 src/class-wpso-admin-menu.php:980
 msgid "Hourly limit reached"
 msgstr "已达每小时上限。"
 
-#: src/class-wpso-admin-menu.php:479 src/class-wpso-admin-menu.php:979
+#: src/class-wpso-admin-menu.php:481 src/class-wpso-admin-menu.php:981
 msgid "Minutely limit reached"
 msgstr "已达每分钟上限。"
 
-#: src/class-wpso-admin-menu.php:480 src/class-wpso-admin-menu.php:980
+#: src/class-wpso-admin-menu.php:482 src/class-wpso-admin-menu.php:982
 msgid "Secondly limit reached"
 msgstr "已达每秒上限。"
 
-#: src/class-wpso-admin-menu.php:482
+#: src/class-wpso-admin-menu.php:484
 msgid "DENY"
 msgstr "拒绝"
 
-#: src/class-wpso-admin-menu.php:483
+#: src/class-wpso-admin-menu.php:485
 msgid "ALLOW"
 msgstr "允许"
 
-#: src/class-wpso-admin-menu.php:484
+#: src/class-wpso-admin-menu.php:486
 #: src/views/dashboard/dashboard-last-month.php:71
 #: src/views/dashboard/dashboard-past-seven-days.php:71
 #: src/views/dashboard/dashboard-this-month.php:71
@@ -227,37 +227,37 @@ msgstr "允许"
 msgid "CAPTCHA"
 msgstr "CAPTCHA"
 
-#: src/class-wpso-admin-menu.php:981
+#: src/class-wpso-admin-menu.php:983
 msgid "Invalid IP address."
 msgstr "无效的 IP 位址。"
 
-#: src/class-wpso-admin-menu.php:982 src/class-wpso-admin-menu.php:984
+#: src/class-wpso-admin-menu.php:984 src/class-wpso-admin-menu.php:986
 msgid "Denied by IP component."
 msgstr "被 IP 元件阻挡。"
 
-#: src/class-wpso-admin-menu.php:983
+#: src/class-wpso-admin-menu.php:985
 msgid "Allowed by IP component."
 msgstr "由 IP 元件许可。"
 
-#: src/class-wpso-admin-menu.php:985
+#: src/class-wpso-admin-menu.php:987
 msgid "Denied by RDNS component."
 msgstr "由 RDNS 组件拒绝。"
 
-#: src/class-wpso-admin-menu.php:986
+#: src/class-wpso-admin-menu.php:988
 msgid "Denied by Header component."
 msgstr "被标头资讯元件阻挡。"
 
-#: src/class-wpso-admin-menu.php:987
+#: src/class-wpso-admin-menu.php:989
 msgid "Denied by User-agent component."
 msgstr ""
 "\n"
 "被使用者代理元件阻挡。"
 
-#: src/class-wpso-admin-menu.php:988
+#: src/class-wpso-admin-menu.php:990
 msgid "Identified as fake search engine."
 msgstr "被辨识为伪造的搜索引擎。"
 
-#: src/class-wpso-admin-menu.php:1000
+#: src/class-wpso-admin-menu.php:1002
 #: src/views/dashboard/dashboard-last-month.php:68
 #: src/views/dashboard/dashboard-past-seven-days.php:68
 #: src/views/dashboard/dashboard-this-month.php:68
@@ -271,51 +271,51 @@ msgstr "被辨识为伪造的搜索引擎。"
 msgid "IP"
 msgstr "IP 位址"
 
-#: src/class-wpso-admin-menu.php:1001
+#: src/class-wpso-admin-menu.php:1003
 #: src/views/dashboard/operation-status.php:115
 #: src/views/dashboard/overview.php:153
 msgid "Trusted Bot"
 msgstr "信任的机器人"
 
-#: src/class-wpso-admin-menu.php:1002 src/class-wpso-admin-settings.php:239
+#: src/class-wpso-admin-menu.php:1004 src/class-wpso-admin-settings.php:244
 #: src/views/dashboard/operation-status.php:131
 #: src/views/dashboard/overview.php:163
 msgid "Header"
 msgstr "资料标头"
 
-#: src/class-wpso-admin-menu.php:1003
+#: src/class-wpso-admin-menu.php:1005
 #: src/views/dashboard/operation-status.php:147
 #: src/views/dashboard/overview.php:173
 msgid "RDNS"
 msgstr "RDNS"
 
-#: src/class-wpso-admin-menu.php:1004 src/class-wpso-admin-settings.php:266
+#: src/class-wpso-admin-menu.php:1006 src/class-wpso-admin-settings.php:271
 #: src/views/dashboard/operation-status.php:163
 #: src/views/dashboard/overview.php:183
 msgid "User Agent"
 msgstr "用户代理"
 
-#: src/class-wpso-admin-menu.php:1005
+#: src/class-wpso-admin-menu.php:1007
 #: src/views/dashboard/operation-status.php:58
 #: src/views/dashboard/overview.php:116
 msgid "Frequency"
 msgstr "频率"
 
-#: src/class-wpso-admin-menu.php:1006
+#: src/class-wpso-admin-menu.php:1008
 #: src/views/dashboard/filter-log-table.php:80
 #: src/views/dashboard/operation-status.php:74
 #: src/views/dashboard/overview.php:125
 msgid "Referrer"
 msgstr "来源参照"
 
-#: src/class-wpso-admin-menu.php:1007 src/class-wpso-admin-settings.php:386
+#: src/class-wpso-admin-menu.php:1009 src/class-wpso-admin-settings.php:391
 #: src/views/dashboard/filter-log-table.php:79
 #: src/views/dashboard/operation-status.php:42
 #: src/views/dashboard/overview.php:107
 msgid "Session"
 msgstr "工作阶段"
 
-#: src/class-wpso-admin-menu.php:1008 src/class-wpso-admin-settings.php:459
+#: src/class-wpso-admin-menu.php:1010 src/class-wpso-admin-settings.php:464
 #: src/views/dashboard/filter-log-table.php:78
 #: src/views/dashboard/operation-status.php:26
 #: src/views/dashboard/overview.php:98
@@ -356,55 +356,59 @@ msgstr "CAPTCHA"
 msgid "Exclusion"
 msgstr "排除项目"
 
-#: src/class-wpso-admin-settings.php:93
+#: src/class-wpso-admin-settings.php:81
+msgid "WP Tweaks"
+msgstr "WP 功能微调"
+
+#: src/class-wpso-admin-settings.php:98
 msgid "Enable"
 msgstr "启用"
 
-#: src/class-wpso-admin-settings.php:101
+#: src/class-wpso-admin-settings.php:106
 msgid ""
 "Start protecting your website by implementing Shieldon. This plugin only "
 "works when this option is enabled."
 msgstr "透过使用 Shieldon 为网站提供保护。启用这项设置后，这个插件才会生效。"
 
-#: src/class-wpso-admin-settings.php:110
+#: src/class-wpso-admin-settings.php:115
 msgid "Data Driver"
 msgstr "资料驱动程序"
 
-#: src/class-wpso-admin-settings.php:111
+#: src/class-wpso-admin-settings.php:116
 msgid "Choose a data driver for Shieldon to use."
 msgstr "请选取 Shieldon 要使用的资料驱动程序。"
 
-#: src/class-wpso-admin-settings.php:124
+#: src/class-wpso-admin-settings.php:129
 msgid "Driver Status"
 msgstr "驱动程序状态"
 
-#: src/class-wpso-admin-settings.php:134
+#: src/class-wpso-admin-settings.php:139
 msgid "Reset Data Cycle"
 msgstr "重设资料周期"
 
-#: src/class-wpso-admin-settings.php:135
+#: src/class-wpso-admin-settings.php:140
 msgid ""
 "Clear all logs everyday 0:00 a.m. automatically. Turning this option on will "
 "improve performace."
 msgstr "自动在每日上午 0:00 清除全部日志。启用这项设置便能增进效能。"
 
-#: src/class-wpso-admin-settings.php:144 src/views/dashboard/overview.php:212
+#: src/class-wpso-admin-settings.php:149 src/views/dashboard/overview.php:212
 msgid "Action Logger"
 msgstr "动作日志器"
 
-#: src/class-wpso-admin-settings.php:145 src/views/dashboard/overview.php:216
+#: src/class-wpso-admin-settings.php:150 src/views/dashboard/overview.php:216
 msgid "Record every visitor’s behavior."
 msgstr "记录每位访客的行为。"
 
-#: src/class-wpso-admin-settings.php:145
+#: src/class-wpso-admin-settings.php:150
 msgid "Not recommend for high-traffic webites."
 msgstr "不建议用在高流量网站。"
 
-#: src/class-wpso-admin-settings.php:154
+#: src/class-wpso-admin-settings.php:159
 msgid "IP Source"
 msgstr "IP地址来源"
 
-#: src/class-wpso-admin-settings.php:155
+#: src/class-wpso-admin-settings.php:160
 msgid ""
 "Is your website behind CDN service? If you use CDN, you have to set this "
 "setting, otherwise all IP addresses come from CDN servers, they will be "
@@ -412,178 +416,178 @@ msgid ""
 msgstr ""
 "这个网站使用 CDN 服务吗？如果这个网站使用了 CDN 服务，就必须设置这项设置，否则全部源自 CDN 伺服器的 IP 位址，均会遭到封锁。"
 
-#: src/class-wpso-admin-settings.php:170
+#: src/class-wpso-admin-settings.php:175
 msgid "Online Session Limit"
 msgstr "线上工作阶段限制"
 
-#: src/class-wpso-admin-settings.php:178
+#: src/class-wpso-admin-settings.php:183
 msgid ""
 "When the online user amount has reached the limit, other users not in the "
 "queue have to line up!"
 msgstr "当在线用户数量达到上限，不在伫列中的其他用户必须等候。"
 
-#: src/class-wpso-admin-settings.php:187
+#: src/class-wpso-admin-settings.php:192
 msgid "Online Limit"
 msgstr "用户人数限制"
 
-#: src/class-wpso-admin-settings.php:188
+#: src/class-wpso-admin-settings.php:193
 msgid "The maximum online user limit."
 msgstr "在线同时用户人数限制。"
 
-#: src/class-wpso-admin-settings.php:198
+#: src/class-wpso-admin-settings.php:203
 msgid "Keep Alive Period"
 msgstr "持续连线周期"
 
-#: src/class-wpso-admin-settings.php:199
+#: src/class-wpso-admin-settings.php:204
 msgid "Unit: minute"
 msgstr "单位: 分钟"
 
-#: src/class-wpso-admin-settings.php:212
+#: src/class-wpso-admin-settings.php:217
 msgid "Trusted Bots"
 msgstr "受信任的檢索机器人"
 
-#: src/class-wpso-admin-settings.php:229 src/class-wpso-admin-settings.php:256
-#: src/class-wpso-admin-settings.php:283 src/class-wpso-admin-settings.php:310
+#: src/class-wpso-admin-settings.php:234 src/class-wpso-admin-settings.php:261
+#: src/class-wpso-admin-settings.php:288 src/class-wpso-admin-settings.php:315
 msgid "Strict Mode"
 msgstr "严格模式"
 
-#: src/class-wpso-admin-settings.php:230
+#: src/class-wpso-admin-settings.php:235
 msgid "IP resolved hostname and IP address must match."
 msgstr "透过 IP 位址解析出的主机名称必须与 IP 位址相符。"
 
-#: src/class-wpso-admin-settings.php:247
+#: src/class-wpso-admin-settings.php:252
 msgid "Analysis header information from visitors."
 msgstr "网站访客的分析标头资讯。"
 
-#: src/class-wpso-admin-settings.php:257
+#: src/class-wpso-admin-settings.php:262
 msgid "Deny all vistors without common header information."
 msgstr "拒绝没有通用标头资讯的全部网站访客。"
 
-#: src/class-wpso-admin-settings.php:274
+#: src/class-wpso-admin-settings.php:279
 #: src/views/dashboard/operation-status.php:171
 #: src/views/dashboard/overview.php:187
 msgid "Analysis user-agent information from visitors."
 msgstr "网站访客的分析用户代理资讯。"
 
-#: src/class-wpso-admin-settings.php:284
+#: src/class-wpso-admin-settings.php:289
 msgid "Visitors with empty user-agent information will be blocked."
 msgstr "含有空白用户代理程序资讯的网站访客会遭到封锁。"
 
-#: src/class-wpso-admin-settings.php:293
+#: src/class-wpso-admin-settings.php:298
 msgid "Reverse DNS"
 msgstr "DNS 反向解析"
 
-#: src/class-wpso-admin-settings.php:301
+#: src/class-wpso-admin-settings.php:306
 msgid ""
 "In general, an IP from Internet Service Provider (ISP) will have RDNS set. "
 "This option only works when strict mode is on."
 msgstr "一般来说，网际网路服务提供商 (ISP) 的 IP 位址会有 DNS 反向解析集。这个功能仅适用于已启用 [严格模式]。"
 
-#: src/class-wpso-admin-settings.php:326
+#: src/class-wpso-admin-settings.php:331
 msgid "Frequency Check"
 msgstr "检查频率"
 
-#: src/class-wpso-admin-settings.php:333
+#: src/class-wpso-admin-settings.php:338
 msgid ""
 "Don't worry about the human visitors, if they reach the limit and get banned,"
 " they can easily continue surfing your website by solving CAPTCHA."
 msgstr "即使网站真人访客遭到存取限制或封锁也不必担心，他们可以轻易通过 CAPTCHA 验证继续浏览网站。"
 
-#: src/class-wpso-admin-settings.php:342
+#: src/class-wpso-admin-settings.php:347
 msgid "Secondly Limit"
 msgstr "每秒次数限制"
 
-#: src/class-wpso-admin-settings.php:343
+#: src/class-wpso-admin-settings.php:348
 msgid "Page views per vistor per second."
 msgstr "每位网站访客每秒检视同一页面次数。"
 
-#: src/class-wpso-admin-settings.php:353
+#: src/class-wpso-admin-settings.php:358
 msgid "Minutely Limit"
 msgstr "每分钟次数限制"
 
-#: src/class-wpso-admin-settings.php:354
+#: src/class-wpso-admin-settings.php:359
 msgid "Page views per vistor per minute."
 msgstr "每位网站访客每分钟检视同一页面次数。"
 
-#: src/class-wpso-admin-settings.php:364
+#: src/class-wpso-admin-settings.php:369
 msgid "Hourly Limit"
 msgstr "每小时次数限制"
 
-#: src/class-wpso-admin-settings.php:365
+#: src/class-wpso-admin-settings.php:370
 msgid "Page views per vistor per hour."
 msgstr "每位网站访客每小时检视同一页面次数。"
 
-#: src/class-wpso-admin-settings.php:375
+#: src/class-wpso-admin-settings.php:380
 msgid "Daily Limit"
 msgstr "每日次数限制"
 
-#: src/class-wpso-admin-settings.php:376
+#: src/class-wpso-admin-settings.php:381
 msgid "Page views per vistor per day."
 msgstr "每位網站訪客每天檢視同一页面次數。"
 
-#: src/class-wpso-admin-settings.php:394
+#: src/class-wpso-admin-settings.php:399
 msgid "Detect multiple sessions created by the same visitor."
 msgstr "侦测同一位网站访客所产生的多个工作阶段。"
 
-#: src/class-wpso-admin-settings.php:403 src/class-wpso-admin-settings.php:439
-#: src/class-wpso-admin-settings.php:476
+#: src/class-wpso-admin-settings.php:408 src/class-wpso-admin-settings.php:444
+#: src/class-wpso-admin-settings.php:481
 msgid "Quota"
 msgstr "配额上限"
 
-#: src/class-wpso-admin-settings.php:404 src/class-wpso-admin-settings.php:440
-#: src/class-wpso-admin-settings.php:477
+#: src/class-wpso-admin-settings.php:409 src/class-wpso-admin-settings.php:445
+#: src/class-wpso-admin-settings.php:482
 msgid "A visitor reached this limit will get banned temporarily."
 msgstr "同一位网站访客达到配额上限时便会暂时封锁。"
 
-#: src/class-wpso-admin-settings.php:422
+#: src/class-wpso-admin-settings.php:427
 msgid "HTTP Referrer"
 msgstr "HTTP 来源参照"
 
-#: src/class-wpso-admin-settings.php:430
+#: src/class-wpso-admin-settings.php:435
 #: src/views/dashboard/operation-status.php:82
 #: src/views/dashboard/overview.php:129
 msgid "Check HTTP referrer information."
 msgstr "检查 HTTP 来源参照信息。"
 
-#: src/class-wpso-admin-settings.php:467
+#: src/class-wpso-admin-settings.php:472
 msgid "Check cookie generated by JavaScript."
 msgstr "检查 JavaScript 产生的 Cookie。"
 
-#: src/class-wpso-admin-settings.php:499
+#: src/class-wpso-admin-settings.php:504
 msgid "Google reCaptcha"
 msgstr "Google reCaptcha"
 
-#: src/class-wpso-admin-settings.php:516
+#: src/class-wpso-admin-settings.php:521
 msgid "Version"
 msgstr "版本"
 
-#: src/class-wpso-admin-settings.php:517
+#: src/class-wpso-admin-settings.php:522
 msgid ""
 "Please use corresponding key for that version you choose, otherwise it won't "
 "work."
 msgstr "请使用与选用版本对应的金钥，否则无法正确执行。"
 
-#: src/class-wpso-admin-settings.php:529
+#: src/class-wpso-admin-settings.php:534
 msgid "Site Key"
 msgstr "网站金钥"
 
-#: src/class-wpso-admin-settings.php:530
+#: src/class-wpso-admin-settings.php:535
 msgid "Enter Google reCaptcha site key for your webiste."
 msgstr "请输入这个网站的 Google reCaptcha 网站金钥。"
 
-#: src/class-wpso-admin-settings.php:540
+#: src/class-wpso-admin-settings.php:545
 msgid "Secret Key"
 msgstr "密钥"
 
-#: src/class-wpso-admin-settings.php:541
+#: src/class-wpso-admin-settings.php:546
 msgid "Enter Google reCahptcha secret key for your webiste."
 msgstr "请输入这个网站的 Google reCahptcha 密钥。"
 
-#: src/class-wpso-admin-settings.php:551
+#: src/class-wpso-admin-settings.php:556
 msgid "Language Code"
 msgstr "语言代码"
 
-#: src/class-wpso-admin-settings.php:552
+#: src/class-wpso-admin-settings.php:557
 msgid ""
 "ISO 639 - ISO 3166 code. For example, <strong>zh-TW</strong> stands for "
 "Tranditional Chinese of <strong>Taiwan</strong>"
@@ -591,15 +595,15 @@ msgstr ""
 "这项设置采用 ISO 639 - ISO 3166 代码。举例来说，语言代码 <strong>zh-TW</strong> 代表<strong>"
 "台湾</strong>繁体中文。"
 
-#: src/class-wpso-admin-settings.php:562 src/views/dashboard/overview.php:241
+#: src/class-wpso-admin-settings.php:567 src/views/dashboard/overview.php:241
 msgid "Image Captcha"
 msgstr "图片 CAPTCHA 验证"
 
-#: src/class-wpso-admin-settings.php:570
+#: src/class-wpso-admin-settings.php:575
 msgid "A simple image CAPTCHA."
 msgstr "简易图片 CAPTCHA 验证。"
 
-#: src/class-wpso-admin-settings.php:579
+#: src/class-wpso-admin-settings.php:584
 #: src/views/dashboard/operation-status.php:195
 #: src/views/dashboard/rule-table.php:60
 #: src/views/security/xss-protection.php:99
@@ -607,45 +611,46 @@ msgstr "简易图片 CAPTCHA 验证。"
 msgid "Type"
 msgstr "验证类型"
 
-#: src/class-wpso-admin-settings.php:585
+#: src/class-wpso-admin-settings.php:590
 msgid "Alpha-numeric string with lower and uppercase characters."
 msgstr "数字、小写及大写字母混合。"
 
-#: src/class-wpso-admin-settings.php:586
+#: src/class-wpso-admin-settings.php:591
 msgid "A string with lower and uppercase letters only."
 msgstr "仅小写及大写字母。"
 
-#: src/class-wpso-admin-settings.php:587
+#: src/class-wpso-admin-settings.php:592
 msgid "Numeric string only."
 msgstr "仅有数字。"
 
-#: src/class-wpso-admin-settings.php:594
+#: src/class-wpso-admin-settings.php:599
 msgid "Length"
 msgstr "字元长度"
 
-#: src/class-wpso-admin-settings.php:595
+#: src/class-wpso-admin-settings.php:600
 msgid "How many characters do you like to display on CAPTCHA."
 msgstr "CAPTCHA 验证圖片中要顯示的字元數量。"
 
-#: src/class-wpso-admin-settings.php:612
+#: src/class-wpso-admin-settings.php:617
 msgid "URLs"
 msgstr "網址"
 
-#: src/class-wpso-admin-settings.php:619
+#: src/class-wpso-admin-settings.php:624
 msgid "Excluded URLs"
 msgstr "排除的網址"
 
-#: src/class-wpso-admin-settings.php:626
+#: src/class-wpso-admin-settings.php:631
 msgid "Pages"
 msgstr "页面"
 
-#: src/class-wpso-admin-settings.php:634
+#: src/class-wpso-admin-settings.php:639
 msgid ""
 "Turning this option on will get <code>wp-login.php</code> excluded from "
 "Shieldon protection."
 msgstr "启用这项设置后，<code>wp-login.php</code> 便会从 WP Shieldon 插件保护机制中排除。"
 
-#: src/class-wpso-admin-settings.php:634 src/class-wpso-admin-settings.php:643
+#: src/class-wpso-admin-settings.php:639 src/class-wpso-admin-settings.php:648
+#: src/class-wpso-admin-settings.php:687 src/class-wpso-admin-settings.php:696
 #: src/views/setting/ip-manager-strict-login.php:16
 #: src/views/setting/ip-manager-strict-signup.php:15
 #: src/views/setting/ip-manager-strict-xmlrpc.php:15
@@ -653,56 +658,77 @@ msgstr "启用这项设置后，<code>wp-login.php</code> 便会从 WP Shieldon 
 msgid "(default: off)"
 msgstr "(默认: 停用)"
 
-#: src/class-wpso-admin-settings.php:643
+#: src/class-wpso-admin-settings.php:648
 msgid ""
 "Turning this option on will get <code>wp-signup.php</code> excluded from "
 "Shieldon protection."
 msgstr "启用这项设置后，<code>wp-signup.php</code> 便会从 WP Shieldon 插件保护机制中排除。"
 
-#: src/class-wpso-admin-settings.php:652
+#: src/class-wpso-admin-settings.php:657
 msgid ""
 "Turning this option on will get <code>xmlrpc.php</code> excluded from "
 "Shieldon protection."
 msgstr "启用这项设置后，<code>xmlrpc.php</code> 便会从 WP Shieldon 插件保护机制中排除。"
 
-#: src/class-wpso-admin-settings.php:652 src/class-wpso-admin-settings.php:661
-#: src/class-wpso-admin-settings.php:670
+#: src/class-wpso-admin-settings.php:657 src/class-wpso-admin-settings.php:666
+#: src/class-wpso-admin-settings.php:675
 msgid "(default: on)"
 msgstr "(默认: 启用)"
 
-#: src/class-wpso-admin-settings.php:660
+#: src/class-wpso-admin-settings.php:665 src/class-wpso-admin-settings.php:686
 msgid "REST API"
 msgstr "REST API"
 
-#: src/class-wpso-admin-settings.php:661
+#: src/class-wpso-admin-settings.php:666
 msgid ""
 "Some WordPress core functions such as \"Save Draft\" and REST API use "
 "\"<strong>/wp-json/</strong>\"."
 msgstr ""
 "一些 WordPress 核心功能像是 [储存草稿] 和 REST API 使用 \"<strong>/wp-json/</strong>\" 网址路径。"
 
-#: src/class-wpso-admin-settings.php:661
+#: src/class-wpso-admin-settings.php:666
 msgid ""
 "Turning this option on will get <code>/wp-json/</code> excluded from "
 "Shieldon protection."
 msgstr "把这个选项开启，将使 <code>/wp-json/</code> 被排除在 Shieldon 防护机制。"
 
-#: src/class-wpso-admin-settings.php:669
+#: src/class-wpso-admin-settings.php:674
 msgid "Theme Customizer"
 msgstr "布景主题外观自订器"
 
-#: src/class-wpso-admin-settings.php:670
+#: src/class-wpso-admin-settings.php:675
 msgid ""
 "If you want to use theme customizer, please turn this on. After finishing a "
 "while, do not forget to turn this option off."
 msgstr "如果您要使用布景主题自订外观，请启用此项。在使用结束后，别忘了关闭此项。"
 
-#: src/class-wpso-admin-settings.php:670
+#: src/class-wpso-admin-settings.php:675
 msgid ""
 "Turning this option on will get <code>/?customize_changeset_uuid=</code> "
 "excluded from Shieldon protection."
 msgstr ""
 "把这个选项开启，将使 <code>/?customize_changeset_uuid=</code> 被排除在 Shieldon 防护机制。"
+
+#: src/class-wpso-admin-settings.php:687
+msgid "Only allow logged-in users to access REST API."
+msgstr "只许可已登入的用户连接 REST API。"
+
+#: src/class-wpso-admin-settings.php:695
+msgid "XML-RPC"
+msgstr "XML-RPC"
+
+#: src/class-wpso-admin-settings.php:696
+msgid "Turning this option on to disable XML-RPC function."
+msgstr "启用这个选项以停用 XML-RPC 功能。"
+
+#: src/class-wpso-admin-settings.php:696
+msgid ""
+"XML-RPC is needed if you are using the client software such as WordPress "
+"mobile APP, Windows Live Writer and others. Disabling it to increase "
+"security if you are not using."
+msgstr ""
+"如果您正使用客户端软件例如 WordPress 手机 APP、Windows Live Writter 及其它，XML-RPC "
+"是需要的。如果您没在使用，关闭它以提高安全性。"
 
 #: src/views/dashboard/dashboard-last-month.php:30
 msgid "CAPTCHA statistic last month."

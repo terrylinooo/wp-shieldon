@@ -7,14 +7,14 @@
  *
  * @package Shieldon
  * @since 1.0.0
- * @version 1.6.0
+ * @version 1.6.1
  */
 
 /**
  * Plugin Name: WP Shieldon
  * Plugin URI:  https://github.com/terrylinooo/wp-shieldon
  * Description: An anti-scraping plugin for WordPress.
- * Version:     1.6.0
+ * Version:     1.6.1
  * Author:      Terry Lin
  * Author URI:  https://terryl.in/
  * License:     GPL 3.0
@@ -226,11 +226,11 @@ if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 		 * @return void
 		 */
 		function wpso_admin_init() {
-			
-			// '_disabled_php_session' is just a meaningless string for disabling PHP session
-			// initialized by Shieldon. PHP native session is not needed here.
+
+			// The value `_disabled_php_session` is just a meaningless string for disabling PHP session
+			// initialized by Shieldon to fix the Site Healthy Check issue.
+			// PHP native session is not needed in Admin panel, so just disable it.
 			$guardian = wpso_instance( '_disabled_php_session' );
-			// $guardian = wpso_instance();
 			$guardian->init();
 		}
 
@@ -245,7 +245,7 @@ if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 			 *
 			 * @return void
 			 */
-			function wpso_init() {
+			function wpso_plugin_init() {
 				
 				$guardian = wpso_instance();
 				$guardian->init();
@@ -253,7 +253,41 @@ if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 			}
 
 			// Load main launcher class of WP Shieldon plugin at a very early hook.
-			add_action( 'plugins_loaded', 'wpso_init', -100 );
+			add_action( 'plugins_loaded', 'wpso_plugin_init', -100 );
+
+			/**
+			 * Tweaks for increasing WordPress security.
+			 *
+			 * @return void
+			 */
+			function wpso_wp_tweak_init() {
+	
+				// Only logged-users can accesss the REST API.
+				if ( 'yes' === wpso_get_option( 'only_authorised_rest_access', 'shieldon_wp_tweak' ) ) {
+
+					function only_authorised_rest_access( $result ) {
+
+						if ( ! is_user_logged_in() ) {
+							return new WP_Error(
+								'rest_unauthorised', 
+								__( 'Only authenticated users can access the REST API.', 'wp-shieldon' ),
+								array( 'status' => rest_authorization_required_code() )
+							);
+						}
+
+						return $result;
+					}
+
+					add_filter( 'rest_authentication_errors', 'only_authorised_rest_access' );
+				}
+
+				// Disable XML-RPC feature.
+				if ( 'yes' === wpso_get_option( 'disable_xmlrpc', 'shieldon_wp_tweak' ) ) {
+					add_filter('xmlrpc_enabled', '__return_false');
+				}
+			}
+
+			add_action( 'init', 'wpso_wp_tweak_init' );
 		}
 	}
 

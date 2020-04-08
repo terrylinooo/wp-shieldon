@@ -245,7 +245,8 @@ class WPSO_Admin_Menu {
 							'daemon', 
 							'component', 
 							'filter', 
-							'captcha', 
+							'captcha',
+							'wp_tweak',
 							'exclusion', 
 							'authetication',
 							'xss_protection',
@@ -307,11 +308,12 @@ class WPSO_Admin_Menu {
 				header('Pragma: public');
 
 				$setting_sections = array( 
-					'daemon', 
-					'component', 
-					'filter', 
-					'captcha', 
-					'exclusion', 
+					'daemon',
+					'component',
+					'filter',
+					'captcha',
+					'wp_tweak',
+					'exclusion',
 					'authetication',
 					'xss_protection',
 					'xss_protected_list',

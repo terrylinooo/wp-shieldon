@@ -803,6 +803,7 @@ class Shieldon
         } else {
            
             if ((php_sapi_name() !== 'cli')) {
+               
                 if ($this->enableSessionCheck) {
                     if (session_status() === PHP_SESSION_NONE) {
                         session_start();

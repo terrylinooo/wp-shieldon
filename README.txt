@@ -1,10 +1,10 @@
-=== WP Shieldon Security - Web Application Firewall ===
+=== WP Shieldon - WordPress Firewall ===
 Contributors: terrylin
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=donate%40terryl.in&item_name=WordPress+Plugin+-+WP+Shieldon&currency_code=USD&source=url
 Tags: anti-scriping, security, firewall, brute-force, xss-protection
 Requires at least: 4.0
-Tested up to: 5.3.2
-Stable tag: 1.6.0
+Tested up to: 5.4.0
+Stable tag: 1.6.1
 Requires PHP: 7.1.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -15,13 +15,13 @@ WP Shieldon is a WordPress security plugin based on [Shieldon](https://github.co
 
 When the users or robots are trying to view many your web pages at a short period of time, they will temporarily get banned. To get unbanned by solving Catpcha.
 
-Of course, this plugin protects your webiste from [Brute Force Attacks](https://wordpress.org/support/article/brute-force-attacks/) very well.
+You can visit the plugin author - [Terry L.](https://terryl.in)'s blog and try reloading the pages several times then you will see how this plugin works. You can also try Terry's login page then you will find it protected. More information about Shieldon, please visit [shieldon.io](https://shieldon.io/en/)
 
-You can visit the plugin author - [Terry L.](https://terryl.in)'s blog and try reloading the pages several times then you will see how this plugin works. You can also try Terry's login page then you will find it protected.
+Please note that there are three important things you must understand before using WP Shieldon:
 
-== Documents ==
-
-- [Traditional Chinese](https://terryl.in/zh/repository/wp-shieldon/)
+1. WP Shieldon is not for beginners.
+2. Turning `Trusted Bot` component on to allow search engine crawlers such as Google, Bing, Yahoo, and others smoothly crawling your website.
+3. If you are running a high-traffic website and the visitors on your website share your posts to the social media frequently, the thumbnails of your posts might not appear on social networking platforms such as Facebook, Line, Telegram, and others, IP addresses from them do not have valid [PTR aka. RDNS](https://en.wikipedia.org/wiki/Reverse_DNS_lookup) set, therefore they will be banned due to reaching the access limit and then unable to fetch the thumbnails. 
 
 == Open Source Code ==
 
@@ -51,6 +51,11 @@ Check out my other WordPress works here:
 - [Markdown Editor](https://wordpress.org/plugins/wp-githuber-md/) - WP Githuber MD - an all in one Markdown editor.
 - [SEO Search Permalink](https://wordpress.org/plugins/seo-search-permalink/) - Static search permalink.
 - [Mynote Theme](https://wordpress.org/themes/mynote/) - Theme for programmers.
+
+== Documents ==
+
+- [Traditional Chinese](https://terryl.in/zh/repository/wp-shieldon/)
+- [English](https://shieldon.io/en/docs/wordpress-firewall-plugin.html)
 
 == Screenshots ==
 
@@ -179,6 +184,12 @@ GNU General Public License for more details.
 - Add import/export settings feature.
 - Add page - operation status.
 - Update translation strings.
+
+= 1.6.1
+
+- Fix Website Healthy Check issue.
+- Add an option for allowing only logged-in users can accesss REST API.
+- Add an option for disabling XML-RPC.
 
 == Upgrade Notice ==
 

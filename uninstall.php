@@ -7,7 +7,7 @@
  *
  * @package Shieldon
  * @since 1.0.0
- * @version 1.0.0
+ * @version 1.6.1
  */
 
 // if uninstall.php is not called by WordPress, die.
@@ -23,6 +23,7 @@ $options_names = array(
 	'shieldon_component',
 	'shieldon_filter',
 	'shieldon_captcha',
+	'shieldon_wp_tweak',
 	'shieldon_ip_global',
 	'shieldon_ip_login',
 	'shieldon_ip_signup',

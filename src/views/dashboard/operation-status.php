@@ -26,7 +26,7 @@ if ( ! defined('SHIELDON_PLUGIN_NAME') ) die;
                     <div class="heading"><?php _e( 'Cookie', 'wp-shieldon' ); ?></div>
                     <div class="nums">
                         <?php if ( ! empty( $filter_cookie ) ) : ?>
-                            <a href="#" onclick="displayLogs('frequency');"><?php echo $filter_cookie; ?></a>
+                            <a href="#" onclick="displayLogs('cookie');"><?php echo $filter_cookie; ?></a>
                         <?php else : ?>
                             <?php echo $filter_cookie; ?>
                         <?php endif; ?>
@@ -178,7 +178,7 @@ if ( ! defined('SHIELDON_PLUGIN_NAME') ) die;
     </div>
 </div>
 
-<?php foreach( ['ip', 'trustedbot', 'header', 'rdns', 'useragent', 'frequency', 'referer', 'session', 'cookie'] as $i ) : ?>
+<?php foreach( array( 'ip', 'trustedbot', 'header', 'rdns', 'useragent', 'frequency', 'referer', 'session', 'cookie' ) as $i ) : ?>
     <div id="table-<?php echo $i; ?>" class="wpso-dashboard" style="display: none;">
         <div class="wpso-datatables">
             <div class="wpso-datatable-heading">

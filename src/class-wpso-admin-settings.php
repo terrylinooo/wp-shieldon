@@ -75,6 +75,11 @@ class WPSO_Admin_Settings {
 				'id'    => 'shieldon_exclusion',
 				'title' => __( 'Exclusion', 'wp-shieldon' ),
 			),
+
+			array(
+				'id'    => 'shieldon_wp_tweak',
+				'title' => __( 'WP Tweaks', 'wp-shieldon' ),
+			),
 		);
 	}
 
@@ -671,6 +676,27 @@ class WPSO_Admin_Settings {
 					'type'    => 'toggle',
 					'size'    => 'sm',
 					'default' => 'yes',
+				),
+			),
+
+			'shieldon_wp_tweak' => array(
+
+				array(
+					'name'    => 'only_authorised_rest_access',
+					'label'   => __( 'REST API', 'wp-shieldon' ),
+					'desc'    => __( 'Only allow logged-in users to access REST API.', 'wp-shieldon' ) . '<br />' . __( '(default: off)', 'wp-shieldon' ),
+					'type'    => 'toggle',
+					'size'    => 'sm',
+					'default' => 'no',
+				),
+
+				array(
+					'name'    => 'disable_xmlrpc',
+					'label'   => __( 'XML-RPC', 'wp-shieldon' ),
+					'desc'    => __( 'Turning this option on to disable XML-RPC function.', 'wp-shieldon' ) . '<br />' . __( 'XML-RPC is needed if you are using the client software such as WordPress mobile APP, Windows Live Writer and others. Disabling it to increase security if you are not using.', 'wp-shieldon' ). '<br />' . __( '(default: off)', 'wp-shieldon' ),
+					'type'    => 'toggle',
+					'size'    => 'sm',
+					'default' => 'no',
 				),
 			),
 		);
