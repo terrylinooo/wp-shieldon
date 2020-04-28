@@ -480,6 +480,9 @@ class WPSO_Admin_Menu {
 		$reason_translation_mapping[12]  = __( 'Hourly limit reached', 'wp-shieldon' );
 		$reason_translation_mapping[13]  = __( 'Minutely limit reached', 'wp-shieldon' );
 		$reason_translation_mapping[14]  = __( 'Secondly limit reached', 'wp-shieldon' );
+		$reason_translation_mapping[40]  = __( 'Invalid IP', 'wp-shieldon' );
+		$reason_translation_mapping[41]  = __( 'Denied by IP manager', 'wp-shieldon' );
+		$reason_translation_mapping[42]  = __( 'Allowed by IP manager', 'wp-shieldon' );
 
 		$type_translation_mapping[0] = __( 'DENY', 'wp-shieldon' );
 		$type_translation_mapping[1] = __( 'ALLOW', 'wp-shieldon' );
