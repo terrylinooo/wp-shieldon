@@ -483,6 +483,11 @@ class WPSO_Admin_Menu {
 		$reason_translation_mapping[40]  = __( 'Invalid IP', 'wp-shieldon' );
 		$reason_translation_mapping[41]  = __( 'Denied by IP manager', 'wp-shieldon' );
 		$reason_translation_mapping[42]  = __( 'Allowed by IP manager', 'wp-shieldon' );
+		$reason_translation_mapping[81]  = __( 'Denied by component - IP.', 'wp-shieldon' );
+		$reason_translation_mapping[82]  = __( 'Denied by component - RDNS.', 'wp-shieldon' );
+		$reason_translation_mapping[83]  = __( 'Denied by component - Header.', 'wp-shieldon' );
+		$reason_translation_mapping[84]  = __( 'Denied by component - User Agent.', 'wp-shieldon' );
+		$reason_translation_mapping[85]  = __( 'Denied by component - Trusted Robot.', 'wp-shieldon' );
 
 		$type_translation_mapping[0] = __( 'DENY', 'wp-shieldon' );
 		$type_translation_mapping[1] = __( 'ALLOW', 'wp-shieldon' );
