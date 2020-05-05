@@ -51,17 +51,17 @@
     },
     {
         "name": "shieldon/shieldon",
-        "version": "1.0.0",
-        "version_normalized": "1.0.0.0",
+        "version": "1.0.2",
+        "version_normalized": "1.0.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/terrylinooo/shieldon.git",
-            "reference": "02493e2c95f57d9751953c719ef4f264e4cececa"
+            "reference": "db354be52c75d0ede97a1eba15aa71d02a471381"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/terrylinooo/shieldon/zipball/02493e2c95f57d9751953c719ef4f264e4cececa",
-            "reference": "02493e2c95f57d9751953c719ef4f264e4cececa",
+            "url": "https://api.github.com/repos/terrylinooo/shieldon/zipball/db354be52c75d0ede97a1eba15aa71d02a471381",
+            "reference": "db354be52c75d0ede97a1eba15aa71d02a471381",
             "shasum": ""
         },
         "require": {
@@ -72,7 +72,7 @@
             "phpunit/phpunit": "^7",
             "shieldon/messenger": "^1"
         },
-        "time": "2020-03-10T09:35:01+00:00",
+        "time": "2020-05-04T09:27:27+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {

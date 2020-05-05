@@ -383,9 +383,12 @@ class Shieldon
     /**
      * Constructor.
      * 
+     * @param array  $properties Shieldon configuration settings. (option)
+     * @param string $sessioniD  Customized session ID. (option)
+     * 
      * @return void
      */
-    public function __construct(array $properties = [], string $sessionId = '')
+    public function __construct(array $properties = [],  string $sessionId = '')
     {
         // Set to container.
         Container::set('shieldon', $this);
@@ -395,9 +398,7 @@ class Shieldon
         $this->setSessionId($sessionId);
 
         // At least load a captcha instance. Foundation is the base one.
-        // if (! isset($this->captcha['Foundation'])) {
         $this->setCaptcha(new \Shieldon\Captcha\Foundation());
-        // }
 
         if (! empty($properties)) {
             $this->setProperties($properties);
@@ -801,9 +802,7 @@ class Shieldon
         if ('' !== $sessionId) {
             $this->sessionId = $sessionId;
         } else {
-           
             if ((php_sapi_name() !== 'cli')) {
-               
                 if ($this->enableSessionCheck) {
                     if (session_status() === PHP_SESSION_NONE) {
                         session_start();
@@ -1766,12 +1765,12 @@ class Shieldon
     public function outputJsSnippet(): string
     {
         $tmpCookieName = $this->properties['cookie_name'];
-        $tmpCookieDomain = $this->properties['cookie_domain'];
-        $tmpCookieValue = $this->properties['cookie_value'];
 
         if (empty($tmpCookieDomain) && isset($_SERVER['HTTP_HOST'])) {
             $tmpCookieDomain = $_SERVER['HTTP_HOST'];
         }
+
+        $tmpCookieValue = $this->properties['cookie_value'];
 
         $jsString = <<<"EOF"
             <script>

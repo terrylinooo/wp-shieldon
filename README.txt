@@ -3,8 +3,8 @@ Contributors: terrylin
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=donate%40terryl.in&item_name=WordPress+Plugin+-+WP+Shieldon&currency_code=USD&source=url
 Tags: anti-scriping, security, firewall, brute-force, xss-protection
 Requires at least: 4.0
-Tested up to: 5.4.0
-Stable tag: 1.6.1
+Tested up to: 5.4.1
+Stable tag: 1.6.2
 Requires PHP: 7.1.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -190,6 +190,11 @@ GNU General Public License for more details.
 - Fix Website Healthy Check issue.
 - Add an option for allowing only logged-in users can accesss REST API.
 - Add an option for disabling XML-RPC.
+
+= 1.6.2
+
+- Add Facebook and Twitter bots into whitelist in Trusted Bot component.
+- Add current website's IP address into whitelist by default.
 
 == Upgrade Notice ==
 
