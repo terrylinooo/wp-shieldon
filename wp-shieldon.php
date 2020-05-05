@@ -283,7 +283,7 @@ if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 
 				// Disable XML-RPC feature.
 				if ( 'yes' === wpso_get_option( 'disable_xmlrpc', 'shieldon_wp_tweak' ) ) {
-					add_filter('xmlrpc_enabled', '__return_false');
+					add_filter( 'xmlrpc_enabled', '__return_false' );
 				}
 			}
 

@@ -369,7 +369,7 @@ class WPSO_Shieldon_Guardian {
 
 			$image_captcha_type = wpso_get_option( 'image_captcha_type', 'shieldon_captcha' );
 
-			switch ($image_captcha_type) {
+			switch ( $image_captcha_type ) {
 				case 'numeric':
 					$image_captcha_config['pool'] = '0123456789';
 					break;
@@ -444,6 +444,11 @@ class WPSO_Shieldon_Guardian {
 	 * @return bool
 	 */
 	private function is_excluded_list() {
+
+		// Prevent blocking server IP.
+		if ( isset( $_SERVER['SERVER_ADDR'] ) && $this->shieldon->getIp() === $_SERVER['SERVER_ADDR'] ) {
+			return true;
+		}
 
 		$list = wpso_get_option( 'excluded_urls', 'shieldon_exclusion' );
 		$urls = array();
