@@ -21,7 +21,6 @@ Please note that there are three important things you must understand before usi
 
 1. WP Shieldon is not for beginners.
 2. Turning `Trusted Bot` component on to allow search engine crawlers such as Google, Bing, Yahoo, and others smoothly crawling your website.
-3. If you are running a high-traffic website and the visitors on your website share your posts to the social media frequently, the thumbnails of your posts might not appear on social networking platforms such as Facebook, Line, Telegram, and others, IP addresses from them do not have valid [PTR aka. RDNS](https://en.wikipedia.org/wiki/Reverse_DNS_lookup) set, therefore they will be banned due to reaching the access limit and then unable to fetch the thumbnails. 
 
 == Open Source Code ==
 
