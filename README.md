@@ -9,7 +9,7 @@ You can visit the plugin author - [Terry L.](https://terryl.in)'s blog, try relo
 ## Requirement
 
 * PHP version > 7.1.0
-* WordPress version > 4.0
+* WordPress version > 4.7
 
 ## Download
 

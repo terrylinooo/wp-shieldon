@@ -7,14 +7,14 @@
  *
  * @package Shieldon
  * @since 1.0.0
- * @version 1.6.2
+ * @version 1.6.3
  */
 
 /**
  * Plugin Name: WP Shieldon
  * Plugin URI:  https://github.com/terrylinooo/wp-shieldon
  * Description: An anti-scraping plugin for WordPress.
- * Version:     1.6.2
+ * Version:     1.6.3
  * Author:      Terry Lin
  * Author URI:  https://terryl.in/
  * License:     GPL 3.0
@@ -64,7 +64,7 @@ define( 'SHIELDON_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'SHIELDON_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'SHIELDON_PLUGIN_PATH', __FILE__ );
 define( 'SHIELDON_PLUGIN_LANGUAGE_PACK', dirname( plugin_basename( __FILE__ ) ) . '/languages' );
-define( 'SHIELDON_PLUGIN_VERSION', '1.6.2' );
+define( 'SHIELDON_PLUGIN_VERSION', '1.6.3' );
 define( 'SHIELDON_CORE_VERSION', '1.0.2' );
 define( 'SHIELDON_PLUGIN_TEXT_DOMAIN', 'wp-shieldon' );
 
@@ -238,56 +238,59 @@ if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 
 	} else {
 
-		if ( 'yes' === wpso_get_option( 'enable_daemon', 'shieldon_daemon' ) ) {
+		if ( ! wp_doing_ajax() ) {
 
-			/**
-			 * Shieldon daemon.
-			 *
-			 * @return void
-			 */
-			function wpso_plugin_init() {
-				
-				$guardian = wpso_instance();
-				$guardian->init();
-				$guardian->run();
-			}
+			if ( 'yes' === wpso_get_option( 'enable_daemon', 'shieldon_daemon' ) ) {
 
-			// Load main launcher class of WP Shieldon plugin at a very early hook.
-			add_action( 'plugins_loaded', 'wpso_plugin_init', -100 );
-
-			/**
-			 * Tweaks for increasing WordPress security.
-			 *
-			 * @return void
-			 */
-			function wpso_wp_tweak_init() {
+				/**
+				 * Shieldon daemon.
+				 *
+				 * @return void
+				 */
+				function wpso_plugin_init() {
+					
+					$guardian = wpso_instance();
+					$guardian->init();
+					$guardian->run();
+				}
 	
-				// Only logged-users can accesss the REST API.
-				if ( 'yes' === wpso_get_option( 'only_authorised_rest_access', 'shieldon_wp_tweak' ) ) {
-
-					function only_authorised_rest_access( $result ) {
-
-						if ( ! is_user_logged_in() ) {
-							return new WP_Error(
-								'rest_unauthorised', 
-								__( 'Only authenticated users can access the REST API.', 'wp-shieldon' ),
-								array( 'status' => rest_authorization_required_code() )
-							);
+				// Load main launcher class of WP Shieldon plugin at a very early hook.
+				add_action( 'plugins_loaded', 'wpso_plugin_init', -100 );
+	
+				/**
+				 * Tweaks for increasing WordPress security.
+				 *
+				 * @return void
+				 */
+				function wpso_wp_tweak_init() {
+		
+					// Only logged-users can accesss the REST API.
+					if ( 'yes' === wpso_get_option( 'only_authorised_rest_access', 'shieldon_wp_tweak' ) ) {
+	
+						function only_authorised_rest_access( $result ) {
+	
+							if ( ! is_user_logged_in() ) {
+								return new WP_Error(
+									'rest_unauthorised', 
+									__( 'Only authenticated users can access the REST API.', 'wp-shieldon' ),
+									array( 'status' => rest_authorization_required_code() )
+								);
+							}
+	
+							return $result;
 						}
-
-						return $result;
+	
+						add_filter( 'rest_authentication_errors', 'only_authorised_rest_access' );
 					}
-
-					add_filter( 'rest_authentication_errors', 'only_authorised_rest_access' );
+	
+					// Disable XML-RPC feature.
+					if ( 'yes' === wpso_get_option( 'disable_xmlrpc', 'shieldon_wp_tweak' ) ) {
+						add_filter( 'xmlrpc_enabled', '__return_false' );
+					}
 				}
-
-				// Disable XML-RPC feature.
-				if ( 'yes' === wpso_get_option( 'disable_xmlrpc', 'shieldon_wp_tweak' ) ) {
-					add_filter( 'xmlrpc_enabled', '__return_false' );
-				}
+	
+				add_action( 'init', 'wpso_wp_tweak_init' );
 			}
-
-			add_action( 'init', 'wpso_wp_tweak_init' );
 		}
 	}
 

@@ -2,9 +2,9 @@
 Contributors: terrylin
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=donate%40terryl.in&item_name=WordPress+Plugin+-+WP+Shieldon&currency_code=USD&source=url
 Tags: anti-scriping, security, firewall, brute-force, xss-protection
-Requires at least: 4.0
-Tested up to: 5.4.1
-Stable tag: 1.6.2
+Requires at least: 4.7
+Tested up to: 5.5.1
+Stable tag: 1.6.3
 Requires PHP: 7.1.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -194,6 +194,12 @@ GNU General Public License for more details.
 
 - Add Facebook and Twitter bots into whitelist in Trusted Bot component.
 - Add current website's IP address into whitelist by default.
+- Prevent automatic favicon requests.
+
+= 1.6.3
+
+- Ignore AJAX calls.
+- Fix issue #3 - Notice appearing on PHP 7.4
 
 == Upgrade Notice ==
 
