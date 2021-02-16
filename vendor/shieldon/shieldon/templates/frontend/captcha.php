@@ -39,7 +39,7 @@ $imgsrc = 'https://shieldon-io.github.io/static/icons/icon-secruity_96x96.png';
 			
 					</div>
 					<div class="captcha-container">
-						<form action="<?php echo $_SERVER['REQUEST_URI'] ?>" method="post">
+						<form method="post">
 							<?php foreach ($this->captcha as $captcha) : ?>
 								<?php echo $captcha->form(); ?>
 							<?php endforeach; ?>

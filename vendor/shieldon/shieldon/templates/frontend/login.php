@@ -113,7 +113,7 @@ $imgsrc = 'https://shieldon-io.github.io/static/icons/icon-warning_96x96.png';
                     </div>
                 </div>
 				<div class="card-body">
-                    <form action="<?php echo $_SERVER['REQUEST_URI'] ?>" method="post" autocomplete="off">
+                    <form method="post" autocomplete="off">
                         <div class="main-content">
                             <?php if (! empty($error)) : ?>
                             <div class="error-notice">
