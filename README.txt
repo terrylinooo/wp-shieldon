@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=donat
 Tags: anti-scriping, security, firewall, brute-force, xss-protection
 Requires at least: 4.7
 Tested up to: 5.6.1
-Stable tag: 1.6.4
+Stable tag: 1.6.5
 Requires PHP: 7.1.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html

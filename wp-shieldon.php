@@ -7,7 +7,7 @@
  *
  * @package Shieldon
  * @since 1.0.0
- * @version 1.6.4
+ * @version 1.6.5
  */
 
 /**
@@ -64,8 +64,8 @@ define( 'SHIELDON_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'SHIELDON_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'SHIELDON_PLUGIN_PATH', __FILE__ );
 define( 'SHIELDON_PLUGIN_LANGUAGE_PACK', dirname( plugin_basename( __FILE__ ) ) . '/languages' );
-define( 'SHIELDON_PLUGIN_VERSION', '1.6.4' );
-define( 'SHIELDON_CORE_VERSION', '1.0.3' );
+define( 'SHIELDON_PLUGIN_VERSION', '1.6.5' );
+define( 'SHIELDON_CORE_VERSION', '1.0.4' );
 define( 'SHIELDON_PLUGIN_TEXT_DOMAIN', 'wp-shieldon' );
 
 // Load helper functions
