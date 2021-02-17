@@ -10,7 +10,7 @@
 
 use function Shieldon\Helper\_e;
 
-$imgsrc = 'https://shieldon-io.github.io/static/icons/icon-secruity_96x96.png';
+$imgsrc = SHIELDON_PLUGIN_URL . 'src/assets/images/icon-secruity_96x96.png';
 
 ?>
 <!DOCTYPE html>

@@ -10,8 +10,6 @@
 
 use function Shieldon\Helper\_e;
 
-$imgsrc = 'https://shieldon-io.github.io/static/icons/icon-warning_96x96.png';
-
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo $langCode ?>">
@@ -31,7 +29,7 @@ $imgsrc = 'https://shieldon-io.github.io/static/icons/icon-warning_96x96.png';
 				<div class="card-body">
 					<div class="status-container">
 						<div class="status-icon">
-							<img src="<?php echo $imgsrc; ?>">
+							<img src="<?php echo SHIELDON_PLUGIN_URL . 'src/assets/images/icon-warning_96x96.png'; ?>">
 						</div>
 						<div class="status-message">
                             <?php _e('core', 'deny_message', 'The IP address you are using has been blocked.') ?>

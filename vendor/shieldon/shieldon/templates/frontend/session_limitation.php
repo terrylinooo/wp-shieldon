@@ -10,8 +10,6 @@
 
 use function Shieldon\Helper\_e;
 
-$imgsrc = 'https://shieldon-io.github.io/static/icons/icon-clock_96x96.png';
-
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo $langCode ?>">
@@ -31,7 +29,7 @@ $imgsrc = 'https://shieldon-io.github.io/static/icons/icon-clock_96x96.png';
 				<div class="card-body">
 					<div class="status-container">
 						<div class="status-icon">
-							<img src="<?php echo $imgsrc; ?>">
+							<img src="<?php echo SHIELDON_PLUGIN_URL . 'src/assets/images/icon-clock_96x96.png'; ?>">
 						</div>
 						<div class="status-message">
                             <?php _e('core', 'limit_message', 'This page is limiting the number of people online. Please wait a moment.'); ?>

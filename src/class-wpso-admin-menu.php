@@ -41,8 +41,11 @@ class WPSO_Admin_Menu {
 		if ( false === strpos( $hook_suffix, 'shieldon' ) ) {
 			return;
 		}
-		wp_enqueue_script( 'fontawesome-5-js', SHIELDON_PLUGIN_URL . 'src/assets/js/fontawesome-all.min.js', array( 'jquery' ), SHIELDON_PLUGIN_VERSION, true );
+		wp_enqueue_script( 'wpso-fontawesome-5-js', SHIELDON_PLUGIN_URL . 'src/assets/js/fontawesome-all.min.js', array( 'jquery' ), SHIELDON_PLUGIN_VERSION, true );
 		wp_enqueue_script( 'jquery-ui-dialog' );
+
+		wp_enqueue_script( 'wpso-apexcharts', SHIELDON_PLUGIN_URL . 'src/assets/js/apexcharts.min.js', array(), SHIELDON_PLUGIN_VERSION, false );
+		wp_enqueue_script( 'wpso-datatables', SHIELDON_PLUGIN_URL . 'src/assets/js/datatables.min.js', array(), SHIELDON_PLUGIN_VERSION, true );
 	}
 
 	/**

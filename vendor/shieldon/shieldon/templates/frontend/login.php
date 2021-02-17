@@ -10,8 +10,6 @@
 
 use function Shieldon\Helper\_e;
 
-$imgsrc = 'https://shieldon-io.github.io/static/icons/icon-warning_96x96.png';
-
 ?>
 <!DOCTYPE html>
 <html lang="en-US">
@@ -109,7 +107,7 @@ $imgsrc = 'https://shieldon-io.github.io/static/icons/icon-warning_96x96.png';
 			<div class="card">
 				<div class="card-header">
                     <div class="logo-wrapper">
-                        <img src="https://shieldon-io.github.io/static/images/logo.png" class="logo">
+                        <img src="<?php echo SHIELDON_PLUGIN_URL . 'src/assets/images/logo.png'; ?>" lass="logo">
                     </div>
                 </div>
 				<div class="card-body">
