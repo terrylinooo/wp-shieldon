@@ -19,11 +19,15 @@ use Shieldon\Firewall\Component\Rdns;
 use Shieldon\Firewall\Captcha\Recaptcha;
 use Shieldon\Firewall\Captcha\ImageCaptcha;
 use Shieldon\Firewall\Log\ActionLogger;
+use Shieldon\Firewall\Kernel\Enum;
 use Shieldon\Security\Xss;
-use Shieldon\Security\HttpAuthentication;
+use Shieldon\Firewall\Middleware\HttpAuthentication;
 use Shieldon\Firewall\Component\TrustedBot;
 use Shieldon\Firewall\Component\Header;
 use Shieldon\Firewall\Component\UserAgent;
+use Shieldon\Psr15\RequestHandler;
+use Shieldon\Firewall\HttpResolver;
+use function Shieldon\Firewall\get_request;
 
 /**
  * WP Shieldon Controller.
@@ -43,6 +47,13 @@ class WPSO_Shieldon_Guardian {
 	 * @var string
 	 */
 	private $current_url;
+
+	/**
+	 * PSR-15 middleware stack.
+	 *
+	 * @var array
+	 */
+	private $middlewares = array();
 
 	/**
 	 * Constructer.
@@ -81,6 +92,7 @@ class WPSO_Shieldon_Guardian {
 				break;
 			case 'REMOTE_ADDR':
 			default:
+				$this->shieldon->setIp( $_SERVER['REMOTE_ADDR'] );
 		}
 	}
 
@@ -110,6 +122,19 @@ class WPSO_Shieldon_Guardian {
 			return;
 		}
 
+		$http_resolver   = new HttpResolver();
+		$request_handler = new RequestHandler();
+		$response        = get_request();
+
+		foreach ( $this->middlewares as $middleware ) {
+			$request_handler->add( $middleware );
+		}
+
+		$response = $request_handler->handle( $response );
+		if ( $response->getStatusCode() !== Enum::HTTP_STATUS_OK ) {
+			$http_resolver( $response );
+		}
+
 		$is_driver_reset = get_option( 'wpso_driver_reset' );
 
 		if ( 'no' === $is_driver_reset ) {
@@ -118,7 +143,7 @@ class WPSO_Shieldon_Guardian {
 
 		$result = $this->shieldon->run();
 
-		if ( $result !== $this->shieldon::RESPONSE_ALLOW ) {
+		if ( Enum::RESPONSE_ALLOW !== $result ) {
 			if ( 'yes' === $is_driver_reset ) {
 				update_option( 'wpso_driver_reset', 'no' );
 			}
@@ -126,7 +151,9 @@ class WPSO_Shieldon_Guardian {
 			if ( $this->shieldon->captchaResponse() ) {
 				$this->shieldon->unban();
 			}
-			$this->shieldon->output( 200 );
+
+			$response = $this->shieldon->respond();
+			$http_resolver( $response );
 		}
 	}
 
@@ -545,18 +572,8 @@ class WPSO_Shieldon_Guardian {
 	 * @return void
 	 */
 	private function set_authentication() {
-		$authenticated_list = get_option( 'shieldon_authetication' );
-
-		if ( ! empty( $authenticated_list ) ) {
-			$auth_handler = new HttpAuthentication();
-			$this->shieldon->setClosure(
-				'www_authenticate',
-				function() use ( $auth_handler, $authenticated_list ) {
-					$auth_handler->set( $authenticated_list );
-					$auth_handler->check();
-				}
-			);
-		}
+		$authenticated_list  = get_option( 'shieldon_authetication' );
+		$this->middlewares[] = new HttpAuthentication( $authenticated_list );
 	}
 
 	/**

@@ -472,9 +472,9 @@ class WPSO_Admin_Menu {
 			$ip     = sanitize_text_field( $_POST['ip'] );
 			$action = sanitize_text_field( $_POST['action'] );
 
-			$action_code['temporarily_ban'] = $wpso->shieldon::ACTION_TEMPORARILY_DENY;
-			$action_code['permanently_ban'] = $wpso->shieldon::ACTION_DENY;
-			$action_code['allow']           = $wpso->shieldon::ACTION_ALLOW;
+			$action_code['temporarily_ban'] = Enum::ACTION_TEMPORARILY_DENY;
+			$action_code['permanently_ban'] = Enum::ACTION_DENY;
+			$action_code['allow']           = Enum::ACTION_ALLOW;
 
 			switch ( $action ) {
 				case 'temporarily_ban':
@@ -484,7 +484,7 @@ class WPSO_Admin_Menu {
 					$log_data['ip_resolve'] = gethostbyaddr( $ip );
 					$log_data['time']       = time();
 					$log_data['type']       = $action_code[ $action ];
-					$log_data['reason']     = $wpso->shieldon::REASON_MANUAL_BAN;
+					$log_data['reason']     = Enum::REASON_MANUAL_BAN_DENIED;
 
 					$wpso->shieldon->driver->save( $ip, $log_data, 'rule' );
 					break;
@@ -801,11 +801,11 @@ class WPSO_Admin_Menu {
 		*/
 
 		$data['components'] = array(
-			'Ip'         => ( ! empty( $shieldon->component['Ip'] ) ) ? true : false,
-			'TrustedBot' => ( ! empty( $shieldon->component['TrustedBot'] ) ) ? true : false,
-			'Header'     => ( ! empty( $shieldon->component['Header'] ) ) ? true : false,
-			'Rdns'       => ( ! empty( $shieldon->component['Rdns'] ) ) ? true : false,
-			'UserAgent'  => ( ! empty( $shieldon->component['UserAgent'] ) ) ? true : false,
+			'Ip'         => ! empty( $shieldon->component['Ip'] ),
+			'TrustedBot' => ! empty( $shieldon->component['TrustedBot'] ),
+			'Header'     => ! empty( $shieldon->component['Header'] ),
+			'Rdns'       => ! empty( $shieldon->component['Rdns'] ),
+			'UserAgent'  => ! empty( $shieldon->component['UserAgent'] ),
 		);
 
 		$reflection = new ReflectionObject( $shieldon );
@@ -840,15 +840,15 @@ class WPSO_Admin_Menu {
 		$data['configuration'] = $properties;
 
 		$data['driver'] = array(
-			'mysql'  => ( $shieldon->driver instanceof MysqlDriver ),
-			'redis'  => ( $shieldon->driver instanceof RedisDriver ),
-			'file'   => ( $shieldon->driver instanceof FileDriver ),
-			'sqlite' => ( $shieldon->driver instanceof SqliteDriver ),
+			'mysql'  => $shieldon->driver instanceof MysqlDriver,
+			'redis'  => $shieldon->driver instanceof RedisDriver,
+			'file'   => $shieldon->driver instanceof FileDriver,
+			'sqlite' => $shieldon->driver instanceof SqliteDriver,
 		);
 
 		$data['captcha'] = array(
-			'recaptcha'    => ( isset( $captcha['Recaptcha'] ) ? true : false ),
-			'imagecaptcha' => ( isset( $captcha['ImageCaptcha'] ) ? true : false ),
+			'recaptcha'    => isset( $captcha['Recaptcha'] ),
+			'imagecaptcha' => isset( $captcha['ImageCaptcha'] ),
 		);
 
 		$operating_messengers = array(
@@ -883,11 +883,11 @@ class WPSO_Admin_Menu {
 		$shieldon = Container::get( 'shieldon' );
 
 		$data['components'] = array(
-			'Ip'         => ( ! empty( $shieldon->component['Ip'] ) ) ? true : false,
-			'TrustedBot' => ( ! empty( $shieldon->component['TrustedBot'] ) ) ? true : false,
-			'Header'     => ( ! empty( $shieldon->component['Header'] ) ) ? true : false,
-			'Rdns'       => ( ! empty( $shieldon->component['Rdns'] ) ) ? true : false,
-			'UserAgent'  => ( ! empty( $shieldon->component['UserAgent'] ) ) ? true : false,
+			'Ip'         => ! empty( $shieldon->component['Ip'] ),
+			'TrustedBot' => ! empty( $shieldon->component['TrustedBot'] ),
+			'Header'     => ! empty( $shieldon->component['Header'] ),
+			'Rdns'       => ! empty( $shieldon->component['Rdns'] ),
+			'UserAgent'  => ! empty( $shieldon->component['UserAgent'] ),
 		);
 
 		$reflection    = new ReflectionObject( $shieldon );
