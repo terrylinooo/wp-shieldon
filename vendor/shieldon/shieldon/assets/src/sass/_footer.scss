@@ -1,0 +1,29 @@
+.footer {
+    margin-top: 10px;
+    text-align: center;
+
+    .col-md-12 {
+        color: #333;
+        height: 30px;
+        line-height: 30px;
+        font-size: 12px;
+
+        a {
+            color: #000;
+            font-weight: 500;
+        }
+    } 
+
+    @include media-breakpoint-down(md) {
+        .col-md-12 {
+           height: auto;
+           line-height: 150%;
+           padding: 10px;
+
+           span {
+               display: block;
+               padding-bottom: 5px;
+           }
+        }
+    }
+}

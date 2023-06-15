@@ -77,7 +77,7 @@
         "trusted_bot": {
             "enable": true,
             "strict_mode": false,
-            "allow_list": []
+            "allowed_list": []
         },
         "header": {
             "enable": true,
@@ -120,7 +120,8 @@
         "enable": false,
         "config": {
             "count": 100,
-            "period": 300
+            "period": 300,
+            "unique_only": false
         }
     },
     "xss_protection": {
@@ -194,6 +195,13 @@
         "header_color": "#ffffff",
         "shadow_opacity": "0.2",
         "lang": "en"
+    },
+    "dialog_info_disclosure": {
+        "user_inforamtion": false,
+        "http_status_code": false,
+        "reason_code": false,
+        "reason_text": false,
+        "online_user_amount": false
     },
     "events": {
         "failed_attempts_in_a_row": {

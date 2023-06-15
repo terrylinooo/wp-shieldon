@@ -1,6 +1,7 @@
 <?php
+// phpcs:disable Generic.Files.LineLength
 
-return[
+return [
     'deny_title' => '禁止連線',
     'deny_heading' => '禁止連線',
     'deny_message' => '您的IP位址已被封鎖。',
@@ -35,5 +36,5 @@ return[
     'messenger_text_reason_code_14' => '達到每秒限制。',
     'messenger_text_handle' => '處置',
     'messenger_text_handle_type_1' => '這個 IP 已經在當前的資料週期被永久封鎖，直到重設資料週期為止。',
-    'messenger_text_handle_type_2' => '這個 IP 已經被放到 Iptables 防火牆的 DROP 列表，直到伺服器重開機為止。',
+    'messenger_text_handle_type_2' => '這個 IP 已經被放到 iptables 防火牆的 DROP 列表，直到伺服器重開機為止。',
 ];

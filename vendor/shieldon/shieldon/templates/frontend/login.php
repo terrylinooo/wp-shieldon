@@ -1,14 +1,30 @@
-<?php defined('SHIELDON_VIEW') || exit('Life is short, why are you wasting time?');
-/*
+<?php
+/**
  * This file is part of the Shieldon package.
  *
  * (c) Terry L. <contact@terryl.in>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
+ *
+ * php version 7.1.0
+ *
+ * @category  Web-security
+ * @package   Shieldon
+ * @author    Terry Lin <contact@terryl.in>
+ * @copyright 2019 terrylinooo
+ * @license   https://github.com/terrylinooo/shieldon/blob/2.x/LICENSE MIT
+ * @link      https://github.com/terrylinooo/shieldon
+ * @see       https://shieldon.io
  */
 
-use function Shieldon\Helper\_e;
+declare(strict_types=1);
+
+defined('SHIELDON_VIEW') || die('Illegal access');
+
+use function Shieldon\Firewall\_e;
+
+$imgsrc = 'https://shieldon-io.github.io/static/icons/icon-warning_96x96.png';
 
 ?>
 <!DOCTYPE html>
@@ -17,8 +33,8 @@ use function Shieldon\Helper\_e;
     <meta charset="utf-8">
     <link rel="icon" href="data:,">
     <meta name="robots" content="noindex, nofollow">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?= _e('panel', 'login_heading_login', 'Login to Firewall Panel'); ?></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><?php echo $title; ?></title>
     <?php echo '<style>' . $css . '</style>'; ?>
 
     <style>
@@ -53,7 +69,7 @@ use function Shieldon\Helper\_e;
             box-sizing: border-box;
             box-shadow: inset 0px 1px 0px 0px #dcecfb;
             background: linear-gradient(to bottom, #61b0ff 5%, #4c99e0 100%);
-	        background-color: #61b0ff;
+            background-color: #61b0ff;
             border: 1px solid #84bbf3;
             text-shadow: 0px 1px 0px #528ecc;
             cursor:pointer;
@@ -61,7 +77,7 @@ use function Shieldon\Helper\_e;
 
         .btn-submit:hover {
             background:linear-gradient(to bottom, #4c99e0 5%, #61b0ff 100%);
-	        background-color:#4c99e0;
+            background-color:#4c99e0;
         }
 
         .btn-submit:active {
@@ -71,10 +87,7 @@ use function Shieldon\Helper\_e;
 
         .logo {
             height: 30px;
-        }
-
-        .logo-wrapper {
-          
+            padding-right: 5px;
         }
 
         .main-content {
@@ -103,17 +116,17 @@ use function Shieldon\Helper\_e;
 </head>
 <body>
     <div id="wrapper" class="wrapper">
-		<div class="inner">
-			<div class="card">
-				<div class="card-header">
+        <div class="inner">
+            <div class="card">
+                <div class="card-header">
                     <div class="logo-wrapper">
-                        <img src="<?php echo SHIELDON_PLUGIN_URL . 'src/assets/images/logo.png'; ?>" lass="logo">
+                        <img src="https://shieldon-io.github.io/static/images/logo.png" class="logo">
                     </div>
                 </div>
-				<div class="card-body">
-                    <form method="post" autocomplete="off">
+                <div class="card-body">
+                    <form action="<?php echo $form ?>" method="post" autocomplete="off">
                         <div class="main-content">
-                            <?php if (! empty($error)) : ?>
+                            <?php if (!empty($error)) : ?>
                             <div class="error-notice">
                                 <?php echo $error; ?>
                             </div>
@@ -124,20 +137,22 @@ use function Shieldon\Helper\_e;
                             <div class="input-box">
                                 <input type="password" name="s_pass" placeholder="Password" class="form-input" />
                             </div>
-                            <?php if (! empty($this->captcha)) : ?>
+                            <?php if (!empty($captchas)) : ?>
                             <div class="input-box">
-                                <?php foreach ($this->captcha as $captcha) : ?>
+                                <?php foreach ($captchas as $captcha) : ?>
                                     <?php echo $captcha->form(); ?>
                                 <?php endforeach; ?>
                             </div>
                             <?php endif; ?>
                             <div class="input-box">
-                                <button type="submit" class="btn-submit"><?= _e('panel', 'login_btn_login', 'Login'); ?></button>
+                                <button type="submit" class="btn-submit">
+                                    <?php _e('panel', 'login_btn_login', 'Login'); ?>
+                                </button>
                             </div>
                         </div>
-                        <?php $this->_csrf(); ?>
+                        <?php echo $csrf; ?>
                     </form>
-				</div>
+                </div>
             </div>
         </div> 
     </div>

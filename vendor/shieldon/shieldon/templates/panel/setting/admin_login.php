@@ -1,14 +1,28 @@
-<?php defined('SHIELDON_VIEW') || exit('Life is short, why are you wasting time?');
-/*
+<?php
+/**
  * This file is part of the Shieldon package.
  *
  * (c) Terry L. <contact@terryl.in>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
+ *
+ * php version 7.1.0
+ *
+ * @category  Web-security
+ * @package   Shieldon
+ * @author    Terry Lin <contact@terryl.in>
+ * @copyright 2019 terrylinooo
+ * @license   https://github.com/terrylinooo/shieldon/blob/2.x/LICENSE MIT
+ * @link      https://github.com/terrylinooo/shieldon
+ * @see       https://shieldon.io
  */
 
-use function Shieldon\Helper\_e;
+declare(strict_types=1);
+
+defined('SHIELDON_VIEW') || die('Illegal access');
+
+use function Shieldon\Firewall\_e;
 
 ?>
 <div class="section-title bg-glass">
@@ -19,7 +33,11 @@ use function Shieldon\Helper\_e;
         <tr>
             <td class="r1"><?php _e('panel', 'setting_label_user', 'User'); ?></td>
             <td class="r2">
-                <input type="text" name="admin__user" class="form-control form-control-sm col-sm-3" value="<?php $this->_('admin.user'); ?>"><br />
+                <input type="text"
+                    name="admin__user"
+                    class="form-control form-control-sm col-sm-3"
+                    value="<?php $this->_('admin.user'); ?>">
+                <br />
             </td>
         </tr>
     </table>
@@ -29,7 +47,11 @@ use function Shieldon\Helper\_e;
         <tr>
             <td class="r1"><?php _e('panel', 'setting_label_password', 'Password'); ?></td>
             <td class="r2">
-                <input type="text" name="admin__pass" class="form-control form-control-sm col-sm-3" value="<?php $this->_('admin.pass'); ?>"><br />
+                <input type="text"
+                    name="admin__pass"
+                    class="form-control form-control-sm col-sm-3"
+                    value="<?php $this->_('admin.pass'); ?>">
+                <br />
             </td>
         </tr>
     </table>

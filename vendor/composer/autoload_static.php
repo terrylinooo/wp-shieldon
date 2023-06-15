@@ -9,23 +9,74 @@ class ComposerStaticInit1f62a68ade874e24d975a6fd1b6bcabc
     public static $prefixLengthsPsr4 = array (
         'S' => 
         array (
-            'Shieldon\\' => 9,
+            'Shieldon\\SimpleCache\\' => 21,
+            'Shieldon\\Security\\' => 18,
+            'Shieldon\\Psr7\\' => 14,
+            'Shieldon\\Psr17\\' => 15,
+            'Shieldon\\Psr15\\' => 15,
+            'Shieldon\\Messenger\\' => 19,
+            'Shieldon\\Firewall\\' => 18,
+            'Shieldon\\Event\\' => 15,
         ),
-        'M' => 
+        'P' => 
         array (
-            'Messenger\\' => 10,
+            'Psr\\SimpleCache\\' => 16,
+            'Psr\\Http\\Server\\' => 16,
+            'Psr\\Http\\Message\\' => 17,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Shieldon\\' => 
+        'Shieldon\\SimpleCache\\' => 
         array (
-            0 => __DIR__ . '/..' . '/shieldon/shieldon/src/Shieldon',
+            0 => __DIR__ . '/..' . '/shieldon/simple-cache/src/SimpleCache',
         ),
-        'Messenger\\' => 
+        'Shieldon\\Security\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/shieldon/web-security/src/Security',
+        ),
+        'Shieldon\\Psr7\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/shieldon/psr-http/src/Psr7',
+        ),
+        'Shieldon\\Psr17\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/shieldon/psr-http/src/Psr17',
+        ),
+        'Shieldon\\Psr15\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/shieldon/psr-http/src/Psr15',
+        ),
+        'Shieldon\\Messenger\\' => 
         array (
             0 => __DIR__ . '/..' . '/shieldon/messenger/src/Messenger',
         ),
+        'Shieldon\\Firewall\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/shieldon/shieldon/src/Firewall',
+        ),
+        'Shieldon\\Event\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/shieldon/event-dispatcher/src/Event',
+        ),
+        'Psr\\SimpleCache\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/simple-cache/src',
+        ),
+        'Psr\\Http\\Server\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/http-server-handler/src',
+            1 => __DIR__ . '/..' . '/psr/http-server-middleware/src',
+        ),
+        'Psr\\Http\\Message\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
+            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+        ),
+    );
+
+    public static $classMap = array (
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
@@ -33,6 +84,7 @@ class ComposerStaticInit1f62a68ade874e24d975a6fd1b6bcabc
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit1f62a68ade874e24d975a6fd1b6bcabc::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit1f62a68ade874e24d975a6fd1b6bcabc::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit1f62a68ade874e24d975a6fd1b6bcabc::$classMap;
 
         }, null, ClassLoader::class);
     }

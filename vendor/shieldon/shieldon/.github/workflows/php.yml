@@ -1,0 +1,56 @@
+name: build
+
+on:
+  push:
+    branches: [ 2.x ]
+  pull_request:
+    branches: [ 2.x ]
+
+jobs:
+  run:
+      runs-on: ${{ matrix.operating-system }}
+      strategy:
+        matrix:
+          operating-system: [ubuntu-latest]
+          php-versions: ['7.4', '8.1', '8.2']
+      name: PHP ${{ matrix.php-versions }}
+
+      steps:
+        - uses: actions/checkout@v3
+
+        - name: Start MySQL service
+          run: sudo service mysql start
+  
+        - name: MySQL - Create database.
+          run: sudo mysql -uroot -proot -h 127.0.0.1 -e 'CREATE DATABASE shieldon_unittest;'
+
+        - name: MySQL - Create user.	
+          run: sudo mysql -uroot -proot -h 127.0.0.1 -e "CREATE USER 'shieldon'@'localhost' IDENTIFIED WITH mysql_native_password BY 'taiwan';"	
+
+        - name: MySQL - Grant permission.	
+          run: sudo mysql -uroot -proot -h 127.0.0.1 -e "GRANT ALL ON shieldon_unittest.* TO 'shieldon'@'localhost';"
+
+        - name: "Setup Redis"
+          run: |
+            sudo apt-get install -y redis-server
+            sudo service redis-server start
+
+        - name: "Setup PHP with Xdebug"
+          uses: shivammathur/setup-php@v2
+          with:
+            php-version: ${{ matrix.php-versions }}
+            extensions: mbstring, pdo, pdo_mysql, intl, zip, redis, ctype, json, gd
+            coverage: xdebug
+
+        - name: "Setup test directory"
+          run: |
+            sudo mkdir /home/runner/work/shieldon/shieldon/tmp
+            sudo chmod 0777 /home/runner/work/shieldon/shieldon/tmp
+
+        - name: "Install dependencies"
+          run: |
+            composer update --prefer-dist --no-interaction --no-suggest
+
+        - name: "Run tests"
+          run: |
+            composer test

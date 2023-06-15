@@ -15,20 +15,25 @@
     "minimum-stability": "stable",
     "require": {
         "php": ">=7.1.0",
-        "shieldon/messenger": "^1"
+        "psr/http-factory": "*",
+        "psr/http-message": "*",
+        "shieldon/event-dispatcher": "^1",
+        "shieldon/messenger": "^1",
+        "shieldon/psr-http": "^1.2",
+        "shieldon/simple-cache": "^1.3",
+        "shieldon/web-security": "^1"
     },
     "require-dev": {
-        "phpunit/phpunit": "^7",
-        "shieldon/messenger": "^1"
+        "phpunit/phpunit": "^8 || ^9 || ^10"
     },
     "autoload": {
         "psr-4": {
-            "Shieldon\\": "src/Shieldon"
+            "Shieldon\\Firewall\\": "src/Firewall"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Shieldon\\Tests\\": "tests"
+            "Shieldon\\FirewallTest\\": "tests/Firewall"
         }
     },
     "config": {
@@ -36,7 +41,9 @@
         "sort-packages": true
     },
     "scripts": {
-        "test": "php vendor/phpunit/phpunit/phpunit"
+        "test": "php vendor/phpunit/phpunit/phpunit",
+        "test:docker:build": "docker build -t shieldon-test -f ./tests/Fixture/docker/Dockerfile .",
+        "test:docker:run": "docker run --privileged --cap-add=NET_ADMIN -v .:/test-app --rm shieldon-test",
+        "test:docker:ssh": "docker run --privileged --cap-add=NET_ADMIN -v .:/test-app -it --entrypoint /bin/bash shieldon-test "
     }
 }
-

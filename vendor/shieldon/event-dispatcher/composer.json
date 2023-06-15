@@ -1,0 +1,39 @@
+{
+    "name": "shieldon/event-dispatcher",
+    "description": "Event dispatcher for PHP.",
+    "keywords": ["event", "hook", "wordpress-filter", "dispatcher"],
+    "homepage": "https://github.com/terrylinooo/event-dispatcher",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Terry Lin",
+            "email": "contact@terryl.in",
+            "homepage": "https://terryl.in",
+            "role": "Developer"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=7.1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Shieldon\\Event\\": "src/Event/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Shieldon\\EventTest\\": "tests/Event/"
+        }
+    },
+    "config": {
+        "process-timeout": 0,
+        "sort-packages": true
+    },
+    "scripts": {
+        "test": "php vendor/phpunit/phpunit/phpunit"
+    }
+}

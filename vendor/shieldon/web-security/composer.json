@@ -1,0 +1,39 @@
+{
+    "name": "shieldon/web-security",
+    "description": "XSS protection for PHP.",
+    "keywords": ["firewall", "xss-filter", "xss-protection", "web-security"],
+    "homepage": "https://github.com/terrylinooo/web-security",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Terry Lin",
+            "email": "contact@terryl.in",
+            "homepage": "https://terryl.in",
+            "role": "Developer"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=7.1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Shieldon\\Security\\": "src/Security/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Shieldon\\SecurityTest\\": "tests/Security/"
+        }
+    },
+    "config": {
+        "process-timeout": 0,
+        "sort-packages": true
+    },
+    "scripts": {
+        "test": "php vendor/phpunit/phpunit/phpunit"
+    }
+}

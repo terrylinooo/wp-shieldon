@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 /*
  * This file is part of the Messenger package.
  *
@@ -8,10 +8,12 @@
  * file that was distributed with this source code.
  */
 
-namespace Messenger;
+declare(strict_types=1);
 
-use Messenger\Messenger\MessengerInterface;
-use Messenger\Messenger\MessengerTrait;
+namespace Shieldon\Messenger;
+
+use Shieldon\Messenger\Messenger\MessengerInterface;
+use Shieldon\Messenger\Messenger\MessengerTrait;
 
 use RuntimeException;
 
@@ -83,8 +85,9 @@ class RocketChat implements MessengerInterface
     {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $this->provider());
-        curl_setopt($ch, CURLOPT_TIMEOUT, $this->timeout);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $this->prepare($message));
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $this->timeout);
+        curl_setopt($ch, CURLOPT_TIMEOUT, $this->timeout);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);

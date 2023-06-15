@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Messenger\Messenger;
+namespace Shieldon\Messenger\Messenger;
 
 use function is_array;
 use function is_bool;
@@ -109,6 +109,16 @@ Trait MessengerTrait
     public function isDebug(): bool
     {
         return $this->debug;
+    }
+
+    /**
+     * Close the connection quickly.
+     *
+     * @return void
+     */
+    public function setTimeout(int $second)
+    {
+        $this->timeout = $second;
     }
 
     /**

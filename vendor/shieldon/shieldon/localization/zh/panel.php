@@ -1,4 +1,5 @@
 <?php
+// phpcs:disable Generic.Files.LineLength
 
 return [
 
@@ -46,6 +47,7 @@ return [
     'menu_data_circle' => '資料週期',
     'menu_operation_status' => '運行狀態',
     'menu_iptables_manager' => '管理器',
+    'menu_iptables_bridge' => 'iptables 橋接器',
     'menu_iptables_status' => '狀態',
     'menu_messenger' => '通訊器',
 
@@ -133,9 +135,8 @@ return [
     'overview_label_mysql' => 'MySQL',
     'overview_text_rows' => 'rows',
     'overview_note_sql_db' => 'SQL 資料庫。',
-    'overview_note_memory_db' =>  '使用記憶體的資料庫。',
+    'overview_note_memory_db' => '使用記憶體的資料庫。',
     'overview_label_redis' => 'Redis',
-    'overview_btn_document' => '文件',
     'overview_btn_close' => '關閉',
     'overview_btn_save' => '儲存',
     'overview_note_image_captcha' => '一個簡易型的文字圖片 CAPTCHA 驗證。',
@@ -172,13 +173,12 @@ return [
     'overview_label_sqlite' => 'SQLite',
     'overview_note_file_system' => '檔案系統。',
     'overview_label_file' => '檔案',
-    'overview_text_more_usages' => '更多用法細節請查閱文件。',
     'overview_reset_data_circle' => '重設資料週期',
     'overview_reset_action_logs' => '重設訪客動作記錄',
     'overview_thread_rows' => '列',
     'overview_thread_table' => '表',
     'overview_text_reset_data_circle_1' => '您想要重設當前的資料週期嗎？',
-    'overview_text_reset_data_circle_2' => '進行這個動作將會移除所有目前資料週期的記錄，以及重建資料表。',
+    'overview_text_reset_data_circle_2' => '進行這個動作將會移除所有目前資料週期的記錄，以及重建資料表。您在控制台的狀態將被登出。',
     'overview_text_reset_action_logs' => '您想要重設當前的訪客動作記錄嗎？',
     'overview_heading_messenger' => '通訊器模組',
     'overview_label_telegram' => 'Telegram',
@@ -326,7 +326,7 @@ return [
     'setting_note_redis_auth' => '只有需要密碼時才必填。',
     'setting_note_driver_not_recommended' => '高流量網站不建議使用。',
     'setting_label_directory' => '目錄',
-    'setting_note_directory' => '請填寫你要儲存資料的目錄的絕對路徑。',
+    'setting_note_directory' => '儲存資料的目錄的絕對路徑。',
     'setting_label_reset_data_cycle' => '重設資料週期',
     'setting_note_reset_data_cycle' => '自動地在每天 0:00 清除所有記錄。啟用這個選項能提升效能。',
     'setting_label_ip_source' => 'IP 來源',
@@ -380,11 +380,12 @@ return [
     'setting_heading_deny_attempts' => '拒決多次嘗試',
     'setting_desc_deny_attempts' => '和意圖不軌的訪客說再見。',
     'setting_label_system_firewall' => '系統防火牆',
-    'setting_note_install_iptables' => '確定您已經安裝 <strong>iptables</strong> 以及 <strong>ip6tables</strong> 在您的伺服器中，而且在 <strong>crontab</strong> 中正確地採用 <strong>fiewall.sh</strong>。',
+    'setting_note_install_iptables' => '確定您已經安裝 <strong>iptables</strong> 以及 <strong>ip6tables</strong> 在您的伺服器中，而且在 <strong>crontab</strong> 中正確地採用 <strong>iptables_bridge.sh</strong>。',
     'setting_label_watching_folder' => '監視資料夾',
     'setting_label_cronjob' => '系統排程',
     'setting_note_cronjob' => '請使用這段程式碼到您的伺服器中的 crontab 檔案。',
-    'setting_note_iptables' => '<strong>firewall.sh</strong> 將會監視在此資料夾中的變化來套用指令到 iptables 裡。',
+    'setting_note_iptables' => '<strong>iptables_bridge.sh</strong> 將會監視在此資料夾中的變化來套用指令到 iptables 裡。',
+    'setting_note_iptables_bridge' => '為了安全起見，請搬移 <strong>iptables_bridge.sh</strong> 到一個只有你知道且安全的地方。',
     'setting_label_deny_attempt_buffer' => '緩衝',
     'setting_desc_deny_attempt_buffer' => '連續多少次錯誤會觸發此事件。',
     'setting_label_record_attempt_detection_period' => '偵測期間',
@@ -395,6 +396,23 @@ return [
     'setting_note_import' => '請選擇先前匯出的 .json 檔。',
     'setting_button_export' => '匯出',
     'setting_button_import' => '匯入',
+    'setting_label_unique_ip_only' => '只許可獨立 IP',
+    'setting_note_unique_ip_only' => '每一個 IP 位址只許可一個工作階段。',
+    'setting_note_unique_ip_only_2' => '使用者有多重工作階段將會被踢掉。',
+
+    // Added at 8/19/2020
+    'setting_heading_dialog_information' => '資訊揭露',
+    'setting_label_dialog_user_inforamtion' => '使用者資訊',
+    'setting_note_dialog_user_inforamtion' => '顯示 IP 位址、反向域名和使用者代理。',
+    'setting_label_dialog_http_status' => 'HTTP 狀態碼',
+    'setting_note_dialog_http_status' => '向使用者顯示 HTTP 狀態碼',
+    'setting_label_dialog_reason_code' => '原因代碼',
+    'setting_note_dialog_reason_code' => '顯示導致使用者被封鎖的原因代碼。',
+    'setting_label_dialog_reason_text' => '原因描述',
+    'setting_note_dialog_reason_text' => '顯示導致使用者被封鎖的原因描述。',
+    'setting_note_dialog_reason_notice' => '不建議顯示這種資訊，有心人士或能從而得知穿透保護的方法。',
+    'setting_label_dialog_user_amount' => '線上使用者數',
+    'setting_note_dialog_user_amount' => '在工作階段限制的對話框，顯示線上使用者的總數。',
 
     // Messenger
     'messenger_heading_events' => '事件',
@@ -433,7 +451,7 @@ return [
 
     'error_ip6tables_directory_not_writable' => 'iptables 監視資料夾需要儲存目錄是可寫入狀態。',
 
-    'iptable_heading' => 'Iptables 管理器',
+    'iptable_heading' => 'iptables 管理器',
     'iptable_description_1' => '這是 <strong>iptables</strong> 的網站介面，請小心地使用此功能。',
     'iptable_description_2' => '您只可以管理連線進來的請求。',
     'iptable_description_3' => '在您重開機您的伺服器後，在這裡的規則將會被清除。使用 <strong>iptables-save</strong> 指令保存規則',

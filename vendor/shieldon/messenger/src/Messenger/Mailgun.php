@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 /*
  * This file is part of the Messenger package.
  *
@@ -8,11 +8,13 @@
  * file that was distributed with this source code.
  */
 
-namespace Messenger;
+declare(strict_types=1);
 
-use Messenger\Mailer\AbstractMailer;
-use Messenger\Messenger\MessengerInterface;
-use Messenger\Messenger\MessengerTrait;
+namespace Shieldon\Messenger;
+
+use Shieldon\Messenger\Mailer\AbstractMailer;
+use Shieldon\Messenger\Messenger\MessengerInterface;
+use Shieldon\Messenger\Messenger\MessengerTrait;
 
 use RuntimeException;
 
@@ -44,9 +46,9 @@ class Mailgun extends AbstractMailer implements MessengerInterface
     private $domain = '';
 
     /**
-     * @param string $apiKey Your Mailgun API key.
-     * @param string $domain Your domain.
-     * @param int    $timeout     After n seconds the connection will be stopped.
+     * @param string $apiKey  Your Mailgun API key.
+     * @param string $domain  Your domain.
+     * @param int    $timeout After n seconds the connection will be stopped.
      */
     public function __construct(string $apiKey, string $domain, int $timeout = 5)
     {
@@ -65,9 +67,10 @@ class Mailgun extends AbstractMailer implements MessengerInterface
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $this->provider());
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
-        curl_setopt($ch, CURLOPT_TIMEOUT, $this->timeout);
         curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($message));
         curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)');
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $this->timeout);
+        curl_setopt($ch, CURLOPT_TIMEOUT, $this->timeout);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);

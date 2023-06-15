@@ -3,8 +3,8 @@ Contributors: terrylin
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=donate%40terryl.in&item_name=WordPress+Plugin+-+WP+Shieldon&currency_code=USD&source=url
 Tags: anti-scriping, security, firewall, brute-force, xss-protection
 Requires at least: 4.7
-Tested up to: 5.6.1
-Stable tag: 1.6.5
+Tested up to: 6.2.2
+Stable tag: 1.7.0
 Requires PHP: 7.1.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -43,18 +43,13 @@ Core library:
 - Multiple CAPTCHA modules - Google reCAPTCHA v2, v3 and Image CAPTCHA.
 - XSS Protection.
 - Page authentication.
-- Many others you can find by yourself :)
+- Many others you can find by yourself.
 
 Check out my other WordPress works here:
 
 - [Markdown Editor](https://wordpress.org/plugins/wp-githuber-md/) - WP Githuber MD - an all in one Markdown editor.
 - [SEO Search Permalink](https://wordpress.org/plugins/seo-search-permalink/) - Static search permalink.
 - [Mynote Theme](https://wordpress.org/themes/mynote/) - Theme for programmers.
-
-== Documents ==
-
-- [Traditional Chinese](https://terryl.in/zh/repository/wp-shieldon/)
-- [English](https://shieldon.io/en/docs/wordpress-firewall-plugin.html)
 
 == Screenshots ==
 

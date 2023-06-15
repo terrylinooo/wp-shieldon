@@ -1,20 +1,34 @@
-<?php defined('SHIELDON_VIEW') || exit('Life is short, why are you wasting time?');
-/*
+<?php
+/**
  * This file is part of the Shieldon package.
  *
  * (c) Terry L. <contact@terryl.in>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
+ *
+ * php version 7.1.0
+ *
+ * @category  Web-security
+ * @package   Shieldon
+ * @author    Terry Lin <contact@terryl.in>
+ * @copyright 2019 terrylinooo
+ * @license   https://github.com/terrylinooo/shieldon/blob/2.x/LICENSE MIT
+ * @link      https://github.com/terrylinooo/shieldon
+ * @see       https://shieldon.io
  */
 
-use function Shieldon\Helper\_e;
-use function Shieldon\Helper\mask_string;
+declare(strict_types=1);
+
+defined('SHIELDON_VIEW') || die('Illegal access');
+
+use function Shieldon\Firewall\_e;
+use function Shieldon\Firewall\mask_string;
 
 ?>
 
 <div class="so-dashboard">
-    <?php if (! empty($period_data)) : ?>
+    <?php if (!empty($period_data)) : ?>
     <div class="so-flex">
         <div class="so-board">
             <div class="board-field left">
@@ -43,11 +57,31 @@ use function Shieldon\Helper\mask_string;
     <?php endif; ?>
     <div class="so-tabs">
         <ul>
-            <li class="is-active"><a href="<?php echo $page_url; ?>&tab=today"><?php _e('panel', 'log_label_today', 'Today'); ?></a></li>
-            <li><a href="<?php echo $page_url; ?>&tab=yesterday"><?php _e('panel', 'log_label_yesterday', 'Yesterday'); ?></a></li>
-            <li><a href="<?php echo $page_url; ?>&tab=past_seven_days"><?php _e('panel', 'log_label_last_7_days', 'Last 7 days'); ?></a></li>
-            <li><a href="<?php echo $page_url; ?>&tab=this_month"><?php _e('panel', 'log_label_this_month', 'This month'); ?></a></li>
-            <li><a href="<?php echo $page_url; ?>&tab=last_month"><?php _e('panel', 'log_label_last_month', 'Last month'); ?></a></li>
+            <li  class="is-active">
+                <a href="<?php echo $this->url('report/actionLog'); ?>?tab=today">
+                    <?php _e('panel', 'log_label_today', 'Today'); ?>
+                </a>
+            </li>
+            <li>
+                <a href="<?php echo $this->url('report/actionLog'); ?>?tab=yesterday">
+                    <?php _e('panel', 'log_label_yesterday', 'Yesterday'); ?>
+                </a>
+            </li>
+            <li>
+                <a href="<?php echo $this->url('report/actionLog'); ?>?tab=past_seven_days">
+                    <?php _e('panel', 'log_label_last_7_days', 'Last 7 days'); ?>
+                </a>
+            </li>
+            <li>
+                <a href="<?php echo $this->url('report/actionLog'); ?>?tab=this_month">
+                    <?php _e('panel', 'log_label_this_month', 'This month'); ?>
+                </a>
+            </li>
+            <li>
+                <a href="<?php echo $this->url('report/actionLog'); ?>?tab=last_month">
+                    <?php _e('panel', 'log_label_last_month', 'Last month'); ?>
+                </a>
+            </li>
         </ul>
     </div>
 
@@ -62,7 +96,13 @@ use function Shieldon\Helper\mask_string;
         </div>
     <?php else : ?>
         <div class="alert alert-danger">
-            <?php _e('panel', 'log_msg_no_logger', 'Sorry, you have to implement ActionLogger to use this function.'); ?>
+            <?php
+            _e(
+                'panel',
+                'log_msg_no_logger',
+                'Sorry, you have to implement ActionLogger to use this function.'
+            );
+            ?>
         </div>
     <?php endif; ?>
 
@@ -84,31 +124,34 @@ use function Shieldon\Helper\mask_string;
                 </tr>
             </thead>
             <tbody>
-                <?php if (! empty($ip_details)) : ?>
-                <?php foreach($ip_details as $ip => $ipInfo) : ?>
-                <tr>
-                    <td>
-                        <?php if ($this->mode === 'demo') : ?>
-                            <?php $ip = mask_string($ip); ?>
-                        <?php endif; ?>
-                        <?php echo $ip; ?>
-                    </td>
-                    <td><?php echo count($ipInfo['session_id']); ?></td>
-                    <td><?php echo $ipInfo['pageview_count']; ?></td>
-                    <td><?php echo $ipInfo['captcha_success_count']; ?></td>
-                    <td><?php echo $ipInfo['captcha_failure_count']; ?></td>
-                    <td><?php echo $ipInfo['captcha_count']; ?></td>
-                    <td><?php echo $ipInfo['blacklist_count']; ?></td>
-                    <td><?php echo $ipInfo['session_limit_count']; ?></td>
-                </tr>
-                <?php endforeach; ?>
+                <?php if (!empty($ip_details)) : ?>
+                    <?php foreach ($ip_details as $ip => $ipInfo) : ?>
+                    <tr>
+                        <td>
+                            <?php if ($this->mode === 'demo') : ?>
+                                <?php $ip = mask_string($ip); ?>
+                            <?php endif; ?>
+                            <?php echo $ip; ?>
+                        </td>
+                        <td><?php echo count($ipInfo['session_id']); ?></td>
+                        <td><?php echo $ipInfo['pageview_count']; ?></td>
+                        <td><?php echo $ipInfo['captcha_success_count']; ?></td>
+                        <td><?php echo $ipInfo['captcha_failure_count']; ?></td>
+                        <td><?php echo $ipInfo['captcha_count']; ?></td>
+                        <td><?php echo $ipInfo['blacklist_count']; ?></td>
+                        <td><?php echo $ipInfo['session_limit_count']; ?></td>
+                    </tr>
+                    <?php endforeach; ?>
                 <?php endif; ?>
             </tbody>   
         </table>
     </div>
     <div class="so-timezone">
-        <?php if (! empty($last_cached_time)) : ?>
-            <?php _e('panel', 'log_label_cache_time', 'Report generated time'); ?>: <strong class="text-info"><?php echo $last_cached_time; ?></strong>
+        <?php if (!empty($last_cached_time)) : ?>
+            <?php _e('panel', 'log_label_cache_time', 'Report generated time'); ?>:
+            <strong class="text-info">
+                <?php echo $last_cached_time; ?>
+            </strong>
             &nbsp;&nbsp;&nbsp;&nbsp; 
         <?php endif; ?>
         <?php _e('panel', 'log_label_timezone', 'Timezone'); ?>: <?php echo date_default_timezone_get(); ?>
@@ -117,9 +160,8 @@ use function Shieldon\Helper\mask_string;
 
 <?php
 
-    if (! empty($period_data)) {
-        $data['period_data'] = $period_data;
-        $data['past_seven_hours'] = $past_seven_hours;
-        $this->_include('panel/js/chart', $data);
-    }
-?>
+if (!empty($period_data)) {
+    $data['period_data'] = $period_data;
+    $data['past_seven_hours'] = $past_seven_hours;
+    $this->loadViewPart('panel/js/chart', $data);
+}

@@ -1,7 +1,7 @@
 <?php
+// phpcs:disable Generic.Files.LineLength
 
 return [
-
     'reason_manual_ban' => '被管理员手动加入。',
     'reason_is_search_engine' => '搜寻引擎机器人。',
     'reason_is_google' => 'Google 机器人。',
@@ -15,7 +15,7 @@ return [
     'reason_reached_limit_hour' => '达到每小时限制。',
     'reason_reached_limit_minute' => '达到每分限制。',
     'reason_reached_limit_second' => '达到每秒限制。',
-    'reason_invalid_ip' =>' 无效的 IP 位址。',
+    'reason_invalid_ip' => '无效的 IP 位址。',
     'reason_deny_ip' => '被 IP 元件拒绝。',
     'reason_allow_ip' => '由 IP 元件允许。',
     'reason_component_ip' => '被 IP 元件拒绝。',
@@ -46,6 +46,7 @@ return [
     'menu_data_circle' => '资料周期',
     'menu_operation_status' => '运行状态',
     'menu_iptables_manager' => '管理器',
+    'menu_iptables_bridge' => 'iptables 桥接器',
     'menu_iptables_status' => '状态',
     'menu_messenger' => '通讯器',
     
@@ -134,7 +135,6 @@ return [
     'overview_note_sql_db' => 'SQL资料库。',
     'overview_note_memory_db' => '使用记忆体的资料库。',
     'overview_label_redis' => 'Redis',
-    'overview_btn_document' => '文件',
     'overview_btn_close' => '关闭',
     'overview_btn_save' => '储存',
     'overview_note_image_captcha' => '一个简易型的文字图片 CAPTCHA 验证。',
@@ -171,13 +171,12 @@ return [
     'overview_label_sqlite' => 'SQLite',
     'overview_note_file_system' => '档案系统。',
     'overview_label_file' => '档案',
-    'overview_text_more_usages' => '更多用法细节请查阅文件。',
     'overview_reset_data_circle' => '重置资料周期',
     'overview_reset_action_logs' => '重置访客动作日志',
     'overview_thread_rows' => '列',
     'overview_thread_table' => '表',
     'overview_text_reset_data_circle_1' => '您想要重置当前的资料周期吗？',
-    'overview_text_reset_data_circle_2' => '进行这个动作将会移除所有目前资料周期的记录，以及重建资料表。',
+    'overview_text_reset_data_circle_2' => '进行这个动作将会移除所有目前资料周期的记录，以及重建资料表。您在控制台的状态将被登出。',
     'overview_text_reset_action_logs' => '您想要重置当前的访客动作日志吗？',
     'overview_heading_messenger' => '通讯器模组',
     'overview_label_telegram' => 'Telegram',
@@ -325,7 +324,7 @@ return [
     'setting_note_redis_auth' => '只有需要密码时才必填。',
     'setting_note_driver_not_recommended' => '不推荐用于高流量网站。',
     'setting_label_directory' => '目录',
-    'setting_note_directory' => '请填写你要存储资料的目录的绝对路径。',
+    'setting_note_directory' => '存储资料的目录的绝对路径。',
     'setting_label_reset_data_cycle' => '重设资料周期',
     'setting_note_reset_data_cycle' => '自动地在每天 0:00 清除所有记录。启用这个选项能提升效能。',
     'setting_label_ip_source' => 'IP来源',
@@ -378,11 +377,12 @@ return [
     'setting_heading_deny_attempts' => '拒决多次尝试',
     'setting_desc_deny_attempts' => '和意图不轨的访客说再见。',
     'setting_label_system_firewall' => '系统防火墙',
-    'setting_note_install_iptables' => '确定您已经安装<strong>iptables</strong> 以及<strong>ip6tables</strong> 在您的伺服器中，而且在<strong>crontab</strong> 中正确地采用<strong >fiewall.sh</strong>。',
+    'setting_note_install_iptables' => '确定您已经安装<strong>iptables</strong> 以及<strong>ip6tables</strong> 在您的伺服器中，而且在<strong>crontab</strong> 中正确地采用<strong >iptables_bridge.sh</strong>。',
     'setting_label_watching_folder' => '监视资料夹',
     'setting_label_cronjob' => '系统排程',
     'setting_note_cronjob' => '请使用这段程式码到您的伺服器中的 crontab 档案。',
-    'setting_note_iptables' => '<strong>firewall.sh</strong> 将会监视在此资料夹中的变化来套用指令到 iptables 里。',
+    'setting_note_iptables' => '<strong>iptables_bridge.sh</strong> 将会监视在此资料夹中的变化来套用指令到 iptables 里。',
+    'setting_note_iptables_bridge' => '为了安全起见，请搬移 <strong>iptables_bridge.sh</strong> 到一个只有你知道且安全的地方。',
     'setting_label_deny_attempt_buffer' => '缓冲',
     'setting_desc_deny_attempt_buffer' => '连续多少次错误会触发此事件。',
     'setting_label_record_attempt_detection_period' => '检测期间',
@@ -394,6 +394,23 @@ return [
     'setting_note_import' => '请选择先前汇出的 .json 文件。',
     'setting_button_export' => '汇出',
     'setting_button_import' => '汇入',
+    'setting_label_unique_ip_only' => '只许可独立 IP',
+    'setting_note_unique_ip_only' => '每一个 IP 位址只许可一个工作阶段。',
+    'setting_note_unique_ip_only_2' => '使用者有多重工作阶段将会被踢掉。',
+
+    // Added at 8/19/2020
+    'setting_heading_dialog_information' => '资讯揭露',
+    'setting_label_dialog_user_inforamtion' => '使用者资讯',
+    'setting_note_dialog_user_inforamtion' => '显示 IP 位址、反向域名和使用者代理。',
+    'setting_label_dialog_http_status' => 'HTTP 状态码',
+    'setting_note_dialog_http_status' => '向使用者显示 HTTP 状态码',
+    'setting_label_dialog_reason_code' => '原因代码',
+    'setting_note_dialog_reason_code' => '显示导致使用者被封锁的原因代码。',
+    'setting_label_dialog_reason_text' => '原因描述',
+    'setting_note_dialog_reason_text' => '显示导致使用者被封锁的原因描述。',
+    'setting_note_dialog_reason_notice' => '不建议显示这种资讯，有心人士或能从而得知穿透保护的方法。',
+    'setting_label_dialog_user_amount' => '线上使用者数',
+    'setting_note_dialog_user_amount' => '在工作阶段限制的对话框，显示线上使用者的总数。',
 
     // Messenger
     'messenger_heading_events' => '事件',
@@ -432,7 +449,7 @@ return [
 
     'error_ip6tables_directory_not_writable' => 'iptables 监视资料夹需要储存目录是可写入状态。',
 
-    'iptable_heading' => 'Iptables 管理器',
+    'iptable_heading' => 'iptables 管理器',
     'iptable_description_1' => '这是 <strong>iptables</strong> 的网站介面，请小心地使用此功能。',
     'iptable_description_2' => '您只可以管理连线进来的请求。',
     'iptable_description_3' => '在您重开机您的伺服器后，在这里的规则将会被清除。使用 <strong>iptables-save</strong> 指令保存规则',
