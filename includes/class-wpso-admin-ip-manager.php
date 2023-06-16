@@ -9,8 +9,6 @@
  * @license GPLv3
  */
 
-use WPSO_Setting_API;
-
 /**
  * IP Manager.
  */

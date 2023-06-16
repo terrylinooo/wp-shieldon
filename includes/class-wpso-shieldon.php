@@ -85,11 +85,13 @@ class WPSO_Shieldon_Guardian {
 					$this->shieldon->setIp( $_SERVER['HTTP_X_FORWARDED_FOR'] );
 				}
 				break;
+
 			case 'HTTP_X_FORWARDED_HOST':
 				if ( ! empty( $_SERVER['HTTP_X_FORWARDED_HOST'] ) ) {
 					$this->shieldon->setIp( $_SERVER['HTTP_X_FORWARDED_HOST'] );
 				}
 				break;
+
 			case 'REMOTE_ADDR':
 			default:
 				$this->shieldon->setIp( $_SERVER['REMOTE_ADDR'] );
@@ -112,6 +114,8 @@ class WPSO_Shieldon_Guardian {
 		$this->set_xss_protection();
 	}
 
+
+
 	/**
 	 * Start protecting your website!
 	 *
@@ -122,24 +126,13 @@ class WPSO_Shieldon_Guardian {
 			return;
 		}
 
-		$http_resolver   = new HttpResolver();
-		$request_handler = new RequestHandler();
-		$response        = get_request();
-
-		foreach ( $this->middlewares as $middleware ) {
-			$request_handler->add( $middleware );
-		}
-
-		$response = $request_handler->handle( $response );
-		if ( $response->getStatusCode() !== Enum::HTTP_STATUS_OK ) {
-			$http_resolver( $response );
-		}
-
 		$is_driver_reset = get_option( 'wpso_driver_reset' );
 
 		if ( 'no' === $is_driver_reset ) {
 			$this->shieldon->createDatabase( false );
 		}
+
+		$this->process_middlewares();
 
 		$result = $this->shieldon->run();
 
@@ -150,9 +143,12 @@ class WPSO_Shieldon_Guardian {
 
 			if ( $this->shieldon->captchaResponse() ) {
 				$this->shieldon->unban();
+				return;
 			}
 
 			$response = $this->shieldon->respond();
+
+			$http_resolver = new HttpResolver();
 			$http_resolver( $response );
 		}
 	}
@@ -262,6 +258,26 @@ class WPSO_Shieldon_Guardian {
 					error_log( $e->getMessage() );
 					return;
 				}
+		}
+	}
+
+	/**
+	 * Process middlewares.
+	 *
+	 * @return void
+	 */
+	public function process_middlewares() {
+		$request_handler = new RequestHandler();
+		$http_resolver   = new HttpResolver();
+		$response        = get_request();
+
+		foreach ( $this->middlewares as $middleware ) {
+			$request_handler->add( $middleware );
+		}
+
+		$response = $request_handler->handle( $response );
+		if ( $response->getStatusCode() !== Enum::HTTP_STATUS_OK ) {
+			$http_resolver( $response );
 		}
 	}
 
