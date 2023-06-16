@@ -34,6 +34,8 @@ use function Shieldon\Firewall\get_request;
  */
 class WPSO_Shieldon_Guardian {
 
+	use WPSO_Singleton;
+
 	/**
 	 * Shieldon Firewall instance.
 	 *
@@ -56,52 +58,24 @@ class WPSO_Shieldon_Guardian {
 	private $middlewares = array();
 
 	/**
-	 * Constructer.
+	 * Constructor.
 	 */
-	public function __construct() {
-		$this->shieldon = new Kernel();
-
+	protected function __construct() {
+		$this->shieldon               = new Kernel();
 		$_SESSION['shieldon_ui_lang'] = wpso_get_lang();
-
-		$this->current_url = $_SERVER['REQUEST_URI'];
-	}
-
-	/**
-	 * Set client's IP address to Shieldon.
-	 *
-	 * @return void
-	 */
-	private function set_client_current_ip() {
-		$ip_source = wpso_get_option( 'ip_source', 'shieldon_daemon' );
-		switch ( $ip_source ) {
-			case 'HTTP_CF_CONNECTING_IP':
-				if ( ! empty( $_SERVER['HTTP_CF_CONNECTING_IP'] ) ) {
-					$this->shieldon->setIp( $_SERVER['HTTP_CF_CONNECTING_IP'] );
-				}
-				break;
-
-			case 'HTTP_X_FORWARDED_FOR':
-				if ( ! empty( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
-					$this->shieldon->setIp( $_SERVER['HTTP_X_FORWARDED_FOR'] );
-				}
-				break;
-
-			case 'HTTP_X_FORWARDED_HOST':
-				if ( ! empty( $_SERVER['HTTP_X_FORWARDED_HOST'] ) ) {
-					$this->shieldon->setIp( $_SERVER['HTTP_X_FORWARDED_HOST'] );
-				}
-				break;
-
-			case 'REMOTE_ADDR':
-			default:
-				$this->shieldon->setIp( $_SERVER['REMOTE_ADDR'] );
-		}
+		$this->current_url            = $_SERVER['REQUEST_URI'];
 	}
 
 	/**
 	 * Initialize everything the Githuber plugin needs.
 	 */
 	public function init() {
+		static $is_initialized = false;
+
+		if ( $is_initialized ) {
+			return;
+		}
+
 		$this->set_client_current_ip();
 		$this->set_driver();
 		$this->reset_logs();
@@ -112,9 +86,9 @@ class WPSO_Shieldon_Guardian {
 		$this->set_session_limit();
 		$this->set_authentication();
 		$this->set_xss_protection();
+
+		$is_initialized = true;
 	}
-
-
 
 	/**
 	 * Start protecting your website!
@@ -150,6 +124,38 @@ class WPSO_Shieldon_Guardian {
 
 			$http_resolver = new HttpResolver();
 			$http_resolver( $response );
+		}
+	}
+
+	/**
+	 * Set client's IP address to Shieldon.
+	 *
+	 * @return void
+	 */
+	private function set_client_current_ip() {
+		$ip_source = wpso_get_option( 'ip_source', 'shieldon_daemon' );
+		switch ( $ip_source ) {
+			case 'HTTP_CF_CONNECTING_IP':
+				if ( ! empty( $_SERVER['HTTP_CF_CONNECTING_IP'] ) ) {
+					$this->shieldon->setIp( $_SERVER['HTTP_CF_CONNECTING_IP'] );
+				}
+				break;
+
+			case 'HTTP_X_FORWARDED_FOR':
+				if ( ! empty( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
+					$this->shieldon->setIp( $_SERVER['HTTP_X_FORWARDED_FOR'] );
+				}
+				break;
+
+			case 'HTTP_X_FORWARDED_HOST':
+				if ( ! empty( $_SERVER['HTTP_X_FORWARDED_HOST'] ) ) {
+					$this->shieldon->setIp( $_SERVER['HTTP_X_FORWARDED_HOST'] );
+				}
+				break;
+
+			case 'REMOTE_ADDR':
+			default:
+				$this->shieldon->setIp( $_SERVER['REMOTE_ADDR'] );
 		}
 	}
 
@@ -481,12 +487,12 @@ class WPSO_Shieldon_Guardian {
 
 			if ( ! empty( $login_whitelist ) ) {
 				$whitelist = explode( PHP_EOL, $login_whitelist );
-				$this->shieldon->component['Ip']->setAllowedList( $whitelist );
+				$this->shieldon->component['Ip']->setAllowedItems( $whitelist );
 			}
 
 			if ( ! empty( $login_blacklist ) ) {
 				$blacklist = explode( PHP_EOL, $login_blacklist );
-				$this->shieldon->component['Ip']->setDeniedList( $blacklist );
+				$this->shieldon->component['Ip']->setDeniedItems( $blacklist );
 			}
 
 			$passcode         = wpso_get_option( 'deny_all_passcode', 'shieldon_ip_login' );
@@ -517,12 +523,12 @@ class WPSO_Shieldon_Guardian {
 
 			if ( ! empty( $signup_whitelist ) ) {
 				$whitelist = explode( PHP_EOL, $signup_whitelist );
-				$this->shieldon->component['Ip']->setAllowedList( $whitelist );
+				$this->shieldon->component['Ip']->setAllowedItems( $whitelist );
 			}
 
 			if ( ! empty( $signup_blacklist ) ) {
 				$blacklist = explode( PHP_EOL, $signup_blacklist );
-				$this->shieldon->component['Ip']->setDeniedList( $blacklist );
+				$this->shieldon->component['Ip']->setDeniedItems( $blacklist );
 			}
 
 			if ( 'yes' === $signup_deny_all ) {
@@ -537,12 +543,12 @@ class WPSO_Shieldon_Guardian {
 
 			if ( ! empty( $xmlrpc_whitelist ) ) {
 				$whitelist = explode( PHP_EOL, $xmlrpc_whitelist );
-				$this->shieldon->component['Ip']->setAllowedList( $whitelist );
+				$this->shieldon->component['Ip']->setAllowedItems( $whitelist );
 			}
 
 			if ( ! empty( $xmlrpc_blacklist ) ) {
 				$blacklist = explode( PHP_EOL, $xmlrpc_blacklist );
-				$this->shieldon->component['Ip']->setDeniedList( $blacklist );
+				$this->shieldon->component['Ip']->setDeniedItems( $blacklist );
 			}
 
 			if ( 'yes' === $xmlrpc_deny_all ) {
@@ -556,12 +562,12 @@ class WPSO_Shieldon_Guardian {
 
 			if ( ! empty( $global_whitelist ) ) {
 				$whitelist = explode( PHP_EOL, $global_whitelist );
-				$this->shieldon->component['Ip']->setAllowedList( $whitelist );
+				$this->shieldon->component['Ip']->setAllowedItems( $whitelist );
 			}
 
 			if ( ! empty( $global_blacklist ) ) {
 				$blacklist = explode( PHP_EOL, $global_blacklist );
-				$this->shieldon->component['Ip']->setDeniedList( $blacklist );
+				$this->shieldon->component['Ip']->setDeniedItems( $blacklist );
 			}
 
 			if ( 'yes' === $global_deny_all ) {

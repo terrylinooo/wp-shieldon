@@ -35,6 +35,7 @@ class WPSO_Admin_IP_Manager {
 	 */
 	public function init() {
 		static $is_initialized = false;
+
 		if ( $is_initialized ) {
 			return;
 		}

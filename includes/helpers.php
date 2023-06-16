@@ -280,21 +280,6 @@ function wpso_show_settings_footer(): void {
 }
 
 /**
- * Get WP Shieldon instance.
- *
- * @return \WPSO_Shieldon_Guardian|null
- */
-function wpso_instance() {
-	static $instance;
-
-	if ( empty( $instance ) ) {
-		$instance = new \WPSO_Shieldon_Guardian();
-	}
-
-	return $instance;
-}
-
-/**
  * Make the date to be displayed with the blog's timezone setting.
  *
  * @return string

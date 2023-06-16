@@ -7,14 +7,14 @@
  *
  * @package Shieldon
  * @since 1.0.0
- * @version 1.7.0
+ * @version 2.0.0
  */
 
 /**
  * Plugin Name: WP Shieldon
  * Plugin URI:  https://github.com/terrylinooo/wp-shieldon
  * Description: An anti-scraping plugin for WordPress.
- * Version:     1.7.0
+ * Version:     2.0.0
  * Author:      Terry Lin
  * Author URI:  https://terryl.in/
  * License:     GPL 3.0
@@ -63,7 +63,7 @@ define( 'SHIELDON_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'SHIELDON_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'SHIELDON_PLUGIN_PATH', __FILE__ );
 define( 'SHIELDON_PLUGIN_LANGUAGE_PACK', dirname( plugin_basename( __FILE__ ) ) . '/languages' );
-define( 'SHIELDON_PLUGIN_VERSION', '1.7.0' );
+define( 'SHIELDON_PLUGIN_VERSION', '2.0.0' );
 define( 'SHIELDON_CORE_VERSION', '2.1.0' );
 define( 'SHIELDON_PLUGIN_TEXT_DOMAIN', 'wp-shieldon' );
 
@@ -87,6 +87,7 @@ if ( version_compare( phpversion(), '7.1.0', '<' ) ) {
 	function wpso_warning() {
 		echo wpso_load_view( 'message/php-version-warning' );
 	}
+
 	add_action( 'admin_notices', 'wpso_warning' );
 	return;
 }
@@ -144,6 +145,8 @@ function wpso_activate_plugin() {
 	}
 }
 
+register_activation_hook( __FILE__, 'wpso_activate_plugin' );
+
 /**
  * Deactivate Shieldon plugin.
  */
@@ -171,20 +174,12 @@ function wpso_deactivate_plugin() {
 	update_option( 'wpso_driver_hash', '' );
 }
 
-/**
- * Admin notice when the update is completed.
- *
- * @return void
- */
-function wpso_update_notice() {
-	echo wpso_load_view( 'message/update-notice' );
-}
 
-register_activation_hook( __FILE__, 'wpso_activate_plugin' );
+
 register_deactivation_hook( __FILE__, 'wpso_deactivate_plugin' );
 
 /**
- * Start to run WP Shieldon plugin cores.
+ * Start to run WP Shieldon plugin cores on admin panel.
  */
 if ( is_admin() ) {
 	WPSO_Admin_Menu::instance()->init();
@@ -194,6 +189,11 @@ if ( is_admin() ) {
 	return;
 }
 
+/**
+ * Check if Shieldon daemon is enabled.
+ * The following code will be executed only when Shieldon daemon is enabled.
+ * Otherwise, we make an early return and nothing to do.
+ */
 if ( 'yes' !== wpso_get_option( 'enable_daemon', 'shieldon_daemon' ) ) {
 	return;
 }
@@ -204,10 +204,12 @@ if ( 'yes' !== wpso_get_option( 'enable_daemon', 'shieldon_daemon' ) ) {
  * @return void
  */
 function wpso_plugin_init() {
-	$guardian = wpso_instance();
+	$guardian = WPSO_Shieldon_Guardian::instance();
 	$guardian->init();
 	$guardian->run();
 }
+
+add_action( 'plugins_loaded', 'wpso_plugin_init', -100 );
 
 /**
  * Tweak WordPress core depends on Shieldon settings.
@@ -215,8 +217,7 @@ function wpso_plugin_init() {
  * @return void
  */
 function wpso_tweak_init() {
-	new WPSO_Tweak_WP_Core();
+	WPSO_Tweak_WP_Core::instance()->init();
 }
 
-add_action( 'plugins_loaded', 'wpso_plugin_init', -100 );
 add_action( 'init', 'wpso_tweak_init', 10 );

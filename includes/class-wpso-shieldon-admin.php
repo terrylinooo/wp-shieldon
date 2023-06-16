@@ -21,6 +21,7 @@ class WPSO_Shieldon_Admin {
 	 */
 	public function init() {
 		static $is_initialized = false;
+
 		if ( $is_initialized ) {
 			return;
 		}
@@ -32,9 +33,6 @@ class WPSO_Shieldon_Admin {
 
 	/**
 	 * Initialize Shieldon in Admin panel.
-	 * The value `_disabled_php_session` is just a meaningless string for disabling PHP session
-	 * initialized by Shieldon to fix the Site Healthy Check issue.
-	 * PHP native session is not needed in Admin panel, so just disable it.
 	 *
 	 * @return void
 	 */
@@ -42,7 +40,7 @@ class WPSO_Shieldon_Admin {
 		$this->maybe_reset_driver();
 		$this->check_and_update_breaking_changes();
 
-		$guardian = wpso_instance( '_disabled_php_session' );
+		$guardian = WPSO_Shieldon_Guardian::instance();
 		$guardian->init();
 	}
 
@@ -58,6 +56,15 @@ class WPSO_Shieldon_Admin {
 	}
 
 	/**
+	 * Admin notice when the update is completed.
+	 *
+	 * @return void
+	 */
+	function update_completed_notice() {
+		echo wpso_load_view( 'message/update-notice' );
+	}
+
+	/**
 	 * Check version after updating plugin.
 	 * If there is any breaking change here, we will fix it here.
 	 *
@@ -66,24 +73,27 @@ class WPSO_Shieldon_Admin {
 	private function check_and_update_breaking_changes() {
 		$wpso_version = get_option( 'wpso_version' );
 
-		if ( SHIELDON_PLUGIN_VERSION !== $wpso_version ) {
-			wpso_set_option( 'enable_daemon', 'shieldon_daemon', 'no' );
-			update_option( 'wpso_version', SHIELDON_PLUGIN_VERSION );
-			add_action( 'admin_notices', 'wpso_update_notice' );
-
-			// Turn off strict mode in components, make sure user will review the settings again.
-			$component_settings = get_option( 'shieldon_component' );
-
-			if ( ! empty( $component_settings ) && is_array( $component_settings ) ) {
-				$remove_strict_settings = array();
-				foreach ( $component_settings as $k => $v ) {
-					$remove_strict_settings[ $k ] = $v;
-					if ( strpos( $k, 'strict_mode' ) !== false ) {
-						$remove_strict_settings[ $k ] = 'no';
-					}
-				}
-				update_option( 'shieldon_component', $remove_strict_settings );
-			}
+		if ( SHIELDON_PLUGIN_VERSION === $wpso_version ) {
+			return;
 		}
+
+		wpso_set_option( 'enable_daemon', 'shieldon_daemon', 'no' );
+		update_option( 'wpso_version', SHIELDON_PLUGIN_VERSION );
+
+		// Turn off strict mode in components, make sure user will review the settings again.
+		$component_settings = get_option( 'shieldon_component' );
+
+		if ( ! empty( $component_settings ) && is_array( $component_settings ) ) {
+			$remove_strict_settings = array();
+			foreach ( $component_settings as $k => $v ) {
+				$remove_strict_settings[ $k ] = $v;
+				if ( strpos( $k, 'strict_mode' ) !== false ) {
+					$remove_strict_settings[ $k ] = 'no';
+				}
+			}
+			update_option( 'shieldon_component', $remove_strict_settings );
+		}
+
+		add_action( 'admin_notices', array( $this, 'update_completed_notice' ) );
 	}
 }

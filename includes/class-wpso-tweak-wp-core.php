@@ -14,10 +14,18 @@
  */
 class WPSO_Tweak_WP_Core {
 
+	use WPSO_Singleton;
+
 	/**
 	 * Constructer.
 	 */
-	public function __construct() {
+	public function init() {
+		static $is_initialized = false;
+
+		if ( $is_initialized ) {
+			return;
+		}
+
 		if ( 'yes' === wpso_get_option( 'only_authorised_rest_access', 'shieldon_wp_tweak' ) ) {
 			add_filter( 'rest_authentication_errors', array( $this, 'only_authorised_rest_access' ) );
 		}
@@ -25,6 +33,8 @@ class WPSO_Tweak_WP_Core {
 		if ( 'yes' === wpso_get_option( 'disable_xmlrpc', 'shieldon_wp_tweak' ) ) {
 			add_filter( 'xmlrpc_enabled', '__return_false' );
 		}
+
+		$is_initialized = true;
 	}
 
 	/**

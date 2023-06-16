@@ -36,6 +36,7 @@ class WPSO_Admin_Settings {
 	 */
 	public function init() {
 		static $is_initialized = false;
+
 		if ( $is_initialized ) {
 			return;
 		}

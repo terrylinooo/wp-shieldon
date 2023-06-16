@@ -30,6 +30,7 @@ class WPSO_Admin_Menu {
 	 */
 	public function init() {
 		static $is_initialized = false;
+
 		if ( $is_initialized ) {
 			return;
 		}
@@ -464,7 +465,7 @@ class WPSO_Admin_Menu {
 	 */
 	public function rule_table(): void {
 
-		$wpso = wpso_instance();
+		$wpso = WPSO_Shieldon_Guardian::instance();
 		$wpso->set_driver();
 
 		if ( isset( $_POST['ip'] ) && check_admin_referer( 'check_form_for_ip_rule', 'wpso-rule-form' ) ) {
@@ -538,7 +539,7 @@ class WPSO_Admin_Menu {
 	 */
 	public function filter_log_table(): void {
 
-		$wpso = wpso_instance();
+		$wpso = WPSO_Shieldon_Guardian::instance();
 		$wpso->set_driver();
 
 		$data['ip_log_list']     = $wpso->shieldon->driver->getAll( 'filter' );
@@ -556,7 +557,7 @@ class WPSO_Admin_Menu {
 	 */
 	public function session_table(): void {
 
-		$wpso = wpso_instance();
+		$wpso = WPSO_Shieldon_Guardian::instance();
 		$wpso->set_driver();
 
 		$data['session_list'] = $wpso->shieldon->driver->getAll( 'session' );
