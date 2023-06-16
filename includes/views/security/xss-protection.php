@@ -23,7 +23,7 @@ $timezone = wpso_apply_blog_timezone();
 			<?php _e( 'XSS Protection', 'wp-shieldon' ); ?><br />
 		</div>
 		<div class="wpso-datatable-description">
-			<?php _e( 'Prevent Cross site scripting (XSS) attacks.', 'wp-shieldon' ); ?> 
+			<?php _e( 'Prevent cross-site scripting (XSS) attacks.', 'wp-shieldon' ); ?> 
 		</div>
 		<div class="input-form wpso-form">
 			<form method="post">
@@ -39,7 +39,7 @@ $timezone = wpso_apply_blog_timezone();
 							<label for="xss-protection-post"></label>
 						</div>
 						<p>
-							<?php _e( 'Filter all POST method variables.', 'wp-shieldon' ); ?>
+							<?php _e( 'Filter all variables using the POST method.', 'wp-shieldon' ); ?>
 						</p>
 					</td>
 				</tr>
@@ -53,7 +53,7 @@ $timezone = wpso_apply_blog_timezone();
 							<label for="xss-protection-get"></label>
 						</div>
 						<p>
-							<?php _e( 'Filter all GET method variables.', 'wp-shieldon' ); ?>
+							<?php _e( 'Filter all variables using the GET method.', 'wp-shieldon' ); ?>
 						</p>
 					</td>
 				</tr>
@@ -67,7 +67,7 @@ $timezone = wpso_apply_blog_timezone();
 							<label for="xss-protection-cookie"></label>
 						</div>
 						<p>
-							<?php _e( 'Filter all COOKIE method variables.', 'wp-shieldon' ); ?>
+							<?php _e( 'Filter all variables using the COOKIE method.', 'wp-shieldon' ); ?>
 						</p>
 					</td>
 				</tr>
@@ -112,7 +112,7 @@ $timezone = wpso_apply_blog_timezone();
 							</div>
 						</form>
 						<p>
-							<?php _e( 'Eradicate potential injection string for single variable.', 'wp-shieldon' ); ?>
+							<?php _e( 'Eradicate potential injection strings for a single variable.', 'wp-shieldon' ); ?>
 						</p>
 					</td>
 				</tr>

@@ -55,7 +55,7 @@ $timezone = '';
             _e(
                 'panel',
                 'table_description_ip_log_3',
-                'IP log table will be all cleared after new cycle begins.'
+                'The IP log table will be completely cleared once a new cycle begins.'
             );
             ?>
             <br />

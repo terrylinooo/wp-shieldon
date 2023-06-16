@@ -297,7 +297,7 @@ class WPSO_Admin_Menu {
 
 						$message = array(
 							'type' => 'updated',
-							'body' => __( 'Your configuration file is imported successfully.', 'wp-shieldon' ),
+							'body' => __( 'Your configuration file has been imported successfully.', 'wp-shieldon' ),
 						);
 					} else {
 						$message = array(
@@ -496,7 +496,7 @@ class WPSO_Admin_Menu {
 			}
 		}
 
-		$reason_translation_mapping[99]  = __( 'Added manually by administrator', 'wp-shieldon' );
+		$reason_translation_mapping[99]  = __( 'Manually added by the administrator', 'wp-shieldon' );
 		$reason_translation_mapping[100] = __( 'Search engine bot', 'wp-shieldon' );
 		$reason_translation_mapping[101] = __( 'Google bot', 'wp-shieldon' );
 		$reason_translation_mapping[102] = __( 'Bing bot', 'wp-shieldon' );
@@ -991,7 +991,7 @@ class WPSO_Admin_Menu {
 		}
 
 		$reasons = array(
-			Enum::REASON_MANUAL_BAN_DENIED              => __( 'Added manually by administrator', 'wp-shieldon' ),
+			Enum::REASON_MANUAL_BAN_DENIED              => __( 'Manually added by the administrator', 'wp-shieldon' ),
 			Enum::REASON_IS_SEARCH_ENGINE_ALLOWED       => __( 'Search engine bot', 'wp-shieldon' ),
 			Enum::REASON_IS_GOOGLE_ALLOWED              => __( 'Google bot', 'wp-shieldon' ),
 			Enum::REASON_IS_BING_ALLOWED                => __( 'Bing bot', 'wp-shieldon' ),
@@ -1011,7 +1011,7 @@ class WPSO_Admin_Menu {
 			Enum::REASON_COMPONENT_RDNS_DENIED          => __( 'Denied by RDNS component.', 'wp-shieldon' ),
 			Enum::REASON_COMPONENT_HEADER_DENIED        => __( 'Denied by Header component.', 'wp-shieldon' ),
 			Enum::REASON_COMPONENT_USERAGENT_DENIED     => __( 'Denied by User-agent component.', 'wp-shieldon' ),
-			Enum::REASON_COMPONENT_TRUSTED_ROBOT_DENIED => __( 'Identified as fake search engine.', 'wp-shieldon' ),
+			Enum::REASON_COMPONENT_TRUSTED_ROBOT_DENIED => __( 'Identified as a fake search engine.', 'wp-shieldon' ),
 		);
 
 		$types = array(

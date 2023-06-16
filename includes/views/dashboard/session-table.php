@@ -64,7 +64,7 @@ $timezone = wpso_apply_blog_timezone();
 			<?php _e( 'Session Table', 'wp-shieldon' ); ?>
 		</div>
 		<div class="wpso-datatable-description">
-			<?php _e( 'Read-time logs for <strong>Online Session Controll</strong>.', 'wp-shieldon' ); ?> <?php _e( 'All processes are automatic and instant, you can ignore that.', 'wp-shieldon' ); ?><br />
+			<?php _e( 'Read-time logs for <strong>Online Session Controll</strong>.', 'wp-shieldon' ); ?> <?php _e( 'All processes are automatic and instant, so you can ignore them.', 'wp-shieldon' ); ?><br />
 			<?php _e( 'Notice this is only working when you have enabled that function.', 'wp-shieldon' ); ?>
 		</div>
 		<table id="wpso-datalog" class="cell-border compact stripe" cellspacing="0" width="100%">

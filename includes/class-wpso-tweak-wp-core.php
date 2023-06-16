@@ -47,7 +47,7 @@ class WPSO_Tweak_WP_Core {
 		if ( ! is_user_logged_in() ) {
 			return new WP_Error(
 				'rest_unauthorised',
-				__( 'Only authenticated users can access the REST API.', 'wp-shieldon' ),
+				__( 'Restrict access to the REST API to authenticated users only.', 'wp-shieldon' ),
 				array( 'status' => rest_authorization_required_code() )
 			);
 		}

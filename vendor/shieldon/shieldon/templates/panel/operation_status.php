@@ -258,7 +258,7 @@ $componentList = [
                         _e(
                             'panel',
                             'operation_note_useragent',
-                            'Analysis user-agent information from visitors.'
+                            'Analyze user-agent information from visitors.'
                         );
                         ?>
                     </div>

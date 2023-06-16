@@ -58,7 +58,7 @@ use function Shieldon\Firewall\_e;
                     _e(
                         'panel',
                         'setting_note_recaptcha_key',
-                        'Enter Google reCaptcha site key for your webiste.'
+                        'Please enter the Google reCaptcha site key for your website.'
                     );
                     ?>
                 </p>
@@ -83,7 +83,7 @@ use function Shieldon\Firewall\_e;
                     _e(
                         'panel',
                         'setting_note_recaptcha_secret',
-                        'Enter Google reCahptcha secret key for your webiste.'
+                        'Please enter the Google reCaptcha secret key for your website.'
                     );
                     ?>
                 </p>
@@ -189,7 +189,7 @@ use function Shieldon\Firewall\_e;
                             _e(
                                 'panel',
                                 'setting_note_image_captcha_1',
-                                'Alpha-numeric string with lower and uppercase characters.'
+                                'An alphanumeric string with lowercase and uppercase characters.'
                             );
                             ?>
                         </label> 
@@ -205,7 +205,7 @@ use function Shieldon\Firewall\_e;
                             _e(
                                 'panel',
                                 'setting_note_image_captcha_2',
-                                'A string with lower and uppercase letters only.'
+                                'A string consisting of lowercase and uppercase letters only.'
                             );
                             ?>
                         </label> 
@@ -240,7 +240,7 @@ use function Shieldon\Firewall\_e;
                     _e(
                         'panel',
                         'setting_note_image_captcha_length',
-                        'How many characters do you like to display on CAPTCHA.'
+                        'How many characters would you like to display on the CAPTCHA?'
                     );
                     ?>
                 </p>

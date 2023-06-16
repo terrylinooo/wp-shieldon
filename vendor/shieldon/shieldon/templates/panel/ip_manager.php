@@ -62,7 +62,7 @@ $timezone = '';
                     <label for="action"><?php _e('panel', 'ipma_label_action', 'Action'); ?></label><br />
                     <select name="action" class="regular" id="action">
                         <option value="none"><?php _e('panel', 'ipma_label_plz_select', 'Please select'); ?></option>
-                        <option value="allow"><?php _e('panel', 'ipma_label_allow_ip', 'Allow this IP'); ?></option>
+                        <option value="allow"><?php _e('panel', 'ipma_label_allow_ip', 'Allow this IP address'); ?></option>
                         <option value="deny"><?php _e('panel', 'ipma_label_deny_ip', 'Deny this IP'); ?></option>
                         <option value="remove"><?php _e('panel', 'ipma_label_remove_ip', 'Remove this IP'); ?></option>
                     </select>

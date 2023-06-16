@@ -58,8 +58,8 @@ $timezone = wpso_apply_blog_timezone();
 		</div>
 		<div class="wpso-datatable-description">
 			<?php _e( "This is where the Shieldon records the users' strange behavior.", 'wp-shieldon' ); ?> 
-			<?php _e( 'All processes are automatic and instant, you can ignore that.', 'wp-shieldon' ); ?><br />
-			<?php _e( 'IP log table will be all cleared after new cycle begins.', 'wp-shieldon' ); ?>
+			<?php _e( 'All processes are automatic and instant, so you can ignore them.', 'wp-shieldon' ); ?><br />
+			<?php _e( 'The IP log table will be completely cleared once a new cycle begins.', 'wp-shieldon' ); ?>
 		</div>
 		<table id="wpso-datalog" class="cell-border compact stripe" cellspacing="0" width="100%">
 			<thead>

@@ -25,7 +25,7 @@ if ( ! defined( 'SHIELDON_PLUGIN_NAME' ) ) {
 			<div class="board-field right">
 				<div class="heading"><?php _e( 'CAPTCHAs', 'wp-shieldon' ); ?></div>
 				<div class="nums"><?php echo number_format( $period_data['captcha_count'] ); ?></div>
-				<div class="note"><?php _e( 'CAPTCHA statistic last 7 days.', 'wp-shieldon' ); ?></div>
+				<div class="note"><?php _e( 'Captcha statistics for the last 7 days.', 'wp-shieldon' ); ?></div>
 			</div>
 		</div>
 		<div class="wpso-board">

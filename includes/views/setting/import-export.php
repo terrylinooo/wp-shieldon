@@ -47,7 +47,7 @@ if ( ! defined( 'SHIELDON_PLUGIN_NAME' ) ) {
 		<br />
 		<hr />
 		<div>
-			<p><?php _e( 'Export all settings into a JSON file.', 'wp-shieldon' ); ?><p>
+			<p><?php _e( 'Export all settings to a JSON file.', 'wp-shieldon' ); ?><p>
 			<?php $wpso_nonce = wp_create_nonce( 'shieldon_export_' . date( 'YmdH' ) ); ?>
 			<a href="<?php menu_page_url( 'shieldon-import-export' ); ?>&action=export&_wpnonce=<?php echo $wpso_nonce; ?>" class="btn-shieldon" target="_blank">
 				<i class="fas fa-file-export"></i> <?php _e( 'Export', 'wp-shieldon' ); ?>

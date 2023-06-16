@@ -15,4 +15,4 @@ if ( ! defined( 'SHIELDON_PLUGIN_NAME' ) ) {
 ?>
 
 <?php echo __( 'An IP address or IP/CIDR specification per line.', 'wp-shieldon' ); ?><br />
-<?php echo __( 'For example, <code>127.0.0.1</code> (single IP address), <code>127.0.0/16</code> (IP range)', 'wp-shieldon' ); ?>
+<?php echo __( 'For example, <code>127.0.0.1</code> (single IP address), <code>127.0.0.0/16</code> (IP range)', 'wp-shieldon' ); ?>

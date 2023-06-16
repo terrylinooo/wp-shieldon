@@ -31,7 +31,7 @@ if ( ! defined( 'SHIELDON_PLUGIN_NAME' ) ) {
 							<?php echo $filter_cookie; ?>
 						<?php endif; ?>
 					</div>
-					<div class="note"><?php _e( 'Check whether visitors can create cookie by JavaScript.', 'wp-shieldon' ); ?></div>
+					<div class="note"><?php _e( 'Check if visitors can create cookies via JavaScript.', 'wp-shieldon' ); ?></div>
 					<button class="note-code">
 						<?php echo $filters['cookie'] ? '<i class="fas fa-play-circle"></i>' : '<i class="fas fa-stop-circle"></i>'; ?>
 					</button>
@@ -47,7 +47,7 @@ if ( ! defined( 'SHIELDON_PLUGIN_NAME' ) ) {
 							<?php echo $filter_session; ?>
 						<?php endif; ?>
 					</div>
-					<div class="note"><?php _e( 'Detect whether multiple sessions created by the same visitor.', 'wp-shieldon' ); ?></div>
+					<div class="note"><?php _e( 'Detect whether multiple sessions have been created by the same visitor.', 'wp-shieldon' ); ?></div>
 					<button class="note-code">
 						<?php echo $filters['session'] ? '<i class="fas fa-play-circle"></i>' : '<i class="fas fa-stop-circle"></i>'; ?>
 					</button>
@@ -63,7 +63,7 @@ if ( ! defined( 'SHIELDON_PLUGIN_NAME' ) ) {
 							<?php echo $filter_frequency; ?>
 						<?php endif; ?>
 					</div>
-					<div class="note"><?php _e( 'Check how often does a visitor view the pages.', 'wp-shieldon' ); ?></div>
+					<div class="note"><?php _e( 'Check the frequency of page views by a visitor.', 'wp-shieldon' ); ?></div>
 					<button class="note-code">
 						<?php echo $filters['frequency'] ? '<i class="fas fa-play-circle"></i>' : '<i class="fas fa-stop-circle"></i>'; ?>
 					</button>
@@ -152,7 +152,7 @@ if ( ! defined( 'SHIELDON_PLUGIN_NAME' ) ) {
 							<?php echo $component_rdns; ?>
 						<?php endif; ?>
 					</div>
-					<div class="note"><?php _e( 'Identify IP resolved hostname (RDNS) from visitors.', 'wp-shieldon' ); ?></div>
+					<div class="note"><?php _e( 'Identify hostname resolved (RDNS)  from visitors' IP address.', 'wp-shieldon' ); ?></div>
 					<button class="note-code">
 						<?php echo $components['Rdns'] ? '<i class="fas fa-play-circle"></i>' : '<i class="fas fa-stop-circle"></i>'; ?>
 					</button>
@@ -168,7 +168,7 @@ if ( ! defined( 'SHIELDON_PLUGIN_NAME' ) ) {
 							<?php echo $component_useragent; ?>
 						<?php endif; ?>
 					</div>
-					<div class="note"><?php _e( 'Analysis user-agent information from visitors.', 'wp-shieldon' ); ?></div>
+					<div class="note"><?php _e( 'Analyze user-agent information from visitors.', 'wp-shieldon' ); ?></div>
 					<button class="note-code">
 						<?php echo $components['UserAgent'] ? '<i class="fas fa-play-circle"></i>' : '<i class="fas fa-stop-circle"></i>'; ?>
 					</button>

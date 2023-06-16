@@ -23,9 +23,9 @@ $timezone = wpso_apply_blog_timezone();
 			<?php _e( 'Rule Table', 'wp-shieldon' ); ?><br />
 		</div>
 		<div class="wpso-datatable-description">
-			<?php _e( 'This is where the Shieldon temporarily allows or denys users in current cycle.', 'wp-shieldon' ); ?> 
-			<?php _e( 'All processes are automatic and instant, you can ignore that.', 'wp-shieldon' ); ?><br />
-			<?php _e( 'Rule table will be reset after new cycle begins.', 'wp-shieldon' ); ?>
+			<?php _e( 'This is where Shieldon temporarily allows or denies users in the current cycle.', 'wp-shieldon' ); ?> 
+			<?php _e( 'All processes are automatic and instant, so you can ignore them.', 'wp-shieldon' ); ?><br />
+			<?php _e( 'The rule table will be reset once a new cycle begins.', 'wp-shieldon' ); ?>
 		</div>
 		<div class="wpso-rule-form">
 			<form method="post">
@@ -33,9 +33,9 @@ $timezone = wpso_apply_blog_timezone();
 				<input name="ip" type="text" value="" class="regular-text" placeholder="Please fill in an IP address..">
 				<select name="action" class="regular">
 					<option value="none"><?php esc_html_e( '--- please select ---', 'wp-shieldon' ); ?></option>
-					<option value="temporarily_ban"><?php esc_html_e( 'Deny this IP temporarily', 'wp-shieldon' ); ?></option>
-					<option value="permanently_ban"><?php esc_html_e( 'Deny this IP permanently', 'wp-shieldon' ); ?></option>
-					<option value="allow"><?php esc_html_e( 'Allow this IP', 'wp-shieldon' ); ?></option>
+					<option value="temporarily_ban"><?php esc_html_e( 'Temporarily deny this IP address', 'wp-shieldon' ); ?></option>
+					<option value="permanently_ban"><?php esc_html_e( 'Permanently deny this IP address', 'wp-shieldon' ); ?></option>
+					<option value="allow"><?php esc_html_e( 'Allow this IP address', 'wp-shieldon' ); ?></option>
 					<option value="remove"><?php esc_html_e( 'Remove this IP', 'wp-shieldon' ); ?></option>
 				</select>
 				<input type="submit" name="submit" id="btn-add-rule" class="button button-primary" value="<?php esc_attr_e( 'Submit', 'wp-shieldon' ); ?>">

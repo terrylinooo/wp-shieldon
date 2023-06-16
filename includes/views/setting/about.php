@@ -28,7 +28,7 @@ if ( ! defined( 'SHIELDON_PLUGIN_NAME' ) ) {
 				<li><a href="https://terryl.in"><i class="fas fa-link"></i></a></li>
 			</ul>
 		</div>
-		<p><?php echo __( 'If you have any issues, or found any bugs, please report them in the following URL.', 'wp-shieldon' ); ?></p>
+		<p><?php echo __( 'If you encounter any issues or find any bugs, please report them at the following URL.', 'wp-shieldon' ); ?></p>
 		<div class="report-area">
 			<span><a href="https://github.com/terrylinooo/shieldon" target="_blank"><?php echo __( 'Core', 'wp-shieldon' ); ?></a></span>
 			<span><a href="https://github.com/terrylinooo/wp-shieldon" target="_blank"><?php echo __( 'Plugin', 'wp-shieldon' ); ?></a></span>

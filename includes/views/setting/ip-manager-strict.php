@@ -14,7 +14,7 @@ if ( ! defined( 'SHIELDON_PLUGIN_NAME' ) ) {
  */
 ?>
 
-<?php echo __( 'Only IPs in the whitelist can access your website.', 'wp-shieldon' ) . '<br />' . __( '(default: off)', 'wp-shieldon' ); ?><br />
+<?php echo __( 'Restrict access to your website to only IPs in the whitelist.', 'wp-shieldon' ) . '<br />' . __( '(default: off)', 'wp-shieldon' ); ?><br />
 
 
 

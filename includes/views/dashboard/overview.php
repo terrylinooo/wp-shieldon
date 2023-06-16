@@ -101,7 +101,7 @@ function wpso_status_icon( $var, $icon_type = 1 ) {
 					<div class="nums">
 						<?php echo wpso_status_icon( $filters['cookie'] ); ?>
 					</div>
-					<div class="note"><?php _e( 'Check whether visitors can create cookie by JavaScript.', 'wp-shieldon' ); ?></div>
+					<div class="note"><?php _e( 'Check if visitors can create cookies via JavaScript.', 'wp-shieldon' ); ?></div>
 				</div>
 			</div>
 			<div class="col-sm-3">
@@ -110,7 +110,7 @@ function wpso_status_icon( $var, $icon_type = 1 ) {
 					<div class="nums">
 						<?php echo wpso_status_icon( $filters['session'] ); ?>
 					</div>
-					<div class="note"><?php _e( 'Detect whether multiple sessions created by the same visitor.', 'wp-shieldon' ); ?></div>
+					<div class="note"><?php _e( 'Detect whether multiple sessions have been created by the same visitor.', 'wp-shieldon' ); ?></div>
 				</div>
 			</div>
 			<div class="col-sm-3">
@@ -119,7 +119,7 @@ function wpso_status_icon( $var, $icon_type = 1 ) {
 					<div class="nums">
 						<?php echo wpso_status_icon( $filters['frequency'] ); ?>
 					</div>
-					<div class="note"><?php _e( 'Check how often does a visitor view the pages.', 'wp-shieldon' ); ?></div>
+					<div class="note"><?php _e( 'Check the frequency of page views by a visitor.', 'wp-shieldon' ); ?></div>
 				</div>
 			</div>
 			<div class="col-sm-3">
@@ -176,7 +176,7 @@ function wpso_status_icon( $var, $icon_type = 1 ) {
 					<div class="nums">
 						<?php echo wpso_status_icon( $components['Rdns'] ); ?>
 					</div>
-					<div class="note"><?php _e( 'Identify IP resolved hostname (RDNS) from visitors.', 'wp-shieldon' ); ?></div>
+					<div class="note"><?php _e( 'Identify hostname resolved (RDNS)  from visitors' IP address.', 'wp-shieldon' ); ?></div>
 					
 				</div>
 			</div>
@@ -186,7 +186,7 @@ function wpso_status_icon( $var, $icon_type = 1 ) {
 					<div class="nums">
 						<?php echo wpso_status_icon( $components['UserAgent'] ); ?>
 					</div>
-					<div class="note"><?php _e( 'Analysis user-agent information from visitors.', 'wp-shieldon' ); ?></div>
+					<div class="note"><?php _e( 'Analyze user-agent information from visitors.', 'wp-shieldon' ); ?></div>
 				</div>
 			</div>
 		</div>
@@ -244,7 +244,7 @@ function wpso_status_icon( $var, $icon_type = 1 ) {
 					<div class="nums">
 						<?php echo wpso_status_icon( $captcha['imagecaptcha'] ); ?>
 					</div>
-					<div class="note"><?php _e( 'A simple text-in-image Captcha.', 'wp-shieldon' ); ?></div>
+					<div class="note"><?php _e( 'A simple text-in-image CAPTCHA.', 'wp-shieldon' ); ?></div>
 				</div>
 			</div>
 		</div>
@@ -271,7 +271,7 @@ function wpso_status_icon( $var, $icon_type = 1 ) {
 					<div class="nums">
 						<?php echo wpso_status_icon( $messengers['linenotify'] ); ?>
 					</div>
-					<div class="note"><?php _e( 'Send notifications to your Line group.', 'wp-shieldon' ); ?></div>
+					<div class="note"><?php _e( 'Send notifications to your LINE group.', 'wp-shieldon' ); ?></div>
 				</div>
 			</div>
 			<div class="col-sm-3">
@@ -280,7 +280,7 @@ function wpso_status_icon( $var, $icon_type = 1 ) {
 					<div class="nums">
 						<?php echo wpso_status_icon( $messengers['sendgrid'] ); ?>
 					</div>
-					<div class="note"><?php _e( 'Send notifications to your email through SendGrid API.', 'wp-shieldon' ); ?></div>
+					<div class="note"><?php _e( 'Send notifications to your email using the SendGrid API.', 'wp-shieldon' ); ?></div>
 				</div>
 			</div>
 		</div>
@@ -307,7 +307,7 @@ function wpso_status_icon( $var, $icon_type = 1 ) {
 			<td><?php echo count( $session_list ); ?></td>
 		<tr>
 	</table>
-	<p><?php _e( 'Performing this action will remove all data from current data circle and rebuild data tables.', 'wp-shieldon' ); ?></p>
+	<p><?php _e( 'Performing this action will remove all data from the current data cycle and rebuild data tables.', 'wp-shieldon' ); ?></p>
 	<form id="wpso_reset_data_circle_form" method="post">
 		<?php wp_nonce_field( 'check_form_reset_data_circle', 'wpso_reset_data_circle_form' ); ?>
 		<input type="hidden" name="action_type" value="reset_data_circle">

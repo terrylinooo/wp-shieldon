@@ -14,6 +14,6 @@ if ( ! defined( 'SHIELDON_PLUGIN_NAME' ) ) {
  */
 ?>
 
-<?php printf( __( 'Allow popular search engines crawl your webiste. [<a href="%s" target="_blank">list</a>]', 'wp-shieldon' ), 'https://shield-on-php.github.io/en/component/trustedbot.html' ); ?>
+<?php printf( __( 'Allow popular search engines to crawl your website. [<a href="%s" target="_blank">list</a>]', 'wp-shieldon' ), 'https://shield-on-php.github.io/en/component/trustedbot.html' ); ?>
 <br />
 <?php echo __( 'Notice: Turning this option off will impact your SEO because the bots will be going to checking process.', 'wp-shieldon' ); ?>

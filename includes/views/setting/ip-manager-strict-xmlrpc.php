@@ -14,7 +14,7 @@ if ( ! defined( 'SHIELDON_PLUGIN_NAME' ) ) {
  */
 ?>
 
-<?php echo __( 'Only IPs in the whitelist can access XML RPC.', 'wp-shieldon' ) . '<br />' . __( '(default: off)', 'wp-shieldon' ); ?><br />
+<?php echo __( 'Restrict access to XML-RPC to only IPs in the whitelist.', 'wp-shieldon' ) . '<br />' . __( '(default: off)', 'wp-shieldon' ); ?><br />
 
 
 
