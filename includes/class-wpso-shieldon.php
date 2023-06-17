@@ -165,7 +165,7 @@ class WPSO_Shieldon_Guardian {
 	 * @return void
 	 */
 	public function front_print_footer_scripts() {
-		echo $this->shieldon->outputJsSnippet();
+		echo $this->shieldon->getJavascript();
 	}
 
 	/**
@@ -594,8 +594,10 @@ class WPSO_Shieldon_Guardian {
 	 * @return void
 	 */
 	private function set_authentication() {
-		$authenticated_list  = get_option( 'shieldon_authetication' );
-		$this->middlewares[] = new HttpAuthentication( $authenticated_list );
+		$authenticated_list = get_option( 'shieldon_authetication' );
+		if ( ! empty( $authenticated_list ) ) {
+			$this->middlewares[] = new HttpAuthentication( $authenticated_list );
+		}
 	}
 
 	/**

@@ -42,7 +42,7 @@ use function Shieldon\Firewall\mask_string;
                     <?php echo number_format($period_data['captcha_count']); ?>
                 </div>
                 <div class="note">
-                    <?php _e('panel', 'log_note_captcha_last_7_days', 'Captcha statistics for the last 7 days.'); ?>
+                    <?php _e('panel', 'log_note_captcha_last_7_days', 'CAPTCHA statistic last 7 days.'); ?>
                 </div>
             </div>
         </div>

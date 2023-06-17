@@ -119,22 +119,22 @@ return [
     'ipma_label_action' => 'Action',
     'ipma_label_plz_select' => 'Please select',
     'ipma_label_remove_ip' => 'Remove this IP',
-    'ipma_label_allow_ip' => 'Allow this IP address',
+    'ipma_label_allow_ip' => 'Allow this IP',
     'ipma_label_deny_ip' => 'Deny this IP',
 
     // Log
     'log_heading_captchas' => 'CAPTCHAs',
     'log_heading_pageviews' => 'Pageviews',
-    'log_note_captcha_last_month' => 'Captcha statistics for the last month.',
+    'log_note_captcha_last_month' => 'CAPTCHA statistic last month.',
     'log_note_pageview_last_month' => 'Total pageviews last month.',
-    'log_note_captcha_last_7_days' => 'Captcha statistics for the last 7 days.',
+    'log_note_captcha_last_7_days' => 'CAPTCHA statistic last 7 days.',
     'log_note_pageview_last_7_days' => 'Total pageviews last 7 days.',
     'log_note_pageview_this_month' => 'Total pageviews this month.',
-    'log_note_captcha_this_month' => 'Captcha statistics for this month.',
-    'log_note_captcha_today' => 'Captcha statistics for today.',
+    'log_note_captcha_this_month' => 'CAPTCHA statistic this month.',
+    'log_note_captcha_today' => 'CAPTCHA statistic today.',
     'log_note_pageview_today' => 'Total pageviews today.',
     'log_note_pageview_yesterday' => 'Total pageviews yesterday.',
-    'log_note_captcha_yesterday' => 'Captcha statistics for today.',
+    'log_note_captcha_yesterday' => 'CAPTCHA statistic today.',
 
     'log_label_last_month' => 'Last month',
     'log_label_this_month' => 'This month',
@@ -162,7 +162,7 @@ return [
     'overview_label_redis' => 'Redis',
     'overview_btn_close' => 'Close',
     'overview_btn_save' => 'SAVE',
-    'overview_note_image_captcha' => 'A simple text-in-image CAPTCHA.',
+    'overview_note_image_captcha' => 'A simple text-in-image Captcha.',
     'overview_label_image_captcha' => 'Image Captcha',
     'overview_note_recaptcha' => 'Provided by Google.',
     'overview_label_recaptcha' => 'reCAPTCHA',
@@ -201,15 +201,15 @@ return [
     'overview_thread_rows' => 'Rows',
     'overview_thread_table' => 'Table',
     'overview_text_reset_data_circle_1' => 'Would you like to reset current data circle?',
-    'overview_text_reset_data_circle_2' => 'Performing this action will remove all data from the current data cycle and rebuild data tables. You will be logged out from the control panel.',
+    'overview_text_reset_data_circle_2' => 'Performing this action will remove all data from current data circle and rebuild data tables. You will be logged out from the control panel.',
     'overview_text_reset_action_logs' => 'Would you like to remove all action logs?',
     'overview_heading_messenger' => 'Messenger Modules',
     'overview_label_telegram' => 'Telegram',
     'overview_note_telegram' => 'Send notifications to your Telegram channel.',
     'overview_label_linenotify' => 'Line Notify',
-    'overview_note_linenotify' => 'Send notifications to your LINE group.',
+    'overview_note_linenotify' => 'Send notifications to your Line group.',
     'overview_label_sendgrid' => 'SendGrid',
-    'overview_note_sendgrid' => 'Send notifications to your email using the SendGrid API.',
+    'overview_note_sendgrid' => 'Send notifications to your email through SendGrid API.',
     'overview_label_slack' => 'Slack',
     'overview_note_slack' => 'Send notifications to your Slack channel through Slack API.',
     'overview_label_slackwebhook' => 'Slack Webhook',
@@ -226,7 +226,7 @@ return [
     // IP log table.
     'table_heading_ip_log' => 'IP Log Table',
     'table_description_ip_log_1' => 'This is where the Shieldon records the users’ strange behavior.',
-    'table_description_ip_log_3' => 'The IP log table will be completely cleared once a new cycle begins.',
+    'table_description_ip_log_3' => 'IP log table will be all cleared after new cycle begins.',
     'table_label_resolved_hostname' => 'Resolved hostname',
     'table_label_last_visit' => 'Last visit',
     'table_label_flags' => 'Flags',
@@ -235,8 +235,8 @@ return [
     'table_heading_rule' => 'Rule Table',
     'table_description_rule_1' => 'Shieldon temporarily allows or denies access to users in this table.',
     'table_description_rule_3' => 'Rule table will be reset when a new cycle begins.',
-    'table_label_deny_ip_temporarily' => 'Temporarily deny this IP address',
-    'table_label_deny_ip_permanently' => 'Permanently deny this IP address',
+    'table_label_deny_ip_temporarily' => 'Deny this IP temporarily',
+    'table_label_deny_ip_permanently' => 'Deny this IP permanently',
     'table_ip_placeholder' => 'Please fill in an IP address..',
     'table_label_type' => 'Type',
     'table_label_reason' => 'Reason',
@@ -263,15 +263,15 @@ return [
 
     // Xss protection.
     'xss_heading' => 'XSS Protection',
-    'xss_description' => 'Prevent cross-site scripting (XSS) attacks.',
+    'xss_description' => 'Prevent Cross site scripting (XSS) attacks.',
     'xss_label_variable' => 'Variable',
-    'xss_text_eradicate_injection' => 'Eradicate potential injection strings for a single variable.',
+    'xss_text_eradicate_injection' => 'Eradicate potential injection string for single variable.',
     'xss_label_single_variable' => 'Single variable',
     'xss_label_variable_name' => 'Variable Name',
     'xss_text_update_above_settings' => 'Update above settings.',
-    'xss_text_filter_cookie_variables' => 'Filter all variables using the COOKIE method.',
-    'xss_text_filter_get_variables' => 'Filter all variables using the GET method.',
-    'xss_text_filter_post_variables' => 'Filter all variables using the POST method.',
+    'xss_text_filter_cookie_variables' => 'Filter all COOKIE method variables.',
+    'xss_text_filter_get_variables' => 'Filter all GET method variables.',
+    'xss_text_filter_post_variables' => 'Filter all POST method variables.',
 
     // Tab
     'tab_heading_adminlogin' => 'Admin Login',
@@ -290,17 +290,17 @@ return [
     // Setting - captcha.
     'setting_heading_recaptcha' => 'reCAPTCHA',
     'setting_label_recaptcha_key' => 'Site Key',
-    'setting_note_recaptcha_key' => 'Please enter the Google reCaptcha site key for your website.',
+    'setting_note_recaptcha_key' => 'Enter Google reCaptcha site key for your webiste.',
     'setting_label_recaptcha_secret' => 'Secret Key',
-    'setting_note_recaptcha_secret' => 'Please enter the Google reCaptcha secret key for your website.',
+    'setting_note_recaptcha_secret' => 'Enter Google reCahptcha secret key for your webiste.',
     'setting_label_recaptcha_version' => 'Version',
     'setting_note_recaptcha_version' => 'Please use corresponding key for that version you choose, otherwise it won’t work.',
     'setting_label_recaptcha_lang' => 'Language Code',
     'setting_note_recaptcha_lang' => 'ISO 639 - ISO 3166 code. For example, zh-TW stands for Tranditional Chinese of Taiwan.',
-    'setting_note_image_captcha_1' => 'An alphanumeric string with lowercase and uppercase characters.',
-    'setting_note_image_captcha_2' => 'A string consisting of lowercase and uppercase letters only.',
+    'setting_note_image_captcha_1' => 'Alpha-numeric string with lower and uppercase characters.',
+    'setting_note_image_captcha_2' => 'A string with lower and uppercase letters only.',
     'setting_note_image_captcha_3' => 'Numeric string only.',
-    'setting_note_image_captcha_length' => 'How many characters would you like to display on the CAPTCHA?',
+    'setting_note_image_captcha_length' => 'How many characters do you like to display on CAPTCHA.',
     'setting_label_length' => 'Length',
     'setting_heading_image_captcha' => 'Image',
 
@@ -322,9 +322,9 @@ return [
     'setting_note_component_rdns_1' => 'In general, an IP from Internet Service Provider (ISP) often have the RDNS set. This option only works when strict mode is on.',
     'setting_note_component_rdns_2' => '
             Strict mode blocks visitors by the following conditions.<br />
-            - IP address without a PTR record.<br />
+            - IP address without PTR record.<br />
             - Returned value of pinging PTR and IP address doesn not match up.<br />
-            - PTR is not a valid fully qualified domain name (FQDN).<br />
+            - PTR is not a valid FQDN.<br />
             This option will deny almost Proxy and VPN servers on the Internet, and some ISP might not provide PTR for their IP addresses, therefore use it carefully.
         ',
 
@@ -389,7 +389,7 @@ return [
     'setting_label_filter_referer' => 'Referrer',
     'setting_note_filter_referer' => 'Check HTTP referer information.',
     'setting_label_quota' => 'Quota',
-    'setting_note_quota' => 'A visitor who reaches this limit will be temporarily banned.',
+    'setting_note_quota' => 'A visitor reached this limit will get banned temporarily.',
     'setting_label_buffered_time' => 'Buffered Time',
     'setting_note_buffered_time' => 'Start using this filter after n seconds after the first time visiting your website.',
     'setting_label_cookie_name' => 'Cookie Name',

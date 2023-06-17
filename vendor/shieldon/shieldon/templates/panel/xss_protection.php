@@ -34,7 +34,7 @@ $timezone = '';
             <?php _e('panel', 'xss_heading', 'XSS Protection'); ?>
         </div>
         <div class="so-datatable-description">
-            <?php _e('panel', 'xss_description', 'Prevent cross-site scripting (XSS) attacks.'); ?>
+            <?php _e('panel', 'xss_description', 'Prevent Cross site scripting (XSS) attacks.'); ?>
         </div>
         <div class="so-setting-page">
             <table class="setting-table">
@@ -60,7 +60,7 @@ $timezone = '';
                                 _e(
                                     'panel',
                                     'xss_text_filter_post_variables',
-                                    'Filter all variables using the POST method.'
+                                    'Filter all POST method variables.'
                                 );
                                 ?>
                             </p>
@@ -84,7 +84,7 @@ $timezone = '';
                                 _e(
                                     'panel',
                                     'xss_text_filter_get_variables',
-                                    'Filter all variables using the GET method.'
+                                    'Filter all GET method variables.'
                                 );
                                 ?>
                             </p>
@@ -106,7 +106,7 @@ $timezone = '';
                                 _e(
                                     'panel',
                                     'xss_text_filter_cookie_variables',
-                                    'Filter all variables using the COOKIE method.'
+                                    'Filter all COOKIE method variables.'
                                 );
                                 ?>
                             </p>
@@ -167,7 +167,7 @@ $timezone = '';
                                 _e(
                                     'panel',
                                     'xss_text_eradicate_injection',
-                                    'Eradicate potential injection strings for a single variable.'
+                                    'Eradicate potential injection string for single variable.'
                                 );
                                 ?>
                             </p>

@@ -6,7 +6,6 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Shieldon\\SimpleCache\\' => array($vendorDir . '/shieldon/simple-cache/src/SimpleCache'),
     'Shieldon\\Security\\' => array($vendorDir . '/shieldon/web-security/src/Security'),
     'Shieldon\\Psr7\\' => array($vendorDir . '/shieldon/psr-http/src/Psr7'),
     'Shieldon\\Psr17\\' => array($vendorDir . '/shieldon/psr-http/src/Psr17'),
@@ -14,7 +13,6 @@ return array(
     'Shieldon\\Messenger\\' => array($vendorDir . '/shieldon/messenger/src/Messenger'),
     'Shieldon\\Firewall\\' => array($vendorDir . '/shieldon/shieldon/src/Firewall'),
     'Shieldon\\Event\\' => array($vendorDir . '/shieldon/event-dispatcher/src/Event'),
-    'Psr\\SimpleCache\\' => array($vendorDir . '/psr/simple-cache/src'),
     'Psr\\Http\\Server\\' => array($vendorDir . '/psr/http-server-handler/src', $vendorDir . '/psr/http-server-middleware/src'),
-    'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-message/src', $vendorDir . '/psr/http-factory/src'),
+    'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-factory/src', $vendorDir . '/psr/http-message/src'),
 );

@@ -1,10 +1,15 @@
 # Shieldon in WordPress
 
-WP Shieldon is based on [Shieldon](https://github.com/terrylinooo/shieldon) library, a PHP library that provides anti-scraping and online session control for your WordPress sites.
+WP Shieldon is a WordPress security plugin based on [Shieldon](https://github.com/terrylinooo/shieldon) library, a Web Application Firewall (WAF) for PHP.
 
-When the users or robots are trying to view many your web pages at a short period of time, they will temporarily get banned. To get unbanned by solving Catpcha. 
+When users or robots try to view many of your web pages within a short period of time, they will be temporarily banned. They can get unbanned by solving a Captcha.
 
-You can visit the plugin author - [Terry L.](https://terryl.in)'s blog, try reloading the pages several times then you will see how this plugin works.
+You can visit the plugin author - [Terry L.](https://terryl.in)'s blog and try reloading the pages several times to see how this plugin works. You can also try Terry's login page to find it protected. For more information about Shieldon, please visit [shieldon.io](https://shieldon.io/en/)
+
+Please note that there are three important things you must understand before using WP Shieldon:
+
+1. WP Shieldon is not for beginners.
+2. Turn the `Trusted Bot` component on to allow search engine crawlers such as Google, Bing, Yahoo, and others to smoothly crawl your website.
 
 ## Requirement
 
@@ -16,7 +21,6 @@ You can visit the plugin author - [Terry L.](https://terryl.in)'s blog, try relo
 | source | download | 
 | --- | --- | 
 | WordPress | https://wordpress.org/plugins/wp-shieldon |
-| GitHub repository | https://github.com/terrylinooo/wp-shieldon/releases | 
 | PHP Composer | `composer create-project terrylinooo/wp-shieldon wp-shieldon` |
 
 ## Installation
@@ -40,8 +44,8 @@ IP Manager
 ![](https://i.imgur.com/WAEI27e.png)
 
 
-***Check Out My other WordPress works***
+***Check out my other WordPress works here***
 
 - [Markdown Editor](https://wordpress.org/plugins/wp-githuber-md/) - WP Githuber MD - an all in one Markdown editor.
-- [SEO Search Permalink](https://wordpress.org/plugins/seo-search-permalink/) - Static search permalink.
+- [Cache Master](https://wordpress.org/plugins/cache-master/) - WordPress cache plugin.
 - [Mynote Theme](https://wordpress.org/themes/mynote/) - Theme for programmers.

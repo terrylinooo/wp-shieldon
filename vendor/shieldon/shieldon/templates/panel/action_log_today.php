@@ -37,7 +37,7 @@ use function Shieldon\Firewall\mask_string;
             <div class="board-field right">
                 <div class="heading"><?php _e('panel', 'log_heading_captchas', 'CAPTCHAs'); ?></div>
                 <div class="nums"><?php echo number_format($period_data['captcha_count']); ?></div>
-                <div class="note"><?php _e('panel', 'log_note_captcha_today', 'Captcha statistics for today.'); ?></div>
+                <div class="note"><?php _e('panel', 'log_note_captcha_today', 'CAPTCHA statistic today.'); ?></div>
             </div>
         </div>
         <div class="so-board">

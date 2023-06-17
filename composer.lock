@@ -1,9 +1,14 @@
 {
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "0678f5d5a8ca88ffefc57edcb9edb0f7",
     "packages": [
         {
             "name": "psr/http-factory",
             "version": "1.0.2",
-            "version_normalized": "1.0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/http-factory.git",
@@ -19,14 +24,12 @@
                 "php": ">=7.0.0",
                 "psr/http-message": "^1.0 || ^2.0"
             },
-            "time": "2023-04-10T20:10:41+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-master": "1.0.x-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Psr\\Http\\Message\\": "src/"
@@ -56,12 +59,11 @@
             "support": {
                 "source": "https://github.com/php-fig/http-factory/tree/1.0.2"
             },
-            "install-path": "../psr/http-factory"
+            "time": "2023-04-10T20:10:41+00:00"
         },
         {
             "name": "psr/http-message",
             "version": "2.0",
-            "version_normalized": "2.0.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/http-message.git",
@@ -76,14 +78,12 @@
             "require": {
                 "php": "^7.2 || ^8.0"
             },
-            "time": "2023-04-04T09:54:51+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-master": "2.0.x-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Psr\\Http\\Message\\": "src/"
@@ -112,12 +112,11 @@
             "support": {
                 "source": "https://github.com/php-fig/http-message/tree/2.0"
             },
-            "install-path": "../psr/http-message"
+            "time": "2023-04-04T09:54:51+00:00"
         },
         {
             "name": "psr/http-server-handler",
             "version": "1.0.2",
-            "version_normalized": "1.0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/http-server-handler.git",
@@ -133,14 +132,12 @@
                 "php": ">=7.0",
                 "psr/http-message": "^1.0 || ^2.0"
             },
-            "time": "2023-04-10T20:06:20+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-master": "1.0.x-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Psr\\Http\\Server\\": "src/"
@@ -171,12 +168,11 @@
             "support": {
                 "source": "https://github.com/php-fig/http-server-handler/tree/1.0.2"
             },
-            "install-path": "../psr/http-server-handler"
+            "time": "2023-04-10T20:06:20+00:00"
         },
         {
             "name": "psr/http-server-middleware",
             "version": "1.0.2",
-            "version_normalized": "1.0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/http-server-middleware.git",
@@ -193,14 +189,12 @@
                 "psr/http-message": "^1.0 || ^2.0",
                 "psr/http-server-handler": "^1.0"
             },
-            "time": "2023-04-11T06:14:47+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-master": "1.0.x-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Psr\\Http\\Server\\": "src/"
@@ -231,12 +225,11 @@
                 "issues": "https://github.com/php-fig/http-server-middleware/issues",
                 "source": "https://github.com/php-fig/http-server-middleware/tree/1.0.2"
             },
-            "install-path": "../psr/http-server-middleware"
+            "time": "2023-04-11T06:14:47+00:00"
         },
         {
             "name": "shieldon/event-dispatcher",
             "version": "1.0.0",
-            "version_normalized": "1.0.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/terrylinooo/event-dispatcher.git",
@@ -254,9 +247,7 @@
             "require-dev": {
                 "phpunit/phpunit": "^7"
             },
-            "time": "2020-08-14T02:15:41+00:00",
             "type": "library",
-            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Shieldon\\Event\\": "src/Event/"
@@ -286,12 +277,11 @@
                 "issues": "https://github.com/terrylinooo/event-dispatcher/issues",
                 "source": "https://github.com/terrylinooo/event-dispatcher/tree/1.0.0"
             },
-            "install-path": "../shieldon/event-dispatcher"
+            "time": "2020-08-14T02:15:41+00:00"
         },
         {
             "name": "shieldon/messenger",
             "version": "1.6.2",
-            "version_normalized": "1.6.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/terrylinooo/messenger.git",
@@ -309,9 +299,7 @@
             "require-dev": {
                 "phpunit/phpunit": "^7"
             },
-            "time": "2020-07-11T18:18:07+00:00",
             "type": "library",
-            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Shieldon\\Messenger\\": "src/Messenger"
@@ -341,12 +329,11 @@
                 "issues": "https://github.com/terrylinooo/messenger/issues",
                 "source": "https://github.com/terrylinooo/messenger/tree/1.6.2"
             },
-            "install-path": "../shieldon/messenger"
+            "time": "2020-07-11T18:18:07+00:00"
         },
         {
             "name": "shieldon/psr-http",
             "version": "1.2.7",
-            "version_normalized": "1.2.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/terrylinooo/psr-http.git",
@@ -368,9 +355,7 @@
             "require-dev": {
                 "phpunit/phpunit": "^9"
             },
-            "time": "2023-06-06T07:59:41+00:00",
             "type": "library",
-            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Shieldon\\Psr7\\": "src/Psr7",
@@ -402,12 +387,11 @@
                 "issues": "https://github.com/terrylinooo/psr-http/issues",
                 "source": "https://github.com/terrylinooo/psr-http/tree/1.2.7"
             },
-            "install-path": "../shieldon/psr-http"
+            "time": "2023-06-06T07:59:41+00:00"
         },
         {
             "name": "shieldon/shieldon",
             "version": "2.1.1",
-            "version_normalized": "2.1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/terrylinooo/shieldon.git",
@@ -431,9 +415,7 @@
             "require-dev": {
                 "phpunit/phpunit": "^8 || ^9 || ^10"
             },
-            "time": "2023-06-17T08:48:17+00:00",
             "type": "library",
-            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Shieldon\\Firewall\\": "src/Firewall"
@@ -466,12 +448,11 @@
                 "issues": "https://github.com/terrylinooo/shieldon/issues",
                 "source": "https://github.com/terrylinooo/shieldon/tree/2.1.1"
             },
-            "install-path": "../shieldon/shieldon"
+            "time": "2023-06-17T08:48:17+00:00"
         },
         {
             "name": "shieldon/web-security",
             "version": "1.0.0",
-            "version_normalized": "1.0.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/terrylinooo/web-security.git",
@@ -489,9 +470,7 @@
             "require-dev": {
                 "phpunit/phpunit": "^7"
             },
-            "time": "2020-07-22T08:06:14+00:00",
             "type": "library",
-            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Shieldon\\Security\\": "src/Security/"
@@ -521,9 +500,16 @@
                 "issues": "https://github.com/terrylinooo/web-security/issues",
                 "source": "https://github.com/terrylinooo/web-security/tree/master"
             },
-            "install-path": "../shieldon/web-security"
+            "time": "2020-07-22T08:06:14+00:00"
         }
     ],
-    "dev": true,
-    "dev-package-names": []
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.3.0"
 }

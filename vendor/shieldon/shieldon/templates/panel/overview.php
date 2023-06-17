@@ -297,7 +297,7 @@ $timezone = '';
                         _e(
                             'panel',
                             'overview_note_useragent',
-                            'Analyze user-agent information from visitors.'
+                            'Analysis user-agent information from visitors.'
                         );
                         ?>
                     </div>
@@ -388,7 +388,7 @@ $timezone = '';
                             '<i class="far fa-stop-circle"></i>'; ?>
                     </div>
                     <div class="note">
-                        <?php _e('panel', 'overview_note_image_captcha', 'A simple text-in-image CAPTCHA.'); ?>
+                        <?php _e('panel', 'overview_note_image_captcha', 'A simple text-in-image Captcha.'); ?>
                     </div>
                 </div>
             </div>
@@ -496,7 +496,7 @@ $timezone = '';
         _e(
             'panel',
             'overview_text_reset_data_circle_2',
-            'Performing this action will remove all data from the current data cycle and rebuild data tables.'
+            'Performing this action will remove all data from current data circle and rebuild data tables.'
         );
         ?>
     </p>

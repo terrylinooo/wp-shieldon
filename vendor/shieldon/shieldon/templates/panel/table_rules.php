@@ -64,13 +64,13 @@ $timezone = '';
                         <?php _e('panel', 'ipma_label_plz_select', 'Please select'); ?>
                     </option>
                     <option value="temporarily_ban">
-                        <?php _e('panel', 'table_label_deny_ip_temporarily', 'Temporarily deny this IP address'); ?>
+                        <?php _e('panel', 'table_label_deny_ip_temporarily', 'Deny this IP temporarily'); ?>
                     </option>
                     <option value="permanently_ban">
-                        <?php _e('panel', 'table_label_deny_ip_permanently', 'Permanently deny this IP address'); ?>
+                        <?php _e('panel', 'table_label_deny_ip_permanently', 'Deny this IP permanently'); ?>
                     </option>
                     <option value="allow">
-                        <?php _e('panel', 'ipma_label_allow_ip', 'Allow this IP address'); ?>
+                        <?php _e('panel', 'ipma_label_allow_ip', 'Allow this IP'); ?>
                     </option>
                     <option value="remove">
                         <?php _e('panel', 'ipma_label_remove_ip', 'Remove this IP'); ?>

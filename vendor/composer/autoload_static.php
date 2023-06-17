@@ -9,7 +9,6 @@ class ComposerStaticInit1f62a68ade874e24d975a6fd1b6bcabc
     public static $prefixLengthsPsr4 = array (
         'S' => 
         array (
-            'Shieldon\\SimpleCache\\' => 21,
             'Shieldon\\Security\\' => 18,
             'Shieldon\\Psr7\\' => 14,
             'Shieldon\\Psr17\\' => 15,
@@ -20,17 +19,12 @@ class ComposerStaticInit1f62a68ade874e24d975a6fd1b6bcabc
         ),
         'P' => 
         array (
-            'Psr\\SimpleCache\\' => 16,
             'Psr\\Http\\Server\\' => 16,
             'Psr\\Http\\Message\\' => 17,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Shieldon\\SimpleCache\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/shieldon/simple-cache/src/SimpleCache',
-        ),
         'Shieldon\\Security\\' => 
         array (
             0 => __DIR__ . '/..' . '/shieldon/web-security/src/Security',
@@ -59,10 +53,6 @@ class ComposerStaticInit1f62a68ade874e24d975a6fd1b6bcabc
         array (
             0 => __DIR__ . '/..' . '/shieldon/event-dispatcher/src/Event',
         ),
-        'Psr\\SimpleCache\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/psr/simple-cache/src',
-        ),
         'Psr\\Http\\Server\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/http-server-handler/src',
@@ -70,8 +60,8 @@ class ComposerStaticInit1f62a68ade874e24d975a6fd1b6bcabc
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
     );
 
