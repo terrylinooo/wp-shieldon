@@ -64,7 +64,7 @@ define( 'SHIELDON_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'SHIELDON_PLUGIN_PATH', __FILE__ );
 define( 'SHIELDON_PLUGIN_LANGUAGE_PACK', dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 define( 'SHIELDON_PLUGIN_VERSION', '2.0.0' );
-define( 'SHIELDON_CORE_VERSION', '2.1.0' );
+define( 'SHIELDON_CORE_VERSION', '2.1.1' );
 define( 'SHIELDON_PLUGIN_TEXT_DOMAIN', 'wp-shieldon' );
 
 // Load helper functions
