@@ -82,15 +82,20 @@ $timezone = wpso_apply_blog_timezone();
 					}
 					?>
 					</td>
-					<td><?php echo date( 'Y-m-d H:i:s', $ip_info['time'] ); ?></td>
-					<td><button type="button" class="button btn-remove-ip" data-ip="<?php esc_attr_e( $ip_info['log_ip'] ); ?>"><i class="far fa-trash-alt"></i></button></td>
+					<td><?php echo wp_date( 'Y-m-d H:i:s', $ip_info['time'] ); ?></td>
+					<td>
+						<button type="button" class="button btn-remove-ip" data-ip="<?php echo $ip_info['log_ip']; ?>">
+							<i class="far fa-trash-alt"></i>
+						</button>
+					</td>
 				</tr>
 				<?php endforeach; ?>
 			</tbody>   
 		</table>
 	</div>
 	<div class="wpso-timezone">
-		<?php printf( __( 'Current data circle started from %s.', 'wp-shieldon' ), date( 'Y-m-d H:i:s', $last_reset_time ) ); ?><br />
+		<?php // translators: %s: date ?>
+		<?php printf( __( 'Current data circle started from %s.', 'wp-shieldon' ), wp_date( 'Y-m-d H:i:s', $last_reset_time ) ); ?><br />
 		<?php _e( 'Timezone', 'wp-shieldon' ); ?>: <?php echo $timezone; ?>
 	</div>
 </div>

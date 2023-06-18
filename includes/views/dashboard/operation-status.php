@@ -152,7 +152,7 @@ if ( ! defined( 'SHIELDON_PLUGIN_NAME' ) ) {
 							<?php echo $component_rdns; ?>
 						<?php endif; ?>
 					</div>
-					<div class="note"><?php _e( 'Identify hostname resolved (RDNS)  from visitors' IP address.', 'wp-shieldon' ); ?></div>
+					<div class="note"><?php _e( 'Identify hostname resolved (RDNS)  from visitors\' IP address.', 'wp-shieldon' ); ?></div>
 					<button class="note-code">
 						<?php echo $components['Rdns'] ? '<i class="fas fa-play-circle"></i>' : '<i class="fas fa-stop-circle"></i>'; ?>
 					</button>
@@ -198,23 +198,23 @@ if ( ! defined( 'SHIELDON_PLUGIN_NAME' ) ) {
 					</tr>
 				</thead>
 				<tbody>
-	<?php foreach ( $rule_list[ $i ] as $ipInfo ) : ?>
+	<?php foreach ( $rule_list[ $i ] as $ip_info ) : ?>
 					<tr>
 						<td>
-		<?php echo $ipInfo['log_ip']; ?>
+		<?php echo $ip_info['log_ip']; ?>
 						</td>
-						<td><?php echo $ipInfo['ip_resolve']; ?></td>
+						<td><?php echo $ip_info['ip_resolve']; ?></td>
 						<td>
-		<?php if ( ! empty( $type_mapping[ $ipInfo['type'] ] ) ) : ?>
-			<?php echo $type_mapping[ $ipInfo['type'] ]; ?>
+		<?php if ( ! empty( $type_mapping[ $ip_info['type'] ] ) ) : ?>
+			<?php echo $type_mapping[ $ip_info['type'] ]; ?>
 							<?php endif; ?>
 						</td>
 						<td>
-		<?php if ( ! empty( $reason_mapping[ $ipInfo['reason'] ] ) ) : ?>
-			<?php echo $reason_mapping[ $ipInfo['reason'] ]; ?>
+		<?php if ( ! empty( $reason_mapping[ $ip_info['reason'] ] ) ) : ?>
+			<?php echo $reason_mapping[ $ip_info['reason'] ]; ?>
 							<?php endif; ?>
 						</td>
-						<td><?php echo date( 'Y-m-d H:i:s', $ipInfo['time'] ); ?></td>
+						<td><?php echo wp_date( 'Y-m-d H:i:s', $ip_info['time'] ); ?></td>
 					</tr>
 					<?php endforeach; ?>
 				</tbody>   
@@ -241,5 +241,5 @@ if ( ! defined( 'SHIELDON_PLUGIN_NAME' ) ) {
 			'pageLength': 25
 		});
 	});
-	
+
 </script>

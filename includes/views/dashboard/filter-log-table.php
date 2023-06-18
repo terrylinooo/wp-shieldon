@@ -109,14 +109,15 @@ $timezone = wpso_apply_blog_timezone();
 						<td><?php echo $log_data['flag_js_cookie']; ?></td>
 						<td><?php echo $log_data['flag_multi_session']; ?></td>
 						<td><?php echo $log_data['flag_empty_referer']; ?></td>
-						<td><?php echo date( 'Y-m-d H:i:s', $log_data['last_time'] ); ?></td>
+						<td><?php echo wp_date( 'Y-m-d H:i:s', $log_data['last_time'] ); ?></td>
 					</tr>
 				<?php endforeach; ?>
 			</tbody>   
 		</table>
 	</div>
 	<div class="wpso-timezone">
-		<?php printf( __( 'Current data circle started from %s.', 'wp-shieldon' ), date( 'Y-m-d H:i:s', $last_reset_time ) ); ?><br />
+		<?php // translators: %s: date ?>
+		<?php printf( __( 'Current data circle started from %s.', 'wp-shieldon' ), wp_date( 'Y-m-d H:i:s', $last_reset_time ) ); ?><br />
 		<?php _e( 'Timezone', 'wp-shieldon' ); ?>: <?php echo $timezone; ?>
 	</div>
 </div>

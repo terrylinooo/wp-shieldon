@@ -78,7 +78,7 @@ $timezone = wpso_apply_blog_timezone();
 					</td>
 				</tr>
 			</table>
-			
+
 			</form>
 		</div>
 		<br />

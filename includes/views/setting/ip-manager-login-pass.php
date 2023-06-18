@@ -16,7 +16,7 @@ if ( ! defined( 'SHIELDON_PLUGIN_NAME' ) ) {
 $passcode = wpso_get_option( 'deny_all_passcode', 'shieldon_ip_login' );
 ?>
 
-<?php echo __( "Please enter a passcode known only to you. You can use it to bypass IP checks if your IP is not whitelisted.", 'wp-shieldon' ); ?>
+<?php echo __( 'Please enter a passcode known only to you. You can use it to bypass IP checks if your IP is not whitelisted.', 'wp-shieldon' ); ?>
 
 <?php if ( ! empty( $passcode ) ) : ?>
 <br /><br /><?php echo __( 'Using the following URL makes your login URL accessible in <strong>Deny All</strong> mode.', 'wp-shieldon' ); ?><br />

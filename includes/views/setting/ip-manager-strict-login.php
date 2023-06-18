@@ -19,6 +19,6 @@ $passcode = wpso_get_option( 'deny_all_passcode', 'shieldon_ip_login' );
 <?php if ( empty( $passcode ) ) : ?>
 <br />
 <span style="color: #aa0000">
-	<?php echo __( "Please exercise caution when using this option. Be mindful not to block yourself. In the event of being blocked, the only way to resolve the issue is to manually delete this plugin.", 'wp-shieldon' ); ?>
+	<?php echo __( 'Please exercise caution when using this option. Be mindful not to block yourself. In the event of being blocked, the only way to resolve the issue is to manually delete this plugin.', 'wp-shieldon' ); ?>
 </span>
 <?php endif; ?>

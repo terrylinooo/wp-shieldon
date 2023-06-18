@@ -28,7 +28,7 @@ if ( ! defined( 'SHIELDON_PLUGIN_NAME' ) ) {
 				</div><br />
 			<?php endif; ?>
 			<form method="post" enctype="multipart/form-data">
-				<?php wp_nonce_field( 'shieldon_import_' . date( 'YmdH' ), 'wpso_import_form' ); ?>
+				<?php wp_nonce_field( 'shieldon_import_' . wp_date( 'YmdH' ), 'wpso_import_form' ); ?>
 				<input type="hidden" name="action" value="import">
 				<div style="width: 300px">
 					<div class="wpso-custom-file">
@@ -48,7 +48,7 @@ if ( ! defined( 'SHIELDON_PLUGIN_NAME' ) ) {
 		<hr />
 		<div>
 			<p><?php _e( 'Export all settings to a JSON file.', 'wp-shieldon' ); ?><p>
-			<?php $wpso_nonce = wp_create_nonce( 'shieldon_export_' . date( 'YmdH' ) ); ?>
+			<?php $wpso_nonce = wp_create_nonce( 'shieldon_export_' . wp_date( 'YmdH' ) ); ?>
 			<a href="<?php menu_page_url( 'shieldon-import-export' ); ?>&action=export&_wpnonce=<?php echo $wpso_nonce; ?>" class="btn-shieldon" target="_blank">
 				<i class="fas fa-file-export"></i> <?php _e( 'Export', 'wp-shieldon' ); ?>
 			</a>

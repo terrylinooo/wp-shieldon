@@ -132,7 +132,7 @@ if ( ! defined( 'SHIELDON_PLUGIN_NAME' ) ) {
 		document.querySelector("#chart-1"),
 		todayPieOptions
 	);
-	
+
 	todayCaptchaPie.render();
 
 
@@ -163,7 +163,7 @@ if ( ! defined( 'SHIELDON_PLUGIN_NAME' ) ) {
 		document.querySelector("#chart-2"),
 		yesterdayPieOptions
 	);
-	
+
 	yesterdayCaptchaPie.render();
 
 	// This month
@@ -259,6 +259,4 @@ if ( ! defined( 'SHIELDON_PLUGIN_NAME' ) ) {
 
 	})(jQuery);
 
-
-	
 </script>

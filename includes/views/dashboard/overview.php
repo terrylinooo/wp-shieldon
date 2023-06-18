@@ -13,6 +13,13 @@ if ( ! defined( 'SHIELDON_PLUGIN_NAME' ) ) {
  * @version 1.0.0
  */
 
+/**
+ * Display icon.
+ *
+ * @param string $var       The value of the variable.
+ * @param int    $icon_type The type of icon.
+ * @return string
+ */
 function wpso_status_icon( $var, $icon_type = 1 ) {
 
 	if ( 1 === $icon_type ) {
@@ -74,7 +81,6 @@ function wpso_status_icon( $var, $icon_type = 1 ) {
 						<?php echo wpso_status_icon( $driver['file'], 2 ); ?>
 					</div>
 					<div class="note"><?php _e( 'File system.', 'wp-shieldon' ); ?></div>
-				  
 				</div>
 			</div>
 			<div class="col-sm-3">
@@ -129,7 +135,6 @@ function wpso_status_icon( $var, $icon_type = 1 ) {
 						<?php echo wpso_status_icon( $filters['referer'] ); ?>
 					</div>
 					<div class="note"><?php _e( 'Check HTTP referrer information.', 'wp-shieldon' ); ?></div>
-				  
 				</div>
 			</div>
 		</div>
@@ -157,7 +162,7 @@ function wpso_status_icon( $var, $icon_type = 1 ) {
 						<?php echo wpso_status_icon( $components['TrustedBot'] ); ?>
 					</div>
 					<div class="note"><?php _e( 'Allow popular search engines crawl your website.', 'wp-shieldon' ); ?></div>
-				  
+
 				</div>
 			</div>
 			<div class="col-sm-3">
@@ -167,7 +172,6 @@ function wpso_status_icon( $var, $icon_type = 1 ) {
 						<?php echo wpso_status_icon( $components['Header'] ); ?>
 					</div>
 					<div class="note"><?php _e( 'Analyze header information from visitors.', 'wp-shieldon' ); ?></div>
-				   
 				</div>
 			</div>
 			<div class="col-sm-3">
@@ -176,8 +180,7 @@ function wpso_status_icon( $var, $icon_type = 1 ) {
 					<div class="nums">
 						<?php echo wpso_status_icon( $components['Rdns'] ); ?>
 					</div>
-					<div class="note"><?php _e( 'Identify hostname resolved (RDNS)  from visitors' IP address.', 'wp-shieldon' ); ?></div>
-					
+					<div class="note"><?php _e( 'Identify hostname resolved (RDNS)  from visitors\' IP address.', 'wp-shieldon' ); ?></div>
 				</div>
 			</div>
 			<div class="col-sm-3">
@@ -216,7 +219,6 @@ function wpso_status_icon( $var, $icon_type = 1 ) {
 						<?php echo wpso_status_icon( $data['action_logger'] ); ?>
 					</div>
 					<div class="note"><?php _e( 'Record every visitor’s behavior.', 'wp-shieldon' ); ?></div>
-				   
 				</div>
 			</div>
 		</div>

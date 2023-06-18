@@ -174,8 +174,6 @@ function wpso_deactivate_plugin() {
 	update_option( 'wpso_driver_hash', '' );
 }
 
-
-
 register_deactivation_hook( __FILE__, 'wpso_deactivate_plugin' );
 
 /**

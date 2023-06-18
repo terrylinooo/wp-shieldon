@@ -106,7 +106,7 @@ $timezone = wpso_apply_blog_timezone();
 						<td><?php echo $satus_name; ?></td>
 						<td><?php echo $session_info['id']; ?></td>
 						<td><?php echo $session_info['ip']; ?></td>
-						<td><?php echo date( 'Y-m-d H:i:s', $session_info['time'] ); ?></td>
+						<td><?php echo wp_date( 'Y-m-d H:i:s', $session_info['time'] ); ?></td>
 						<th><?php echo $remains_time; ?></th>
 					</tr>
 					<?php $i++; ?>
@@ -115,7 +115,8 @@ $timezone = wpso_apply_blog_timezone();
 		</table>
 	</div>
 	<div class="wpso-timezone">
-		<?php printf( __( 'Current data circle started from %s.', 'wp-shieldon' ), date( 'Y-m-d H:i:s', $last_reset_time ) ); ?><br />
+		<?php // translators: %s: date ?>
+		<?php printf( __( 'Current data circle started from %s.', 'wp-shieldon' ), wp_date( 'Y-m-d H:i:s', $last_reset_time ) ); ?><br />
 		<?php _e( 'Timezone', 'wp-shieldon' ); ?>: <?php echo $timezone; ?>
 	</div>
 </div>
@@ -134,4 +135,5 @@ $timezone = wpso_apply_blog_timezone();
 			});
 		});
 	})(jQuery);
+
 </script>

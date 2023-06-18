@@ -47,7 +47,7 @@ $timezone = wpso_apply_blog_timezone();
 					<input type="submit" name="submit" id="btn-add-rule" value="<?php esc_attr_e( 'Submit', 'wp-shieldon' ); ?>">
 				</div>	
 			</form>
-			<div style="padding: 10px; 0">
+			<div style="padding: 10px;">
 				<?php _e( 'For example:', 'wp-shieldon' ); ?> <strong style="background-color: #eeeeee; padding: 5px;">/wp-login.php</strong> <?php _e( '(login page)', 'wp-shieldon' ); ?>&nbsp;&nbsp;
 				<?php _e( 'This must be a path that it begins with a slash (/)', 'wp-shieldon' ); ?>
 			</div>
@@ -79,11 +79,11 @@ $timezone = wpso_apply_blog_timezone();
 			</thead>
 			<tbody>
 			<?php if ( ! empty( $authenticated_list ) ) : ?>
-				<?php foreach ( $authenticated_list as $i => $authInfo ) : ?>
+				<?php foreach ( $authenticated_list as $i => $auth_info ) : ?>
 				<tr>
-					<td><?php echo $authInfo['url']; ?></td>
-					<td><?php echo $authInfo['user']; ?></td>
-					<td><?php echo $authInfo['pass']; ?></td>
+					<td><?php echo $auth_info['url']; ?></td>
+					<td><?php echo $auth_info['user']; ?></td>
+					<td><?php echo $auth_info['pass']; ?></td>
 					<td><button type="button" class="button btn-remove-ip" data-order="<?php echo $i; ?>"><i class="far fa-trash-alt"></i></button></td>
 				</tr>
 				<?php endforeach; ?>

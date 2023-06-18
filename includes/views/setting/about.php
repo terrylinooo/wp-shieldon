@@ -18,6 +18,7 @@ if ( ! defined( 'SHIELDON_PLUGIN_NAME' ) ) {
 	<div class="shieldon-cover"><img src="<?php echo SHIELDON_PLUGIN_URL; ?>includes/assets/images/shieldon_cover.png"></div>
 	<div class="shieldon-author">
 		<p class="created-by">
+			<?php // translators: %1s = Author's name ?>
 			<?php printf( __( 'WP Shieldon is brought to you by <a href="%1$s">Terry L.</a> from <a href="%2$s">Taiwan</a>.', 'wp-shieldon' ), 'https://terryl.in', 'https://www.google.com/maps/@23.4722181,120.9910232,8z' ); ?>
 		</p>
 		<div class="info-links">
