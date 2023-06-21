@@ -16,7 +16,7 @@ use Shieldon\Firewall\Driver\FileDriver;
 use Shieldon\Firewall\Driver\RedisDriver;
 use Shieldon\Firewall\Component\Ip;
 use Shieldon\Firewall\Component\Rdns;
-use Shieldon\Firewall\Captcha\Recaptcha;
+use Shieldon\Firewall\Captcha\ReCaptcha;
 use Shieldon\Firewall\Captcha\ImageCaptcha;
 use Shieldon\Firewall\Log\ActionLogger;
 use Shieldon\Firewall\Kernel\Enum;
@@ -137,25 +137,25 @@ class WPSO_Shieldon_Guardian {
 		switch ( $ip_source ) {
 			case 'HTTP_CF_CONNECTING_IP':
 				if ( ! empty( $_SERVER['HTTP_CF_CONNECTING_IP'] ) ) {
-					$this->shieldon->setIp( $_SERVER['HTTP_CF_CONNECTING_IP'] );
+					$this->shieldon->setIp( $_SERVER['HTTP_CF_CONNECTING_IP'], true );
 				}
 				break;
 
 			case 'HTTP_X_FORWARDED_FOR':
 				if ( ! empty( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
-					$this->shieldon->setIp( $_SERVER['HTTP_X_FORWARDED_FOR'] );
+					$this->shieldon->setIp( $_SERVER['HTTP_X_FORWARDED_FOR'], true );
 				}
 				break;
 
 			case 'HTTP_X_FORWARDED_HOST':
 				if ( ! empty( $_SERVER['HTTP_X_FORWARDED_HOST'] ) ) {
-					$this->shieldon->setIp( $_SERVER['HTTP_X_FORWARDED_HOST'] );
+					$this->shieldon->setIp( $_SERVER['HTTP_X_FORWARDED_HOST'], true );
 				}
 				break;
 
 			case 'REMOTE_ADDR':
 			default:
-				$this->shieldon->setIp( $_SERVER['REMOTE_ADDR'] );
+				$this->shieldon->setIp( $_SERVER['REMOTE_ADDR'], true );
 		}
 	}
 
@@ -338,7 +338,7 @@ class WPSO_Shieldon_Guardian {
 				'version' => wpso_get_option( 'google_recaptcha_version', 'shieldon_captcha' ),
 				'lang'    => wpso_get_option( 'google_recaptcha_version', 'shieldon_captcha' ),
 			);
-			$this->shieldon->setCaptcha( new Recaptcha( $google_captcha_config ) );
+			$this->shieldon->setCaptcha( new ReCaptcha( $google_captcha_config ) );
 		}
 
 		if ( 'yes' === wpso_get_option( 'enable_captcha_image', 'shieldon_captcha' ) ) {

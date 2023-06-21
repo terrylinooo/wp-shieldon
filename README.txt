@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=donat
 Tags: anti-scriping, security, firewall, brute-force, xss-protection
 Requires at least: 4.7
 Tested up to: 6.2.2
-Stable tag: 2.0.0
+Stable tag: 2.0.2
 Requires PHP: 7.1.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -201,3 +201,7 @@ GNU General Public License for more details.
 - Upgrade Sheidlon core from 0.1.7 to 2.1.0
 - Refactor code to fit with Shieldon 2.1.0
 - Test up to WordPress 6.2.2 and PHP 8.2.5
+
+= 2.0.2
+
+- Check and set the reverse DNS for IP address.
